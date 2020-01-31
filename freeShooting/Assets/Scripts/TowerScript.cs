@@ -8,8 +8,8 @@ public class TowerScript: ScriptableObject
     public GameObject obj;
     public int range;
     public string type;
-    public Vector3 position;
     public int level;
+    public new string name;
 
     
 }
