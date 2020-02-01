@@ -1,37 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Build : MonoBehaviour
 {
     RaycastHit hit;
-    [SerializeField]
-    private GameObject Towerscanvas;
+    GameManagerPartie gm;
+    TowerScript[] towers;
+    
+    bool  test = false;
+    private int nb;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = this.GetComponent<GameManagerPartie>();
+        towers = gm.TowersSelected;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+      
+        if (Input.GetMouseButtonDown(0) && test == true)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Physics.Raycast(ray, out hit);
             if (hit.collider.tag == "TowerDefendZone")
             {
-                Towerscanvas.SetActive(true);
                 
+                GameObject go = Instantiate(towers[nb].prefab, hit.transform);
+                go.transform.localScale= new Vector3(7, 7, 7);
+                go.transform.position = new Vector3(go.transform.position.x, go.transform.position.y+0.5f, go.transform.position.z);
+                test = false;
             }
+            else
+                test = false;
 
 
         }
     }
-    public void exit()
+
+    public void click (int nb)
     {
-        Towerscanvas.SetActive(false);
+        test = true;
+        
+        this.nb = nb;
+    }
+    public void testBuilding()
+    {
+        
     }
 }

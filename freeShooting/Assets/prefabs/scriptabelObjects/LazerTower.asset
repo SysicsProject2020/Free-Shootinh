@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 200
   damage: 50
-  obj: {fileID: 6691245050111619357, guid: d2ba556787281f249b4ac1eb3b236626, type: 3}
+  prefab: {fileID: 6691245050111619357, guid: fa3de70379caac846affbf240c2f085c, type: 3}
   range: 10
   type: Attack Tower
   level: 1
   name: Lazer Tower
+  image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}

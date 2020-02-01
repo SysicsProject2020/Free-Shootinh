@@ -29,7 +29,7 @@ public class DragFingerMove : MonoBehaviour
                 }
             }
         }
-
+      
         if (move)
         {
             transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
