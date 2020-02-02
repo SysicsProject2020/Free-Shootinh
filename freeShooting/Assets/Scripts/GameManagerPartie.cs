@@ -13,7 +13,7 @@ public class GameManagerPartie : MonoBehaviour
     [SerializeField]
    
     private GameObject itemparent;
-    int i = 0;
+    //int i = 0;
 
     private Transform TowerCanvas;
     // Start is called before the first frame update

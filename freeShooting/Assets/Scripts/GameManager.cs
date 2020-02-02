@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public PlayerScript[] players; 
+
+
+
     [SerializeField]
     private TowerScript[] Towers;
+    public GameObject PlayerSlot;
    
 
 
