@@ -15,6 +15,6 @@ MonoBehaviour:
   prefab: {fileID: 0}
   level: 1
   name: snowman
-  image: {fileID: 0}
+  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   magic1: {fileID: 11400000, guid: fa6ecc5c899c0574b8897da05e8bce62, type: 2}
   magic2: {fileID: 11400000, guid: ca7b2a03bba170041bb6ec13adbc8279, type: 2}

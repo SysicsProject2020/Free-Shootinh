@@ -10,18 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b04fe4e9fd7dc5e4bb82e61fd04cdc58, type: 3}
-  m_Name: LazerTower
+  m_Name: Tower Base
   m_EditorClassIdentifier: 
-  health: f40100008a020000ee0200003903000084030000
-  damage:
-  - 5
-  - 6.5
-  - 8
-  - 8.9
-  - 10
-  prefab: {fileID: 6691245050111619357, guid: fa3de70379caac846affbf240c2f085c, type: 3}
+  health: 98080000c40900008c0a0000b80b0000e40c0000
+  damage: []
+  prefab: {fileID: 6691245050111619357, guid: d2ba556787281f249b4ac1eb3b236626, type: 3}
   range: 0
-  type: Attack Tower
+  type: 
   level: 1
-  name: lazer tower
-  image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}
+  name: tower base
+  image: {fileID: 21300000, guid: 9da63ff78f23fa24c8e392cfe0056fce, type: 3}

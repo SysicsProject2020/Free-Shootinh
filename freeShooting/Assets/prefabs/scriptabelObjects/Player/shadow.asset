@@ -15,6 +15,6 @@ MonoBehaviour:
   prefab: {fileID: 0}
   level: 1
   name: shadow
-  image: {fileID: 0}
+  image: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   magic1: {fileID: 11400000, guid: 59d1c490366a25d4fae05c443422101c, type: 2}
   magic2: {fileID: 11400000, guid: 7d60792bfecbc4a42af6e1289b483517, type: 2}

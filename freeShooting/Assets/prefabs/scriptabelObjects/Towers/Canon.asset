@@ -10,13 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b04fe4e9fd7dc5e4bb82e61fd04cdc58, type: 3}
-  m_Name: Canon
+  m_Name: canon
   m_EditorClassIdentifier: 
-  health: 500
-  damage: 50
-  prefab: {fileID: 6691245050111619357, guid: d2ba556787281f249b4ac1eb3b236626, type: 3}
+  health: 90010000c2010000f40100002602000058020000
+  damage:
+  - 50
+  - 59
+  - 65
+  - 72
+  - 83
+  prefab: {fileID: 6691245050111619357, guid: fa3de70379caac846affbf240c2f085c, type: 3}
   range: 0
-  type: 
-  level: 0
-  name: 
-  image: {fileID: 21300000, guid: 9da63ff78f23fa24c8e392cfe0056fce, type: 3}
+  type: Attack Tower
+  level: 1
+  name: canon
+  image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}

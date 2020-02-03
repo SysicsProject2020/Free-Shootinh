@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b04fe4e9fd7dc5e4bb82e61fd04cdc58, type: 3}
-  m_Name: LazerTower
+  m_Name: tesla
   m_EditorClassIdentifier: 
-  health: f40100008a020000ee0200003903000084030000
+  health: f401000026020000580200008a020000bc020000
   damage:
-  - 5
-  - 6.5
-  - 8
-  - 8.9
-  - 10
+  - 90
+  - 99
+  - 108
+  - 119
+  - 131
   prefab: {fileID: 6691245050111619357, guid: fa3de70379caac846affbf240c2f085c, type: 3}
   range: 0
   type: Attack Tower
   level: 1
-  name: lazer tower
+  name: tesla
   image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}
