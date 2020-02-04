@@ -4551,7 +4551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zone: {fileID: 1569460052}
-  towerBase: {fileID: 11400000, guid: a480ac781f27fd54ea994e59a12a370a, type: 2}
+  towerBase: {fileID: 11400000, guid: fce7b7f5628c3804bab2c8383a85a5d4, type: 2}
   TowersSelected: []
   itemparent: {fileID: 127342299}
 --- !u!4 &1441807754
@@ -4592,13 +4592,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903b1019e5c8ac744a356e0bbc8af58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
   Towers:
-  - {fileID: 11400000, guid: fce7b7f5628c3804bab2c8383a85a5d4, type: 2}
-  - {fileID: 11400000, guid: 86965364cc776164a8e825ccb817548f, type: 2}
+  - {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}
+  - {fileID: 11400000, guid: d4656323c59403146bd3a97bf56589b4, type: 2}
   - {fileID: 11400000, guid: 69ad6ab99c26762409f20b231c93d2ff, type: 2}
-  - {fileID: 11400000, guid: fce7b7f5628c3804bab2c8383a85a5d4, type: 2}
-  - {fileID: 11400000, guid: 86965364cc776164a8e825ccb817548f, type: 2}
-  - {fileID: 11400000, guid: 69ad6ab99c26762409f20b231c93d2ff, type: 2}
+  - {fileID: 11400000, guid: f9241cd7a95bb1d40b6580f88f321bc8, type: 2}
+  - {fileID: 11400000, guid: 77ffcf6dfc6798e48b8651cf3d81df8e, type: 2}
+  - {fileID: 11400000, guid: 13e8f4edb15a6774ab6063345b385e70, type: 2}
+  PlayerSlot: {fileID: 0}
+  PlayerSelection: {fileID: 0}
 --- !u!1 &1463865400
 GameObject:
   m_ObjectHideFlags: 0
