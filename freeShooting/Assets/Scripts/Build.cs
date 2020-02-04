@@ -8,7 +8,7 @@ public class Build : MonoBehaviour
 {
     RaycastHit hit;
     GameManagerPartie gm;
-    TowerScript[] towers;
+    private TowerScript[] towers= new TowerScript[6];
     
     bool  test = false;
     private int nb;
@@ -16,8 +16,10 @@ public class Build : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gm = this.GetComponent<GameManagerPartie>();
-        towers = gm.TowersSelected;
+        towers = this.GetComponent<GameManager>().GetSelectedTowers();
+        
+        
+       // Debug.Log(gm.towersselected[0]);
 
     }
 

@@ -7,7 +7,8 @@ public class GameManagerPartie : MonoBehaviour
 {
     public Transform zone;
     public TowerScript towerBase;
-    public TowerScript[] TowersSelected;
+    public TowerScript[] towersselected=new TowerScript[6];
+    
     
     
     [SerializeField]
@@ -20,7 +21,8 @@ public class GameManagerPartie : MonoBehaviour
     void Start()
     {
         //getting the towers selected 
-        TowersSelected = (TowerScript[])this.GetComponent<GameManager>().GetSelectedTowers();
+        towersselected = this.GetComponent<GameManager>().GetSelectedTowers();
+        Debug.Log(towersselected[0].name);
         // getting the item parents to access in it to instatiate the towers that the player can build
         TowerCanvas = GameObject.FindGameObjectWithTag("ItemsParent").transform;
         //instantiate the tower base of the player 
@@ -29,18 +31,19 @@ public class GameManagerPartie : MonoBehaviour
         // instantiate towers that the player can build
 
 
-        for (int i = 0; i < TowersSelected.Length; i++)
+        for (int i = 0; i < 6; i++)
         {
 
             GameObject ChildGameObject1 = itemparent.transform.GetChild(i).gameObject;
             GameObject ChildGameObject2 = ChildGameObject1.transform.GetChild(0).gameObject;
             GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
-            ChildGameObject3.GetComponent<Image>().sprite = TowersSelected[i].image;
-           
-        }
-        
+            //ChildGameObject3.GetComponent<Image>().sprite = towersselected[i].image;
 
-        
+
+        }
+
+
+
 
     }
 

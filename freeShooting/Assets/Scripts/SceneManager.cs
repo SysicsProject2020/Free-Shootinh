@@ -5,9 +5,9 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SceneManager : MonoBehaviour
+public class sceneManager : MonoBehaviour
 {
-    GameObject currenSelectedObj=null;
+    //GameObject currenSelectedObj=null;
     GameObject Object=null;
     private  int k = 0;
     private GameManager GM ;

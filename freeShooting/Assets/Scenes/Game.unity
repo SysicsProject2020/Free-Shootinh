@@ -380,8 +380,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 281, y: 14}
-  m_SizeDelta: {x: 213.2, y: 409.9}
+  m_AnchoredPosition: {x: -0, y: -520}
+  m_SizeDelta: {x: 739.4, y: 264.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &127342301
 MonoBehaviour:
@@ -439,8 +439,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 80, y: 80}
-  m_Spacing: {x: 20, y: 25}
+  m_CellSize: {x: 217.3, y: 80}
+  m_Spacing: {x: 24.05, y: 25}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &131501108
@@ -3317,7 +3317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.59302133, y: 0.00266538, z: -0.0019621067, w: 0.80518}
-  m_LocalPosition: {x: -1.1, y: 58, z: -20.4}
+  m_LocalPosition: {x: 0, y: 71.62, z: -29.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4552,7 +4552,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zone: {fileID: 1569460052}
   towerBase: {fileID: 11400000, guid: fce7b7f5628c3804bab2c8383a85a5d4, type: 2}
-  TowersSelected: []
+  towersselected:
+  - {fileID: 11400000, guid: d4656323c59403146bd3a97bf56589b4, type: 2}
+  - {fileID: 11400000, guid: 59179c4c0714fd34c9a9b94dd6ab5b56, type: 2}
+  - {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}
+  - {fileID: 11400000, guid: 69ad6ab99c26762409f20b231c93d2ff, type: 2}
+  - {fileID: 11400000, guid: f9241cd7a95bb1d40b6580f88f321bc8, type: 2}
+  - {fileID: 11400000, guid: 77ffcf6dfc6798e48b8651cf3d81df8e, type: 2}
   itemparent: {fileID: 127342299}
 --- !u!4 &1441807754
 Transform:
@@ -4593,6 +4599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
+  inventory: {fileID: 0}
   Towers:
   - {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}
   - {fileID: 11400000, guid: d4656323c59403146bd3a97bf56589b4, type: 2}
