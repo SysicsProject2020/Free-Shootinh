@@ -10,7 +10,7 @@ public class mainMenu : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject characterPanel;
     public GameObject SelectGameDiffPanel;
-    public GameObject details;
+    
 
     public void playPvm()
     {
@@ -51,7 +51,7 @@ public class mainMenu : MonoBehaviour
     {
         mainPanel.SetActive(true);
         characterPanel.SetActive(false);
-        details.SetActive(false);
+        
     }
     public void backMainFromOption()
     {

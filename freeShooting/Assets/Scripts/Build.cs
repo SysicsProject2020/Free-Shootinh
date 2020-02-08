@@ -51,6 +51,7 @@ public class Build : MonoBehaviour
             {
 
                 GameObject go = Instantiate(towers[nb].prefab, hit.transform);
+               
                 go.transform.localScale = new Vector3(7, 7, 7);
                 go.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + 0.5f, go.transform.position.z);
                 test = false;

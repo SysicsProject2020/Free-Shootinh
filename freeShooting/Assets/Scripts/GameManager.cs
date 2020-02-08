@@ -6,9 +6,17 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
-{
-    public Transform zone;
+{ 
     public TowerScript towerBase;
+    public TowerScript enemybase;
+    public PlayerScript player;
+    public PlayerScript enemy;
+    private Vector3 playerPos = new Vector3(0, 0.74f, -14);
+    private Vector3 enemypos = new Vector3(0, 0.74f, 14);
+    private Vector3 playerTowerPos = new Vector3(0,2, -19);
+    private Vector3 enemyTowerPos = new Vector3(0,2, 19);
+
+
     // public TowerScript[] towersselected = new TowerScript[6];
 
 
@@ -28,25 +36,45 @@ public class GameManager : MonoBehaviour
     private sceneManager sn;
     private TowerScript[] towersSelected = new TowerScript[6];
     private TowerScript[] towersNotSelected;
+    public GameObject towerNotSelectedMenu;
+    public GameObject towerSlot ;
 
     void Start()
     {
+        
         //acceding to the scene  manager Script
-        towersNotSelected = new TowerScript[(Towers.Length - towersSelected.Length)+1];
+
+        towersNotSelected = new TowerScript[(Towers.Length - towersSelected.Length)];
         sn = this.GetComponent<sceneManager>();
         remplirSelectedTower();
+        FillTowersNotSelected();
         Scene currentScene = SceneManager.GetActiveScene();
         switch (currentScene.name)
         {
             case "pvm":
-                //getting the towers selected 
-                // towersSelected = this.GetComponent<GameManager>().GetSelectedTowers();
-                // Debug.Log(towersselected[0].name);
+              towerBase.prefab.GetComponent<target>().health = towerBase.Get_health();
+              enemybase.prefab.GetComponent<target>().health = enemybase.Get_health();
+                player.prefab.GetComponent<gun>().damage = player.Get_damage();
+                enemy.prefab.GetComponent<gun>().damage = enemy.Get_damage();
+                
+
+
+
+
+
+
+
                 // getting the item parents to access in it to instatiate the towers that the player can build
                 TowerCanvas = GameObject.FindGameObjectWithTag("ItemsParent").transform;
                 //instantiate the tower base of the player 
-                zone = GameObject.FindGameObjectWithTag("TowerBaseZone").transform;
-                Instantiate(towerBase.prefab, zone);
+               
+                 Instantiate(towerBase.prefab,playerTowerPos,Quaternion.Euler(0,0,0));
+                 Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(-180, 0, 0));
+
+                Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
+                Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
+
+
                 // instantiate towers that the player can build
 
 
@@ -57,6 +85,16 @@ public class GameManager : MonoBehaviour
                     GameObject ChildGameObject2 = ChildGameObject1.transform.GetChild(0).gameObject;
                     GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
                     ChildGameObject3.GetComponent<Image>().sprite = towersSelected[i].image;
+
+
+                }
+                for (int i = 0; i < towersNotSelected.Length; i++)
+                {
+
+                    GameObject ChildGameObject1 = towerNotSelectedMenu.transform.GetChild(i).gameObject;
+                    GameObject ChildGameObject2 = ChildGameObject1.transform.GetChild(0).gameObject;
+                    GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
+                    ChildGameObject3.GetComponent<Image>().sprite = towersNotSelected[i].image;
 
 
                 }
@@ -77,7 +115,17 @@ public class GameManager : MonoBehaviour
                     ChildGameObject3.GetComponent<Image>().sprite = towersSelected[i].image;
 
                 }
+                for(int j = 0; j< towersNotSelected.Length;j++)
+                {
+                    
+                    GameObject go = Instantiate(towerSlot, towerNotSelectedMenu.transform);
+                    GameObject ChildGameObject2 = go.transform.GetChild(0).gameObject;
+                    GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
+                    ChildGameObject3.GetComponent<Image>().sprite = towersNotSelected[j].image;
+                    //Debug.Log(towersNotSelected.Length);
+                }
                 break;
+
         };
 
 
@@ -85,6 +133,36 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+    }
+    private void FillTowersNotSelected()
+    {
+        int k = 0;
+        bool test;
+        for(int i=0;i<Towers.Length;i++)
+        {
+            test = true;
+            for (int j = 0; j<towersSelected.Length;j++)
+            {
+                //Debug.Log(i);
+                if (Towers[i] == towersSelected[j])
+                {
+                    test = false ;
+                    break;
+                    
+                }
+                
+
+            }
+            if (test)
+            {
+                //Debug.Log(Towers[i].name);
+                towersNotSelected[k] = Towers[i];
+                //Debug.Log(towersNotSelected[k].name);
+                k++;
+                
+
+            }
+        }
     }
     public TowerScript[] GetSelectedTowers()
     {
@@ -119,8 +197,6 @@ public class GameManager : MonoBehaviour
 
         }
     }
-    private void remplirNotSelectedtowers()
-    {
-
-    }
+    
+   
 }

@@ -10,6 +10,7 @@ public class sceneManager : MonoBehaviour
     //GameObject currenSelectedObj=null;
     GameObject Object=null;
     private  int k = 0;
+    public GameObject backBtn;
     private GameManager GM ;
     public GameObject DetailsPanel;
     // Start is called before the first frame update
@@ -44,6 +45,7 @@ public class sceneManager : MonoBehaviour
         ChildGameObject2.SetActive(true);*/
         k = i;
         DetailsPanel.SetActive(true);
+        backBtn.GetComponent<Button>().interactable = false;
         GameObject desc = DetailsPanel.transform.Find("description").gameObject;
         TMPro.TextMeshProUGUI txt = desc.GetComponent<TMPro.TextMeshProUGUI>();
         txt.text = "Character Name : " + GM.players[k].name + " Magic1 description" + GM.players[k].magic1.description;
@@ -69,6 +71,10 @@ public class sceneManager : MonoBehaviour
     {
         //currenSelectedObj.SetActive(false);
         DetailsPanel.gameObject.SetActive(false);
+        backBtn.GetComponent<Button>().interactable = true;
+
+
+
 
     }
 }

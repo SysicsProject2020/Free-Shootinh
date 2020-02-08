@@ -103,6 +103,9 @@ GameObject:
   - component: {fileID: 379894592849315852}
   - component: {fileID: 2266554733781247528}
   - component: {fileID: 2535432093163157007}
+  - component: {fileID: 2923821790068072663}
+  - component: {fileID: 1842619244766407511}
+  - component: {fileID: 8610583899468295112}
   - component: {fileID: 975341486426464213}
   m_Layer: 0
   m_Name: Player1
@@ -119,8 +122,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7574070224920712239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.028045774, y: 0.49, z: -4.993639}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 5792647045053311013}
   m_Father: {fileID: 0}
@@ -172,6 +175,48 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2923821790068072663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7574070224920712239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d5537e8b6741d419d6903722f81ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &1842619244766407511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7574070224920712239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9cf13d02d0a3ba43a020a2e313b0a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  target: {fileID: 0}
+--- !u!114 &8610583899468295112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7574070224920712239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8f194cb6af5b64eb59eaababaeea68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 35
+  damage: 10
+  fireRate: 10
 --- !u!135 &975341486426464213
 SphereCollider:
   m_ObjectHideFlags: 0

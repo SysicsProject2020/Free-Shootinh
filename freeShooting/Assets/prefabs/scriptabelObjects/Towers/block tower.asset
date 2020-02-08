@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04fe4e9fd7dc5e4bb82e61fd04cdc58, type: 3}
   m_Name: block tower
   m_EditorClassIdentifier: 
-  health: dc050000d606000044070000b2070000f8070000
-  damage: []
-  prefab: {fileID: 6691245050111619357, guid: d2ba556787281f249b4ac1eb3b236626, type: 3}
-  range: 0
-  type: 
-  level: 1
   name: block tower
   image: {fileID: 21300000, guid: 9da63ff78f23fa24c8e392cfe0056fce, type: 3}
+  health:
+  - 1500
+  - 1750
+  - 1860
+  - 1970
+  - 2040
+  damage: []
+  prefab: {fileID: 6691245050111619357, guid: d2ba556787281f249b4ac1eb3b236626, type: 3}
+  description: 
+  level: 1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d85ad5116c069f4096649a43066d4fb, type: 3}
   m_Name: snowman
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 7574070224920712239, guid: 330d42003fd955a40bd438f35ac54322, type: 3}
   level: 1
   name: snowman
   image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

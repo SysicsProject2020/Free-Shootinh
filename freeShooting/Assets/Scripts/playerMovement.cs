@@ -8,7 +8,7 @@ public class playerMovement : MonoBehaviour
     public Transform target;
     bool move = false;
     Vector3 destination;
-    public Transform PlayerZone;
+    //public Transform PlayerZone;
 
     // Update is called once per frame
     private void Update()

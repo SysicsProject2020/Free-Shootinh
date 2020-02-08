@@ -6,9 +6,9 @@ public class TowerScript: ScriptableObject
     public new string name;
     public Sprite image;
     [SerializeField]
-    private float[] health ;
+    private float[] health =new float[5] ;
     [SerializeField]
-    private float[] damage ;
+    private float[] damage = new float[5];
     public GameObject prefab;
     public string description;
     
@@ -18,7 +18,7 @@ public class TowerScript: ScriptableObject
    
     public float Get_health()
     {
-        return health[level - 1];
+        return health[level-1];
     }
     public float Get_damage()
     {

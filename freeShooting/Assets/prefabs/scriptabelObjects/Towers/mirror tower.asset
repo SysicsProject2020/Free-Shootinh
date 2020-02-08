@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04fe4e9fd7dc5e4bb82e61fd04cdc58, type: 3}
   m_Name: mirror tower
   m_EditorClassIdentifier: 
-  health: 8a020000ee0200005c030000ca03000010040000
-  damage: []
-  prefab: {fileID: 6691245050111619357, guid: fa3de70379caac846affbf240c2f085c, type: 3}
-  range: 0
-  type: Attack Tower
-  level: 1
   name: mirror tower
   image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}
+  health:
+  - 650
+  - 750
+  - 860
+  - 970
+  - 1040
+  damage: []
+  prefab: {fileID: 6691245050111619357, guid: fa3de70379caac846affbf240c2f085c, type: 3}
+  description: 
+  level: 1

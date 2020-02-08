@@ -39,6 +39,7 @@ public class gun : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * range, Color.red, 0f);
         if (Physics.Raycast(transform.position, transform.forward, out hit, range))
         {
+            
             if (hit.transform.position.z > 0 == enemyRightSide)
             {
                 //Debug.Log(hit.transform.name);
@@ -48,6 +49,7 @@ public class gun : MonoBehaviour
                     //muzzleFlash.Play();
 
                     hit.transform.GetComponent<target>().takeDamage(damage);
+                  
 
                     //GameObject impactBlood = Instantiate(blood, hit.point, Quaternion.LookRotation(hit.normal));
                     //Destroy(impactBlood, 0.5f);

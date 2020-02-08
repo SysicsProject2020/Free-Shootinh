@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: canon
   image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}
-  health: []
+  health:
+  - 400
+  - 450
+  - 500
+  - 550
+  - 600
   damage:
   - 50
   - 59
