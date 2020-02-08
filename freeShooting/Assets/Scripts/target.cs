@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class target : MonoBehaviour
 {
-    public float health = 100f;
+    public short health = 100;
 
     private void Start()
     {
     }
-    public void takeDamage(float damage)
+    public void takeDamage(short damage)
     {
         health -= damage;
         if (health <= 0)
@@ -20,6 +20,6 @@ public class target : MonoBehaviour
     void die()
     {
         //deathSound.deathS();
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject);
     }
 }

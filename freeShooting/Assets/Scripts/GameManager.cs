@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
     //int i = 0;
 
     private Transform TowerCanvas;
-    // Start is called before the first frame update
     public PlayerScript[] players;
     public GameObject inventory;
     public TowerScript[] Towers;

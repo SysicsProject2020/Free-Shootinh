@@ -214,9 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8f194cb6af5b64eb59eaababaeea68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 35
-  damage: 10
-  fireRate: 10
+  damage: 20
+  fireRate: 4
+  bullet: {fileID: 8041889832026840242, guid: 4304a9b60e2e6d2489af02b4dc219b43, type: 3}
+  speed: 30
 --- !u!135 &975341486426464213
 SphereCollider:
   m_ObjectHideFlags: 0
