@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragFingerMove : MonoBehaviour
+public class playerMovement : MonoBehaviour
 {
     public float speed = 5F;
     public Transform target;
@@ -29,12 +29,12 @@ public class DragFingerMove : MonoBehaviour
                 }
             }
         }
-      
+
         if (move)
         {
             transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
             transform.LookAt(target);
-            if (transform.position == destination )
+            if (transform.position == destination)
             {
                 move = false;
             }

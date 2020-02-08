@@ -27,16 +27,18 @@ public class GameManager : MonoBehaviour
     public GameObject PlayerSelection;
     private sceneManager sn;
     private TowerScript[] towersSelected = new TowerScript[6];
+    private TowerScript[] towersNotSelected;
 
     void Start()
     {
         //acceding to the scene  manager Script
+        towersNotSelected = new TowerScript[(Towers.Length - towersSelected.Length)+1];
         sn = this.GetComponent<sceneManager>();
         remplirSelectedTower();
         Scene currentScene = SceneManager.GetActiveScene();
         switch (currentScene.name)
         {
-            case "Game":
+            case "pvm":
                 //getting the towers selected 
                 // towersSelected = this.GetComponent<GameManager>().GetSelectedTowers();
                 // Debug.Log(towersselected[0].name);
@@ -116,5 +118,9 @@ public class GameManager : MonoBehaviour
 
 
         }
+    }
+    private void remplirNotSelectedtowers()
+    {
+
     }
 }
