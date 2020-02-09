@@ -17,6 +17,13 @@ public class GameManager : MonoBehaviour
     private Vector3 enemyTowerPos = new Vector3(0,2, 19);
 
 
+
+
+
+    private bool test =false;
+    Vector2 startingPos;
+    float speed = 10f; //how fast it shakes
+    float amount = 10f;
     // public TowerScript[] towersselected = new TowerScript[6];
 
 
@@ -38,10 +45,16 @@ public class GameManager : MonoBehaviour
     private TowerScript[] towersNotSelected;
     public GameObject towerNotSelectedMenu;
     public GameObject towerSlot ;
+    GameObject Child1;
 
     void Start()
     {
-        
+
+
+       
+        startingPos.x = inventory.transform.position.x;
+        startingPos.y = inventory.transform.position.y;
+
         //acceding to the scene  manager Script
 
         towersNotSelected = new TowerScript[(Towers.Length - towersSelected.Length)];
@@ -122,7 +135,9 @@ public class GameManager : MonoBehaviour
                     GameObject ChildGameObject2 = go.transform.GetChild(0).gameObject;
                     GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
                     ChildGameObject3.GetComponent<Image>().sprite = towersNotSelected[j].image;
-                    //Debug.Log(towersNotSelected.Length);
+                    RegisterListenerTowerSwitch(ChildGameObject2, j);
+
+
                 }
                 break;
 
@@ -132,7 +147,12 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        if (test == true)
+        {
+            inventory.transform.position = new Vector2(startingPos.x + (Mathf.Sin(Time.time * speed) * amount), startingPos.y + (Mathf.Sin(Time.time * speed) * amount));
+        }
 
+      
     }
     private void FillTowersNotSelected()
     {
@@ -188,6 +208,12 @@ public class GameManager : MonoBehaviour
         myButton.onClick.AddListener(() => { sn.OnPlayerClick(obj, i); });
 
     }
+    public void RegisterListenerTowerSwitch(GameObject obj, int i)
+    {
+        Button myButton = obj.GetComponent<Button>();
+        myButton.onClick.AddListener(() => { OnTowerClick(); });
+
+    }
     public void remplirSelectedTower()
     {
         for (int j = 0; j < 6; j++)
@@ -197,6 +223,15 @@ public class GameManager : MonoBehaviour
 
         }
     }
+    public void OnUseClick()
+    {
+        
+    }
+    public void OnTowerClick()
+    {
+        sn.DetailsPanel.SetActive(true);
+    }
+
     
    
 }
