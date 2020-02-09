@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
 
-    private GameObject itemparent;
+    private GameObject itemParent;
     //int i = 0;
 
     private Transform TowerCanvas;
@@ -81,8 +81,8 @@ public class GameManager : MonoBehaviour
                  Instantiate(towerBase.prefab,playerTowerPos,Quaternion.Euler(0,0,0));
                  Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(-180, 0, 0));
 
-                Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
-                Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
+                 Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
+                 Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
 
 
                 // instantiate towers that the player can build
@@ -91,10 +91,7 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < 6; i++)
                 {
 
-                    GameObject ChildGameObject1 = itemparent.transform.GetChild(i).gameObject;
-                    GameObject ChildGameObject2 = ChildGameObject1.transform.GetChild(0).gameObject;
-                    GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
-                    ChildGameObject3.GetComponent<Image>().sprite = towersSelected[i].image;
+                    itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
 
 
                 }
@@ -123,8 +120,7 @@ public class GameManager : MonoBehaviour
         for (int j = 0; j < towersNotSelected.Length; j++)
         {
             GameObject go = Instantiate(towerSlot, towerNotSelectedMenu.transform);
-            GameObject ChildGameObject2 = go.transform.GetChild(0).gameObject;
-            RegisterListenerTowerSwitch(ChildGameObject2, j);
+            RegisterListenerTowerSwitch(go, j);
         }
     }
     public void fillSprites()
@@ -132,18 +128,12 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
 
-            GameObject ChildGameObject1 = inventory.transform.GetChild(i).gameObject;
-            GameObject ChildGameObject2 = ChildGameObject1.transform.GetChild(0).gameObject;
-            GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
-            ChildGameObject3.GetComponent<Image>().sprite = towersSelected[i].image;
+            inventory.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
 
         }
         for (int j = 0; j < towersNotSelected.Length; j++)
         {
-            GameObject ChildGameObject1 = towerNotSelectedMenu.transform.GetChild(j).gameObject;
-            GameObject ChildGameObject2 = ChildGameObject1.transform.GetChild(0).gameObject;
-            GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
-            ChildGameObject3.GetComponent<Image>().sprite = towersNotSelected[j].image;
+            towerNotSelectedMenu.transform.GetChild(j).GetComponentInChildren<Image>().sprite = towersNotSelected[j].image;
         }
     }
     
@@ -215,7 +205,6 @@ public class GameManager : MonoBehaviour
     {
         Button myButton = obj.GetComponent<Button>();
         myButton.onClick.AddListener(() => {Menumanager.OnChoosingCards(i); });
-       
     }
     public void remplirSelectedTower()
     {
