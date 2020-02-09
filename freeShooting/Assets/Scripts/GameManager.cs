@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
 
-    private GameObject itemparent;
+    private GameObject itemParent;
     //int i = 0;
 
     private Transform TowerCanvas;
@@ -81,8 +81,8 @@ public class GameManager : MonoBehaviour
                  Instantiate(towerBase.prefab,playerTowerPos,Quaternion.Euler(0,0,0));
                  Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(-180, 0, 0));
 
-                Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
-                Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
+                 Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
+                 Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
 
 
                 // instantiate towers that the player can build
@@ -91,10 +91,7 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < 6; i++)
                 {
 
-                    GameObject ChildGameObject1 = itemparent.transform.GetChild(i).gameObject;
-                    GameObject ChildGameObject2 = ChildGameObject1.transform.GetChild(0).gameObject;
-                    GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
-                    ChildGameObject3.GetComponent<Image>().sprite = towersSelected[i].image;
+                    itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
 
 
                 }
