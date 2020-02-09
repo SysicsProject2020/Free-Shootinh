@@ -25,24 +25,15 @@ public class sceneManager : MonoBehaviour
     {
 
 
-        /*currenSelectedObj = EventSystem.current.currentSelectedGameObject;
-        if ((currenSelectedObj != Object) ) 
-            {
-                
-                    OnPlayerNotClicked();
-                    Object = currenSelectedObj;
-                
-            }*/
+        //currenSelectedObj = EventSystem.current.currentSelectedGameObject;
+       
         
            
         
     }
     public void OnPlayerClick (GameObject obj, int i)
     {
-       /* GameObject ChildGameObject1 = obj.transform.GetChild(1).gameObject;
-        GameObject ChildGameObject2 = obj.transform.GetChild(2).gameObject;
-        ChildGameObject1.SetActive(true);
-        ChildGameObject2.SetActive(true);*/
+    
         k = i;
         DetailsPanel.SetActive(true);
         backBtn.GetComponent<Button>().interactable = false;
