@@ -739,7 +739,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1607493304}
+      - m_Target: {fileID: 1607493306}
         m_MethodName: OnUseClick
         m_Mode: 1
         m_Arguments:
@@ -3268,7 +3268,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1607493303}
-        m_MethodName: back
+        m_MethodName: backTowerDetailsPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4700,6 +4700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backBtn: {fileID: 81826936}
   DetailsPanel: {fileID: 1481003604}
+  TowerdetailsPanel: {fileID: 764995984}
 --- !u!114 &1607493304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4765,6 +4766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 1461102148}
+  towerdetailsPanel: {fileID: 764995984}
 --- !u!1 &1629590760
 GameObject:
   m_ObjectHideFlags: 0
