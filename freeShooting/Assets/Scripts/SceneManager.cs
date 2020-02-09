@@ -13,6 +13,7 @@ public class sceneManager : MonoBehaviour
     public GameObject backBtn;
     private GameManager GM ;
     public GameObject DetailsPanel;
+    public GameObject TowerdetailsPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,7 @@ public class sceneManager : MonoBehaviour
            
         
     }
-    public void OnPlayerClick (GameObject obj, int i)
+    public void OnPlayerClick (int i)
     {
     
         k = i;
@@ -63,9 +64,11 @@ public class sceneManager : MonoBehaviour
         //currenSelectedObj.SetActive(false);
         DetailsPanel.gameObject.SetActive(false);
         backBtn.GetComponent<Button>().interactable = true;
-
-
-
-
+    }
+    public void backTowerDetailsPanel()
+    {
+        //currenSelectedObj.SetActive(false);
+        TowerdetailsPanel.gameObject.SetActive(false);
+        //backBtn.GetComponent<Button>().interactable = true;
     }
 }

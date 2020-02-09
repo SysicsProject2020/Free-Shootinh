@@ -20,10 +20,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    private bool shake =false;
-    Vector2 startingPos;
-    float speed = 10f; //how fast it shakes
-    float amount = 10f;
+    
     // public TowerScript[] towersselected = new TowerScript[6];
 
 
@@ -36,6 +33,7 @@ public class GameManager : MonoBehaviour
     private Transform TowerCanvas;
     public PlayerScript[] players;
     public GameObject inventory;
+    
     public TowerScript[] Towers;
     public GameObject PlayerSlot;
     public GameObject PlayerSelection;
@@ -44,17 +42,19 @@ public class GameManager : MonoBehaviour
     private TowerScript[] towersNotSelected;
     public GameObject towerNotSelectedMenu;
     public GameObject towerSlot ;
+    private MenuManager Menumanager;
 
 
     void Start()
     {
 
 
+
+
        
-
-        //acceding to the scene  manager Script
-
+        Menumanager = this.GetComponent<MenuManager>();
         towersNotSelected = new TowerScript[(Towers.Length - towersSelected.Length)];
+        //acceding to the scene  manager Script
         sn = this.GetComponent<sceneManager>();
         remplirSelectedTower();
         FillTowersNotSelected();
@@ -98,26 +98,17 @@ public class GameManager : MonoBehaviour
 
 
                 }
-              /*  for (int i = 0; i < towersNotSelected.Length; i++)
-                {
-
-                    GameObject ChildGameObject1 = towerNotSelectedMenu.transform.GetChild(i).gameObject;
-                    GameObject ChildGameObject2 = ChildGameObject1.transform.GetChild(0).gameObject;
-                    GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
-                    ChildGameObject3.GetComponent<Image>().sprite = towersNotSelected[i].image;
-
-
-                }*/
+             
                 break;
             case "menu":
 
 
 
-                startingPos.x = inventory.transform.position.x;
-                startingPos.y = inventory.transform.position.y;
+                
                
                 playerMenuInstantiate();
-                towersMenuInstatiate();
+                towersMenuInstantiate();
+                fillSprites();
 
 
                 break;
@@ -126,7 +117,17 @@ public class GameManager : MonoBehaviour
 
 
     }
-    private void towersMenuInstatiate()
+    public void towersMenuInstantiate()
+    {
+       
+        for (int j = 0; j < towersNotSelected.Length; j++)
+        {
+            GameObject go = Instantiate(towerSlot, towerNotSelectedMenu.transform);
+            GameObject ChildGameObject2 = go.transform.GetChild(0).gameObject;
+            RegisterListenerTowerSwitch(ChildGameObject2, j);
+        }
+    }
+    public void fillSprites()
     {
         for (int i = 0; i < 6; i++)
         {
@@ -139,22 +140,16 @@ public class GameManager : MonoBehaviour
         }
         for (int j = 0; j < towersNotSelected.Length; j++)
         {
-
-            GameObject go = Instantiate(towerSlot, towerNotSelectedMenu.transform);
-            GameObject ChildGameObject2 = go.transform.GetChild(0).gameObject;
+            GameObject ChildGameObject1 = towerNotSelectedMenu.transform.GetChild(j).gameObject;
+            GameObject ChildGameObject2 = ChildGameObject1.transform.GetChild(0).gameObject;
             GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
             ChildGameObject3.GetComponent<Image>().sprite = towersNotSelected[j].image;
-            RegisterListenerTowerSwitch(ChildGameObject2, j);
-
-
         }
     }
+    
     void Update()
     {
-        if (shake == true)
-        {
-            inventory.transform.position = new Vector2(startingPos.x + (Mathf.Sin(Time.time * speed) * amount), startingPos.y + (Mathf.Sin(Time.time * speed) * amount));
-        }
+        
 
       
     }
@@ -192,6 +187,10 @@ public class GameManager : MonoBehaviour
     {
         return towersSelected;
     }
+    public TowerScript[] GetNonSelectedTowers()
+    {
+        return towersNotSelected;
+    }
     void playerMenuInstantiate()
     {
         for (int i = 0; i < players.Length; i++)
@@ -209,39 +208,31 @@ public class GameManager : MonoBehaviour
     public void RegisterListener(GameObject obj, int i)
     {
         Button myButton = obj.GetComponent<Button>();
-        myButton.onClick.AddListener(() => { sn.OnPlayerClick(obj, i); });
+        myButton.onClick.AddListener(() => { sn.OnPlayerClick(i); });
 
     }
     public void RegisterListenerTowerSwitch(GameObject obj, int i)
     {
         Button myButton = obj.GetComponent<Button>();
-        myButton.onClick.AddListener(() => { OnChoosingCards(); });
-
+        myButton.onClick.AddListener(() => {Menumanager.OnChoosingCards(i); });
+       
     }
     public void remplirSelectedTower()
     {
         for (int j = 0; j < 6; j++)
         {
             towersSelected[j] = Towers[j];
-
-
         }
     }
-    public void OnUseClick()
+    public void SwitchTowers (int i,int j)
     {
-        shake = true;
-    }
-    public void OnclickInventory()
-    {
-        sn.DetailsPanel.SetActive(true);
-        GameObject desc = sn.DetailsPanel.transform.Find("description").gameObject;
-        TMPro.TextMeshProUGUI txt = desc.GetComponent<TMPro.TextMeshProUGUI>();
-        txt.text = "Character Name : " + players[0].name + " Magic1 description" + players[0].magic1.description;
-    }
-    public void OnChoosingCards()
-    {
+        TowerScript tower = towersSelected[i];
+        towersSelected[i] = towersNotSelected[j];
+        towersNotSelected[j] = tower;
+       
 
     }
+    
 
     
    
