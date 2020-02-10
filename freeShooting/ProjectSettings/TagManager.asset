@@ -8,7 +8,9 @@ TagManager:
   - TowerDefendZone
   - TowersCanvas
   - ItemsParent
+  - wall
   - stadium
+  - bullet
   layers:
   - Default
   - TransparentFX

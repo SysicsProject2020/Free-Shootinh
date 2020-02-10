@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class gun : MonoBehaviour
 {
+    //public float destroy= 2f;
     //public float range = 35f;
     public short damage = 10;
+    
     public float fireRate = 4;
-    private float nextTimeFare = 0f;
-
-    //public float destroy= 2f;
-    public GameObject bullet;
+    private float nextTimeFire = 0f;
     public short speed = 25;
-
+    public GameObject bullet;
+    public Transform firePoint;
+ 
     //public ParticleSystem muzzleFlash;
     //public AudioSource[] hitSound = new AudioSource[4];
 
@@ -30,21 +31,18 @@ public class gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextTimeFare)
+        if (Time.time > nextTimeFire)
         {
             shoot();
-            nextTimeFare = Time.time + 1 / fireRate;
+            nextTimeFire = Time.time + 1 / fireRate;
         }
     }
 
     private void shoot()
     {
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2f);
-        GameObject clone = Instantiate(bullet, pos, transform.rotation);
+        GameObject clone = Instantiate(bullet, firePoint.position, firePoint.rotation);
         clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(0, 0, speed);
         clone.GetComponent<bullet>().changedam(damage);
-
-
     }
 
     /*void shootRayCast()

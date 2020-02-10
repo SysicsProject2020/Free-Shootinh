@@ -11,10 +11,12 @@ public class GameManager : MonoBehaviour
     public TowerScript enemybase;
     public PlayerScript player;
     public PlayerScript enemy;
-    private Vector3 playerPos = new Vector3(0, 0.74f, -14);
-    private Vector3 enemypos = new Vector3(0, 0.74f, 14);
-    private Vector3 playerTowerPos = new Vector3(0,2, -18);
-    private Vector3 enemyTowerPos = new Vector3(0,2, 18);
+
+
+    private Vector3 playerPos = new Vector3(5, 1.8f, -25);
+    private Vector3 enemypos = new Vector3(5, 1.8f, 25);
+    private Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
+    private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
 
 
 
@@ -24,10 +26,7 @@ public class GameManager : MonoBehaviour
     // public TowerScript[] towersselected = new TowerScript[6];
 
 
-
-    [SerializeField]
-
-    private GameObject itemParent;
+    public GameObject itemParent;
     //int i = 0;
 
     private Transform TowerCanvas;
@@ -62,17 +61,10 @@ public class GameManager : MonoBehaviour
         switch (currentScene.name)
         {
             case "pvm":
-              towerBase.prefab.GetComponent<target>().health = towerBase.Get_health();
-              enemybase.prefab.GetComponent<target>().health = enemybase.Get_health();
+                towerBase.prefab.GetComponent<target>().health = towerBase.Get_health();
+                enemybase.prefab.GetComponent<target>().health = enemybase.Get_health();
                 player.prefab.GetComponent<gun>().damage = player.Get_damage();
                 enemy.prefab.GetComponent<gun>().damage = enemy.Get_damage();
-                
-
-
-
-
-
-
 
                 // getting the item parents to access in it to instatiate the towers that the player can build
                 TowerCanvas = GameObject.FindGameObjectWithTag("ItemsParent").transform;

@@ -18,13 +18,20 @@ public class bullet : MonoBehaviour
             enemyRightSide = false;
     }
 
+
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.tag == "bullet")
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        //Debug.Log(collision.transform.position.z);
         if (collision.transform.position.z > 0 == enemyRightSide)
         {
-            /**********************************/
             //test tower , base and player collider
-            if (collision.transform.tag !="stadium")
+            if (collision.transform.tag != "wall")
             {
                 collision.transform.GetComponent<target>().takeDamage(damage);
                 //hitSound[choose].Play();
@@ -33,10 +40,6 @@ public class bullet : MonoBehaviour
         Destroy(gameObject);
 
     }
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if(Collider.Equals(PlayerScript))
-    }*/
-
+   
 }
 

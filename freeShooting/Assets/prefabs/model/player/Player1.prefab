@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4547307676729778272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6134278595339509966}
+  m_Layer: 0
+  m_Name: fire Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6134278595339509966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4547307676729778272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 379894592849315852}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5730610782785274580
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,8 +57,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5730610782785274580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.24295422, y: -0.044, z: 0.66663885}
-  m_LocalScale: {x: 0.07196576, y: 0.07196576, z: 0.9639013}
+  m_LocalPosition: {x: 0, y: 0, z: 0.66663885}
+  m_LocalScale: {x: 0.07196576, y: 0.07196576, z: 0.44083273}
   m_Children: []
   m_Father: {fileID: 379894592849315852}
   m_RootOrder: 0
@@ -123,9 +153,10 @@ Transform:
   m_GameObject: {fileID: 7574070224920712239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 5792647045053311013}
+  - {fileID: 6134278595339509966}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -200,8 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cf13d02d0a3ba43a020a2e313b0a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  target: {fileID: 0}
+  speed: 4
 --- !u!114 &8610583899468295112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,8 +246,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   fireRate: 4
-  bullet: {fileID: 8041889832026840242, guid: 4304a9b60e2e6d2489af02b4dc219b43, type: 3}
   speed: 30
+  bullet: {fileID: 8041889832026840242, guid: 4304a9b60e2e6d2489af02b4dc219b43, type: 3}
+  firePoint: {fileID: 6134278595339509966}
 --- !u!135 &975341486426464213
 SphereCollider:
   m_ObjectHideFlags: 0

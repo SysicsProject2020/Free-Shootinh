@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Build : MonoBehaviour
+public class BuildManager : MonoBehaviour
 {
     RaycastHit hit;
     GameManagerPartie gm;
