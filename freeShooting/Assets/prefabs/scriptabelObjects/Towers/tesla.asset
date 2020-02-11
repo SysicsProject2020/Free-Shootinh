@@ -14,18 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: tesla
   image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}
-  health:
-  - 500
-  - 550
-  - 600
-  - 650
-  - 700
-  damage:
-  - 90
-  - 99
-  - 108
-  - 119
-  - 131
-  prefab: {fileID: 6691245050111619357, guid: fa3de70379caac846affbf240c2f085c, type: 3}
+  health: f401260258028a02bc02
+  damage: 5a0063006c0077008300
+  prefab: {fileID: 6691245050111619357, guid: 32d22a5e2a67fe6488cceb3b06f9c41d, type: 3}
   description: 
   level: 1

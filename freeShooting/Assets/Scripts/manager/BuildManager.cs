@@ -17,10 +17,6 @@ public class BuildManager : MonoBehaviour
     void Start()
     {
         towers = this.GetComponent<GameManager>().GetSelectedTowers();
-        
-        
-       // Debug.Log(gm.towersselected[0]);
-
     }
 
     // Update is called once per frame
@@ -30,8 +26,6 @@ public class BuildManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && test == true)
         {
             testBuilding();
-
-
         }
     }
 
@@ -49,14 +43,13 @@ public class BuildManager : MonoBehaviour
         {
             if (hit.collider.tag == "TowerDefendZone")
             {
-
-                GameObject go = Instantiate(towers[nb].prefab, hit.transform);
+                Vector3 towerpos = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y +2.25f, hit.collider.transform.position.z);
                
-                go.transform.localScale = new Vector3(7, 7, 7);
-                go.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + 0.5f, go.transform.position.z);
-                test = false;
+                GameObject go = Instantiate(towers[nb].prefab, towerpos, Quaternion.Euler(0,0,0));
+               
+               
             }
-            else
+            
                 test = false;
         }
     }

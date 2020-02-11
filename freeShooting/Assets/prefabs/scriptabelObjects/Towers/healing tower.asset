@@ -14,18 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: healing tower
   image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}
-  health:
-  - 550
-  - 600
-  - 650
-  - 700
-  - 750
-  damage:
-  - 37
-  - 40
-  - 44
-  - 49
-  - 55
-  prefab: {fileID: 6691245050111619357, guid: fa3de70379caac846affbf240c2f085c, type: 3}
+  health: 260258028a02bc02ee02
+  damage: 250028002c0031003700
+  prefab: {fileID: 6691245050111619357, guid: 32d22a5e2a67fe6488cceb3b06f9c41d, type: 3}
   description: 
   level: 1

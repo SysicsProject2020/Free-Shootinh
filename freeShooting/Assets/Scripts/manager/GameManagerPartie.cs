@@ -5,51 +5,41 @@ using UnityEngine.UI;
 
 public class GameManagerPartie : MonoBehaviour
 {
-    public Transform zone;
     public TowerScript towerBase;
-    public TowerScript[] towersselected=new TowerScript[6];
-    
-    
-    
-    [SerializeField]
-   
-    private GameObject itemparent;
-    //int i = 0;
+    public TowerScript enemybase;
+    public PlayerScript player;
+    public PlayerScript enemy;
+    public GameObject itemParent;
+    private Vector3 playerPos = new Vector3(5, 1.8f, -25);
+    private Vector3 enemypos = new Vector3(5, 1.8f, 25);
+    private Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
+    private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
+    private TowerScript[] towersSelected = new TowerScript[6];
 
-    private Transform TowerCanvas;
-    // Start is called before the first frame update
     void Start()
     {
-        //getting the towers selected 
-        towersselected = this.GetComponent<GameManager>().GetSelectedTowers();
-        Debug.Log(towersselected[0].name);
-        // getting the item parents to access in it to instatiate the towers that the player can build
-        TowerCanvas = GameObject.FindGameObjectWithTag("ItemsParent").transform;
-        //instantiate the tower base of the player 
-        zone = GameObject.FindGameObjectWithTag("TowerBaseZone").transform;
-        Instantiate(towerBase.prefab,zone);
-        // instantiate towers that the player can build
+        towersSelected = GameManager.instance.GetSelectedTowers();
+        towerBase.prefab.GetComponent<target>().health = towerBase.Get_health();
+        enemybase.prefab.GetComponent<target>().health = enemybase.Get_health();
+        player.prefab.GetComponent<gun>().damage = player.Get_damage();
+        enemy.prefab.GetComponent<gun>().damage = enemy.Get_damage();
+        ChangeSprites();
+        instantiatePrefabs();
+       
+    }
+    private void instantiatePrefabs()
+    {
+        Instantiate(towerBase.prefab, playerTowerPos, Quaternion.Euler(0, 0, 0));
+        Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(-180, 0, 0));
 
-
+        Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
+        Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
+    }
+    private void ChangeSprites()
+    {
         for (int i = 0; i < 6; i++)
         {
-
-            GameObject ChildGameObject1 = itemparent.transform.GetChild(i).gameObject;
-            GameObject ChildGameObject2 = ChildGameObject1.transform.GetChild(0).gameObject;
-            GameObject ChildGameObject3 = ChildGameObject2.transform.GetChild(0).gameObject;
-            //ChildGameObject3.GetComponent<Image>().sprite = towersselected[i].image;
-
-
+            itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
         }
-
-
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

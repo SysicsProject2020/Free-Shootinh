@@ -7,7 +7,6 @@ TagManager:
   - TowerBaseZone
   - TowerDefendZone
   - TowersCanvas
-  - ItemsParent
   - wall
   - stadium
   - bullet
