@@ -172,14 +172,14 @@ public class MenuManager : MonoBehaviour
 
         k = i;
         PlayerdetailsPanel.SetActive(true);
-        backMainFromcharacterBtn.GetComponent<Button>().interactable = false;
+        backMainFromcharacterBtn.interactable = false;
         txtPlayerDetails.text = "Character Name : " + GameManager.instance.players[k].name + " Magic1 description" + GameManager.instance.players[k].magic1.description;
     }
     public void UseButton() { Debug.Log("You Clicked on use Button!!!"); }
     public void back()
     {
         PlayerdetailsPanel.gameObject.SetActive(false);
-        backMainFromcharacterBtn.GetComponent<Button>().interactable = true;
+        backMainFromcharacterBtn.interactable = true;
     }
     public void backTowerDetailsPanel()
     {
