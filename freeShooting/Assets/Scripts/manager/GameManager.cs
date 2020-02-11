@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
         remplirSelectedTower();
         FillTowersNotSelected();
     }
-
     private void FillTowersNotSelected()
     {
         int k = 0;
@@ -58,9 +57,4 @@ public class GameManager : MonoBehaviour
             towersSelected[j] = Towers[j];
         }
     }
-   
-    
-
-    
-   
 }
