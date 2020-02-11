@@ -12,10 +12,12 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
-            {  
+            {
                 //need to be changing for each player 
                 if (hit.collider.name == "PlayerZone")
                 {
@@ -23,6 +25,7 @@ public class playerMovement : MonoBehaviour
                     move = true;
                 }
             }
+        }
         if (move)
         {
             transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
