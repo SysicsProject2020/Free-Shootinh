@@ -8,12 +8,13 @@ public class PlayerScript : ScriptableObject
 
     public GameObject prefab;
     [Range(1, 5)]
-    public int level;
+    public byte level;
     public new string name;
     public Sprite image;
 
     public MagicScript magic1;
     public MagicScript magic2;
+    public bool locked = true;
 
     public short Get_health()
     {

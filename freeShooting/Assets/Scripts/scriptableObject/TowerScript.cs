@@ -11,9 +11,10 @@ public class TowerScript: ScriptableObject
     private short[] damage = new short[5];
     public GameObject prefab;
     public string description;
+    public bool locked = true;
     
     [Range(1, 5)]
-    public int level;
+    public byte level;
     
    
     public short Get_health()

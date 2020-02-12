@@ -18,4 +18,5 @@ MonoBehaviour:
   damage: 
   prefab: {fileID: 6691245050111619357, guid: 32d22a5e2a67fe6488cceb3b06f9c41d, type: 3}
   description: 
+  locked: 0
   level: 1
