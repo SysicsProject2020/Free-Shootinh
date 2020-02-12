@@ -20,11 +20,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
         loadData();
+        instance = this;
+        
         towersNotSelected = new TowerScript[(Towers.Length - towersSelected.Length)];
         
-        remplirSelectedTower();
+        //remplirSelectedTower();
         FillTowersNotSelected();
         //SaveSystem.SavePlayer();
          //data = SaveSystem.loadPlayerData();
@@ -48,18 +49,23 @@ public class GameManager : MonoBehaviour
             players[i].level = data.playersLevel[i];
         }
         Debug.Log(playerSelected.name);
-       /* int k = 0;
+        int k = 0;
         for(int i=0;i<Towers.Length;i++)
         {
-            for(int j = 0; i < 6; j++)
+            for(int j = 0; j < 6; j++)
             {
                 if(Towers[i].name==data.SelectedTowers[j])
                 {
                     towersSelected[k] = Towers[i];
+                    // Debug.Log(towersSelected[k].name);
+                    k++;
+                    break;
                 }
             }
             Towers[i].locked = data.lockTowersData[i];
-        }*/
+            Towers[i].level = data.towersLevel[i];
+        }
+        
     }
     public PlayerScript getPlayer()
     {
@@ -94,7 +100,7 @@ public class GameManager : MonoBehaviour
     }*/
     private void FillTowersNotSelected()
     {
-        int k = 0;
+        int h = 0;
         bool test;
         for(int i=0;i<Towers.Length;i++)
         {
@@ -109,10 +115,12 @@ public class GameManager : MonoBehaviour
             }
             if (test)
             {
-                towersNotSelected[k] = Towers[i];
-                k++;
+                towersNotSelected[h] = Towers[i];
+                h++;
+                //Debug.Log(h);
             }
         }
+       
     }
     public TowerScript[] GetSelectedTowers()
     {

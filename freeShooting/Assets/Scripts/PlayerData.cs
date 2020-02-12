@@ -29,6 +29,7 @@ public class PlayerData
         for(int k=0;k<6;k++)
         {
             SelectedTowers[k] = GameManager.instance.GetSelectedTowers()[k].name;
+            Debug.Log(SelectedTowers[k]);
         }
         for (int j = 0; j < GameManager.instance.players.Length;j++)
         {

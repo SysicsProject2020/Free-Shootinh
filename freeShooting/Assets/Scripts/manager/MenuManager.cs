@@ -29,6 +29,7 @@ public class MenuManager : MonoBehaviour
     public GameObject inventory;
     private bool testClick=false;
     private int TowerNotSelectedClicked;
+    private int TowerSelectedClicked;
     public GameObject towerdetailsPanel;
     public GameObject towerNotSelectedMenu;
     private TowerScript[] towersSelected = new TowerScript[6];
@@ -37,13 +38,16 @@ public class MenuManager : MonoBehaviour
     private TMPro.TextMeshProUGUI txtPlayerDetails;
 
 
-
+    public GameObject upgradePlayersBtn;
     public GameObject UnlockPlayerBtn;
     public GameObject UsePlayerButton;
+
+
+
     public GameObject UnlockTowerBtn;
     public GameObject useTowerButton;
-    public GameObject upgradePlayersBtn;
     public GameObject upgradeTowersBtn;
+    public GameObject upgradeTowersNotSelectedBtn;
 
 
     private void Awake()
@@ -63,7 +67,8 @@ public class MenuManager : MonoBehaviour
         playerMenuInstantiate();
         towersMenuInstantiate();
         fillSprites();
-      //  Debug.Log(GameManager.instance.getPlayer().name);
+
+        //  Debug.Log(GameManager.instance.getPlayer().name);
     }
 
     // Update is called once per frame
@@ -126,7 +131,8 @@ public class MenuManager : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
 
-            inventory.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
+             inventory.transform.GetChild(i).GetComponentInChildren<Image>().sprite = GameManager.instance.GetSelectedTowers()[i].image;
+            //Debug.Log(GameManager.instance.GetSelectedTowers()[i].name);
 
         }
         for (int j = 0; j < towersNotSelected.Length; j++)
@@ -145,7 +151,7 @@ public class MenuManager : MonoBehaviour
     public void OnclickInventory(int i)
     {
         
-         if(testClick==true)
+         if (testClick==true)
         {
             SwitchTowers(i, TowerNotSelectedClicked);
             fillSprites();
@@ -155,21 +161,60 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
+            TowerSelectedClicked = i;
+            upgradeTowersNotSelectedBtn.SetActive(false);
+            upgradeTowersBtn.SetActive(true);
             towerdetailsPanel.SetActive(true);
             backMainFromInventoryBtn.GetComponent<Button>().interactable = false;
-            txtTowerDetails.text = "Tower Name : " + towersSelected[i].name;
-            towerdetailsPanel.transform.Find("UseButton").gameObject.GetComponent<Button>().interactable = false;
+            txtTowerDetails.text = "Tower Name : " + towersSelected[i].name+ "level = " + towersSelected[i].level;
+            useTowerButton.SetActive(true);
+            useTowerButton.GetComponent<Button>().interactable = false;
+            UnlockTowerBtn.SetActive(false);
+            if (towersSelected[i].level < 5)
+            {
+
+                upgradeTowersBtn.GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                upgradeTowersBtn.GetComponent<Button>().interactable = false;
+            }
+            
         }
     }
     public void OnChoosingCards(int i)
     {
         towerdetailsPanel.SetActive(true);
         backMainFromInventoryBtn.GetComponent<Button>().interactable = false;
-
+        upgradeTowersNotSelectedBtn.SetActive(true);
         shake = false;
-        txtTowerDetails.text = "Tower Name : " + towersNotSelected[i].name ;
+        upgradeTowersBtn.SetActive(false);
+        txtTowerDetails.text = "Tower Name : " + towersNotSelected[i].name + "level = " + towersNotSelected[i].level;
         towerdetailsPanel.transform.Find("UseButton").gameObject.GetComponent<Button>().interactable = true;
         TowerNotSelectedClicked = i;
+        if(towersNotSelected[i].locked==true)
+        {
+            UnlockTowerBtn.SetActive(true);
+            useTowerButton.SetActive(false);
+            upgradeTowersNotSelectedBtn.GetComponent<Button>().interactable = false;
+            
+        }
+        else
+        {
+            UnlockTowerBtn.SetActive(false);
+            useTowerButton.SetActive(true);
+            if (towersNotSelected[i].level < 5)
+            {
+
+                upgradeTowersNotSelectedBtn.GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                upgradeTowersBtn.GetComponent<Button>().interactable = false;
+            }
+           
+        }
+     
     }
     public void SwitchTowers(int i, int j)
     {
@@ -248,12 +293,24 @@ public class MenuManager : MonoBehaviour
         PlayerdetailsPanel.SetActive(false);
         backMainFromcharacterBtn.interactable = true;
     }
-    public void UpgradeTowerBtn() { }
+    public void UpgradeTowerBtn() {
+        towersSelected[TowerSelectedClicked].level++;
+        towerdetailsPanel.SetActive(false);
+        backMainFromInventoryBtn.GetComponent<Button>().interactable = true;
+    }
     public void UpgradePlayerBtn() {
         if (GameManager.instance.players[k].level <= 5) { GameManager.instance.players[k].level++; }
         backMainFromcharacterBtn.interactable = true;
     }
-    public void UpgradeTowerNotSelectedBtn() { }
+    public void UpgradeTowerNotSelectedBtn() {
+        towersNotSelected[TowerNotSelectedClicked].level++;
+        towerdetailsPanel.SetActive(false);
+        backMainFromInventoryBtn.GetComponent<Button>().interactable = true;
+    }
+    public void UnlockTowerNotSelectedBtn() { towersNotSelected[TowerNotSelectedClicked].locked = false;
+        towerdetailsPanel.SetActive(false);
+        backMainFromInventoryBtn.GetComponent<Button>().interactable = true;
+    }
     public void back()
     {
         PlayerdetailsPanel.gameObject.SetActive(false);
@@ -289,6 +346,7 @@ public class MenuManager : MonoBehaviour
     {
         mainPanel.SetActive(false);
         inventoryPanel.SetActive(true);
+       
     }
     public void backMainFromInventory()
     {
