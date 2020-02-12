@@ -12,10 +12,13 @@ public class target : MonoBehaviour
     private float healthOffsetY = 3;
     private float healthOffsetZPlayer = -3.7f;
     private float healthOffsetZEnemy = 2f;
+    public byte respawnTime = 3;
+    private Vector3 respawnPoint;
 
 
     private void Start()
     {
+        respawnPoint = transform.position;
         Vector3 pos;
         Quaternion rot = Quaternion.Euler(0, 0, 0);
         if (transform.position.z > 0)//enemy
@@ -26,7 +29,8 @@ public class target : MonoBehaviour
         {
             pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayer);
         }
-        GameObject obj = Instantiate(healthBarInstatiate, pos, rot, transform);    
+        GameObject obj = Instantiate(healthBarInstatiate, pos, rot, transform);
+        
         Vector3 relativePos = Camera.main.transform.position - obj.transform.position;
         Quaternion rotCam = Quaternion.LookRotation(relativePos, Vector3.up);
         rotCam = Quaternion.Euler(rotCam.eulerAngles.x, 180, 0);
@@ -48,7 +52,24 @@ public class target : MonoBehaviour
     }
     void die()
     {
-        //deathSound.deathS();
-        Destroy(gameObject);
+        if (gameObject.GetComponent<playerMovement>() != null)
+        {
+            Debug.Log("worked");
+            gameObject.SetActive(false);
+            transform.position = respawnPoint;
+            health = maxHealth;
+            Invoke("respawn", respawnTime);
+        }
+        else
+        {
+            Destroy(gameObject);
+            //
+        }
+        
+    }
+
+    void respawn()
+    {
+        gameObject.SetActive(true);
     }
 }
