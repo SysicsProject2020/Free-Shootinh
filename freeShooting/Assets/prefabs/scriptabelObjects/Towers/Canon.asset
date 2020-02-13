@@ -16,7 +16,7 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 490269c812a781d4f95ea1949668adf2, type: 3}
   health: 9001c201f40126025802
   damage: 32003b00410048005300
-  prefab: {fileID: 6691245050111619357, guid: 32d22a5e2a67fe6488cceb3b06f9c41d, type: 3}
+  prefab: {fileID: 6691245050111619357, guid: 5b7cef6ca11888a49be815b0cdb3c5b3, type: 3}
   description: 
-  locked: 0
+  locked: 1
   level: 1

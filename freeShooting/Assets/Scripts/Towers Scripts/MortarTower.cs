@@ -20,8 +20,8 @@ public class MortarTower : MonoBehaviour
         //fireBallDirection =   (target -transform.position);
 
         GameObject go = Instantiate(fireBall,transform.position, this.transform.rotation);
-
-        go.GetComponent<FireBall>().Set(transform.position, direction, speed);
+  
+        go.GetComponent<MortarFireBall>().Set(transform.position, direction, speed);
     }
 
     // Update is called once per frame
