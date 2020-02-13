@@ -10,8 +10,8 @@ public class target : MonoBehaviour
     private Image healthBar;
     public GameObject healthBarInstatiate;
     private float healthOffsetY = 3;
-    private float healthOffsetZPlayer = -3.7f;
-    private float healthOffsetZEnemy = 2f;
+    private float healthOffsetZPlayer = -3.5f;
+    private float healthOffsetZEnemy = 5f;
     public byte respawnTime = 3;
     private Vector3 respawnPoint;
 
