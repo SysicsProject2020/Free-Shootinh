@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: healing tower
   m_EditorClassIdentifier: 
   name: healing tower
-  image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}
+  image: {fileID: 21300000, guid: 7b2cbc42b3adc484aaa25616c8f6ceb1, type: 3}
   health: 260258028a02bc02ee02
   damage: 250028002c0031003700
-  prefab: {fileID: 6691245050111619357, guid: 32d22a5e2a67fe6488cceb3b06f9c41d, type: 3}
+  prefab: {fileID: 6417905684133665134, guid: d5de3b59b24adb0478556a3286b2c5e7, type: 3}
   description: 
   locked: 0
-  level: 1
+  level: 5
