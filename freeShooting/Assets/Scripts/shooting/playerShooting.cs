@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gun : MonoBehaviour
+public class playerShooting : MonoBehaviour
 {
     //public float destroy= 2f;
     //public float range = 35f;

@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
             players[i].locked = data.lockPlayersData[i];
             players[i].level = data.playersLevel[i];
         }
-        Debug.Log(playerSelected.name);
         int k = 0;
         for(int i=0;i<Towers.Length;i++)
         {

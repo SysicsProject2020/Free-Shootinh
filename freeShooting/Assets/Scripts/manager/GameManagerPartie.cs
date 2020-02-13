@@ -21,8 +21,8 @@ public class GameManagerPartie : MonoBehaviour
         towersSelected = GameManager.instance.GetSelectedTowers();
         towerBase.prefab.GetComponent<target>().health = towerBase.Get_health();
         enemybase.prefab.GetComponent<target>().health = enemybase.Get_health();
-        player.prefab.GetComponent<gun>().damage = player.Get_damage();
-        enemy.prefab.GetComponent<gun>().damage = enemy.Get_damage();
+        player.prefab.GetComponent<playerShooting>().damage = player.Get_damage();
+        enemy.prefab.GetComponent<playerShooting>().damage = enemy.Get_damage();
         ChangeSprites();
         instantiatePrefabs();
        

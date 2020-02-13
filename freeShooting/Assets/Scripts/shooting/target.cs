@@ -54,7 +54,6 @@ public class target : MonoBehaviour
     {
         if (gameObject.GetComponent<playerMovement>() != null)
         {
-            Debug.Log("worked");
             gameObject.SetActive(false);
             transform.position = respawnPoint;
             health = maxHealth;
