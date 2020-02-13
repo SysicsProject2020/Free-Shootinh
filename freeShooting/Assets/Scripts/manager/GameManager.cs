@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
        // fillSelectedtowers();
         
         // Debug.Log(data.SelectedPlayer);
+      
     }
     private void loadData()
     {
