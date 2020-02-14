@@ -26,6 +26,14 @@ public class bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        else
+        {
+            /*if (Types.Equals(collision.transform ,Plane))
+            {
+                Destroy(gameObject);
+                return;
+            }*/
+        }
 
         //Debug.Log(collision.transform.position.z);
         if (collision.transform.position.z > 0 == enemyRightSide)

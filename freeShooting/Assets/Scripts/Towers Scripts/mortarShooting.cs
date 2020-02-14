@@ -5,12 +5,12 @@ using UnityEngine;
 public class mortarShooting : MonoBehaviour
 {
     public GameObject fireBall;
-    private GameObject target = GameManagerPartie.enemy_;
-    private Vector3 tar = new Vector3(-3,3,33);
+    private GameObject target_ = GameManagerPartie.enemy_;
     private float speed;
 
-    public float fireRate = 1;
+    public float fireRate = 0.25f;
     private float nextTimeFire = 0f;
+    public Transform firePoint;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +29,9 @@ public class mortarShooting : MonoBehaviour
          }*/
         if (Time.time > nextTimeFire)
         {
-            Vector3 vo = Calculatevelocity(tar,transform.position, 5);
+            Vector3 vo = Calculatevelocity(target_.transform.position,firePoint.position, 3f);
             shoot(vo);
-            nextTimeFire = Time.time + 3;
+            nextTimeFire = Time.time + 5;
         }
 
     }
@@ -56,13 +56,17 @@ public class mortarShooting : MonoBehaviour
         Vector3 distance = target - origin;
         Vector3 distanceXZ = distance;
         distanceXZ.y = 0f;
-        float Sy = distanceXZ.y;
+
+        float Sy = distance.y;
         float sXZ = distanceXZ.magnitude;
+
         float Vxz = sXZ / time;
         float Vy = Sy / time + 0.5f * Mathf.Abs(Physics.gravity.y) * time;
+
         Vector3 result = distanceXZ.normalized;
         result *= Vxz;
         result.y = Vy;
+
         return result;
 
     }
