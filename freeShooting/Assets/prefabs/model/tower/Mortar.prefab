@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569204126053218317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.153, z: 1.019}
+  m_LocalPosition: {x: -0.628, y: 0.153, z: 1.466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5237065258648006413}
@@ -155,5 +155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBall: {fileID: 2220004578629867610, guid: 1aeffb1eedf10c74ea264e6c4d9e93e4,
     type: 3}
+  speed: 3
   fireRate: 1
   firePoint: {fileID: 7256972211191155660}

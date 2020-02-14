@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class CanonTower : MonoBehaviour
 {
+    public short damage = 50;
     float nextActionTime;
     public float period = 2.0f;
-    private Vector3  target= new Vector3(-3,3,33);
+    GameObject target_;
     public GameObject CanonFireBall;
-    Rigidbody rb;
+    public Transform firePoint;
+    public Transform rotationPart;
+    public byte speed = 30;
     //private GameObject head;
     // Start is called before the first frame update
     void Start()
     {
+
+        target_ = GameManagerPartie.enemy_;
         nextActionTime = Time.time;
         //head = gameObject.ge
         //transform.LookAt(target);
+        firePoint = transform.GetChild(0).GetChild(0);
+        rotationPart = transform.GetChild(0);
 
-        
     }
 
     // Update is called once per frame
@@ -28,19 +34,18 @@ public class CanonTower : MonoBehaviour
         {
             rotation();
     
-                GameObject go = Instantiate(CanonFireBall,new Vector3(transform.position.x, transform.position.y+2, transform.position.z+3),transform.rotation);
-            //go.transform.LookAt(target);
-            rb = go.GetComponent<Rigidbody>();
-            rb.velocity = go.transform.forward * 50;
+            GameObject go = Instantiate(CanonFireBall,firePoint.position,firePoint.rotation);
+            go.GetComponent<Rigidbody>().velocity = go.transform.forward * speed;
+            go.GetComponent<bullet>().changedam(damage);
             nextActionTime += period;
 
         }
     }
     void rotation()
     {
-        Vector3 relativePos = target - transform.position;
+        Vector3 relativePos = target_.transform.position - rotationPart.position;
         Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
-        rotObject = Quaternion.Euler(transform.rotation.x, rotObject.eulerAngles.y, transform.rotation.z);
-        transform.rotation = rotObject;
+        rotObject = Quaternion.Euler(rotationPart.rotation.x, rotObject.eulerAngles.y, rotationPart.rotation.z);
+        rotationPart.rotation = rotObject;
     }
 }

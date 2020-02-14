@@ -6,8 +6,8 @@ public class mortarShooting : MonoBehaviour
 {
     public GameObject fireBall;
     private GameObject target_ = GameManagerPartie.enemy_;
-    private float speed;
-
+    public float speed;
+    public short damage = 200;
     public float fireRate = 0.25f;
     private float nextTimeFire = 0f;
     public Transform firePoint;
@@ -15,7 +15,6 @@ public class mortarShooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
 
     }
 
@@ -29,7 +28,7 @@ public class mortarShooting : MonoBehaviour
          }*/
         if (Time.time > nextTimeFire)
         {
-            Vector3 vo = Calculatevelocity(target_.transform.position,firePoint.position, 3f);
+            Vector3 vo = Calculatevelocity(target_.transform.position,firePoint.position, speed);
             shoot(vo);
             nextTimeFire = Time.time + 5;
         }
@@ -45,8 +44,9 @@ public class mortarShooting : MonoBehaviour
         speed = (distance - transform.position.y + 10);*/
 
         
-        GameObject go = Instantiate(fireBall, transform.position,transform.rotation);
+        GameObject go = Instantiate(fireBall, firePoint.position,firePoint.rotation);
         go.GetComponent<Rigidbody>().velocity = vo;
+        go.GetComponent<bullet>().changedam(damage);
 
         //go.GetComponent<MortarFireBall>().Set(transform.position, direction, speed);
 

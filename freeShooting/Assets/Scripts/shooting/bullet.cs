@@ -6,6 +6,7 @@ public class bullet : MonoBehaviour
 {
     bool enemyRightSide;
     public short damage;
+    private Plane p;
     public void changedam(short dam)
     {
         damage = dam;
@@ -21,29 +22,23 @@ public class bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.tag == "staduim")
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         if (collision.transform.tag == "bullet")
         {
             Destroy(gameObject);
             return;
         }
-        else
-        {
-            /*if (Types.Equals(collision.transform ,Plane))
-            {
-                Destroy(gameObject);
-                return;
-            }*/
-        }
+            
 
-        //Debug.Log(collision.transform.position.z);
         if (collision.transform.position.z > 0 == enemyRightSide)
         {
-            //test tower , base and player collider
-            if (collision.transform.tag != "wall")
-            {
-                collision.transform.GetComponent<target>().takeDamage(damage);
-                //hitSound[choose].Play();
-            }
+             collision.transform.GetComponent<target>().takeDamage(damage);
+             //hitSound[choose].Play();            
         }
         Destroy(gameObject);
 

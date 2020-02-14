@@ -268,6 +268,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &5850824650285123073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818124992507706353}
+  m_Layer: 0
+  m_Name: fire point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1818124992507706353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850824650285123073}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.034216814, y: 2.1490784, z: 2.71}
+  m_LocalScale: {x: 0.11405614, y: 0.3917433, z: 0.11405596}
+  m_Children: []
+  m_Father: {fileID: 7574748514253820572}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5871549353259240677
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +408,7 @@ Transform:
   m_LocalScale: {x: 0.11405602, y: 0.39174312, z: 0.11405593}
   m_Children: []
   m_Father: {fileID: 7574748514253820572}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 97.23401, y: 180, z: 0}
 --- !u!33 &8671939157265006450
 MeshFilter:
@@ -454,9 +484,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b540fca1e30654782076679714d63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 50
   period: 2
   CanonFireBall: {fileID: 2220004578629867610, guid: 2ded6ca71fb384646b26e52a7e7a0609,
     type: 3}
+  firePoint: {fileID: 0}
+  rotationPart: {fileID: 0}
+  speed: 30
 --- !u!1 &8370825241609513353
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +500,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4787463757025827738}
+  - component: {fileID: 6723249410340490372}
   m_Layer: 0
   m_Name: Canon 1
   m_TagString: Untagged
@@ -489,6 +524,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6723249410340490372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8370825241609513353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b540fca1e30654782076679714d63c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
+  period: 2
+  CanonFireBall: {fileID: 2220004578629867610, guid: 2ded6ca71fb384646b26e52a7e7a0609,
+    type: 3}
+  firePoint: {fileID: 1818124992507706353}
+  rotationPart: {fileID: 0}
+  speed: 30
 --- !u!1 &8882966317748998669
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +571,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1818124992507706353}
   - {fileID: 4429397166673820334}
   m_Father: {fileID: 4787463757025827738}
   m_RootOrder: 0
@@ -528,11 +583,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8882966317748998669}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85b540fca1e30654782076679714d63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 50
   period: 2
   CanonFireBall: {fileID: 2220004578629867610, guid: 2ded6ca71fb384646b26e52a7e7a0609,
     type: 3}
+  firePoint: {fileID: 0}
+  rotationPart: {fileID: 0}
+  speed: 30
