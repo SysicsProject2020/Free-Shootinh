@@ -73,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBall: {fileID: 2220004578629867610, guid: 1aeffb1eedf10c74ea264e6c4d9e93e4,
     type: 3}
-  target: {fileID: 3697645936550440647, guid: 52a9943d17bcb754893862c599fb2059, type: 3}
+  fireRate: 1
 --- !u!23 &3654085204790563582
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -15,10 +15,10 @@ public class CanonTower : MonoBehaviour
         nextActionTime = Time.time;
         //transform.LookAt(target);
 
-       Vector3 relativePos = target - transform.position;
-       Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
-         rotObject = Quaternion.Euler(rotObject.eulerAngles.x, rotObject.eulerAngles.y, rotObject.eulerAngles.z);
-         transform.rotation = rotObject;
+        Vector3 relativePos = target - transform.position;
+        Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
+        rotObject = Quaternion.Euler(rotObject.eulerAngles.x, rotObject.eulerAngles.y, rotObject.eulerAngles.z);
+        transform.rotation = rotObject;
     }
 
     // Update is called once per frame
@@ -33,9 +33,6 @@ public class CanonTower : MonoBehaviour
             rb = go.GetComponent<Rigidbody>();
             rb.velocity = go.transform.forward * 50;
             nextActionTime += period;
-            
-
-
 
         }
     }

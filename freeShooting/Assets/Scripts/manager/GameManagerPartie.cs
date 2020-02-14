@@ -16,6 +16,7 @@ public class GameManagerPartie : MonoBehaviour
     private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
     private TowerScript[] towersSelected = new TowerScript[6];
 
+    public static GameObject enemy_;
     void Start()
     {
         towersSelected = GameManager.instance.GetSelectedTowers();
@@ -33,7 +34,7 @@ public class GameManagerPartie : MonoBehaviour
         Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(-180, 0, 0));
 
         Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
-        Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
+        enemy_ = Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
     }
     private void ChangeSprites()
     {

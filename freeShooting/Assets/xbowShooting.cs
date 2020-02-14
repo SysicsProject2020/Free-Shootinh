@@ -3,30 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerShooting : MonoBehaviour
+public class xbowShooting : MonoBehaviour
 {
     //public float destroy= 2f;
     //public float range = 35f;
     public short damage = 10;
-    
+
     public float fireRate = 4;
     private float nextTimeFire = 0f;
+    
     public short speed = 25;
-    public GameObject bullet_;
+    public GameObject bow;
     public Transform firePoint;
- 
-    //public ParticleSystem muzzleFlash;
-    //public AudioSource[] hitSound = new AudioSource[4];
+    Transform rotationPart;
 
-    //private bool enemyRightSide;
 
-    /*private void Start()
-    {
-        if (transform.position.z < 0)
-            enemyRightSide = true;
-        else
-            enemyRightSide = false;
-    }*/
 
     // Update is called once per frame
     void Update()
@@ -40,7 +31,7 @@ public class playerShooting : MonoBehaviour
 
     private void shoot()
     {
-        GameObject clone = Instantiate(bullet_, firePoint.position, firePoint.rotation);
+        GameObject clone = Instantiate(bow, firePoint.position, firePoint.rotation);
         clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(0, 0, speed);
         clone.GetComponent<bullet>().changedam(damage);
     }

@@ -50,6 +50,18 @@ public class target : MonoBehaviour
         }
         healthBar.fillAmount = (float)health / (float)maxHealth;
     }
+    public void gainhealth(short gain)
+    {
+        health += gain;
+
+        if (health >= maxHealth)
+        {
+            health = maxHealth;
+        }
+
+        healthBar.fillAmount = (float)health / (float)maxHealth;
+
+    }
     void die()
     {
         if (gameObject.GetComponent<playerMovement>() != null)

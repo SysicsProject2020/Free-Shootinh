@@ -8,6 +8,7 @@ public class lazerShooting : MonoBehaviour
     //public float destroy= 2f;
     //public float range = 35f;
     public short damage = 5;
+    public short damageInit ;
     private short damageMultiplier = 2;
     
     private float nextTimeFire = 0f;
@@ -20,7 +21,8 @@ public class lazerShooting : MonoBehaviour
 
     private void Start()
     {
-        //target_ = GameManagerPartie.enemy_;
+        damageInit = damage;
+        target_ = GameManagerPartie.enemy_;
         firePoint = transform.GetChild(0);
         lineRenderer = firePoint.GetComponent<LineRenderer>();
     }
@@ -30,20 +32,20 @@ public class lazerShooting : MonoBehaviour
     void Update()
     {
         //fire condition
-        if (target_ != null)
+        if (target_.activeSelf)
         {
             if (Time.time > nextTimeFire)
             {
                 lazer();
                 nextTimeFire = Time.time + 1;
-                Debug.Log(nextTimeFire);
                 damage *= damageMultiplier;
-                Debug.Log(damage);
             }
         }
         else
         {
+            damage = damageInit;
             lineRenderer.enabled = false;
+
         }
     }
 
