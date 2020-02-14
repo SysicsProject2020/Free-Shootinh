@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lazerShooting : MonoBehaviour
+public class teslashooting : MonoBehaviour
 {
 
     public short damage = 5;
-    public short damageInit ;
+    public short damageInit;
     private short damageMultiplier = 2;
-    
-    private float nextTimeFire = 0f;
 
+    private float nextTimeFire = 0f;
     Transform firePoint;
 
-    LineRenderer lineRenderer;
+    LineRenderer lineRenderer1;
+    LineRenderer lineRenderer2;
+
 
     GameObject target_;
 
@@ -23,7 +23,8 @@ public class lazerShooting : MonoBehaviour
         damageInit = damage;
         target_ = GameManagerPartie.enemy_;
         firePoint = transform.GetChild(0);
-        lineRenderer = firePoint.GetComponent<LineRenderer>();
+        lineRenderer1 = firePoint.GetChild(0).GetComponent<LineRenderer>();
+        lineRenderer2 = firePoint.GetChild(1).GetComponent<LineRenderer>();
     }
 
 
@@ -43,17 +44,21 @@ public class lazerShooting : MonoBehaviour
         else
         {
             damage = damageInit;
-            lineRenderer.enabled = false;
+            lineRenderer1.enabled = false;
+            lineRenderer2.enabled = false;
 
         }
     }
 
     void lazer()
     {
-        lineRenderer.enabled = true;
-        lineRenderer.SetPosition(0, firePoint.position);
-        lineRenderer.SetPosition(1, target_.transform.position);
-        target_.GetComponent<target>().takeDamage(damage);
-    }
+        lineRenderer1.enabled = true;
+        lineRenderer2.enabled = true;
 
+
+
+        /*lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target_.transform.position);
+        target_.GetComponent<target>().takeDamage(damage);*/
+    }
 }

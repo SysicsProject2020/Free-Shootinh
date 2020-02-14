@@ -15,54 +15,40 @@ public class xbowShooting : MonoBehaviour
     public short speed = 25;
     public GameObject bow;
     public Transform firePoint;
-    Transform rotationPart;
+    public Transform rotationPart;
+    GameObject target_;
 
-
+    private void Start()
+    {
+        target_ = GameManagerPartie.enemy_;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextTimeFire)
+        if (target_.activeSelf)
         {
-            shoot();
-            nextTimeFire = Time.time + 1 / fireRate;
+            if (Time.time > nextTimeFire)
+            {
+                shoot();
+                nextTimeFire = Time.time + 1;
+            }
         }
     }
 
     private void shoot()
     {
+        Vector3 relativePos = target_.transform.position - rotationPart.position;
+        Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
+        rotObject = Quaternion.Euler(rotObject.eulerAngles.x, rotObject.eulerAngles.y, rotObject.eulerAngles.z);
+        rotationPart.transform.rotation = rotObject;
+
+
         GameObject clone = Instantiate(bow, firePoint.position, firePoint.rotation);
-        clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(0, 0, speed);
+        //clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(target_.transform.position.x, target_.transform.position.y, target_.transform.position.z);
+        clone.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * speed;
         clone.GetComponent<bullet>().changedam(damage);
     }
 
-    /*void shootRayCast()
-    {
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward * range, Color.red, 0f);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, range))
-        {
-            if (hit.transform.position.z > 0 == enemyRightSide)
-            {
-                //Debug.Log(hit.transform.name);
-                //test tower , base and player collider
-                if (true)
-                {
-                    //muzzleFlash.Play();
 
-                    hit.transform.GetComponent<target>().takeDamage(damage);
-
-                    //GameObject impactBlood = Instantiate(blood, hit.point, Quaternion.LookRotation(hit.normal));
-                    //Destroy(impactBlood, 0.5f);
-
-                    //int choose = Random.Range(0, 3);
-
-                    //hitSound[choose].Play();
-                }
-
-
-            }
-
-        }
-    }*/
 }
