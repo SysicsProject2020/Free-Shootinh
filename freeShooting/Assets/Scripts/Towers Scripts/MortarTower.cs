@@ -5,8 +5,8 @@ using UnityEngine;
 public class MortarTower : MonoBehaviour
 {
     public GameObject fireBall;
-    private Vector3 target=new Vector3(-3,3,33);
-    private Vector3 fireBallDirection;
+    private GameObject target = GameManagerPartie.enemy_;
+    
     private float speed;
 
     public float fireRate = 1;
@@ -22,21 +22,26 @@ public class MortarTower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextTimeFire)
+       
+        if (target.activeSelf)
         {
-            shoot();
-            nextTimeFire = Time.time + 1 / fireRate;
+            if (Time.time > nextTimeFire)
+            {
+                shoot();
+                nextTimeFire = Time.time + 1;
+            }
         }
 
     }
 
     void shoot()
     {
-        var heading = target - transform.position;
+        Vector3 FireballPos = new Vector3(target.transform.position.x, target.transform.position.y+3, target.transform.position.z);
+        var heading = FireballPos - transform.position;
         var distance = heading.magnitude;
         var direction = heading / distance;
         speed = (distance - transform.position.y + 10);
-        //fireBallDirection =   (target -transform.position);
+        
 
         GameObject go = Instantiate(fireBall, transform.position, this.transform.rotation);
         go.GetComponent<MortarFireBall>().Set(transform.position, direction, speed);
