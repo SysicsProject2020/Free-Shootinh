@@ -9,16 +9,15 @@ public class CanonTower : MonoBehaviour
     private Vector3  target= new Vector3(-3,3,33);
     public GameObject CanonFireBall;
     Rigidbody rb;
+    //private GameObject head;
     // Start is called before the first frame update
     void Start()
     {
         nextActionTime = Time.time;
+        //head = gameObject.ge
         //transform.LookAt(target);
 
-        Vector3 relativePos = target - transform.position;
-        Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
-        rotObject = Quaternion.Euler(rotObject.eulerAngles.x, rotObject.eulerAngles.y, rotObject.eulerAngles.z);
-        transform.rotation = rotObject;
+        
     }
 
     // Update is called once per frame
@@ -27,13 +26,21 @@ public class CanonTower : MonoBehaviour
         
         if (Time.time > nextActionTime) 
         {
-
-            GameObject go = Instantiate(CanonFireBall,new Vector3(transform.position.x, transform.position.y, transform.position.z+3),transform.rotation);
+            rotation();
+    
+                GameObject go = Instantiate(CanonFireBall,new Vector3(transform.position.x, transform.position.y+2, transform.position.z+3),transform.rotation);
             //go.transform.LookAt(target);
             rb = go.GetComponent<Rigidbody>();
             rb.velocity = go.transform.forward * 50;
             nextActionTime += period;
 
         }
+    }
+    void rotation()
+    {
+        Vector3 relativePos = target - transform.position;
+        Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
+        rotObject = Quaternion.Euler(transform.rotation.x, rotObject.eulerAngles.y, transform.rotation.z);
+        transform.rotation = rotObject;
     }
 }
