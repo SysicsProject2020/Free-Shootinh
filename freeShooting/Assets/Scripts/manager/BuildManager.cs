@@ -43,7 +43,7 @@ public class BuildManager : MonoBehaviour
         {
             if (hit.collider.tag == "TowerDefendZone")
             {
-                Vector3 towerpos = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y +2.25f, hit.collider.transform.position.z);
+                Vector3 towerpos = new Vector3(hit.collider.transform.position.x, transform.position.y, hit.collider.transform.position.z);
                
                 GameObject go = Instantiate(towers[nb].prefab, towerpos, Quaternion.Euler(0,0,0));
             }
