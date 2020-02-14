@@ -3,23 +3,38 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 
 
-public static class SaveSystem
+
+public static class SaveSystem 
 {
+    private static string path = Application.persistentDataPath + "/save.nooba";
+    
+    public static bool testExist() {
+        if (File.Exists(path))
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+     
     public static void SavePlayer()
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/save.nooba";
+        
+        
+
         FileStream stream = new FileStream(path, FileMode.Create);
-            PlayerData data = new PlayerData();
-            formatter.Serialize(stream, data);
-            stream.Close();
+        PlayerData data = new PlayerData();
+        formatter.Serialize(stream, data);
+        stream.Close();
         
         
 
     }
     public static PlayerData loadPlayerData()
     {
-        string path = Application.persistentDataPath + "/save.nooba";
+        
+        //string path = Application.persistentDataPath + "/save.nooba";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

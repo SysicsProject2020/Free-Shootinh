@@ -20,14 +20,24 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        loadData();
+        
         instance = this;
         
         towersNotSelected = new TowerScript[(Towers.Length - towersSelected.Length)];
+        if(SaveSystem.testExist())
+            {
+            
+            loadData();
+        }
+        else
+        {
+            setPlayer(players[0]);
+            remplirSelectedTower();
+            SaveSystem.SavePlayer();
+        }
         
-        //remplirSelectedTower();
         FillTowersNotSelected();
-        //SaveSystem.SavePlayer();
+        
          //data = SaveSystem.loadPlayerData();
         
        // fillSelectedtowers();
