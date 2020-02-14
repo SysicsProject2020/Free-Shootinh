@@ -40,7 +40,7 @@ public class xbowShooting : MonoBehaviour
     {
         Vector3 relativePos = target_.transform.position - rotationPart.position;
         Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
-        rotObject = Quaternion.Euler(rotObject.eulerAngles.x, rotObject.eulerAngles.y, rotObject.eulerAngles.z);
+        //rotObject = Quaternion.Euler(rotObject.eulerAngles.x, rotObject.eulerAngles.y, rotObject.eulerAngles.z);
         rotationPart.transform.rotation = rotObject;
 
 
