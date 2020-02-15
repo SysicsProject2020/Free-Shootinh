@@ -7,7 +7,6 @@ TagManager:
   - TowerBaseZone
   - TowerDefendZone
   - TowersCanvas
-  - wall
   - stadium
   - bullet
   layers:
