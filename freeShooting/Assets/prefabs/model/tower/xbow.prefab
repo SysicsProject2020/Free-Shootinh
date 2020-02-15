@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  fireRate: 1
+  fireRate: 0.25
   speed: 30
   bow: {fileID: 8041889832026840242, guid: f6bd45c06a0fc4046be7b647e4de0587, type: 3}
   firePoint: {fileID: 5664036350544662648}

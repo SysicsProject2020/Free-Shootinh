@@ -9,7 +9,7 @@ public class xbowShooting : MonoBehaviour
     //public float range = 35f;
     public short damage = 10;
 
-    public float fireRate = 4;
+    public float fireRate = 0.5f;
     private float nextTimeFire = 0f;
     
     public short speed = 25;
@@ -31,7 +31,7 @@ public class xbowShooting : MonoBehaviour
             if (Time.time > nextTimeFire)
             {
                 shoot();
-                nextTimeFire = Time.time + 1;
+                nextTimeFire = Time.time + fireRate;
             }
         }
     }

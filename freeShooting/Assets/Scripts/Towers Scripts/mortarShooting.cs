@@ -8,7 +8,7 @@ public class mortarShooting : MonoBehaviour
     private GameObject target_ = GameManagerPartie.enemy_;
     public float speed;
     public short damage = 200;
-    public float fireRate = 0.25f;
+    public float fireRate = 4f;
     private float nextTimeFire = 0f;
     public Transform firePoint;
 
@@ -31,7 +31,7 @@ public class mortarShooting : MonoBehaviour
         {
             Vector3 vo = Calculatevelocity(target_.transform.position,firePoint.position, speed);
             shoot(vo);
-            nextTimeFire = Time.time + 10;
+            nextTimeFire = Time.time + fireRate;
         }
 
     }
@@ -65,7 +65,7 @@ public class mortarShooting : MonoBehaviour
         float Vy = Sy / time + 0.5f * Mathf.Abs(Physics.gravity.y) * time;
 
         Vector3 result = distanceXZ.normalized;
-        result *= Vxz*2;
+        result *= Vxz;
         result.y = Vy;
 
         return result;

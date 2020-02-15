@@ -6,10 +6,10 @@ public class teslashooting : MonoBehaviour
 {
 
     public short damage = 50;
-
+    public float fireRate = 1;
     private float nextTimeFire = 0f;
     Transform firePoint;
-
+    bool shoot = true;
     LineRenderer lineRenderer1;
     LineRenderer lineRenderer2;
 
@@ -33,8 +33,17 @@ public class teslashooting : MonoBehaviour
         {
             if (Time.time > nextTimeFire)
             {
-                tesla();
-                nextTimeFire = Time.time + 1;
+                if (shoot)
+                {
+                    tesla();
+                }
+                else
+                {
+                    lineRenderer1.enabled = false;
+                    lineRenderer2.enabled = false;
+                }          
+                nextTimeFire = Time.time + fireRate;
+                shoot = !shoot;
             }
         }
         else

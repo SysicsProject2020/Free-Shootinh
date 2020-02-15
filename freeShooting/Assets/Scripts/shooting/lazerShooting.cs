@@ -7,9 +7,9 @@ public class lazerShooting : MonoBehaviour
 {
 
     public short damage = 5;
-    public short damageInit ;
+    short damageInit ;
     private short damageMultiplier = 2;
-    
+    public float fireRate = 1;
     private float nextTimeFire = 0f;
 
     Transform firePoint;
@@ -36,7 +36,7 @@ public class lazerShooting : MonoBehaviour
             if (Time.time > nextTimeFire)
             {
                 lazer();
-                nextTimeFire = Time.time + 1;
+                nextTimeFire = Time.time + fireRate;
                 damage *= damageMultiplier;
             }
         }

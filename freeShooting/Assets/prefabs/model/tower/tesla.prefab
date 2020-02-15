@@ -389,6 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  fireRate: 1.5
 --- !u!1 &7807280696109521867
 GameObject:
   m_ObjectHideFlags: 0

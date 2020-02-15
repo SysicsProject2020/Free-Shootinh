@@ -81,12 +81,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6691245050111619357}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7d5537e8b6741d419d6903722f81ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2200
+  health: 100
   healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
     type: 3}
   respawnTime: 3
@@ -156,5 +156,6 @@ MonoBehaviour:
   fireBall: {fileID: 2220004578629867610, guid: 1aeffb1eedf10c74ea264e6c4d9e93e4,
     type: 3}
   speed: 3
-  fireRate: 1
+  damage: 200
+  fireRate: 4
   firePoint: {fileID: 7256972211191155660}

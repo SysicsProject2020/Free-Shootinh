@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2766795956043693220}
   - component: {fileID: 8683334370792634320}
   - component: {fileID: -5397368162681985106}
+  - component: {fileID: -5307482546414962289}
   m_Layer: 0
   m_Name: CanonFireBall
   m_TagString: bullet
@@ -123,3 +124,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+--- !u!114 &-5307482546414962289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2220004578629867610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6471fa70f42c15479df163ead092fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
