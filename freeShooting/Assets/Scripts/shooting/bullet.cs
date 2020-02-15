@@ -22,7 +22,7 @@ public class bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "stadium")
+        if (collision.transform.tag == "staduim")
         {
             Destroy(gameObject);
             return;

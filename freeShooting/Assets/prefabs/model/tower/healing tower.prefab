@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3053013462580621994}
   - component: {fileID: 1094069123360130040}
   - component: {fileID: 7006543847743980619}
+  - component: {fileID: 1757906692901323060}
   m_Layer: 0
   m_Name: heart
   m_TagString: Untagged
@@ -92,6 +93,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1757906692901323060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787279480267521924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4157155308a016e4ea46941a1bf9b365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degreesPerSecond: 50
 --- !u!1 &1369442840581721642
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +194,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8019682711917144957}
   - component: {fileID: 4009487292913529582}
-  - component: {fileID: 7964685751370087280}
   m_Layer: 0
   m_Name: healing tower
   m_TagString: Untagged
@@ -211,7 +224,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6417905684133665134}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7d5537e8b6741d419d6903722f81ea1, type: 3}
   m_Name: 
@@ -220,16 +233,3 @@ MonoBehaviour:
   healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
     type: 3}
   respawnTime: 3
---- !u!65 &7964685751370087280
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6417905684133665134}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.020665683, y: 0.026376296, z: 0.023897812}
-  m_Center: {x: -0.000030875206, y: 0.011827588, z: -0.0024948597}
