@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManagerPartie : MonoBehaviour
 {
-    
+
     public TowerScript towerBase;
     public TowerScript enemybase;
     public PlayerScript player;
@@ -15,11 +15,12 @@ public class GameManagerPartie : MonoBehaviour
     private Vector3 enemypos = new Vector3(5, 1.8f, 25);
     private Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
     private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
-    private TowerScript[] towersSelected = new TowerScript[6];
-    private TowerScript[] EnemySelectedTowers = new TowerScript[6];
+    public static TowerScript[] towersSelected = new TowerScript[6];
+    public static TowerScript[] EnemySelectedTowers = new TowerScript[6];
 
     public static GameObject playerPrefab;
     public static GameObject enemy_;
+    public static GameObject player_;
     void Start()
     {
         towersSelected = GameManager.instance.GetSelectedTowers();
@@ -29,14 +30,15 @@ public class GameManagerPartie : MonoBehaviour
         enemy.prefab.GetComponent<playerShooting>().damage = enemy.Get_damage();
         ChangeSprites();
         instantiatePrefabs();
-       
+
+        chooseEnemyTowers();
     }
     private void instantiatePrefabs()
     {
         Instantiate(towerBase.prefab, playerTowerPos, Quaternion.Euler(0, 0, 0));
         Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(-180, 0, 0));
 
-        playerPrefab= Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
+        player_ = Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
         enemy_ = Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
     }
     private void ChangeSprites()
@@ -46,9 +48,10 @@ public class GameManagerPartie : MonoBehaviour
             itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
         }
     }
-    private void setEnemySelectedTowers()
+    void chooseEnemyTowers()
     {
-        EnemySelectedTowers = AIeasy.selectedcards;
+        EnemySelectedTowers = towersSelected;
+
     }
    /* public void MovePlayer(float position)
     {
