@@ -94,7 +94,7 @@ public class AIeasy : MonoBehaviour
                 for (int i = 0; i < 5; i++)
                 {
                     GameObject go = Instantiate(towers[i].prefab, BuildPos[i], Quaternion.Euler(0, 0, 0));
-                    Debug.Log("ffds");
+                    
                 }
                 changeState(AIState.idle);
                 break;
