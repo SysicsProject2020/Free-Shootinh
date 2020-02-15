@@ -482,8 +482,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85b540fca1e30654782076679714d63c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   damage: 50
   period: 2
   CanonFireBall: {fileID: 2220004578629867610, guid: 2ded6ca71fb384646b26e52a7e7a0609,
@@ -521,6 +521,7 @@ Transform:
   m_Children:
   - {fileID: 7574748514253820572}
   - {fileID: 1985705425276458086}
+  - {fileID: 9134933147461853021}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -534,8 +535,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85b540fca1e30654782076679714d63c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   damage: 50
   period: 2
   CanonFireBall: {fileID: 2220004578629867610, guid: 2ded6ca71fb384646b26e52a7e7a0609,
@@ -586,8 +587,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85b540fca1e30654782076679714d63c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   damage: 50
   period: 2
   CanonFireBall: {fileID: 2220004578629867610, guid: 2ded6ca71fb384646b26e52a7e7a0609,

@@ -22,6 +22,7 @@ public class mortarShooting : MonoBehaviour
     void Update()
     {
 
+
         /* if (target.activeSelf)
          {
 
@@ -30,7 +31,7 @@ public class mortarShooting : MonoBehaviour
         {
             Vector3 vo = Calculatevelocity(target_.transform.position,firePoint.position, speed);
             shoot(vo);
-            nextTimeFire = Time.time + 5;
+            nextTimeFire = Time.time + 10;
         }
 
     }
@@ -43,7 +44,7 @@ public class mortarShooting : MonoBehaviour
         var direction = heading / distance;
         speed = (distance - transform.position.y + 10);*/
 
-        
+
         GameObject go = Instantiate(fireBall, firePoint.position,firePoint.rotation);
         go.GetComponent<Rigidbody>().velocity = vo;
         go.GetComponent<bullet>().changedam(damage);
@@ -64,7 +65,7 @@ public class mortarShooting : MonoBehaviour
         float Vy = Sy / time + 0.5f * Mathf.Abs(Physics.gravity.y) * time;
 
         Vector3 result = distanceXZ.normalized;
-        result *= Vxz;
+        result *= Vxz*2;
         result.y = Vy;
 
         return result;

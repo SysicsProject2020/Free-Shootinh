@@ -29,11 +29,11 @@ public class CanonTower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Time.time > nextActionTime) 
+
+        if (Time.time > nextActionTime)
         {
             rotation();
-    
+
             GameObject go = Instantiate(CanonFireBall,firePoint.position,firePoint.rotation);
             go.GetComponent<Rigidbody>().velocity = go.transform.forward * speed;
             go.GetComponent<bullet>().changedam(damage);
