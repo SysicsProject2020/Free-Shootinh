@@ -94,6 +94,7 @@ public class AIeasy : MonoBehaviour
                 for (int i = 0; i < 5; i++)
                 {
                     GameObject go = Instantiate(towers[i].prefab, BuildPos[i], Quaternion.Euler(0, 0, 0));
+                    Debug.Log("ffds");
                 }
                 changeState(AIState.idle);
                 break;
@@ -131,7 +132,7 @@ public class AIeasy : MonoBehaviour
     Vector3 choosingPos() { return BuildPos[Random.Range(0, 5)];}
 
     TowerScript choosingBuild() { return towers[Random.Range(0, 5)]; }
-    void seePlayer() { //see player build on idel state 
+    void seePlayer() { //see player build on idle state 
     }
     
 
