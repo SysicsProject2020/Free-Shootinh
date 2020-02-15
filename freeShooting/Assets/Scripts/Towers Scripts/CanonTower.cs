@@ -8,6 +8,7 @@ public class CanonTower : MonoBehaviour
     public float period = 2.0f;
     private Vector3  target= new Vector3(-3,3,33);
     public GameObject CanonFireBall;
+    public Transform firePoint;
     Rigidbody rb;
     //private GameObject head;
     // Start is called before the first frame update
@@ -28,7 +29,7 @@ public class CanonTower : MonoBehaviour
         {
             rotation();
     
-                GameObject go = Instantiate(CanonFireBall,new Vector3(transform.position.x, transform.position.y+2, transform.position.z+3),transform.rotation);
+                GameObject go = Instantiate(CanonFireBall, firePoint.position, transform.rotation);
             //go.transform.LookAt(target);
             rb = go.GetComponent<Rigidbody>();
             rb.velocity = go.transform.forward * 50;

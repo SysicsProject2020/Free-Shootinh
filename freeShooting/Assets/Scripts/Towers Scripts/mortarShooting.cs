@@ -22,6 +22,7 @@ public class mortarShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
 
         /* if (target.activeSelf)
          {
@@ -29,9 +30,9 @@ public class mortarShooting : MonoBehaviour
          }*/
         if (Time.time > nextTimeFire)
         {
-            Vector3 vo = Calculatevelocity(target_.transform.position,firePoint.position, 3f);
+            Vector3 vo = Calculatevelocity(target_.transform.position, firePoint.position, 3f);
             shoot(vo);
-            nextTimeFire = Time.time + 5;
+            nextTimeFire = Time.time + 10;
         }
 
     }
@@ -64,7 +65,7 @@ public class mortarShooting : MonoBehaviour
         float Vy = Sy / time + 0.5f * Mathf.Abs(Physics.gravity.y) * time;
 
         Vector3 result = distanceXZ.normalized;
-        result *= Vxz;
+        result *= Vxz*2;
         result.y = Vy;
 
         return result;
