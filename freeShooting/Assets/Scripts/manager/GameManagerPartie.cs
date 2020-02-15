@@ -15,6 +15,7 @@ public class GameManagerPartie : MonoBehaviour
     private Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
     private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
     private TowerScript[] towersSelected = new TowerScript[6];
+    private TowerScript[] EnemySelectedTowers = new TowerScript[6];
 
     public static GameObject enemy_;
     void Start()
@@ -42,5 +43,9 @@ public class GameManagerPartie : MonoBehaviour
         {
             itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
         }
+    }
+    private void setEnemySelectedTowers()
+    {
+        EnemySelectedTowers = AIeasy.selectedcards;
     }
 }

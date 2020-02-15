@@ -9,6 +9,8 @@ TagManager:
   - TowersCanvas
   - stadium
   - bullet
+  - wall
+  - EnemyTowersZones
   layers:
   - Default
   - TransparentFX
