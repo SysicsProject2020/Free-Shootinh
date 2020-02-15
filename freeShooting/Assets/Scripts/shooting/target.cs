@@ -51,7 +51,7 @@ public class target : MonoBehaviour
         healthBar.fillAmount = (float)health / (float)maxHealth;
         if (gameObject.GetComponent<AIeasy>() != null)
         {
-            AIeasy.changeState(AIeasy.AIState.move);
+            AIeasy.changeState(AIeasy.AIState.hide);
         }
     }
     public void gainhealth(short gain)
