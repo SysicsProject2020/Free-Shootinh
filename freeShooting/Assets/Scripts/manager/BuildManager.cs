@@ -16,7 +16,7 @@ public class BuildManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        towers = this.GetComponent<GameManager>().GetSelectedTowers();
+        towers = GetComponent<GameManager>().GetSelectedTowers();
     }
 
     // Update is called once per frame
@@ -44,25 +44,11 @@ public class BuildManager : MonoBehaviour
             if (hit.collider.tag == "TowerDefendZone")
             {
                 Vector3 towerpos = new Vector3(hit.collider.transform.position.x, transform.position.y, hit.collider.transform.position.z);
-                //Debug.Log(hit.collider.transform.position.x + "," + transform.position.y + "," + hit.collider.transform);
-                GameObject go = Instantiate(towers[nb].prefab, towerpos, Quaternion.Euler(0,0,0));
-                changeLayerMask(go, "Player");
+                positionManager.add(towers[nb], towerpos);
+                
             }
             
                 test = false;
-        }
-    }
-
-    private void changeLayerMask(GameObject go,string layer)
-    {
-        go.layer = LayerMask.NameToLayer(layer);
-        foreach (Transform g in go.transform)
-        {
-            g.gameObject.layer = LayerMask.NameToLayer(layer);
-            foreach (Transform gobj in g.transform)
-            {
-                gobj.gameObject.layer = LayerMask.NameToLayer(layer);
-            }
         }
     }
 }

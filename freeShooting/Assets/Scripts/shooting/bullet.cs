@@ -38,16 +38,14 @@ public class bullet : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }
-            
 
+        }
         if (collision.transform.position.z > 0 == enemyRightSide)
         {
              collision.transform.GetComponent<target>().takeDamage(damage);
              //hitSound[choose].Play();            
         }
         Destroy(gameObject);
-
     }
    
 }

@@ -12,31 +12,16 @@ public class target : MonoBehaviour
     private float healthOffsetY = 3;
     private float healthOffsetZPlayer = -3.5f;
     private float healthOffsetZEnemy = 5f;
+    private float healthOffsetZPlayerTower = -3.5f;
+    private float healthOffsetZEnemyTower = 5f;
     public byte respawnTime = 3;
     private Vector3 respawnPoint;
 
 
     private void Start()
     {
-        respawnPoint = transform.position;
-        Vector3 pos;
-        Quaternion rot = Quaternion.Euler(0, 0, 0);
-        if (transform.position.z > 0)//enemy
-        {
-            pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemy);
-        }
-        else
-        {
-            pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayer);
-        }
-        GameObject obj = Instantiate(healthBarInstatiate, pos, rot, transform);
-        
-        Vector3 relativePos = Camera.main.transform.position - obj.transform.position;
-        Quaternion rotCam = Quaternion.LookRotation(relativePos, Vector3.up);
-        rotCam = Quaternion.Euler(rotCam.eulerAngles.x, 180, 0);
-        obj.transform.rotation = rotCam;
-
-        healthBar = obj.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+        healthBarInst();
+        respawnPoint = transform.position;       
         maxHealth = health;
     }
     public void takeDamage(short damage)
@@ -49,6 +34,7 @@ public class target : MonoBehaviour
 
         }
         healthBar.fillAmount = (float)health / (float)maxHealth;
+        
         if (gameObject.GetComponent<AIeasy>() != null)
         {
             AIeasy.changeState(AIeasy.AIState.hide);
@@ -77,8 +63,9 @@ public class target : MonoBehaviour
         }
         else
         {
+            positionManager.delete(transform.position);
             Destroy(gameObject);
-            //
+            
         }
         
     }
@@ -86,5 +73,44 @@ public class target : MonoBehaviour
     void respawn()
     {
         gameObject.SetActive(true);
+    }
+
+
+    void healthBarInst()
+    {
+        Vector3 pos;
+        if (transform.position.z > 0)//enemy
+        {
+            if (gameObject.GetComponent<playerMovement>() == null)
+            {
+                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemyTower);
+            }
+            else
+            {
+                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemy);
+            }
+
+        }
+        else
+        {
+            if (gameObject.GetComponent<playerMovement>() == null)
+            {
+                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayerTower);
+            }
+            else
+            {
+                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayer);
+            }
+
+        }
+
+        GameObject obj = Instantiate(healthBarInstatiate, pos, Quaternion.Euler(0, 0, 0), transform);
+        //rotate health bar
+        Vector3 relativePos = Camera.main.transform.position - obj.transform.position;
+        Quaternion rotCam = Quaternion.LookRotation(relativePos, Vector3.up);
+        rotCam = Quaternion.Euler(rotCam.eulerAngles.x, 180, 0);
+        obj.transform.rotation = rotCam;
+
+        healthBar = obj.transform.GetChild(0).GetChild(0).GetComponent<Image>();
     }
 }
