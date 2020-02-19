@@ -10,7 +10,7 @@ public class GameManagerPartie : MonoBehaviour
     public PlayerScript player;
     public PlayerScript enemy;
     public GameObject itemParent;
-    private Vector3 playerPos = new Vector3(5, 1.8f, -25);
+    public static  Vector3 playerPos = new Vector3(5, 1.8f, -25);
     private Vector3 enemypos = new Vector3(5, 1.8f, 25);
     private Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
     private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
