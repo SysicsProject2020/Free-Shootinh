@@ -30,6 +30,17 @@ public class lazerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target_ == null)
+        {
+            if (GameManagerPartie.enemy_ != null)
+            {
+                target_ = GameManagerPartie.enemy_;
+            }
+            else
+            {
+                return;
+            }
+        }
         //fire condition
         if (target_.activeSelf)
         {

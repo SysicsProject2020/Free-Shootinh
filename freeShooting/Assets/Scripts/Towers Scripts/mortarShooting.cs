@@ -21,17 +21,16 @@ public class mortarShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        /* if (target.activeSelf)
-         {
-
-         }*/
         if (Time.time > nextTimeFire)
         {
-            Vector3 vo = Calculatevelocity(target_.transform.position,firePoint.position, speed);
-            shoot(vo);
-            nextTimeFire = Time.time + fireRate;
+            if (true)//fire condition
+            {
+                Vector3 vo = Calculatevelocity(target_.transform.position, firePoint.position, speed);
+                shoot(vo);
+                nextTimeFire = Time.time + fireRate;
+            }
+            
+
         }
 
     }

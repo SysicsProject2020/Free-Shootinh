@@ -35,13 +35,14 @@ public class CanonTower : MonoBehaviour
             go.GetComponent<bullet>().changedam(damage);
             go.GetComponent<canonFireBall>().pos(transform.position,target_.transform.position);
             nextTimeFire = Time.time + fireRate;
+
         }
     }
     void rotation()
     {
         Vector3 relativePos = target_.transform.position - rotationPart.position;
         Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
-        rotObject = Quaternion.Euler(rotationPart.rotation.x, rotObject.eulerAngles.y, rotationPart.rotation.z);
+        rotObject = Quaternion.Euler(transform.rotation.x, rotObject.eulerAngles.y, transform.rotation.z);
         rotationPart.rotation = rotObject;
     }
 }

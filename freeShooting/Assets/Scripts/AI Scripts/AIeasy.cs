@@ -34,7 +34,7 @@ public class AIeasy : MonoBehaviour
     public static void changeState(AIState state)
     {
         CurrentState = state;
-        Debug.Log(state);
+        //Debug.Log(state);
     }
 
     void selectPlayer() { player = GameManagerPartie.player_; }

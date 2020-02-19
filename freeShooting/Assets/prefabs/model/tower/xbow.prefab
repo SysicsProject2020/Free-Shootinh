@@ -349,6 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5664036351656226035}
   - component: {fileID: 8995988162576208220}
+  - component: {fileID: 7561008658031701045}
   m_Layer: 0
   m_Name: xbow
   m_TagString: Untagged
@@ -390,6 +391,22 @@ MonoBehaviour:
   bow: {fileID: 8041889832026840242, guid: f6bd45c06a0fc4046be7b647e4de0587, type: 3}
   firePoint: {fileID: 5664036350544662648}
   rotationPart: {fileID: 3065020892942824447}
+--- !u!114 &7561008658031701045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5664036351656226033}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d5537e8b6741d419d6903722f81ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
+    type: 3}
+  respawnTime: 3
 --- !u!1 &9186635681296688146
 GameObject:
   m_ObjectHideFlags: 0

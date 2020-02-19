@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class canonFireBall : MonoBehaviour
 {
+    /// <summary>
+    /// script to make the canon fire ball distroy ofter exceed her distination
+    /// </summary>
     private Vector3 canonPos;
     private float distance;
 

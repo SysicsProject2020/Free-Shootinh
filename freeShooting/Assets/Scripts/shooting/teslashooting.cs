@@ -10,8 +10,7 @@ public class teslashooting : MonoBehaviour
     private float nextTimeFire = 0f;
     Transform firePoint;
     bool shoot = true;
-    LineRenderer lineRenderer1;
-    LineRenderer lineRenderer2;
+    LineRenderer lineRenderer;
 
 
     GameObject target_;
@@ -20,14 +19,25 @@ public class teslashooting : MonoBehaviour
     {
         target_ = GameManagerPartie.enemy_;
         firePoint = transform.GetChild(0);
-        lineRenderer1 = firePoint.GetChild(0).GetComponent<LineRenderer>();
-        lineRenderer2 = firePoint.GetChild(1).GetComponent<LineRenderer>();
+        lineRenderer = firePoint.GetChild(0).GetComponent<LineRenderer>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        if (target_ == null)
+        {
+            if (GameManagerPartie.enemy_ != null)
+            {
+                target_ = GameManagerPartie.enemy_;
+            }
+            else
+            {
+                return;
+            }
+
+        }
         //fire condition
         if (target_.activeSelf)
         {
@@ -39,8 +49,7 @@ public class teslashooting : MonoBehaviour
                 }
                 else
                 {
-                    lineRenderer1.enabled = false;
-                    lineRenderer2.enabled = false;
+                    lineRenderer.enabled = false;
                 }          
                 nextTimeFire = Time.time + fireRate;
                 shoot = !shoot;
@@ -48,16 +57,13 @@ public class teslashooting : MonoBehaviour
         }
         else
         {
-            lineRenderer1.enabled = false;
-            lineRenderer2.enabled = false;
-
+            lineRenderer.enabled = false;
         }
     }
 
     void tesla()
     {
-        lineRenderer1.enabled = true;
-        //lineRenderer2.enabled = true;
+        lineRenderer.enabled = true;
         /*
         Vector3 direction = (target_.transform.position - firePoint.transform.position).normalized;
         float distance = Vector3.Distance(firePoint.transform.position , target_.transform.position);
@@ -74,8 +80,8 @@ public class teslashooting : MonoBehaviour
             lineRenderer1.SetPosition(i, lines[i]);
         }
         */
-        lineRenderer1.SetPosition(0, firePoint.position);
-        lineRenderer1.SetPosition(1, target_.transform.position);
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target_.transform.position);
         
         target_.GetComponent<target>().takeDamage(damage);
     }
