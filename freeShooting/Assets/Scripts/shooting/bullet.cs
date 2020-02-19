@@ -14,9 +14,15 @@ public class bullet : MonoBehaviour
     private void Start()
     {
         if (transform.position.z < 0)
+        {
             enemyRightSide = true;
+            gameObject.layer = LayerMask.NameToLayer("Player");
+        }
         else
+        {
             enemyRightSide = false;
+            gameObject.layer = LayerMask.NameToLayer("Enemy");
+        }          
     }
 
 

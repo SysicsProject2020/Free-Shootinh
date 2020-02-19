@@ -9,7 +9,7 @@ public class BuildManager : MonoBehaviour
     RaycastHit hit;
     GameManagerPartie gm;
     private TowerScript[] towers= new TowerScript[6];
-    
+
     bool  test = false;
     private int nb;
     
@@ -46,10 +46,23 @@ public class BuildManager : MonoBehaviour
                 Vector3 towerpos = new Vector3(hit.collider.transform.position.x, transform.position.y, hit.collider.transform.position.z);
                 //Debug.Log(hit.collider.transform.position.x + "," + transform.position.y + "," + hit.collider.transform);
                 GameObject go = Instantiate(towers[nb].prefab, towerpos, Quaternion.Euler(0,0,0));
+                changeLayerMask(go, "Player");
             }
             
                 test = false;
         }
     }
-    
+
+    private void changeLayerMask(GameObject go,string layer)
+    {
+        go.layer = LayerMask.NameToLayer(layer);
+        foreach (Transform g in go.transform)
+        {
+            g.gameObject.layer = LayerMask.NameToLayer(layer);
+            foreach (Transform gobj in g.transform)
+            {
+                gobj.gameObject.layer = LayerMask.NameToLayer(layer);
+            }
+        }
+    }
 }

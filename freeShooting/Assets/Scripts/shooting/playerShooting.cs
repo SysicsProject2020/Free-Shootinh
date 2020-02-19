@@ -20,13 +20,13 @@ public class playerShooting : MonoBehaviour
 
     //private bool enemyRightSide;
 
-    /*private void Start()
+    private void Start()
     {
         if (transform.position.z < 0)
-            enemyRightSide = true;
+            changeLayerMask(gameObject, "Enemy");
         else
-            enemyRightSide = false;
-    }*/
+            changeLayerMask(gameObject, "Player");
+    }
 
     // Update is called once per frame
     void Update()
@@ -43,6 +43,19 @@ public class playerShooting : MonoBehaviour
         GameObject clone = Instantiate(bullet_, firePoint.position, firePoint.rotation);
         clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(0, 0, speed);
         clone.GetComponent<bullet>().changedam(damage);
+    }
+
+    private void changeLayerMask(GameObject go, string layer)
+    {
+        go.layer = LayerMask.NameToLayer(layer);
+        foreach (Transform g in go.transform)
+        {
+            g.gameObject.layer = LayerMask.NameToLayer(layer);
+            foreach (Transform gobj in g.transform)
+            {
+                gobj.gameObject.layer = LayerMask.NameToLayer(layer);
+            }
+        }
     }
 
     /*void shootRayCast()
