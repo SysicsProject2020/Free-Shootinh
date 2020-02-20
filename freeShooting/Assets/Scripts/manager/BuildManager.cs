@@ -12,17 +12,17 @@ public class BuildManager : MonoBehaviour
     public Text startCoinsTxt;
     bool  test = false;
     private int nb;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        towers = this.GetComponent<GameManager>().GetSelectedTowers();
+        towers = GetComponent<GameManager>().GetSelectedTowers();
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+
         if (Input.GetMouseButtonDown(0) && test == true)
         {
             testBuilding();
@@ -32,7 +32,7 @@ public class BuildManager : MonoBehaviour
     public void click (int nb)
     {
         test = true;
-        
+
         this.nb = nb;
     }
     public void testBuilding()
@@ -52,21 +52,8 @@ public class BuildManager : MonoBehaviour
                 Debug.Log(GameManagerPartie.instance.startCoins);
                 changeLayerMask(go, "Player");
             }
-            
-                test = false;
-        }
-    }
 
-    private void changeLayerMask(GameObject go,string layer)
-    {
-        go.layer = LayerMask.NameToLayer(layer);
-        foreach (Transform g in go.transform)
-        {
-            g.gameObject.layer = LayerMask.NameToLayer(layer);
-            foreach (Transform gobj in g.transform)
-            {
-                gobj.gameObject.layer = LayerMask.NameToLayer(layer);
-            }
+                test = false;
         }
     }
 }
