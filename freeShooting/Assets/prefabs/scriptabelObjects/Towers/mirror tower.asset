@@ -18,5 +18,7 @@ MonoBehaviour:
   damage: 
   prefab: {fileID: 0}
   description: 
-  locked: 0
+  locked: 1
+  cost: 200
+  UnlockPrice: 600
   level: 1

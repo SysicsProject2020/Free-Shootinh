@@ -71,6 +71,8 @@ public class target : MonoBehaviour
         if (gameObject.GetComponent<playerMovement>() != null)
         {
             gameObject.SetActive(false);
+            GameManagerPartie.instance.startCoins += 50;
+            GameManagerPartie.instance.startCoinsTxt.text = GameManagerPartie.instance.startCoins.ToString();
             transform.position = respawnPoint;
             health = maxHealth;
             Invoke("respawn", respawnTime);
@@ -78,6 +80,7 @@ public class target : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            
             //
         }
         

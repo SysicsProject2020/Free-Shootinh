@@ -15,6 +15,7 @@ public class PlayerScript : ScriptableObject
     public MagicScript magic1;
     public MagicScript magic2;
     public bool locked = true;
+    public static short Diamond=0;
 
     public short Get_health()
     {

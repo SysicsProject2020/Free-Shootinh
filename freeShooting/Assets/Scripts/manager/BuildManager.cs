@@ -9,7 +9,7 @@ public class BuildManager : MonoBehaviour
     RaycastHit hit;
     GameManagerPartie gm;
     private TowerScript[] towers= new TowerScript[6];
-
+    public Text startCoinsTxt;
     bool  test = false;
     private int nb;
     
@@ -46,6 +46,10 @@ public class BuildManager : MonoBehaviour
                 Vector3 towerpos = new Vector3(hit.collider.transform.position.x, transform.position.y, hit.collider.transform.position.z);
                 //Debug.Log(hit.collider.transform.position.x + "," + transform.position.y + "," + hit.collider.transform);
                 GameObject go = Instantiate(towers[nb].prefab, towerpos, Quaternion.Euler(0,0,0));
+                GameManagerPartie.instance.startCoins -= towers[nb].cost;
+                startCoinsTxt.text = GameManagerPartie.instance.startCoins.ToString();
+                GameManagerPartie.instance.ChangeSprites();
+                Debug.Log(GameManagerPartie.instance.startCoins);
                 changeLayerMask(go, "Player");
             }
             

@@ -18,5 +18,7 @@ MonoBehaviour:
   damage: 32003b00410048005300
   prefab: {fileID: 8370825241609513353, guid: e90fa6dc4463f4744bffbbb7654c1bd7, type: 3}
   description: 
-  locked: 1
+  locked: 0
+  cost: 200
+  UnlockPrice: 0
   level: 1
