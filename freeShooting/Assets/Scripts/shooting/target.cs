@@ -21,7 +21,7 @@ public class target : MonoBehaviour
     private void Start()
     {
         healthBarInst();
-        respawnPoint = transform.position;
+        respawnPoint = transform.position;       
         maxHealth = health;
     }
     public void takeDamage(short damage)
@@ -34,7 +34,7 @@ public class target : MonoBehaviour
 
         }
         healthBar.fillAmount = (float)health / (float)maxHealth;
-
+        
         if (gameObject.GetComponent<AIeasy>() != null)
         {
             AIeasy.changeState(AIeasy.AIState.hide);
@@ -57,8 +57,6 @@ public class target : MonoBehaviour
         if (gameObject.GetComponent<playerMovement>() != null)
         {
             gameObject.SetActive(false);
-            GameManagerPartie.instance.startCoins += 50;
-            GameManagerPartie.instance.startCoinsTxt.text = GameManagerPartie.instance.startCoins.ToString();
             transform.position = respawnPoint;
             health = maxHealth;
             Invoke("respawn", respawnTime);
@@ -67,9 +65,9 @@ public class target : MonoBehaviour
         {
             positionManager.delete(transform.position);
             Destroy(gameObject);
-
+            
         }
-
+        
     }
 
     void respawn()

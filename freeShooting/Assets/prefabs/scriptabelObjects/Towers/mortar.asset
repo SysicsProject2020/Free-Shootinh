@@ -19,6 +19,4 @@ MonoBehaviour:
   prefab: {fileID: 6691245050111619357, guid: 398d49f86141a2c44899c0c2418f0625, type: 3}
   description: 
   locked: 0
-  cost: 200
-  UnlockPrice: 0
   level: 1
