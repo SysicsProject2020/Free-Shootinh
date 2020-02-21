@@ -67,6 +67,7 @@ public class target : MonoBehaviour
             Destroy(gameObject);
             
         }
+        //not completed still the enemy don't work 
         GameManagerPartie.instance.playerCoins += 50;
         GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
         GameManagerPartie.instance.ChangeSprites();

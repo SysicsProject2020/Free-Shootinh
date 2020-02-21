@@ -69,13 +69,13 @@ public class GameManagerPartie : MonoBehaviour
             if (towersSelected[i].cost > playerCoins)
             {
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = false;
-                //change sprite to non interacteble
+                //change sprite to non interactable
                 //itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
             }
             else
             {
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
-                //change sprite to interacteble
+                //change sprite to interactable
                 itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
             }
         }
@@ -88,13 +88,13 @@ public class GameManagerPartie : MonoBehaviour
             if (towersSelected[i].cost > playerCoins)
             {
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = false;
-                //change sprite to non interacteble
+                //change sprite to non interactable
                 //itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
             }
             else
             {
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
-                //change sprite to interacteble
+                //change sprite to interactable
                 itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
             }
             itemParent.transform.GetChild(i).GetComponentInChildren<Text>().text = towersSelected[i].cost.ToString();

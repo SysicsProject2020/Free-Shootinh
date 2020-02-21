@@ -51,10 +51,9 @@ public class BuildManager : MonoBehaviour
     public void unclick()
     {
         notAlreadyClicked = false;
-        for (int i = 0; i < 6; i++)
-        {
+       
             GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetChild(2).gameObject.SetActive(false);
-        }
+        
     }
 
     public void testBuilding()
