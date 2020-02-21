@@ -11,8 +11,8 @@ public class BuildManager : MonoBehaviour
     public Text startCoinsTxt;
     private TowerScript[] towers= new TowerScript[6];
 
-    bool  test = false;
-    private int nb;
+    bool  notAlreadyClicked = false;
+    private short nb;
     
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class BuildManager : MonoBehaviour
     void Update()
     {
       
-        if (Input.GetMouseButtonDown(0) && test == true)
+        if (Input.GetMouseButtonDown(0) && notAlreadyClicked)
         {
             testBuilding();
         }
@@ -32,10 +32,31 @@ public class BuildManager : MonoBehaviour
 
     public void click (int nb)
     {
-        test = true;
-        
-        this.nb = nb;
+        notAlreadyClicked = true;       
+        this.nb = (short)nb;
+        //change sprite to selected
+        GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetChild(2).gameObject.SetActive(true);
+        /*for (int i = 0; i < 6; i++)
+        {
+            if (i == nb)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }
+            else
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }*/
     }
+    public void unclick()
+    {
+        notAlreadyClicked = false;
+        for (int i = 0; i < 6; i++)
+        {
+            GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetChild(2).gameObject.SetActive(false);
+        }
+    }
+
     public void testBuilding()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -46,14 +67,14 @@ public class BuildManager : MonoBehaviour
             {
                 Vector3 towerpos = new Vector3(hit.collider.transform.position.x, transform.position.y, hit.collider.transform.position.z);
                 positionManager.add(towers[nb], towerpos);
-                GameManagerPartie.instance.startCoins -= towers[nb].cost;
-                startCoinsTxt.text = GameManagerPartie.instance.startCoins.ToString();
+
+                GameManagerPartie.instance.playerCoins -= towers[nb].cost;
+                startCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
                 GameManagerPartie.instance.ChangeSprites();
-                Debug.Log(GameManagerPartie.instance.startCoins);
+                Debug.Log(GameManagerPartie.instance.playerCoins);
 
             }
-            
-                test = false;
+            unclick();
         }
     }
 }

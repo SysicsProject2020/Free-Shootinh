@@ -9,8 +9,8 @@ public class GameManagerPartie : MonoBehaviour
 
 
     public static GameManagerPartie instance;
-    public short startCoins = 1000;
-    public Text startCoinsTxt;
+   
+    
 
     [Header("Player 1")]
     public TowerScript towerBase;
@@ -20,6 +20,8 @@ public class GameManagerPartie : MonoBehaviour
     private Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
     public static TowerScript[] towersSelected = new TowerScript[6];
     public static GameObject player_;
+    public short playerCoins = 1000;
+    public Text playerCoinsTxt;
 
     [Header("Player 2")]
     public TowerScript enemybase;
@@ -28,6 +30,10 @@ public class GameManagerPartie : MonoBehaviour
     private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
     public static TowerScript[] EnemySelectedTowers = new TowerScript[6];
     public static GameObject enemy_;
+    public short enemyCoins = 1000;
+    public Text enemyCoinsTxt;
+
+
     private void Awake()
     {
 
@@ -40,11 +46,13 @@ public class GameManagerPartie : MonoBehaviour
         enemybase.prefab.GetComponent<target>().health = enemybase.Get_health();
         player.prefab.GetComponent<playerShooting>().damage = player.Get_damage();
         enemy.prefab.GetComponent<playerShooting>().damage = enemy.Get_damage();
+
         ChangeSprites();
         instantiatePrefabs();
-
         chooseEnemyTowers();
-        startCoinsTxt.text = startCoins.ToString();
+
+        playerCoinsTxt.text = playerCoins.ToString();
+        enemyCoinsTxt.text = enemyCoins.ToString();
     }
     private void instantiatePrefabs()
     {
@@ -54,25 +62,48 @@ public class GameManagerPartie : MonoBehaviour
         player_ = Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
         enemy_ = Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
     }
-    public void ChangeSprites()
+    public void ChangeInteractableSprites()
     {
         for (int i = 0; i < 6; i++)
         {
-            if (towersSelected[i].cost > startCoins)
+            if (towersSelected[i].cost > playerCoins)
             {
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = false;
+                //change sprite to non interacteble
+                //itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
             }
             else
             {
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
+                //change sprite to interacteble
+                itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
             }
-            itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
+        }
+    }
+
+    public void ChangeSprites()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            if (towersSelected[i].cost > playerCoins)
+            {
+                itemParent.transform.GetChild(i).GetComponent<Button>().interactable = false;
+                //change sprite to non interacteble
+                //itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
+            }
+            else
+            {
+                itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
+                //change sprite to interacteble
+                itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
+            }
             itemParent.transform.GetChild(i).GetComponentInChildren<Text>().text = towersSelected[i].cost.ToString();
         }
     }
+
+
     void chooseEnemyTowers()
     {
         EnemySelectedTowers = towersSelected;
-
     }
 }
