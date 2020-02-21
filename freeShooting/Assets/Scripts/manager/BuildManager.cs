@@ -56,4 +56,16 @@ public class BuildManager : MonoBehaviour
                 test = false;
         }
     }
+    private void changeLayerMask(GameObject go, string layer)
+    {
+        go.layer = LayerMask.NameToLayer(layer);
+        foreach (Transform g in go.transform)
+        {
+            g.gameObject.layer = LayerMask.NameToLayer(layer);
+            foreach (Transform gobj in g.transform)
+            {
+                gobj.gameObject.layer = LayerMask.NameToLayer(layer);
+            }
+        }
+    }
 }
