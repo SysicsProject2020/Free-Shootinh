@@ -5,20 +5,34 @@ using UnityEngine.UI;
 
 public class GameManagerPartie : MonoBehaviour
 {
-    public TowerScript towerBase;
-    public TowerScript enemybase;
-    public PlayerScript player;
-    public PlayerScript enemy;
-    public GameObject itemParent;
-    public static  Vector3 playerPos = new Vector3(5, 1.8f, -25);
-    private Vector3 enemypos = new Vector3(5, 1.8f, 25);
-    private Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
-    private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
-    public static TowerScript[] towersSelected = new TowerScript[6];
-    public static TowerScript[] EnemySelectedTowers = new TowerScript[6];
 
-    public static GameObject enemy_;
+
+
+    public static GameManagerPartie instance;
+    public short startCoins = 1000;
+    public Text startCoinsTxt;
+
+    [Header("Player 1")]
+    public TowerScript towerBase;
+    public PlayerScript player;
+    public GameObject itemParent;
+    public static Vector3 playerPos = new Vector3(5, 1.8f, -25);
+    private Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
+    public static TowerScript[] towersSelected = new TowerScript[6];
     public static GameObject player_;
+
+    [Header("Player 2")]
+    public TowerScript enemybase;
+    public PlayerScript enemy;
+    private Vector3 enemypos = new Vector3(5, 1.8f, 25);
+    private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
+    public static TowerScript[] EnemySelectedTowers = new TowerScript[6];
+    public static GameObject enemy_;
+    private void Awake()
+    {
+
+        instance = this;
+    }
     void Start()
     {
         towersSelected = GameManager.instance.GetSelectedTowers();
@@ -30,6 +44,7 @@ public class GameManagerPartie : MonoBehaviour
         instantiatePrefabs();
 
         chooseEnemyTowers();
+        startCoinsTxt.text = startCoins.ToString();
     }
     private void instantiatePrefabs()
     {
@@ -39,11 +54,20 @@ public class GameManagerPartie : MonoBehaviour
         player_ = Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
         enemy_ = Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
     }
-    private void ChangeSprites()
+    public void ChangeSprites()
     {
         for (int i = 0; i < 6; i++)
         {
+            if (towersSelected[i].cost > startCoins)
+            {
+                itemParent.transform.GetChild(i).GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
+            }
             itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
+            itemParent.transform.GetChild(i).GetComponentInChildren<Text>().text = towersSelected[i].cost.ToString();
         }
     }
     void chooseEnemyTowers()

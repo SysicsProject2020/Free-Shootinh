@@ -20,3 +20,5 @@ MonoBehaviour:
   description: 
   locked: 0
   level: 1
+  cost: 175
+  UnlockPrice: 0

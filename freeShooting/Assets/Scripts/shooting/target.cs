@@ -67,7 +67,9 @@ public class target : MonoBehaviour
             Destroy(gameObject);
             
         }
-        
+        GameManagerPartie.instance.startCoins += 50;
+        GameManagerPartie.instance.startCoinsTxt.text = GameManagerPartie.instance.startCoins.ToString();
+        GameManagerPartie.instance.ChangeSprites();
     }
 
     void respawn()

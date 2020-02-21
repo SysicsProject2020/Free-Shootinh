@@ -8,6 +8,7 @@ public class BuildManager : MonoBehaviour
 {
     RaycastHit hit;
     GameManagerPartie gm;
+    public Text startCoinsTxt;
     private TowerScript[] towers= new TowerScript[6];
 
     bool  test = false;
@@ -45,7 +46,11 @@ public class BuildManager : MonoBehaviour
             {
                 Vector3 towerpos = new Vector3(hit.collider.transform.position.x, transform.position.y, hit.collider.transform.position.z);
                 positionManager.add(towers[nb], towerpos);
-                
+                GameManagerPartie.instance.startCoins -= towers[nb].cost;
+                startCoinsTxt.text = GameManagerPartie.instance.startCoins.ToString();
+                GameManagerPartie.instance.ChangeSprites();
+                Debug.Log(GameManagerPartie.instance.startCoins);
+
             }
             
                 test = false;

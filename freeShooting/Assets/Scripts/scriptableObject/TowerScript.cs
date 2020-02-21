@@ -15,8 +15,10 @@ public class TowerScript: ScriptableObject
     
     [Range(1, 5)]
     public byte level;
-    
-   
+    public short cost;
+    public short UnlockPrice;
+
+
     public short Get_health()
     {
         return health[level-1];
