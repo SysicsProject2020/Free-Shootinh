@@ -80,8 +80,12 @@ public class GameManager : MonoBehaviour
             Towers[i].locked = data.lockTowersData[i];
             Towers[i].level = data.towersLevel[i];
         }
-        diamond = data.diamonds;
-        LevelSystem.instance.XP = data.XP;
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "menu")
+        {
+            diamond = data.diamonds;
+            LevelSystem.instance.XP = data.XP;
+        }
         
     }
     public PlayerScript getPlayer()
