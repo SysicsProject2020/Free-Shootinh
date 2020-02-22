@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 787279480267521924}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0000048661896, y: 0.015281485, z: -0.0024351333}
-  m_LocalScale: {x: 1, y: 1.0986328, z: 1.2993199}
+  m_LocalScale: {x: 180, y: 200, z: 240}
   m_Children: []
   m_Father: {fileID: 8019682711917144957}
   m_RootOrder: 1
@@ -119,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 1369442840581721642}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: -0.002650006}
-  m_LocalScale: {x: 1, y: 0.11337263, z: 1}
+  m_LocalScale: {x: 180, y: 0, z: 182}
   m_Children: []
   m_Father: {fileID: 8019682711917144957}
   m_RootOrder: 0
@@ -179,8 +179,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8019682711917144957}
-  - component: {fileID: 4009487292913529582}
   - component: {fileID: 7964685751370087280}
+  - component: {fileID: -4042816090275829320}
   m_Layer: 0
   m_Name: healing tower
   m_TagString: Untagged
@@ -197,29 +197,13 @@ Transform:
   m_GameObject: {fileID: 6417905684133665134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -5, z: 0}
-  m_LocalScale: {x: 180, y: 180, z: 180}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7260255671890913225}
   - {fileID: 2018678505696416481}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4009487292913529582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6417905684133665134}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d5537e8b6741d419d6903722f81ea1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
-    type: 3}
-  respawnTime: 3
 --- !u!65 &7964685751370087280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -233,3 +217,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020665683, y: 0.026376296, z: 0.023897812}
   m_Center: {x: -0.000030875206, y: 0.011827588, z: -0.0024948597}
+--- !u!114 &-4042816090275829320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6417905684133665134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d5537e8b6741d419d6903722f81ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
+    type: 3}
+  respawnTime: 3

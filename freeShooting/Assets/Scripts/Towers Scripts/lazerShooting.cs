@@ -25,13 +25,11 @@ public class lazerShooting : MonoBehaviour
         lineRenderer = firePoint.GetComponent<LineRenderer>();
     }
 
-
-
     public lazerState CurrentState = lazerState.idle;
 
     public enum lazerState
     {
-        idle, shoot, finishShoot
+        idle, shoot
             //, die
     }
     /*public static void changeState(lazerState state)
@@ -68,15 +66,10 @@ public class lazerShooting : MonoBehaviour
                 }
                 else
                 {
-                    CurrentState = lazerState.finishShoot;
+                    damage = damageInit;
+                    lineRenderer.enabled = false;
+                    CurrentState = lazerState.idle;
                 } 
-                break;
-
-            case lazerState.finishShoot:
-
-                damage = damageInit;
-                lineRenderer.enabled = false;
-                CurrentState = lazerState.idle;
                 break;
         }
       

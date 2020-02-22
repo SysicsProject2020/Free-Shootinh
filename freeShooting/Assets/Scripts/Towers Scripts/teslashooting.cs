@@ -9,7 +9,7 @@ public class teslashooting : MonoBehaviour
     public float fireRate = 1;
     private float nextTimeFire = 0f;
     Transform firePoint;
-    bool shoot = true;
+    bool shooting = true;
     LineRenderer lineRenderer;
 
 
@@ -22,45 +22,62 @@ public class teslashooting : MonoBehaviour
         lineRenderer = firePoint.GetChild(0).GetComponent<LineRenderer>();
     }
 
+    public teslaState CurrentState = teslaState.idle;
+
+    public enum teslaState
+    {
+        idle, shoot
+        //, die
+    }
+    /*public static void changeState(lazerState state)
+    {
+        CurrentState = state;
+        //Debug.Log(state);
+    }*/
+
+
+    public void shoot(GameObject targetGameObject)
+    {
+        CurrentState = teslaState.shoot;
+        target_ = targetGameObject;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (target_ == null)
+        switch (CurrentState)
         {
-            if (GameManagerPartie.enemy_ != null)
-            {
-                target_ = GameManagerPartie.enemy_;
-            }
-            else
-            {
-                return;
-            }
+            case teslaState.idle:
+                break;
 
-        }
-        //fire condition
-        if (target_.activeSelf)
-        {
-            if (Time.time > nextTimeFire)
-            {
-                if (shoot)
+            case teslaState.shoot:
+
+                if (target_ != null)
                 {
-                    tesla();
+                    if (Time.time > nextTimeFire)
+                    {
+                        if (shooting)
+                        {
+                            tesla();
+                        }
+                        else
+                        {
+                            lineRenderer.enabled = false;
+                        }
+                        nextTimeFire = Time.time + fireRate;
+                        shooting = !shooting;
+                    }
                 }
                 else
                 {
                     lineRenderer.enabled = false;
-                }          
-                nextTimeFire = Time.time + fireRate;
-                shoot = !shoot;
-            }
+                    CurrentState = teslaState.idle;
+                }
+                break;
         }
-        else
-        {
-            lineRenderer.enabled = false;
-        }
-    }
 
+    }
+    
     void tesla()
     {
         lineRenderer.enabled = true;
