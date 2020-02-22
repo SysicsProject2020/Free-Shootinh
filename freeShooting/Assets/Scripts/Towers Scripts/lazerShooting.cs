@@ -16,7 +16,7 @@ public class lazerShooting : MonoBehaviour
 
     LineRenderer lineRenderer;
 
-    public GameObject target_;
+    private GameObject target_;
 
     private void Start()
     {
@@ -25,50 +25,50 @@ public class lazerShooting : MonoBehaviour
         lineRenderer = firePoint.GetComponent<LineRenderer>();
     }
 
-    public lazerState CurrentState = lazerState.idle;
+    private lazerState CurrentState = lazerState.idle;
 
     public enum lazerState
     {
-        idle, shoot
+        idle, shoot , finishShooting
             //, die
     }
-    /*public static void changeState(lazerState state)
-    {
-        CurrentState = state;
-        //Debug.Log(state);
-    }*/
-
 
     public void shoot(GameObject targetGameObject)
     {
         CurrentState = lazerState.shoot;
         target_ = targetGameObject;
     }
+    public void stopShoot()
+    {
 
+        CurrentState = lazerState.finishShooting;
+
+    }
     // Update is called once per frame
     void Update()
     {
         switch (CurrentState)
         {
             case lazerState.idle:
+                damage = damageInit;
+                lineRenderer.enabled = false;
+                target_ = null;
+                break;
+
+            case lazerState.finishShooting:
+                damage = damageInit;
+                lineRenderer.enabled = false;
+                target_ = null;
+                CurrentState = lazerState.idle;
                 break;
 
             case lazerState.shoot:
 
-                if (target_ != null)
+                if (Time.time > nextTimeFire)
                 {
-                    if (Time.time > nextTimeFire)
-                    {
-                        lazer();
-                        nextTimeFire = Time.time + fireRate;
-                        damage *= damageMultiplier;
-                    }
-                }
-                else
-                {
-                    damage = damageInit;
-                    lineRenderer.enabled = false;
-                    CurrentState = lazerState.idle;
+                    lazer();
+                    nextTimeFire = Time.time + fireRate;
+                    damage *= damageMultiplier;
                 } 
                 break;
         }

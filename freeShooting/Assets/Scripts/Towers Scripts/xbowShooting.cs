@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class xbowShooting : MonoBehaviour
 {
-    //public float destroy= 2f;
-    //public float range = 35f;
     public short damage = 10;
-
     public float fireRate = 0.5f;
     private float nextTimeFire = 0f;
     
@@ -18,22 +15,45 @@ public class xbowShooting : MonoBehaviour
     public Transform rotationPart;
     GameObject target_;
 
-    private void Start()
+    private xbowState CurrentState = xbowState.idle;
+
+    public enum xbowState
     {
-        target_ = GameManagerPartie.enemy_;
+        idle, shoot
+        //, die
+    }
+
+    public void shoot(GameObject targetGameObject)
+    {
+        CurrentState = xbowState.shoot;
+        target_ = targetGameObject;
+    }
+    public void stopShoot()
+    {
+        CurrentState = xbowState.idle;
+        target_ = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (target_.activeSelf)
+        switch (CurrentState)
         {
-            if (Time.time > nextTimeFire)
-            {
-                shoot();
-                nextTimeFire = Time.time + fireRate;
-            }
+            case xbowState.idle:
+                break;
+
+            case xbowState.shoot:
+                if (target_.activeSelf)
+                {
+                    if (Time.time > nextTimeFire)
+                    {
+                        shoot();
+                        nextTimeFire = Time.time + fireRate;
+                    }
+                }
+                break;
         }
+        
     }
 
     private void shoot()

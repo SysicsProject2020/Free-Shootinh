@@ -11,32 +11,59 @@ public class CanonTower : MonoBehaviour
     public GameObject CanonFireBall;
     Transform firePoint;
     Transform rotationPart;
-    public byte speed = 30;
+    public byte speed = 19;
     //private GameObject head;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        target_ = GameManagerPartie.enemy_;
         nextTimeFire = Time.time;
         firePoint = transform.GetChild(0).GetChild(0);
         rotationPart = transform.GetChild(0);
     }
+    private canonState CurrentState = canonState.idle;
 
+    public enum canonState
+    {
+        idle, shoot
+        //, die
+    }
+
+    public void shoot(GameObject targetGameObject)
+    {
+        CurrentState = canonState.shoot;
+        target_ = targetGameObject;
+    }
+    public void stopShoot()
+    {
+        CurrentState = canonState.idle;
+        target_ = null;
+    }
     // Update is called once per frame
     void Update()
     {
-
-        if (Time.time > nextTimeFire)
+        switch (CurrentState)
         {
-            rotation();
+            case canonState.idle:
+                break;
 
-            GameObject go = Instantiate(CanonFireBall,firePoint.position,firePoint.rotation);
-            go.GetComponent<Rigidbody>().velocity = go.transform.forward * speed;
-            go.GetComponent<bullet>().changedam(damage);
-            go.GetComponent<canonFireBall>().pos(transform.position,target_.transform.position);
-            nextTimeFire = Time.time + fireRate;
+            case canonState.shoot:
+                if (Time.time > nextTimeFire)
+                {
+                    rotation();
 
+                    GameObject go = Instantiate(CanonFireBall, firePoint.position, firePoint.rotation);
+                    go.GetComponent<Rigidbody>().velocity = go.transform.forward * speed;
+                    go.GetComponent<bullet>().changedam(damage);
+                    go.GetComponent<canonFireBall>().pos(transform.position, target_.transform.position);
+                    nextTimeFire = Time.time + fireRate;
+
+                }
+                break;
         }
+
+        
     }
     void rotation()
     {

@@ -17,7 +17,6 @@ public class teslashooting : MonoBehaviour
 
     private void Start()
     {
-        target_ = GameManagerPartie.enemy_;
         firePoint = transform.GetChild(0);
         lineRenderer = firePoint.GetChild(0).GetComponent<LineRenderer>();
     }
@@ -26,20 +25,18 @@ public class teslashooting : MonoBehaviour
 
     public enum teslaState
     {
-        idle, shoot
+        idle, shoot, finishShooting
         //, die
     }
-    /*public static void changeState(lazerState state)
-    {
-        CurrentState = state;
-        //Debug.Log(state);
-    }*/
-
-
+ 
     public void shoot(GameObject targetGameObject)
     {
         CurrentState = teslaState.shoot;
         target_ = targetGameObject;
+    }
+    public void StopShoot()
+    {
+        CurrentState = teslaState.finishShooting;
     }
 
     // Update is called once per frame
@@ -50,28 +47,28 @@ public class teslashooting : MonoBehaviour
             case teslaState.idle:
                 break;
 
+            case teslaState.finishShooting:
+                lineRenderer.enabled = false;
+                target_ = null;
+                CurrentState = teslaState.idle;
+                break;
+
             case teslaState.shoot:
 
-                if (target_ != null)
+                if (Time.time > nextTimeFire)
                 {
-                    if (Time.time > nextTimeFire)
+                    /*****************************************************/
+                    //need rethink
+                    if (shooting)
                     {
-                        if (shooting)
-                        {
-                            tesla();
-                        }
-                        else
-                        {
-                            lineRenderer.enabled = false;
-                        }
-                        nextTimeFire = Time.time + fireRate;
-                        shooting = !shooting;
+                        tesla();
                     }
-                }
-                else
-                {
-                    lineRenderer.enabled = false;
-                    CurrentState = teslaState.idle;
+                    else
+                    {
+                        lineRenderer.enabled = false;
+                    }
+                    nextTimeFire = Time.time + fireRate;
+                    shooting = !shooting;
                 }
                 break;
         }
@@ -81,25 +78,8 @@ public class teslashooting : MonoBehaviour
     void tesla()
     {
         lineRenderer.enabled = true;
-        /*
-        Vector3 direction = (target_.transform.position - firePoint.transform.position).normalized;
-        float distance = Vector3.Distance(firePoint.transform.position , target_.transform.position);
-
-        Vector3[] lines = new Vector3[5];
-        lines[0] = firePoint.position;
-        lines[4] = target_.transform.position;
-        Debug.Log(direction);
-        Debug.Log(distance);
-        Debug.Log(lines[1]);
-        Debug.DrawLine(lines[0], lines[1], Color.red, Mathf.Infinity);
-        for (int i = 0; i < 5; i++)
-        {
-            lineRenderer1.SetPosition(i, lines[i]);
-        }
-        */
         lineRenderer.SetPosition(0, firePoint.position);
-        lineRenderer.SetPosition(1, target_.transform.position);
-        
+        lineRenderer.SetPosition(1, target_.transform.position);       
         target_.GetComponent<target>().takeDamage(damage);
     }
 }

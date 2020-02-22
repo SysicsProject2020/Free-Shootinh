@@ -31,7 +31,7 @@ public class target : MonoBehaviour
         if (health <= 0)
         {
             die();
-
+            return;
         }
         healthBar.fillAmount = (float)health / (float)maxHealth;
         

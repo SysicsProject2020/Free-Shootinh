@@ -5,33 +5,50 @@ using UnityEngine;
 public class mortarShooting : MonoBehaviour
 {
     public GameObject fireBall;
-    private GameObject target_ = GameManagerPartie.enemy_;
+    private GameObject target_;
     public float speed;
     public short damage = 200;
     public float fireRate = 4f;
     private float nextTimeFire = 0f;
     public Transform firePoint;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    private mortorState CurrentState = mortorState.idle;
 
+    public enum mortorState
+    {
+        idle, shoot
+        //, die
+    }
+
+    public void shoot(GameObject targetGameObject)
+    {
+        CurrentState = mortorState.shoot;
+        target_ = targetGameObject;
+    }
+    public void stopShoot()
+    {
+        CurrentState = mortorState.idle;
+        target_ = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextTimeFire)
+        switch (CurrentState)
         {
-            if (true)//fire condition
-            {
-                Vector3 vo = Calculatevelocity(target_.transform.position, firePoint.position, speed);
-                shoot(vo);
-                nextTimeFire = Time.time + fireRate;
-            }
-            
+            case mortorState.idle:
+                break;
 
+            case mortorState.shoot:
+                if (Time.time > nextTimeFire)
+                {
+                    Vector3 vo = Calculatevelocity(target_.transform.position, firePoint.position, speed);
+                    shoot(vo);
+                    nextTimeFire = Time.time + fireRate;
+                }
+                break;
         }
+        
 
     }
 
