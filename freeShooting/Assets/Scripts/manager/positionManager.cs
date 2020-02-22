@@ -163,6 +163,7 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[0, 0] != null)
                     {
                         buildingGameObject[0, 0] = null;
+                        buildingTowerScript[0, 0] = null;
                         towerZone[0].GetComponent<BoxCollider>().enabled = true;
                         return true;
                     }
@@ -172,6 +173,7 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[0, 1] != null)
                     {
                         buildingGameObject[0, 1] = null;
+                        buildingTowerScript[0, 1] = null;
                         towerZone[1].GetComponent<BoxCollider>().enabled = true;
                         return true;
                     }
@@ -181,6 +183,7 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[0, 2] != null)
                     {
                         buildingGameObject[0, 2] = null;
+                        buildingTowerScript[0, 2] = null;
                         towerZone[2].GetComponent<BoxCollider>().enabled = true;
                         return true;
                     }
@@ -190,6 +193,7 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[0, 3] != null)
                     {
                         buildingGameObject[0, 3] = null;
+                        buildingTowerScript[0, 3] = null;
                         towerZone[3].GetComponent<BoxCollider>().enabled = true;
                         return true;
                     }
@@ -199,6 +203,7 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[0, 4] != null)
                     {
                         buildingGameObject[0, 4] = null;
+                        buildingTowerScript[0, 4] = null;
                         towerZone[4].GetComponent<BoxCollider>().enabled = true;
                         return true;
                     }
@@ -216,6 +221,7 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[1, 0] != null)
                     {
                         buildingGameObject[1, 0] = null;
+                        buildingTowerScript[1, 0] = null;
                         return true;
                     }
                     else return false;
@@ -224,6 +230,7 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[1, 1] != null)
                     {
                         buildingGameObject[1, 1] = null;
+                        buildingTowerScript[1, 1] = null;
                         return true;
                     }
                     else return false;
@@ -232,6 +239,7 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[1, 2] != null)
                     {
                         buildingGameObject[1, 2] = null;
+                        buildingTowerScript[1, 2] = null;
                         return true;
                     }
                     else return false;
@@ -240,6 +248,7 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[1, 3] != null)
                     {
                         buildingGameObject[1, 3] = null;
+                        buildingTowerScript[1, 3] = null;
                         return true;
                     }
                     else return false;
@@ -248,6 +257,7 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[1, 4] != null)
                     {
                         buildingGameObject[1, 4] = null;
+                        buildingTowerScript[1, 4] = null;
                         return true;
                     }
                     else return false;
@@ -280,12 +290,18 @@ public class positionManager : MonoBehaviour
                 switch (buildingTowerScript[0, j].name)
                 {                 
                     case "lazer tower":
-                        
+                        //Debug.Log("lazer");
                         if (buildingGameObject[1, j] != null)
                         {
-                            //Debug.Log("there is something");
                             buildingGameObject[0, j].GetComponent<lazerShooting>().shoot(buildingGameObject[1, j]);
-                            //buildingTowerScript[0, j].prefab.GetComponent<lazerShooting>().shoot(buildingGameObject[1, j]);
+                        }
+
+                        break;
+                    case "tesla":
+                        Debug.Log("tesla");
+                        if (buildingGameObject[1, j] != null)
+                        {
+                            buildingGameObject[0, j].GetComponent<teslashooting>().shoot(buildingGameObject[1, j]);
                         }
 
                         break;
