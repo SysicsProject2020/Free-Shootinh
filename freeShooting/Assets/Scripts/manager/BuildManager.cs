@@ -70,7 +70,7 @@ public class BuildManager : MonoBehaviour
                 GameManagerPartie.instance.playerCoins -= towers[nb].cost;
                 startCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
                 GameManagerPartie.instance.ChangeSprites();
-                Debug.Log(GameManagerPartie.instance.playerCoins);
+                //Debug.Log(GameManagerPartie.instance.playerCoins);
 
             }
             unclick();
