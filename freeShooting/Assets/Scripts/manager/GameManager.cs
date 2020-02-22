@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public byte diamond;
+    
+       
     public static GameManager instance;
     public PlayerScript[] players;
     public GameObject inventory;
@@ -33,6 +36,8 @@ public class GameManager : MonoBehaviour
         {
             setPlayer(players[0]);
             remplirSelectedTower();
+            diamond = 0;
+            LevelSystem.instance.XP = 0;
             SaveSystem.SavePlayer();
         }
         
@@ -75,6 +80,8 @@ public class GameManager : MonoBehaviour
             Towers[i].locked = data.lockTowersData[i];
             Towers[i].level = data.towersLevel[i];
         }
+        diamond = data.diamonds;
+        LevelSystem.instance.XP = data.XP;
         
     }
     public PlayerScript getPlayer()

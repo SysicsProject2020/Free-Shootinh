@@ -12,9 +12,10 @@ public class MenuManager : MonoBehaviour
     Vector2 startingPos;
     float speed = 10f; //how fast it shakes
     float amount = 10f;
-    private int k = 0;
-  
-
+    private int playerClicked = 0;
+    public Text DiamondTxt;
+    public GameObject XPBar;
+    public GameObject AreYouSureTowersPanel;
     public Button backMainFromInventoryBtn;
     public GameObject mainPanel;
     public GameObject optionPanel;
@@ -36,12 +37,16 @@ public class MenuManager : MonoBehaviour
     private TowerScript[] towersNotSelected;
     private TMPro.TextMeshProUGUI txtTowerDetails;
     private TMPro.TextMeshProUGUI txtPlayerDetails;
+    private TMPro.TextMeshProUGUI UnlockDetails;
 
 
     public GameObject upgradePlayersBtn;
     public GameObject UnlockPlayerBtn;
     public GameObject UsePlayerButton;
 
+
+    public GameObject NotEnoughDiamonds;
+    public GameObject Congrats;
 
 
     public GameObject UnlockTowerBtn;
@@ -60,8 +65,10 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DiamondTxt.text = GameManager.instance.diamond + "Diamonds";
         txtTowerDetails = towerdetailsPanel.transform.Find("description").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
         txtPlayerDetails = PlayerdetailsPanel.transform.Find("description").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+        UnlockDetails = AreYouSureTowersPanel.transform.Find("description").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
         startingPos.x = inventory.transform.position.x;
         startingPos.y = inventory.transform.position.y;
         playerMenuInstantiate();
@@ -226,42 +233,42 @@ public class MenuManager : MonoBehaviour
     public void OnPlayerClick(int i)
     {
 
-        k = i;
+        playerClicked = i;
         PlayerdetailsPanel.SetActive(true);
         backMainFromcharacterBtn.interactable = false;
         for(int j=0;j<GameManager.instance.players.Length;j++)
         {
-            if (GameManager.instance.players[k] == GameManager.instance.getPlayer())
+            if (GameManager.instance.players[playerClicked] == GameManager.instance.getPlayer())
             {
                 UsePlayerButton.SetActive(true);
                 UsePlayerButton.GetComponent<Button>().interactable = false;
                 UnlockPlayerBtn.SetActive(false);
-                if (GameManager.instance.players[k].level < 5)
+                if (GameManager.instance.players[playerClicked].level < 5)
                 {
                     upgradePlayersBtn.GetComponent<Button>().interactable = true;
                 }
                 else { upgradePlayersBtn.GetComponent<Button>().interactable = false; }
 
             }
-            else if (GameManager.instance.players[k].locked == true)
+            else if (GameManager.instance.players[playerClicked].locked == true)
             {
                 UsePlayerButton.SetActive(false);
                 UnlockPlayerBtn.SetActive(true);
                 upgradePlayersBtn.GetComponent<Button>().interactable = false;
             }
-            else if(GameManager.instance.players[k].locked==false)
+            else if(GameManager.instance.players[playerClicked].locked==false)
             {
                 UsePlayerButton.GetComponent<Button>().interactable = true;
                 UsePlayerButton.SetActive(true);
                 UnlockPlayerBtn.SetActive(false);
-                if (GameManager.instance.players[k].level < 5)
+                if (GameManager.instance.players[playerClicked].level < 5)
                 {
                     upgradePlayersBtn.GetComponent<Button>().interactable = true;
                 }else { upgradePlayersBtn.GetComponent<Button>().interactable = false; }
             }
             
         }
-        txtPlayerDetails.text = "Character Name : " + GameManager.instance.players[k].name + " Magic1 description" + GameManager.instance.players[k].magic1.description + "level = " + GameManager.instance.players[k].level ;
+        txtPlayerDetails.text = "Character Name : " + GameManager.instance.players[playerClicked].name + " Magic1 description" + GameManager.instance.players[playerClicked].magic1.description + "level = " + GameManager.instance.players[playerClicked].level ;
 
       /*  if (GameManager.instance.players[k].name == GameManager.instance.data.SelectedPlayer)
         {
@@ -280,7 +287,7 @@ public class MenuManager : MonoBehaviour
         
     }
     public void UseButton() {
-        GameManager.instance.setPlayer(GameManager.instance.players[k]);
+        GameManager.instance.setPlayer(GameManager.instance.players[playerClicked]);
         PlayerdetailsPanel.SetActive(false);
         backMainFromcharacterBtn.interactable = true;
         //Debug.Log(GameManager.instance.getPlayer().name);
@@ -289,7 +296,7 @@ public class MenuManager : MonoBehaviour
     }
     public void UnlockPlayerButton()
     {
-        GameManager.instance.players[k].locked = false;
+        GameManager.instance.players[playerClicked].locked = false;
         PlayerdetailsPanel.SetActive(false);
         backMainFromcharacterBtn.interactable = true;
     }
@@ -299,7 +306,7 @@ public class MenuManager : MonoBehaviour
         backMainFromInventoryBtn.GetComponent<Button>().interactable = true;
     }
     public void UpgradePlayerBtn() {
-        if (GameManager.instance.players[k].level <= 5) { GameManager.instance.players[k].level++; }
+        if (GameManager.instance.players[playerClicked].level <= 5) { GameManager.instance.players[playerClicked].level++; }
         backMainFromcharacterBtn.interactable = true;
     }
     public void UpgradeTowerNotSelectedBtn() {
@@ -307,9 +314,33 @@ public class MenuManager : MonoBehaviour
         towerdetailsPanel.SetActive(false);
         backMainFromInventoryBtn.GetComponent<Button>().interactable = true;
     }
-    public void UnlockTowerNotSelectedBtn() { towersNotSelected[TowerNotSelectedClicked].locked = false;
+    public void AreYouSure()
+    {
         towerdetailsPanel.SetActive(false);
+        AreYouSureTowersPanel.SetActive(true);
+        UnlockDetails.text = "Are you sure to Unlock  " + towersNotSelected[TowerNotSelectedClicked].name + "that costs " + towersNotSelected[TowerNotSelectedClicked].UnlockPrice +"Diamonds ?";
+    }
+    public void returnFromAreYouSurePanel() {
+        AreYouSureTowersPanel.SetActive(false);
         backMainFromInventoryBtn.GetComponent<Button>().interactable = true;
+    }
+    public void UnlockTowerNotSelectedBtn() {
+        
+            AreYouSureTowersPanel.SetActive(false);
+            towersNotSelected[TowerNotSelectedClicked].locked = false;
+            towerdetailsPanel.SetActive(false);
+            backMainFromInventoryBtn.GetComponent<Button>().interactable = true;
+        if (towersNotSelected[TowerNotSelectedClicked].UnlockPrice > GameManager.instance.diamond)
+        {
+            //you don't have enough diamonds to unlock this tower panel
+            //NotEnoughDiamonds.SetActive(true);
+        }
+        else
+        {
+            //congrats you unlocked this tower and diamond minus the price of the tower
+            //GameManager.instance.diamond -= (byte)towersNotSelected[TowerNotSelectedClicked].UnlockPrice;
+           // Congrats.SetActive(true);
+        }
     }
     public void back()
     {
@@ -323,11 +354,13 @@ public class MenuManager : MonoBehaviour
     }
     public void playPvm()
     {
+        XPBar.SetActive(false);
         mainPanel.SetActive(false);
         SelectGameDiffPanel.SetActive(true);
     }
     public void option()
     {
+        XPBar.SetActive(false);
         optionPanel.SetActive(true);
         mainPanel.SetActive(false);
     }
@@ -339,22 +372,26 @@ public class MenuManager : MonoBehaviour
     }
     public void character()
     {
+        XPBar.SetActive(false);
         mainPanel.SetActive(false);
         characterPanel.SetActive(true);
     }
     public void inventorypanel()
     {
+        XPBar.SetActive(false);
         mainPanel.SetActive(false);
         inventoryPanel.SetActive(true);
        
     }
     public void backMainFromInventory()
     {
+        XPBar.SetActive(true);
         mainPanel.SetActive(true);
         inventoryPanel.SetActive(false);
     }
     public void backMainFromcharacter()
     {
+        XPBar.SetActive(true);
         mainPanel.SetActive(true);
         characterPanel.SetActive(false);
       
@@ -362,6 +399,7 @@ public class MenuManager : MonoBehaviour
     }
     public void backMainFromOption()
     {
+        XPBar.SetActive(true);
         mainPanel.SetActive(true);
         optionPanel.SetActive(false);
     }
@@ -386,14 +424,4 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("pvm");
     }
 }
-/*public void OnPlayerNotClicked()
-  {
-      if (Object != null)
-      {
-          GameObject ChildGameObject1 = Object.transform.GetChild(1).gameObject;
-          GameObject ChildGameObject2 = Object.transform.GetChild(2).gameObject;
-          ChildGameObject1.SetActive(false);
-          ChildGameObject2.SetActive(false);
 
-      }
-  }*/

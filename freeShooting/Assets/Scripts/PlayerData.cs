@@ -6,6 +6,8 @@ public class PlayerData
 {
     public string SelectedPlayer;
     public string[] SelectedTowers=new string[6];
+    public byte diamonds;
+    public int XP;
    // public string[] UnlockedPlayers = new string[GameManager.instance.players.Length];
    // public string[] Unlockedtowers =new string[GameManager.instance.Towers.Length];
     public byte[] towersLevel = new byte[GameManager.instance.Towers.Length];
@@ -16,6 +18,9 @@ public class PlayerData
 
     public PlayerData()
     {
+        diamonds = GameManager.instance.diamond;
+        XP = LevelSystem.instance.XP;
+        
         SelectedPlayer = GameManager.instance.getPlayer().name;
         for (int i = 0; i < GameManager.instance.Towers.Length;i++)
         {

@@ -1940,6 +1940,7 @@ GameObject:
   - component: {fileID: 1441807755}
   - component: {fileID: 1441807756}
   - component: {fileID: 1441807757}
+  - component: {fileID: 1441807758}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2007,6 +2008,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903b1019e5c8ac744a356e0bbc8af58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diamond: 0
+  XP: 0
   players:
   - {fileID: 11400000, guid: b526a8851452ac148b5a9349b56c37a2, type: 2}
   - {fileID: 11400000, guid: f60469ddbf516914bab01aec129bfa68, type: 2}
@@ -2040,6 +2043,20 @@ MonoBehaviour:
   - {fileID: 474510733}
   - {fileID: 2128516470}
   - {fileID: 121788202}
+--- !u!114 &1441807758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441807752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2924e0397e87ab24cbc7fbb840ce3714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XP: 0
+  currentLevel: 0
 --- !u!1001 &1462437870
 PrefabInstance:
   m_ObjectHideFlags: 0
