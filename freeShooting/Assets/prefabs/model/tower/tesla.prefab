@@ -225,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2442225279682710494}
   - component: {fileID: 6415000267150278794}
+  - component: {fileID: 1130473853969834819}
   m_Layer: 0
   m_Name: tesla
   m_TagString: Untagged
@@ -262,6 +263,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   fireRate: 1.5
+--- !u!114 &1130473853969834819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046931816874122672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d5537e8b6741d419d6903722f81ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000
+  healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
+    type: 3}
+  respawnTime: 3
 --- !u!1 &7807280696109521867
 GameObject:
   m_ObjectHideFlags: 0

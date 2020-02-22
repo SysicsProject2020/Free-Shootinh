@@ -634,8 +634,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  damageInit: 0
   fireRate: 1
+  target_: {fileID: 0}
+  CurrentState: 0
 --- !u!114 &2828857063258136950
 MonoBehaviour:
   m_ObjectHideFlags: 0

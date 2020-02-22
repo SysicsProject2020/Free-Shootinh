@@ -54,12 +54,9 @@ public class AIeasy : MonoBehaviour
 
         switch(CurrentState)
         {
-            case AIState.idle:
-                
+            case AIState.idle:               
 
                 break;
-
-
             case AIState.hide:
                 Vector3 destination = new Vector3(0, transform.position.y, transform.position.z);
                 float minDist = Mathf.Infinity;
@@ -93,7 +90,8 @@ public class AIeasy : MonoBehaviour
 
                 for (int i = 0; i < 5; i++)
                 {
-                    GameObject go = Instantiate(towers[i].prefab, BuildPos[i], Quaternion.Euler(0, 0, 0));
+                    //GameObject go = Instantiate(towers[i].prefab, BuildPos[i], Quaternion.Euler(0, 0, 0));
+                    positionManager.add(towers[i], BuildPos[i]);
                     
                 }
                 changeState(AIState.idle);
