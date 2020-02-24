@@ -566,6 +566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   fireRate: 1
+  tower: {fileID: 11400000, guid: 69ad6ab99c26762409f20b231c93d2ff, type: 2}
 --- !u!114 &2828857063258136950
 MonoBehaviour:
   m_ObjectHideFlags: 0

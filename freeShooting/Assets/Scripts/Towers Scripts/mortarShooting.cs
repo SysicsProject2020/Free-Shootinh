@@ -11,6 +11,18 @@ public class mortarShooting : MonoBehaviour
     public float fireRate = 4f;
     private float nextTimeFire = 0f;
     public Transform firePoint;
+    public TowerScript tower;
+
+    private void Awake()
+    {
+        SetDamage();
+    }
+    void SetDamage()
+    {
+        damage = tower.Get_damage();
+        this.GetComponent<target>().Sethealth(tower.Get_health());
+    }
+    
 
     private mortorState CurrentState = mortorState.idle;
 

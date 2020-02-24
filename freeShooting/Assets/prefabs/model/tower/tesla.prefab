@@ -236,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   fireRate: 1.5
+  tower: {fileID: 11400000, guid: 13e8f4edb15a6774ab6063345b385e70, type: 2}
   CurrentState: 0
 --- !u!114 &1130473853969834819
 MonoBehaviour:

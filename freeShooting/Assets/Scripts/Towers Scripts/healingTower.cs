@@ -11,6 +11,18 @@ public class healingTower : MonoBehaviour
 
     public healState CurrentState = healState.idle;
 
+    public TowerScript tower;
+
+    void SetDamage()
+    {
+        healing = tower.Get_damage();
+        this.GetComponent<target>().Sethealth(tower.Get_health());
+    }
+
+    private void Start()
+    {
+        SetDamage();
+    }
     public enum healState
     {
         idle, heal

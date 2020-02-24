@@ -14,6 +14,17 @@ public class xbowShooting : MonoBehaviour
     public Transform firePoint;
     public Transform rotationPart;
     GameObject target_;
+    public TowerScript tower;
+
+    void SetDamage()
+    {
+        damage = tower.Get_damage();
+        this.GetComponent<target>().Sethealth(tower.Get_health());
+    }
+    private void Start()
+    {
+        SetDamage();
+    }
 
     private xbowState CurrentState = xbowState.idle;
 
@@ -22,6 +33,8 @@ public class xbowShooting : MonoBehaviour
         idle, shoot
         //, die
     }
+
+
 
     public void shoot(GameObject targetGameObject)
     {

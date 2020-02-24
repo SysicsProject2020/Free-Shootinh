@@ -3,7 +3,11 @@ guid: b01f0e4633a77a546bcc6e138991e9b0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bow: {fileID: 8041889832026840242, guid: f6bd45c06a0fc4046be7b647e4de0587, type: 3}
+  - firePoint: {instanceID: 0}
+  - rotationPart: {instanceID: 0}
+  - tower: {fileID: 11400000, guid: 447a612f0698c154d94896cf5f076015, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

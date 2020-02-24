@@ -350,6 +350,7 @@ MonoBehaviour:
   bow: {fileID: 8041889832026840242, guid: f6bd45c06a0fc4046be7b647e4de0587, type: 3}
   firePoint: {fileID: 5664036350544662648}
   rotationPart: {fileID: 3065020892942824447}
+  tower: {fileID: 11400000, guid: 447a612f0698c154d94896cf5f076015, type: 2}
 --- !u!114 &7561008658031701045
 MonoBehaviour:
   m_ObjectHideFlags: 0

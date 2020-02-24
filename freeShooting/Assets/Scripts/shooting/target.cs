@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class target : MonoBehaviour
 {
-    public short health = 100;
+    public short health;
     private short maxHealth;
     private Image healthBar;
     public GameObject healthBarInstatiate;
@@ -14,19 +14,26 @@ public class target : MonoBehaviour
     private float healthOffsetZEnemy = 5f;
     private float healthOffsetZPlayerTower = -3.5f;
     private float healthOffsetZEnemyTower = 5f;
-    public byte respawnTime = 3;
+    public byte PlayerRespawnTime = 3;
     private Vector3 respawnPoint;
 
+    public void Sethealth(short health)
+    {
+        this.health = health;
+        maxHealth = health;
+    }
 
     private void Start()
     {
         healthBarInst();
         respawnPoint = transform.position;       
-        maxHealth = health;
     }
     public void takeDamage(short damage)
     {
         health -= damage;
+        Debug.Log("damage " + damage);
+        Debug.Log("max health" + maxHealth);
+        Debug.Log("health " + health);
 
         if (health <= 0)
         {
@@ -34,7 +41,7 @@ public class target : MonoBehaviour
             return;
         }
         healthBar.fillAmount = (float)health / (float)maxHealth;
-        
+        Debug.Log("fill amount  = "+ healthBar.fillAmount);
         if (gameObject.GetComponent<AIeasy>() != null)
         {
             AIeasy.changeState(AIeasy.AIState.hide);
@@ -59,7 +66,7 @@ public class target : MonoBehaviour
             gameObject.SetActive(false);
             transform.position = respawnPoint;
             health = maxHealth;
-            Invoke("respawn", respawnTime);
+            Invoke("respawn", PlayerRespawnTime);
         }
         else
         {
