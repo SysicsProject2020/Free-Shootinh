@@ -3,7 +3,10 @@ guid: 85b540fca1e30654782076679714d63c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - CanonFireBall: {fileID: 2220004578629867610, guid: 2ded6ca71fb384646b26e52a7e7a0609,
+      type: 3}
+  - tower: {fileID: 11400000, guid: 59179c4c0714fd34c9a9b94dd6ab5b56, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -40,13 +40,34 @@ public class bullet : MonoBehaviour
             return;
 
         }
-        if (collision.transform.position.z > 0 == enemyRightSide)
+        if (collision.transform.GetComponent<target>() != null)
         {
-             collision.transform.GetComponent<target>().takeDamage(damage);
-             //hitSound[choose].Play();            
+            collision.transform.GetComponent<target>().takeDamage(damage);
+            //hitSound[choose].Play();           
         }
         Destroy(gameObject);
     }
-   
+   /* private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "stadium")
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        if (other.transform.tag == "bullet")
+        {
+            //Destroy(gameObject);
+            return;
+
+        }
+        if (other.transform.GetComponent<target>() != null)
+        {
+            other.transform.GetComponent<target>().takeDamage(damage);
+            //hitSound[choose].Play();           
+        }
+        Destroy(gameObject);
+    }*/
+
 }
 

@@ -246,3 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a705b82e5bd6f054b9d87f8cb662d409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healing: 25
+  fireRate: 1
+  CurrentState: 0
+  tower: {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}

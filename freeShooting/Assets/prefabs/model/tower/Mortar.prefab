@@ -159,3 +159,4 @@ MonoBehaviour:
   damage: 200
   fireRate: 4
   firePoint: {fileID: 7256972211191155660}
+  tower: {fileID: 11400000, guid: 77ffcf6dfc6798e48b8651cf3d81df8e, type: 2}

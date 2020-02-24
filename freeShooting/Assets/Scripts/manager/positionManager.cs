@@ -29,7 +29,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 0] = go;
                         buildingTowerScript[0, 0] = tower;
                         towerZone[0].GetComponent<BoxCollider>().enabled = false;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -42,7 +42,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 1] = go;
                         buildingTowerScript[0, 1] = tower;
                         towerZone[1].GetComponent<BoxCollider>().enabled = false;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -55,7 +55,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 2] = go;
                         buildingTowerScript[0, 2] = tower;
                         towerZone[2].transform.GetComponent<BoxCollider>().enabled = false;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -68,7 +68,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 3] = go;
                         buildingTowerScript[0, 3] = tower;
                         towerZone[3].GetComponent<BoxCollider>().enabled = false;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -81,7 +81,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 4] = go;
                         buildingTowerScript[0, 4] = tower;
                         towerZone[4].GetComponent<BoxCollider>().enabled = false;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -100,7 +100,7 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 0] = go;
                         buildingTowerScript[1, 0] = tower;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -112,7 +112,7 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 1] = go;
                         buildingTowerScript[1, 1] = tower;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -124,7 +124,7 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 2] = go;
                         buildingTowerScript[1, 2] = tower;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -136,7 +136,7 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 3] = go;
                         buildingTowerScript[1, 3] = tower;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -148,7 +148,7 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 4] = go;
                         buildingTowerScript[1, 4] = tower;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -169,7 +169,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 0] = null;
                         buildingTowerScript[0, 0] = null;
                         towerZone[0].GetComponent<BoxCollider>().enabled = true;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -180,7 +180,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 1] = null;
                         buildingTowerScript[0, 1] = null;
                         towerZone[1].GetComponent<BoxCollider>().enabled = true;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -191,7 +191,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 2] = null;
                         buildingTowerScript[0, 2] = null;
                         towerZone[2].GetComponent<BoxCollider>().enabled = true;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -202,7 +202,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 3] = null;
                         buildingTowerScript[0, 3] = null;
                         towerZone[3].GetComponent<BoxCollider>().enabled = true;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -213,7 +213,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 4] = null;
                         buildingTowerScript[0, 4] = null;
                         towerZone[4].GetComponent<BoxCollider>().enabled = true;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -229,7 +229,7 @@ public class positionManager : MonoBehaviour
                     {
                         buildingGameObject[1, 0] = null;
                         buildingTowerScript[1, 0] = null;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -239,7 +239,7 @@ public class positionManager : MonoBehaviour
                     {
                         buildingGameObject[1, 1] = null;
                         buildingTowerScript[1, 1] = null;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -249,7 +249,7 @@ public class positionManager : MonoBehaviour
                     {
                         buildingGameObject[1, 2] = null;
                         buildingTowerScript[1, 2] = null;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -259,7 +259,7 @@ public class positionManager : MonoBehaviour
                     {
                         buildingGameObject[1, 3] = null;
                         buildingTowerScript[1, 3] = null;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -269,7 +269,7 @@ public class positionManager : MonoBehaviour
                     {
                         buildingGameObject[1, 4] = null;
                         buildingTowerScript[1, 4] = null;
-                        hoToShoot();
+                        whoToShoot();
                         return true;
                     }
                     else return false;
@@ -291,7 +291,7 @@ public class positionManager : MonoBehaviour
         }
     }
 
-    public static void hoToShoot()
+    public static void whoToShoot()
     {
         //player
         for (int j = 0; j < 5; j++)
@@ -590,7 +590,7 @@ public class positionManager : MonoBehaviour
                         break;
 
                     case "tesla":
-                        Debug.Log("tesla");
+                        //Debug.Log("tesla");
                         if (buildingGameObject[0, j] != null)
                         {
                             buildingGameObject[1, j].GetComponent<teslashooting>().shoot(buildingGameObject[0, j]);
@@ -602,7 +602,7 @@ public class positionManager : MonoBehaviour
                         break;
 
                     case "healing tower":
-                        Debug.Log("healing tower");
+                        //Debug.Log("healing tower");
                         if (j - 1 != -1 && j + 1 != 5 && buildingGameObject[1, j + 1] != null && buildingGameObject[1, j - 1] != null)
                         {
                             buildingGameObject[1, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[1, j + 1], buildingGameObject[1, j - 1] });
@@ -629,7 +629,7 @@ public class positionManager : MonoBehaviour
                         break;
 
                     case "canon":
-                        Debug.Log("canon");
+                        //Debug.Log("canon");
                         if (buildingGameObject[0, j] != null)
                         {
                             buildingGameObject[1, j].GetComponent<CanonTower>().shoot(buildingGameObject[0, j]);
@@ -655,7 +655,7 @@ public class positionManager : MonoBehaviour
                         break;
 
                     case "mortar":
-                        Debug.Log("mortor");
+                        //Debug.Log("mortor");
                         int x = j;
                         bool goRight = true;
 

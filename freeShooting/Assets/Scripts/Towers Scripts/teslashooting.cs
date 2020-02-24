@@ -15,10 +15,19 @@ public class teslashooting : MonoBehaviour
 
     GameObject target_;
 
+    public TowerScript tower;
+
+    void SetDamage()
+    {
+        damage = tower.Get_damage();
+        this.GetComponent<target>().Sethealth(tower.Get_health());
+
+    }
     private void Start()
     {
         firePoint = transform.GetChild(0);
         lineRenderer = firePoint.GetChild(0).GetComponent<LineRenderer>();
+        SetDamage();
     }
 
     public teslaState CurrentState = teslaState.idle;

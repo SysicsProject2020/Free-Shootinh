@@ -13,7 +13,13 @@ public class CanonTower : MonoBehaviour
     Transform rotationPart;
     public byte speed = 19;
     //private GameObject head;
+    public TowerScript tower;
 
+    void SetDamage()
+    {
+        damage = tower.Get_damage();
+        this.GetComponent<target>().Sethealth(tower.Get_health());
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +27,7 @@ public class CanonTower : MonoBehaviour
         nextTimeFire = Time.time;
         firePoint = transform.GetChild(0).GetChild(0);
         rotationPart = transform.GetChild(0);
+        SetDamage();
     }
     private canonState CurrentState = canonState.idle;
 
