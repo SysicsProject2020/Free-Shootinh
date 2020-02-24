@@ -30,6 +30,7 @@ public class GameManagerPartie : MonoBehaviour
     private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
     public static TowerScript[] EnemySelectedTowers = new TowerScript[6];
     public static GameObject enemy_;
+    public GameObject enemyTowerBase_;
     public short enemyCoins = 1000;
     public Text enemyCoinsTxt;
 
@@ -57,7 +58,7 @@ public class GameManagerPartie : MonoBehaviour
     private void instantiatePrefabs()
     {
         Instantiate(towerBase.prefab, playerTowerPos, Quaternion.Euler(0, 0, 0));
-        Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(-180, 0, 0));
+        enemyTowerBase_=Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(-180, 0, 0));
 
         player_ = Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
         enemy_ = Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
