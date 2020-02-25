@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    bool enemyRightSide;
     public short damage;
-    private Plane p;
     public void changedam(short dam)
     {
         damage = dam;
@@ -15,13 +13,11 @@ public class bullet : MonoBehaviour
     {
         if (transform.position.z < 0)
         {
-            enemyRightSide = true;
-            gameObject.layer = LayerMask.NameToLayer("Player");
+            gameObject.layer = LayerMask.NameToLayer("Player Bullet");
         }
         else
         {
-            enemyRightSide = false;
-            gameObject.layer = LayerMask.NameToLayer("Enemy");
+            gameObject.layer = LayerMask.NameToLayer("Enemy Bullet");
         }          
     }
 

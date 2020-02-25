@@ -31,9 +31,9 @@ public class target : MonoBehaviour
     public void takeDamage(short damage)
     {
         health -= damage;
-        Debug.Log("damage " + damage);
-        Debug.Log("max health" + maxHealth);
-        Debug.Log("health " + health);
+        //Debug.Log("damage " + damage);
+        //Debug.Log("max health" + maxHealth);
+        //Debug.Log("health " + health);
 
         if (health <= 0)
         {
