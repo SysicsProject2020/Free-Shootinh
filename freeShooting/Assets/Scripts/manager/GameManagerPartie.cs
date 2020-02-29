@@ -5,30 +5,27 @@ using UnityEngine.UI;
 
 public class GameManagerPartie : MonoBehaviour
 {
-
-
-
     public static GameManagerPartie instance;
-   
-    
 
     [Header("Player 1: player")]
     public TowerScript towerBase;
-    public PlayerScript player;
+    private PlayerScript player;
     public GameObject itemParent;
     public static Vector3 playerPos = new Vector3(25, 1.8f, -25);
-    private Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
+    public Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
     public static TowerScript[] towersSelected = new TowerScript[6];
     public static GameObject player_;
     public static GameObject playerTowerBase_;
     public short playerCoins = 1000;
     public Text playerCoinsTxt;
+    public GameObject playerMagic1;
+    public GameObject playerMagic2;
 
     [Header("Player 2: enemy")]
     public TowerScript enemybase;
     public PlayerScript enemy;
     private Vector3 enemypos = new Vector3(-15, 1.8f, 25);
-    private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
+    public Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
     public static TowerScript[] EnemySelectedTowers = new TowerScript[6];
     public static GameObject enemy_;
     public GameObject enemyTowerBase_;
@@ -39,11 +36,13 @@ public class GameManagerPartie : MonoBehaviour
 
     private void Awake()
     {
-
         instance = this;
     }
     void Start()
     {
+        player = GameManager.instance.getPlayer();
+        Debug.Log(player.name);
+        setMagic();
         towersSelected = GameManager.instance.GetSelectedTowers();
 
         ChangeSprites();
@@ -53,6 +52,35 @@ public class GameManagerPartie : MonoBehaviour
         playerCoinsTxt.text = playerCoins.ToString();
         enemyCoinsTxt.text = enemyCoins.ToString();
     }
+    private void setMagic()
+    {
+        
+        switch (player.name)
+        {
+            case "robot":
+                /*playerMagic1.GetComponent<Image>().sprite = player.magic1.image;
+                playerMagic2.GetComponent<Image>().sprite = player.magic2.image;*/
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Clone(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Shield(0); });
+
+                break;
+            case "shadow":
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.SeeCards(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.SeeCards(0); });
+                break;
+            case "snowman":
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.FreezTower(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.FreezTower(0); });
+                break;
+            case "witcher":
+                
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Accelerate(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.destroyAll(0); });
+
+                break;
+        }
+    }
+
     private void instantiatePrefabs()
     {
         playerTowerBase_= Instantiate(towerBase.prefab, playerTowerPos, Quaternion.Euler(0, 0, 0));

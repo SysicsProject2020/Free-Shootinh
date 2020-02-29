@@ -59,9 +59,11 @@ public class target : MonoBehaviour
     {
         if (gameObject.GetComponent<playerMovement>() != null)
         {
+            
             gameObject.SetActive(false);
             transform.position = respawnPoint;
             health = maxHealth;
+            healthBar.fillAmount = (float)health / (float)maxHealth;
             Invoke("respawn", PlayerRespawnTime);
         }
         else

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d85ad5116c069f4096649a43066d4fb, type: 3}
   m_Name: shadow
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 7574070224920712239, guid: 330d42003fd955a40bd438f35ac54322, type: 3}
   level: 1
   name: shadow
   image: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   magic1: {fileID: 11400000, guid: 59d1c490366a25d4fae05c443422101c, type: 2}
   magic2: {fileID: 11400000, guid: 7d60792bfecbc4a42af6e1289b483517, type: 2}
+  locked: 1
