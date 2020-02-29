@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 7964685751370087280}
   - component: {fileID: -4042816090275829320}
   - component: {fileID: 560847357047426032}
+  - component: {fileID: 5584540604670408835}
   m_Layer: 0
   m_Name: healing tower
   m_TagString: Untagged
@@ -233,7 +234,7 @@ MonoBehaviour:
   health: 100
   healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
     type: 3}
-  respawnTime: 3
+  PlayerRespawnTime: 3
 --- !u!114 &560847357047426032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,3 +251,17 @@ MonoBehaviour:
   fireRate: 1
   CurrentState: 0
   tower: {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}
+--- !u!114 &5584540604670408835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6417905684133665134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7476c731b94bb6546971d27d7f015a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  health: 0

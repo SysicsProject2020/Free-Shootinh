@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 8995988162576208220}
   - component: {fileID: 7561008658031701045}
   - component: {fileID: 4217322911046121332}
+  - component: {fileID: 4922908607576658780}
   m_Layer: 0
   m_Name: xbow
   m_TagString: Untagged
@@ -344,13 +345,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01f0e4633a77a546bcc6e138991e9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
   fireRate: 0.25
   speed: 30
   bow: {fileID: 8041889832026840242, guid: f6bd45c06a0fc4046be7b647e4de0587, type: 3}
   firePoint: {fileID: 5664036350544662648}
   rotationPart: {fileID: 3065020892942824447}
-  tower: {fileID: 11400000, guid: 447a612f0698c154d94896cf5f076015, type: 2}
 --- !u!114 &7561008658031701045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,7 +365,7 @@ MonoBehaviour:
   health: 100
   healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
     type: 3}
-  respawnTime: 3
+  PlayerRespawnTime: 3
 --- !u!65 &4217322911046121332
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -380,6 +379,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4738603, y: 2.3073072, z: 2.909995}
   m_Center: {x: 0.039004326, y: -0.83619595, z: -0.0030453205}
+--- !u!114 &4922908607576658780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5664036351656226033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7476c731b94bb6546971d27d7f015a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
 --- !u!1 &9186635681296688146
 GameObject:
   m_ObjectHideFlags: 0

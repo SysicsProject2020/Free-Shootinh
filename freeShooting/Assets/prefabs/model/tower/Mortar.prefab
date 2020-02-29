@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3654085204790563582}
   - component: {fileID: 8524221342507312373}
   - component: {fileID: 3707395052592750250}
+  - component: {fileID: 8728082895956423316}
   m_Layer: 0
   m_Name: Mortar
   m_TagString: Untagged
@@ -89,7 +90,7 @@ MonoBehaviour:
   health: 100
   healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
     type: 3}
-  respawnTime: 3
+  PlayerRespawnTime: 3
 --- !u!23 &3654085204790563582
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -160,3 +161,17 @@ MonoBehaviour:
   fireRate: 4
   firePoint: {fileID: 7256972211191155660}
   tower: {fileID: 11400000, guid: 77ffcf6dfc6798e48b8651cf3d81df8e, type: 2}
+--- !u!114 &8728082895956423316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691245050111619357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7476c731b94bb6546971d27d7f015a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  health: 0

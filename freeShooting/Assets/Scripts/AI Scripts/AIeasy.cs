@@ -90,9 +90,8 @@ public class AIeasy : MonoBehaviour
 
                 for (int i = 0; i < 5; i++)
                 {
-                    //GameObject go = Instantiate(towers[i].prefab, BuildPos[i], Quaternion.Euler(0, 0, 0));
-                    positionManager.add(towers[i], BuildPos[i]);
-                    
+                    //Debug.Log(towers[i].Get_damage_enemy(1));
+                    positionManager.add(towers[i], BuildPos[i]);                  
                 }
                 changeState(AIState.idle);
                 break;

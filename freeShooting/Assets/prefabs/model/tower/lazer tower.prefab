@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 1943449640016734839}
   - component: {fileID: 2828857063258136950}
   - component: {fileID: 4525877146835693374}
+  - component: {fileID: -3681192023863157303}
   m_Layer: 0
   m_Name: lazer Tower
   m_TagString: Untagged
@@ -582,7 +583,7 @@ MonoBehaviour:
   health: 100
   healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
     type: 3}
-  respawnTime: 3
+  PlayerRespawnTime: 3
 --- !u!65 &4525877146835693374
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -596,6 +597,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.6045868, y: 5.95092, z: 2.9480362}
   m_Center: {x: 0.062512755, y: 1.0797281, z: 0.0012016296}
+--- !u!114 &-3681192023863157303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046931816874122672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7476c731b94bb6546971d27d7f015a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  health: 0
 --- !u!1 &7807280696109521867
 GameObject:
   m_ObjectHideFlags: 0

@@ -2366,9 +2366,11 @@ MonoBehaviour:
   playerCoinsTxt: {fileID: 356010484}
   enemybase: {fileID: 11400000, guid: 02da2778ed4188c4a90222d86837d602, type: 2}
   enemy: {fileID: 11400000, guid: b526a8851452ac148b5a9349b56c37a2, type: 2}
-  enemyTowerBase_: {fileID: 0}
+  enemyTowerBase_: {fileID: 6691245050111619357, guid: d2ba556787281f249b4ac1eb3b236626,
+    type: 3}
   enemyCoins: 1000
   enemyCoinsTxt: {fileID: 1193077956}
+  enemylvl: 1
 --- !u!4 &1441807754
 Transform:
   m_ObjectHideFlags: 0

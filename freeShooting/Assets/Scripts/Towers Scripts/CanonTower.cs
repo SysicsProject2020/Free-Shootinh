@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CanonTower : MonoBehaviour
 {
-    public short damage = 50;
     float nextTimeFire;
     public float fireRate = 2.0f;
     GameObject target_;
@@ -13,13 +12,8 @@ public class CanonTower : MonoBehaviour
     Transform rotationPart;
     public byte speed = 19;
     //private GameObject head;
-    public TowerScript tower;
 
-    void SetDamage()
-    {
-        damage = tower.Get_damage();
-        this.GetComponent<target>().Sethealth(tower.Get_health());
-    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +21,6 @@ public class CanonTower : MonoBehaviour
         nextTimeFire = Time.time;
         firePoint = transform.GetChild(0).GetChild(0);
         rotationPart = transform.GetChild(0);
-        SetDamage();
     }
     private canonState CurrentState = canonState.idle;
 
@@ -62,15 +55,12 @@ public class CanonTower : MonoBehaviour
 
                     GameObject go = Instantiate(CanonFireBall, firePoint.position, firePoint.rotation);
                     go.GetComponent<Rigidbody>().velocity = go.transform.forward * speed;
-                    go.GetComponent<bullet>().changedam(damage);
+                    go.GetComponent<bullet>().changedam(GetComponent<towerInf>().damage);
                     go.GetComponent<canonFireBall>().pos(transform.position, target_.transform.position);
                     nextTimeFire = Time.time + fireRate;
-
                 }
                 break;
-        }
-
-        
+        }  
     }
     void rotation()
     {

@@ -6,8 +6,7 @@ using UnityEngine;
 public class lazerShooting : MonoBehaviour
 {
 
-    public short damage = 5;
-    short damageInit ;
+    public short damage;
     private short damageMultiplier = 2;
     public float fireRate = 1;
     private float nextTimeFire = 0f;
@@ -19,18 +18,12 @@ public class lazerShooting : MonoBehaviour
     private GameObject target_;
     public TowerScript tower;
 
-    void SetDamage()
-    {
-        damage = tower.Get_damage();
-        this.GetComponent<target>().Sethealth(tower.Get_health());
-    }
 
     private void Start()
     {
-        damageInit = damage;
         firePoint = transform.GetChild(0);
         lineRenderer = firePoint.GetComponent<LineRenderer>();
-        SetDamage();
+        damage = GetComponent<towerInf>().damage;
     }
 
     private lazerState CurrentState = lazerState.idle;
@@ -58,13 +51,12 @@ public class lazerShooting : MonoBehaviour
         switch (CurrentState)
         {
             case lazerState.idle:
-                damage = damageInit;
                 lineRenderer.enabled = false;
                 target_ = null;
                 break;
 
             case lazerState.finishShooting:
-                damage = damageInit;
+                damage = GetComponent<towerInf>().damage;
                 lineRenderer.enabled = false;
                 target_ = null;
                 CurrentState = lazerState.idle;

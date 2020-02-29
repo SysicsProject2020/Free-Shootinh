@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class teslashooting : MonoBehaviour
 {
-
-    public short damage = 50;
     public float fireRate = 1;
     private float nextTimeFire = 0f;
     Transform firePoint;
@@ -17,17 +15,10 @@ public class teslashooting : MonoBehaviour
 
     public TowerScript tower;
 
-    void SetDamage()
-    {
-        damage = tower.Get_damage();
-        this.GetComponent<target>().Sethealth(tower.Get_health());
-
-    }
     private void Start()
     {
         firePoint = transform.GetChild(0);
         lineRenderer = firePoint.GetChild(0).GetComponent<LineRenderer>();
-        SetDamage();
     }
 
     public teslaState CurrentState = teslaState.idle;
@@ -89,6 +80,6 @@ public class teslashooting : MonoBehaviour
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target_.transform.position);       
-        target_.GetComponent<target>().takeDamage(damage);
+        target_.GetComponent<target>().takeDamage(GetComponent<towerInf>().damage);
     }
 }

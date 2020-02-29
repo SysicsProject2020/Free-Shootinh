@@ -15,23 +15,18 @@ public class playerShooting : MonoBehaviour
     public GameObject bullet_;
     public Transform firePoint;
 
-
-
+    public void SetDamage(short d)
+    {
+        damage = d;
+    }
+    public void SetHealth(short h)
+    {
+        this.GetComponent<target>().Sethealth(h);
+    }
     //public ParticleSystem muzzleFlash;
     //public AudioSource[] hitSound = new AudioSource[4];
 
     //private bool enemyRightSide;
-
-    private void Start()
-    {
-        if (transform.position.z < 0)
-            changeLayerMask(gameObject, "Enemy");
-        else
-            changeLayerMask(gameObject, "Player");
-        
-          
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -51,19 +46,6 @@ public class playerShooting : MonoBehaviour
         //clone.transform.Rotation = transform.localRotation.eulerAngles;
         clone.GetComponent<Rigidbody>().velocity = transform.forward * speed; 
         clone.GetComponent<bullet>().changedam(damage);
-    }
-
-    private void changeLayerMask(GameObject go, string layer)
-    {
-        go.layer = LayerMask.NameToLayer(layer);
-        foreach (Transform g in go.transform)
-        {
-            g.gameObject.layer = LayerMask.NameToLayer(layer);
-            foreach (Transform gobj in g.transform)
-            {
-                gobj.gameObject.layer = LayerMask.NameToLayer(layer);
-            }
-        }
     }
    
 

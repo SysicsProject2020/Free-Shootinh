@@ -95,6 +95,7 @@ MonoBehaviour:
   health: 2200
   healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
     type: 3}
+  PlayerRespawnTime: 3
 --- !u!65 &8524221342507312373
 BoxCollider:
   m_ObjectHideFlags: 0

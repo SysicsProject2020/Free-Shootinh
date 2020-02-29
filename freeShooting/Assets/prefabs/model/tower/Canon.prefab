@@ -466,6 +466,7 @@ GameObject:
   - component: {fileID: 6723249410340490372}
   - component: {fileID: 4270544723341845751}
   - component: {fileID: 7328042415202668359}
+  - component: {fileID: -5258455178267993521}
   m_Layer: 0
   m_Name: Canon
   m_TagString: Untagged
@@ -522,7 +523,7 @@ MonoBehaviour:
   health: 100
   healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
     type: 3}
-  respawnTime: 3
+  PlayerRespawnTime: 3
 --- !u!65 &7328042415202668359
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -536,6 +537,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.021769, y: 2.4902167, z: 4.037294}
   m_Center: {x: 0.0048992634, y: 1.257055, z: -0.0021269321}
+--- !u!114 &-5258455178267993521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8370825241609513353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7476c731b94bb6546971d27d7f015a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8882966317748998669
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class xbowShooting : MonoBehaviour
 {
-    public short damage = 10;
     public float fireRate = 0.5f;
     private float nextTimeFire = 0f;
     
@@ -14,17 +13,7 @@ public class xbowShooting : MonoBehaviour
     public Transform firePoint;
     public Transform rotationPart;
     GameObject target_;
-    public TowerScript tower;
 
-    void SetDamage()
-    {
-        damage = tower.Get_damage();
-        this.GetComponent<target>().Sethealth(tower.Get_health());
-    }
-    private void Start()
-    {
-        SetDamage();
-    }
 
     private xbowState CurrentState = xbowState.idle;
 
@@ -80,7 +69,7 @@ public class xbowShooting : MonoBehaviour
         GameObject clone = Instantiate(bow, firePoint.position, firePoint.rotation);
         //clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(target_.transform.position.x, target_.transform.position.y, target_.transform.position.z);
         clone.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * speed;
-        clone.GetComponent<bullet>().changedam(damage);
+        clone.GetComponent<bullet>().changedam(GetComponent<towerInf>().damage);
     }
 
 

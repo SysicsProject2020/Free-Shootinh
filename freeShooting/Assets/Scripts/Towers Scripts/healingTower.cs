@@ -4,25 +4,12 @@ using UnityEngine;
 
 public class healingTower : MonoBehaviour
 {
-    public short healing = 25;
     public float fireRate = 1;
     private float nextTimeFire = 0f;
     private GameObject[] target_;
 
     public healState CurrentState = healState.idle;
 
-    public TowerScript tower;
-
-    void SetDamage()
-    {
-        healing = tower.Get_damage();
-        this.GetComponent<target>().Sethealth(tower.Get_health());
-    }
-
-    private void Start()
-    {
-        SetDamage();
-    }
     public enum healState
     {
         idle, heal
@@ -53,12 +40,11 @@ public class healingTower : MonoBehaviour
                 {
                     foreach (var targetToHeal in target_)
                     {
-                        targetToHeal.GetComponent<target>().gainhealth(healing);
+                        targetToHeal.GetComponent<target>().gainhealth(GetComponent<towerInf>().damage);
                     }
                     nextTimeFire = Time.time + fireRate;            
                 }                        
                 break;
         }
-
     }
 }

@@ -31,21 +31,17 @@ public class target : MonoBehaviour
     public void takeDamage(short damage)
     {
         health -= damage;
-        //Debug.Log("damage " + damage);
-        //Debug.Log("max health" + maxHealth);
-        //Debug.Log("health " + health);
-
         if (health <= 0)
         {
             die();
             return;
         }
         healthBar.fillAmount = (float)health / (float)maxHealth;
-        Debug.Log("fill amount  = "+ healthBar.fillAmount);
-        if (gameObject.GetComponent<AIeasy>() != null)
+        //Debug.Log("fill amount  = " + healthBar.fillAmount);
+        /*if (gameObject.GetComponent<AIeasy>() != null)
         {
             AIeasy.changeState(AIeasy.AIState.hide);
-        }
+        }*/
     }
     public void gainhealth(short gain)
     {
@@ -75,8 +71,17 @@ public class target : MonoBehaviour
             
         }
         //not completed still the enemy don't work 
-        GameManagerPartie.instance.playerCoins += 50;
-        GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
+        if (transform.position.z < 0)
+        {
+            GameManagerPartie.instance.enemyCoins += 50;
+            GameManagerPartie.instance.enemyCoinsTxt.text = GameManagerPartie.instance.enemyCoins.ToString();
+        }
+        else
+        {
+            GameManagerPartie.instance.playerCoins += 50;
+            GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
+        }
+
         GameManagerPartie.instance.ChangeSprites();
     }
 

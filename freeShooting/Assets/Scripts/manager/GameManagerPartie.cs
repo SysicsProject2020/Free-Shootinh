@@ -12,28 +12,30 @@ public class GameManagerPartie : MonoBehaviour
    
     
 
-    [Header("Player 1")]
+    [Header("Player 1: player")]
     public TowerScript towerBase;
     public PlayerScript player;
     public GameObject itemParent;
-    public static Vector3 playerPos = new Vector3(5, 1.8f, -25);
+    public static Vector3 playerPos = new Vector3(25, 1.8f, -25);
     private Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
     public static TowerScript[] towersSelected = new TowerScript[6];
     public static GameObject player_;
+    public static GameObject playerTowerBase_;
     public short playerCoins = 1000;
     public Text playerCoinsTxt;
 
-    [Header("Player 2")]
+    [Header("Player 2: enemy")]
     public TowerScript enemybase;
     public PlayerScript enemy;
-    private Vector3 enemypos = new Vector3(5, 1.8f, 25);
+    private Vector3 enemypos = new Vector3(-15, 1.8f, 25);
     private Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
     public static TowerScript[] EnemySelectedTowers = new TowerScript[6];
     public static GameObject enemy_;
     public GameObject enemyTowerBase_;
     public short enemyCoins = 1000;
     public Text enemyCoinsTxt;
-
+    [Range(1,5)]
+    public byte enemylvl;
 
     private void Awake()
     {
@@ -43,10 +45,6 @@ public class GameManagerPartie : MonoBehaviour
     void Start()
     {
         towersSelected = GameManager.instance.GetSelectedTowers();
-        towerBase.prefab.GetComponent<target>().health = towerBase.Get_health();
-        enemybase.prefab.GetComponent<target>().health = enemybase.Get_health();
-        player.prefab.GetComponent<playerShooting>().damage = player.Get_damage();
-        enemy.prefab.GetComponent<playerShooting>().damage = enemy.Get_damage();
 
         ChangeSprites();
         instantiatePrefabs();
@@ -57,11 +55,22 @@ public class GameManagerPartie : MonoBehaviour
     }
     private void instantiatePrefabs()
     {
-        Instantiate(towerBase.prefab, playerTowerPos, Quaternion.Euler(0, 0, 0));
+        playerTowerBase_= Instantiate(towerBase.prefab, playerTowerPos, Quaternion.Euler(0, 0, 0));
         enemyTowerBase_=Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(-180, 0, 0));
 
         player_ = Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
         enemy_ = Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
+
+        playerTowerBase_.GetComponent<target>().health = towerBase.Get_health_player();
+        enemyTowerBase_.GetComponent<target>().health = enemybase.Get_health_enemy(enemylvl);
+
+        player_.GetComponent<playerShooting>().SetDamage(player.Get_damage_player());
+        player_.GetComponent<playerShooting>().SetHealth(player.Get_health_player());
+        enemy_.GetComponent<playerShooting>().SetDamage(enemy.Get_damage_enemy(enemylvl));
+        enemy_.GetComponent<playerShooting>().SetHealth(enemy.Get_health_enemy(enemylvl));
+
+        changeLayerMask(enemy_, "Enemy");
+        changeLayerMask(player_, "Player");
     }
     public void ChangeInteractableSprites()
     {
@@ -106,5 +115,19 @@ public class GameManagerPartie : MonoBehaviour
     void chooseEnemyTowers()
     {
         EnemySelectedTowers = towersSelected;
+    }
+
+
+    private void changeLayerMask(GameObject go, string layer)
+    {
+        go.layer = LayerMask.NameToLayer(layer);
+        foreach (Transform g in go.transform)
+        {
+            g.gameObject.layer = LayerMask.NameToLayer(layer);
+            foreach (Transform gobj in g.transform)
+            {
+                gobj.gameObject.layer = LayerMask.NameToLayer(layer);
+            }
+        }
     }
 }

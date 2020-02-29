@@ -16,13 +16,21 @@ public class PlayerScript : ScriptableObject
     public MagicScript magic2;
     public bool locked = true;
 
-    public short Get_health()
+    public short Get_health_player()
     {
         return health[level - 1];
     }
-    public short Get_damage()
+    public short Get_damage_player()
     {
         return damage[level - 1];
     }
 
+    public short Get_health_enemy(byte lvl)
+    {
+        return health[lvl - 1];
+    }
+    public short Get_damage_enemy(byte lvl)
+    {
+        return damage[lvl - 1];
+    }
 }

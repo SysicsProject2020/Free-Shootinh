@@ -7,21 +7,9 @@ public class mortarShooting : MonoBehaviour
     public GameObject fireBall;
     private GameObject target_;
     public float speed;
-    public short damage = 200;
     public float fireRate = 4f;
     private float nextTimeFire = 0f;
     public Transform firePoint;
-    public TowerScript tower;
-
-    void SetDamage()
-    {
-        damage = tower.Get_damage();
-        this.GetComponent<target>().Sethealth(tower.Get_health());
-    }
-    private void Start()
-    {
-        SetDamage();
-    }
 
     private mortorState CurrentState = mortorState.idle;
 
@@ -74,7 +62,7 @@ public class mortarShooting : MonoBehaviour
 
         GameObject go = Instantiate(fireBall, firePoint.position,firePoint.rotation);
         go.GetComponent<Rigidbody>().velocity = vo;
-        go.GetComponent<bullet>().changedam(damage);
+        go.GetComponent<bullet>().changedam(GetComponent<towerInf>().damage);
 
         //go.GetComponent<MortarFireBall>().Set(transform.position, direction, speed);
 
