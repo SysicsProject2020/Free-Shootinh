@@ -63,6 +63,7 @@ public class mortarShooting : MonoBehaviour
         GameObject go = Instantiate(fireBall, firePoint.position,firePoint.rotation);
         go.GetComponent<Rigidbody>().velocity = vo;
         go.GetComponent<bullet>().changedam(GetComponent<towerInf>().damage);
+        go.GetComponent<bullet>().sender = gameObject;
 
         //go.GetComponent<MortarFireBall>().Set(transform.position, direction, speed);
 

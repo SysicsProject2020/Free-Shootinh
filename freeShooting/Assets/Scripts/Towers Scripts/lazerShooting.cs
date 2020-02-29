@@ -30,14 +30,17 @@ public class lazerShooting : MonoBehaviour
 
     public enum lazerState
     {
-        idle, shoot , finishShooting
+        idle, shoot, finishShooting, shootMirror
             //, die
     }
 
     public void shoot(GameObject targetGameObject)
     {
-        CurrentState = lazerState.shoot;
         target_ = targetGameObject;
+        if (target_.GetComponent<mirrorTower>() != null)
+            CurrentState = lazerState.shootMirror;
+        else
+            CurrentState = lazerState.shoot;
     }
     public void stopShoot()
     {
@@ -70,6 +73,16 @@ public class lazerShooting : MonoBehaviour
                     nextTimeFire = Time.time + fireRate;
                     damage *= damageMultiplier;
                 } 
+                break;
+            case lazerState.shootMirror:
+
+                if (Time.time > nextTimeFire)
+                {
+                    lazer();
+                    GetComponent<target>().takeDamage(damage);
+                    nextTimeFire = Time.time + fireRate;
+                    damage *= damageMultiplier;
+                }
                 break;
         }
       

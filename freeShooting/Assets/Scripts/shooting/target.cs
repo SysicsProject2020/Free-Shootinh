@@ -15,7 +15,6 @@ public class target : MonoBehaviour
     private float healthOffsetZPlayerTower = -3.5f;
     private float healthOffsetZEnemyTower = 5f;
     public byte PlayerRespawnTime = 3;
-    private Vector3 respawnPoint;
 
     public void Sethealth(short health)
     {
@@ -25,11 +24,11 @@ public class target : MonoBehaviour
 
     private void Start()
     {
-        healthBarInst();
-        respawnPoint = transform.position;       
+        healthBarInst();      
     }
     public void takeDamage(short damage)
     {
+
         health -= damage;
         if (health <= 0)
         {
@@ -37,23 +36,17 @@ public class target : MonoBehaviour
             return;
         }
         healthBar.fillAmount = (float)health / (float)maxHealth;
-        //Debug.Log("fill amount  = " + healthBar.fillAmount);
-        /*if (gameObject.GetComponent<AIeasy>() != null)
-        {
-            AIeasy.changeState(AIeasy.AIState.hide);
-        }*/
     }
     public void gainhealth(short gain)
     {
         health += gain;
 
-        if (health >= maxHealth)
+        if (health > maxHealth)
         {
             health = maxHealth;
         }
 
         healthBar.fillAmount = (float)health / (float)maxHealth;
-
     }
     void die()
     {
@@ -61,7 +54,6 @@ public class target : MonoBehaviour
         {
             
             gameObject.SetActive(false);
-            transform.position = respawnPoint;
             health = maxHealth;
             healthBar.fillAmount = (float)health / (float)maxHealth;
 
@@ -69,11 +61,13 @@ public class target : MonoBehaviour
             {
                 GameManagerPartie.instance.enemyCoins += 50;
                 GameManagerPartie.instance.enemyCoinsTxt.text = GameManagerPartie.instance.enemyCoins.ToString();
+                transform.position = GameManagerPartie.playerPos;
             }
             else
             {
                 GameManagerPartie.instance.playerCoins += 50;
                 GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
+                transform.position = GameManagerPartie.enemyPos;
             }
 
             GameManagerPartie.instance.ChangeSprites();
@@ -84,8 +78,7 @@ public class target : MonoBehaviour
         {
             positionManager.delete(transform.position);
             Destroy(gameObject);           
-        }
-        
+        }       
     }
 
     void respawn()
@@ -99,7 +92,7 @@ public class target : MonoBehaviour
         Vector3 pos;
         if (transform.position.z > 0)//enemy
         {
-            if (gameObject.GetComponent<playerMovement>() == null)
+            if (gameObject.GetComponent<playerShooting>() == null)
             {
                 pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemyTower);
             }
@@ -111,7 +104,7 @@ public class target : MonoBehaviour
         }
         else
         {
-            if (gameObject.GetComponent<playerMovement>() == null)
+            if (gameObject.GetComponent<playerShooting>() == null)
             {
                 pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayerTower);
             }

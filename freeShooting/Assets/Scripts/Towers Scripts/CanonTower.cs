@@ -56,6 +56,7 @@ public class CanonTower : MonoBehaviour
                     GameObject go = Instantiate(CanonFireBall, firePoint.position, firePoint.rotation);
                     go.GetComponent<Rigidbody>().velocity = go.transform.forward * speed;
                     go.GetComponent<bullet>().changedam(GetComponent<towerInf>().damage);
+                    go.GetComponent<bullet>().sender = gameObject;
                     go.GetComponent<canonFireBall>().pos(transform.position, target_.transform.position);
                     nextTimeFire = Time.time + fireRate;
                 }

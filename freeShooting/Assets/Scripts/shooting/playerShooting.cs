@@ -46,6 +46,7 @@ public class playerShooting : MonoBehaviour
         //clone.transform.Rotation = transform.localRotation.eulerAngles;
         clone.GetComponent<Rigidbody>().velocity = transform.forward * speed; 
         clone.GetComponent<bullet>().changedam(damage);
+        clone.GetComponent<bullet>().sender = gameObject;
     }
    
 
