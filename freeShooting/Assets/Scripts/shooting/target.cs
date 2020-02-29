@@ -57,34 +57,35 @@ public class target : MonoBehaviour
     }
     void die()
     {
-        if (gameObject.GetComponent<playerMovement>() != null)
+        if (gameObject.GetComponent<playerShooting>() != null)
         {
             
             gameObject.SetActive(false);
             transform.position = respawnPoint;
             health = maxHealth;
             healthBar.fillAmount = (float)health / (float)maxHealth;
+
+            if (transform.position.z < 0)
+            {
+                GameManagerPartie.instance.enemyCoins += 50;
+                GameManagerPartie.instance.enemyCoinsTxt.text = GameManagerPartie.instance.enemyCoins.ToString();
+            }
+            else
+            {
+                GameManagerPartie.instance.playerCoins += 50;
+                GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
+            }
+
+            GameManagerPartie.instance.ChangeSprites();
+
             Invoke("respawn", PlayerRespawnTime);
         }
         else
         {
             positionManager.delete(transform.position);
-            Destroy(gameObject);
-            
+            Destroy(gameObject);           
         }
-        //not completed still the enemy don't work 
-        if (transform.position.z < 0)
-        {
-            GameManagerPartie.instance.enemyCoins += 50;
-            GameManagerPartie.instance.enemyCoinsTxt.text = GameManagerPartie.instance.enemyCoins.ToString();
-        }
-        else
-        {
-            GameManagerPartie.instance.playerCoins += 50;
-            GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
-        }
-
-        GameManagerPartie.instance.ChangeSprites();
+        
     }
 
     void respawn()
