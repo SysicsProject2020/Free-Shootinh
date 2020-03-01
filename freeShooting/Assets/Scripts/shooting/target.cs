@@ -30,12 +30,14 @@ public class target : MonoBehaviour
     {
 
         health -= damage;
+
         if (health <= 0)
         {
             die();
             return;
         }
         healthBar.fillAmount = (float)health / (float)maxHealth;
+
     }
     public void gainhealth(short gain)
     {
