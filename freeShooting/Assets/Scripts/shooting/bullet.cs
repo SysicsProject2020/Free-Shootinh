@@ -5,6 +5,8 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     public short damage;
+    public GameObject sender; 
+
     public void changedam(short dam)
     {
         damage = dam;
@@ -29,16 +31,18 @@ public class bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        if (collision.transform.tag == "bullet")
+        /*if (collision.transform.tag == "bullet")
         {
             Destroy(gameObject);
             return;
-
-        }
+        }*/
         if (collision.transform.GetComponent<target>() != null)
         {
             collision.transform.GetComponent<target>().takeDamage(damage);
+            if (collision.transform.GetComponent<mirrorTower>() != null)
+            {
+                sender.GetComponent<target>().takeDamage(damage);
+            }
             //hitSound[choose].Play();           
         }
         Destroy(gameObject);

@@ -24,7 +24,7 @@ public class GameManagerPartie : MonoBehaviour
     [Header("Player 2: enemy")]
     public TowerScript enemybase;
     public PlayerScript enemy;
-    private Vector3 enemypos = new Vector3(-15, 1.8f, 25);
+    public static Vector3 enemyPos = new Vector3(-15, 1.8f, 25);
     public Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
     public static TowerScript[] EnemySelectedTowers = new TowerScript[6];
     public static GameObject enemy_;
@@ -87,7 +87,7 @@ public class GameManagerPartie : MonoBehaviour
         enemyTowerBase_=Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(-180, 0, 0));
 
         player_ = Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
-        enemy_ = Instantiate(enemy.prefab, enemypos, Quaternion.Euler(-180, 0, 0));
+        enemy_ = Instantiate(enemy.prefab, enemyPos, Quaternion.Euler(-180, 0, 0));
 
         playerTowerBase_.GetComponent<target>().health = towerBase.Get_health_player();
         enemyTowerBase_.GetComponent<target>().health = enemybase.Get_health_enemy(enemylvl);

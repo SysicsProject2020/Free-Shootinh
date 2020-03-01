@@ -25,14 +25,17 @@ public class teslashooting : MonoBehaviour
 
     public enum teslaState
     {
-        idle, shoot, finishShooting
+        idle, shoot, finishShooting, shootMirror
         //, die
     }
  
     public void shoot(GameObject targetGameObject)
     {
-        CurrentState = teslaState.shoot;
         target_ = targetGameObject;
+        if (target_.GetComponent<mirrorTower>() != null)
+            CurrentState = teslaState.shootMirror;
+        else
+            CurrentState = teslaState.shoot;
     }
     public void StopShoot()
     {
@@ -62,6 +65,25 @@ public class teslashooting : MonoBehaviour
                     if (shooting)
                     {
                         tesla();
+                    }
+                    else
+                    {
+                        lineRenderer.enabled = false;
+                    }
+                    nextTimeFire = Time.time + fireRate;
+                    shooting = !shooting;
+                }
+                break;
+            case teslaState.shootMirror:
+
+                if (Time.time > nextTimeFire)
+                {
+                    /*****************************************************/
+                    //need rethink
+                    if (shooting)
+                    {
+                        tesla();
+                        GetComponent<target>().takeDamage(GetComponent<towerInf>().damage);
                     }
                     else
                     {
