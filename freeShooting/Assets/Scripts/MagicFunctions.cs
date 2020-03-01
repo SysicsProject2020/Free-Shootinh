@@ -14,8 +14,11 @@ public class MagicFunctions : MonoBehaviour
     [Header("Magic:Shield")]
     public GameObject shield;
     private GameObject ShieldInstantiated;
-   
-    
+    [Header("Magic:AllCardsFree")]
+    private bool testFree=false;
+    private short currentCoins;
+
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -58,7 +61,7 @@ public class MagicFunctions : MonoBehaviour
             Instantiate(shield, GameManagerPartie.instance.enemyTowerPos, Quaternion.Euler(0, 0, 0));
         }
     }
-     void removeShield()
+     void removeShield(int player)
     {
         Destroy(ShieldInstantiated);
     }
@@ -134,13 +137,46 @@ public class MagicFunctions : MonoBehaviour
 
         }
     }
-     void hideCards() {
+    void hideCards(int player) {
         Destroy(TowerPanelInstantiated);
     }
+    public void allCardsFree(int player)
+    {
+        if (player == 0)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                GameManagerPartie.instance.itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
+                GameManagerPartie.instance.itemParent.transform.GetChild(i).GetComponentInChildren<Text>().text = "0";
+            }
+            testFree = true;
+            currentCoins = GameManagerPartie.instance.playerCoins;
+        }
+        else
+        {
+
+        }
+    }
+    void returnCardsValues(int player)
+    {
+        GameManagerPartie.instance.ChangeSprites();
+        testFree = false;
+    }
     // Update is called once per frame
-   
+
+
     void Update()
     {
-        
+        if (testFree)
+        {
+            if (currentCoins > GameManagerPartie.instance.playerCoins)
+            {
+                GameManagerPartie.instance.playerCoins = currentCoins;
+                GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
+                returnCardsValues(0);
+            }
+            else
+                currentCoins = GameManagerPartie.instance.playerCoins;
+        }
     }
 }

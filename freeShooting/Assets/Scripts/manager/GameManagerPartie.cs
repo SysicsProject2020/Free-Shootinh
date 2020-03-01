@@ -66,7 +66,7 @@ public class GameManagerPartie : MonoBehaviour
                 break;
             case "shadow":
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.SeeCards(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.SeeCards(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.allCardsFree(0); });
                 break;
             case "snowman":
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.FreezTower(0); });
