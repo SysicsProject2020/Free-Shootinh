@@ -24,7 +24,7 @@ public class MagicFunctions : MonoBehaviour
     {
         instance = this;
     }
-
+    
     public void destroyAll(int player)
     {
         short Pcoins=GameManagerPartie.instance.playerCoins;
@@ -69,7 +69,36 @@ public class MagicFunctions : MonoBehaviour
     {
         if (player == 0)
         {
+            int i = 0;
+            int k = 0;
+            short Pcoins = GameManagerPartie.instance.playerCoins;
             
+                for (int j = 0; j < 5; j++)
+                {
+                    if (positionManager.buildingGameObject[1, j] != null)
+                    {
+                    i++;
+                    }
+                }
+            int rand = Random.Range(0, i);
+            
+            for (int j = 0; j < 5; j++)
+            {
+                if (positionManager.buildingGameObject[1, j] != null)
+                {
+                    
+                    if (k == rand)
+                    {
+                        Destroy(positionManager.buildingGameObject[1, j]);
+                        positionManager.delete(positionManager.buildingGameObject[1, j].transform.position);
+                    }
+                    k++;
+                }
+            }
+            GameManagerPartie.instance.playerCoins = Pcoins;
+            GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
+            GameManagerPartie.instance.ChangeSprites();
+
         }
         else
         {

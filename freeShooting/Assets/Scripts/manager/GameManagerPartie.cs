@@ -70,11 +70,11 @@ public class GameManagerPartie : MonoBehaviour
                 break;
             case "snowman":
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.FreezTower(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.FreezTower(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Accelerate(0); });
                 break;
             case "witcher":
                 
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Accelerate(0); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.destroyEnemyTower(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.destroyAll(0); });
 
                 break;
