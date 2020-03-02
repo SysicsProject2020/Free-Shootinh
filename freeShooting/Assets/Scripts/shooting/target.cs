@@ -63,13 +63,13 @@ public class target : MonoBehaviour
             {
                 GameManagerPartie.instance.enemyCoins += 50;
                 GameManagerPartie.instance.enemyCoinsTxt.text = GameManagerPartie.instance.enemyCoins.ToString();
-                transform.position = GameManagerPartie.playerPos;
+                transform.position = GameManagerPartie.instance.playerPos;
             }
             else
             {
                 GameManagerPartie.instance.playerCoins += 50;
                 GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
-                transform.position = GameManagerPartie.enemyPos;
+                transform.position = GameManagerPartie.instance.enemyPos;
             }
 
             GameManagerPartie.instance.ChangeSprites();

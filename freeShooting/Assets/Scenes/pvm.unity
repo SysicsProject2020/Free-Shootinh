@@ -973,14 +973,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerBase: {fileID: 11400000, guid: fce7b7f5628c3804bab2c8383a85a5d4, type: 2}
   itemParent: {fileID: 127342299}
+  playerPos: {x: 25, y: 1.8, z: -25}
   playerTowerPos: {x: 5, y: 2.2, z: -38}
+  towersSelected:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  player_: {fileID: 0}
+  playerTowerBase_: {fileID: 0}
   playerCoins: 1000
   playerCoinsTxt: {fileID: 356010484}
   playerMagic1: {fileID: 2368429}
   playerMagic2: {fileID: 506122757}
   enemybase: {fileID: 11400000, guid: 02da2778ed4188c4a90222d86837d602, type: 2}
   enemy: {fileID: 11400000, guid: b526a8851452ac148b5a9349b56c37a2, type: 2}
+  enemyPos: {x: -15, y: 1.8, z: 25}
   enemyTowerPos: {x: 5, y: 2.2, z: 38}
+  EnemySelectedTowers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemy_: {fileID: 0}
   enemyTowerBase_: {fileID: 6691245050111619357, guid: d2ba556787281f249b4ac1eb3b236626,
     type: 3}
   enemyCoins: 1000
@@ -1093,6 +1112,8 @@ MonoBehaviour:
     type: 3}
   TowerPanelInstantiated: {fileID: 0}
   shield: {fileID: 5808580019842481005, guid: d37b182c72bfa6d449c82e8012d3a2ef, type: 3}
+  Missiles: {fileID: 3737483775410786587, guid: c337289d2ffbb1449ab5d9648f0fa67a,
+    type: 3}
 --- !u!1 &1852711192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2429149059882561241, guid: e38c3fe726835554a96b8e7b207cf465,

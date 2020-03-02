@@ -11,11 +11,11 @@ public class GameManagerPartie : MonoBehaviour
     public TowerScript towerBase;
     private PlayerScript player;
     public GameObject itemParent;
-    public static Vector3 playerPos = new Vector3(25, 1.8f, -25);
+    public  Vector3 playerPos = new Vector3(25, 1.8f, -25);
     public Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
-    public static TowerScript[] towersSelected = new TowerScript[6];
-    public static GameObject player_;
-    public static GameObject playerTowerBase_;
+    public  TowerScript[] towersSelected = new TowerScript[6];
+    public  GameObject player_;
+    public  GameObject playerTowerBase_;
     public short playerCoins = 1000;
     public Text playerCoinsTxt;
     public GameObject playerMagic1;
@@ -24,10 +24,10 @@ public class GameManagerPartie : MonoBehaviour
     [Header("Player 2: enemy")]
     public TowerScript enemybase;
     public PlayerScript enemy;
-    public static Vector3 enemyPos = new Vector3(-15, 1.8f, 25);
+    public  Vector3 enemyPos = new Vector3(-15, 1.8f, 25);
     public Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
-    public static TowerScript[] EnemySelectedTowers = new TowerScript[6];
-    public static GameObject enemy_;
+    public  TowerScript[] EnemySelectedTowers = new TowerScript[6];
+    public  GameObject enemy_;
     public GameObject enemyTowerBase_;
     public short enemyCoins = 1000;
     public Text enemyCoinsTxt;
@@ -65,11 +65,11 @@ public class GameManagerPartie : MonoBehaviour
 
                 break;
             case "shadow":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.SeeCards(0); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.healTowers(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.allCardsFree(0); });
                 break;
             case "snowman":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Clone(0); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.MissilesMagic(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.FreezTower(0); });                
                 break;
             case "witcher":

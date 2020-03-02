@@ -37,12 +37,12 @@ public class AIeasy : MonoBehaviour
         //Debug.Log(state);
     }
 
-    void selectPlayer() { player = GameManagerPartie.player_; }
+    void selectPlayer() { player = GameManagerPartie.instance.player_; }
 
     // Start is called before the first frame update
     void Start()
     {
-        towers = GameManagerPartie.EnemySelectedTowers;
+        towers = GameManagerPartie.instance.EnemySelectedTowers;
         selectPlayer();
         //enemyBuildZone = GameObject.FindGameObjectsWithTag("EnemyTowersZones");
         //currentHealth = player.Get_health();

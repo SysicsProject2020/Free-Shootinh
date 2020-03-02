@@ -12,7 +12,7 @@ public class PlayerMovementWithSliderBar : MonoBehaviour
    
     private void Start()
     {
-        enemy = GameManagerPartie.enemy_;
+        enemy = GameManagerPartie.instance.enemy_;
         enemytowerBase = GameManagerPartie.instance.enemyTowerBase_;
     }
 
@@ -39,9 +39,9 @@ public class PlayerMovementWithSliderBar : MonoBehaviour
     }
     public void MovePlayer(float position)
     {
-        Vector3 pos = new Vector3(position, GameManagerPartie.playerPos.y, GameManagerPartie.playerPos.z);
+        Vector3 pos = new Vector3(position, GameManagerPartie.instance.playerPos.y, GameManagerPartie.instance.playerPos.z);
         //GameManagerPartie.player_.transform.position = Vector3.Lerp(GameManagerPartie.player_.transform.position, pos, speed * Time.deltaTime);
-        GameManagerPartie.player_.transform.position = new Vector3(position, GameManagerPartie.playerPos.y, GameManagerPartie.playerPos.z);
+        GameManagerPartie.instance.player_.transform.position = new Vector3(position, GameManagerPartie.instance.playerPos.y, GameManagerPartie.instance.playerPos.z);
        // Debug.Log(GameManagerPartie.player_.transform.position);
     }
 }
