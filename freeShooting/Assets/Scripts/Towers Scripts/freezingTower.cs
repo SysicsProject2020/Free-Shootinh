@@ -60,6 +60,7 @@ public class freezingTower : MonoBehaviour
         lineRenderer.SetPosition(1, target_.transform.position);
         targetFireRate = target_.GetComponent<towerInf>().fireRate;
         target_.GetComponent<towerInf>().fireRate = targetFireRate + ((targetFireRate / 100) * GetComponent<towerInf>().damage);
+        CurrentState = freezingtowerState.idle;
     }
 
     public void unfreeze()
