@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class healingTower : MonoBehaviour
 {
-    public float fireRate = 1;
     private float nextTimeFire = 0f;
     private GameObject[] target_;
 
@@ -42,7 +41,7 @@ public class healingTower : MonoBehaviour
                     {
                         targetToHeal.GetComponent<target>().gainhealth(GetComponent<towerInf>().damage);
                     }
-                    nextTimeFire = Time.time + fireRate;            
+                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
                 }                        
                 break;
         }

@@ -37,7 +37,7 @@ public class target : MonoBehaviour
             return;
         }
         healthBar.fillAmount = (float)health / (float)maxHealth;
-
+        //Debug.Log((float)health / (float)maxHealth);
     }
     public void gainhealth(short gain)
     {
@@ -78,6 +78,10 @@ public class target : MonoBehaviour
         }
         else
         {
+            if (gameObject.GetComponent<freezingTower>() != null)
+            {
+                gameObject.GetComponent<freezingTower>().unfreeze();
+            }
             positionManager.delete(transform.position);
             Destroy(gameObject);           
         }       
@@ -88,7 +92,7 @@ public class target : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-
+    //nbadel na3mel lel player public methode w lel towers public methode an9es if(s)
     void healthBarInst()
     {
         Vector3 pos;

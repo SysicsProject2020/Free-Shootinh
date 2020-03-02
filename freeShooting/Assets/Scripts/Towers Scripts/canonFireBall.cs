@@ -16,7 +16,7 @@ public class canonFireBall : MonoBehaviour
         distance = Vector3.Distance(pos,targetPos);
     }
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         Invoke("check", 1f);       
     }

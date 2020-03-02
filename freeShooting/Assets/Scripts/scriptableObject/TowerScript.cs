@@ -9,6 +9,7 @@ public class TowerScript: ScriptableObject
     private short[] health =new short[5] ;
     [SerializeField]
     private short[] damage = new short[5];
+    public float fireRate; 
     public GameObject prefab;
     public string description;
     public bool locked = true;
@@ -28,6 +29,12 @@ public class TowerScript: ScriptableObject
         return damage[level - 1];
     }
 
+    public float Get_fireRate_player()
+    {
+        //return fireRate[level - 1];
+        return fireRate;
+    }
+
     public short Get_health_enemy(byte lvl)
     {
         return health[lvl - 1];
@@ -36,6 +43,12 @@ public class TowerScript: ScriptableObject
     public short Get_damage_enemy(byte lvl)
     {
         return health[lvl - 1];
+    }
+
+    public float Get_fireRate_enemy(byte lvl)
+    {
+        //return fireRate[lvl - 1];
+        return fireRate;
     }
 }
 

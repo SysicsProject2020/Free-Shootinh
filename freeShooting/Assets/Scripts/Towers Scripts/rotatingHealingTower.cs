@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class rotatingHealingTower : MonoBehaviour
 {
-    public float degreesPerSecond = 50.0f;
-
-    
+    [SerializeField]
+    byte degreesPerSecond = 55;  
 
 void Update()
     {
-        transform.Rotate(Vector3.up*degreesPerSecond*Time.deltaTime, Space.Self);
-
-
+        transform.Rotate(Vector3.up * degreesPerSecond * Time.deltaTime, Space.Self);
     }
 }

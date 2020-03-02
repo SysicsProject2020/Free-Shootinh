@@ -91,7 +91,7 @@ public class AIeasy : MonoBehaviour
                 for (int i = 0; i < 5; i++)
                 {
                     //Debug.Log(towers[i].Get_damage_enemy(1));
-                    positionManager.add(towers[i], BuildPos[i]);                  
+                    positionManager.add(towers[i], BuildPos[i], GameManagerPartie.instance.enemylvl);                  
                 }
                 changeState(AIState.idle);
                 break;

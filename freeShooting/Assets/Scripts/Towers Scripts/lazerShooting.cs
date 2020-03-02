@@ -7,8 +7,7 @@ public class lazerShooting : MonoBehaviour
 {
 
     public short damage;
-    private short damageMultiplier = 2;
-    public float fireRate = 1;
+    private byte damageMultiplier = 2;
     private float nextTimeFire = 0f;
 
     Transform firePoint;
@@ -70,7 +69,7 @@ public class lazerShooting : MonoBehaviour
                 if (Time.time > nextTimeFire)
                 {
                     lazer();
-                    nextTimeFire = Time.time + fireRate;
+                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
                     damage *= damageMultiplier;
                 } 
                 break;
@@ -80,7 +79,7 @@ public class lazerShooting : MonoBehaviour
                 {
                     lazer();
                     GetComponent<target>().takeDamage(damage);
-                    nextTimeFire = Time.time + fireRate;
+                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
                     damage *= damageMultiplier;
                 }
                 break;

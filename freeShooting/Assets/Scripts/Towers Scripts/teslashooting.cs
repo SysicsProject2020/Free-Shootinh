@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class teslashooting : MonoBehaviour
 {
-    public float fireRate = 1;
     private float nextTimeFire = 0f;
     Transform firePoint;
     bool shooting = true;
     LineRenderer lineRenderer;
-
-
     GameObject target_;
-
-    public TowerScript tower;
 
     private void Start()
     {
@@ -70,7 +65,7 @@ public class teslashooting : MonoBehaviour
                     {
                         lineRenderer.enabled = false;
                     }
-                    nextTimeFire = Time.time + fireRate;
+                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
                     shooting = !shooting;
                 }
                 break;
@@ -89,7 +84,7 @@ public class teslashooting : MonoBehaviour
                     {
                         lineRenderer.enabled = false;
                     }
-                    nextTimeFire = Time.time + fireRate;
+                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
                     shooting = !shooting;
                 }
                 break;

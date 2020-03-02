@@ -28,16 +28,9 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Player");
                         buildingGameObject[0, 0] = go;
                         buildingTowerScript[0, 0] = tower;
-                        if (lvl == 0)
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
-                        }
-                        else
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
-                        }
+                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
+                        go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
+                        go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_player());
                         towerZone[0].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(0);
                         HealingTower(0, 0);
@@ -51,16 +44,9 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Player");
                         buildingGameObject[0, 1] = go;
                         buildingTowerScript[0, 1] = tower;
-                        if (lvl == 0)
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
-                        }
-                        else
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
-                        }
+                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
+                        go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
+                        go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_player());
                         towerZone[1].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(1);
                         HealingTower(0, 1);
@@ -74,16 +60,9 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Player");
                         buildingGameObject[0, 2] = go;
                         buildingTowerScript[0, 2] = tower;
-                        if (lvl == 0)
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
-                        }
-                        else
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
-                        }
+                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
+                        go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
+                        go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_player());
                         towerZone[2].transform.GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(2);
                         HealingTower(0, 2);
@@ -97,16 +76,9 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Player");
                         buildingGameObject[0, 3] = go;
                         buildingTowerScript[0, 3] = tower;
-                        if (lvl == 0)
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
-                        }
-                        else
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
-                        }
+                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
+                        go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
+                        go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_player());
                         towerZone[3].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(3);
                         HealingTower(0, 3);
@@ -120,16 +92,9 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Player");
                         buildingGameObject[0, 4] = go;
                         buildingTowerScript[0, 4] = tower;
-                        if (lvl == 0)
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
-                        }
-                        else
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
-                        }
+                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
+                        go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
+                        go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_player());
                         towerZone[4].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(4);
                         HealingTower(0, 4);
@@ -155,16 +120,9 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 0] = go;
                         buildingTowerScript[1, 0] = tower;
-                        if (lvl == 0)
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
-                        }
-                        else
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
-                        }
+                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
+                        go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
+                        go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(0);
                         HealingTower(1, 0);
                     }
@@ -177,16 +135,9 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 1] = go;
                         buildingTowerScript[1, 1] = tower;
-                        if (lvl == 0)
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
-                        }
-                        else
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
-                        }
+                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
+                        go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
+                        go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(1);
                         HealingTower(1, 1);
                     }
@@ -199,16 +150,9 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 2] = go;
                         buildingTowerScript[1, 2] = tower;
-                        if (lvl == 0)
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
-                        }
-                        else
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
-                        }
+                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
+                        go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
+                        go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(2);
                         HealingTower(1, 2);
                     }
@@ -221,16 +165,9 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 3] = go;
                         buildingTowerScript[1, 3] = tower;
-                        if (lvl == 0)
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
-                        }
-                        else
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
-                        }
+                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
+                        go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
+                        go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(3);
                         HealingTower(1, 3);
                     }
@@ -243,16 +180,9 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 4] = go;
                         buildingTowerScript[1, 4] = tower;
-                        if (lvl == 0)
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_player());
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_player());
-                        }
-                        else
-                        {
-                            go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
-                            go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
-                        }
+                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
+                        go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
+                        go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(4);
                         HealingTower(1, 4);
                     }

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class xbowShooting : MonoBehaviour
 {
-    public float fireRate = 0.5f;
     private float nextTimeFire = 0f;
     
     public short speed = 25;
@@ -50,7 +49,7 @@ public class xbowShooting : MonoBehaviour
                     if (Time.time > nextTimeFire)
                     {
                         shoot();
-                        nextTimeFire = Time.time + fireRate;
+                        nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
                     }
                 }
                 break;

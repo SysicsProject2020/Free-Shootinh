@@ -16,9 +16,10 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 62cd9273bc05e73439e0268bcbc5b322, type: 3}
   health: 26026c02bc02e4021603
   damage: 680072007e0082008700
+  fireRate: 4
   prefab: {fileID: 6691245050111619357, guid: 398d49f86141a2c44899c0c2418f0625, type: 3}
   description: 
   locked: 0
-  level: 2
+  level: 1
   cost: 175
   UnlockPrice: 50

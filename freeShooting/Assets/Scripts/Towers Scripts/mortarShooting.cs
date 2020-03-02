@@ -7,7 +7,6 @@ public class mortarShooting : MonoBehaviour
     public GameObject fireBall;
     private GameObject target_;
     public float speed;
-    public float fireRate = 4f;
     private float nextTimeFire = 0f;
     public Transform firePoint;
 
@@ -43,7 +42,7 @@ public class mortarShooting : MonoBehaviour
                 {
                     Vector3 vo = Calculatevelocity(target_.transform.position, firePoint.position, speed);
                     shoot(vo);
-                    nextTimeFire = Time.time + fireRate;
+                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
                 }
                 break;
         }

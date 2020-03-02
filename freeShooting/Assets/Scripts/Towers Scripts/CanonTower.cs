@@ -5,7 +5,6 @@ using UnityEngine;
 public class CanonTower : MonoBehaviour
 {
     float nextTimeFire;
-    public float fireRate = 2.0f;
     GameObject target_;
     public GameObject CanonFireBall;
     Transform firePoint;
@@ -58,7 +57,7 @@ public class CanonTower : MonoBehaviour
                     go.GetComponent<bullet>().changedam(GetComponent<towerInf>().damage);
                     go.GetComponent<bullet>().sender = gameObject;
                     go.GetComponent<canonFireBall>().pos(transform.position, target_.transform.position);
-                    nextTimeFire = Time.time + fireRate;
+                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
                 }
                 break;
         }  
