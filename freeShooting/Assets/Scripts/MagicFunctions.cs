@@ -17,6 +17,10 @@ public class MagicFunctions : MonoBehaviour
     [Header("Magic:AllCardsFree")]
     private bool testFree=false;
     private short currentCoins;
+    [Header("Magic:MissilesMagic")]
+    public GameObject Missiles;
+    private GameObject MissilesInstantiated;
+    private bool MissilesLaunched=false;
 
 
     // Start is called before the first frame update
@@ -61,7 +65,7 @@ public class MagicFunctions : MonoBehaviour
             Instantiate(shield, GameManagerPartie.instance.enemyTowerPos, Quaternion.Euler(0, 0, 0));
         }
     }
-     void removeShield(int player)
+    void removeShield(int player)
     {
         Destroy(ShieldInstantiated);
     }
@@ -80,7 +84,7 @@ public class MagicFunctions : MonoBehaviour
                     i++;
                     }
                 }
-            int rand = Random.Range(0, i);
+            int rand = Random.Range(0, i-1);
             
             for (int j = 0; j < 5; j++)
             {
@@ -138,33 +142,11 @@ public class MagicFunctions : MonoBehaviour
 
         }
     }
-    public void SeeCards(int player)
+    public void MissilesMagic(int player)
     {
-        if (player == 0)
-        {
-            TowerPanelInstantiated = Instantiate(towerPanel,GameManagerPartie.instance.itemParent.transform.position,Quaternion.Euler(0,0,0),canvas.transform);
-            for (int i = 0; i < 6; i++)
-            {
-                if (AIeasy.towers[i].cost > GameManagerPartie.instance.enemyCoins)
-                {
-                    towerPanel.transform.GetChild(i).GetComponent<Button>().interactable = false;
-                    //change sprite to non interactable
-                    //itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
-                }
-                else
-                {
-                    towerPanel.transform.GetChild(i).GetComponent<Button>().interactable = true;
-                    //change sprite to interactable
-                    towerPanel.transform.GetChild(i).GetComponentInChildren<Image>().sprite = AIeasy.towers[i].image;
-                }
-                towerPanel.transform.GetChild(i).GetComponentInChildren<Text>().text = AIeasy.towers[i].cost.ToString();
-            }
-            Invoke("hideCards", 2.0f);
-        }
-        else
-        {
-
-        }
+        MissilesInstantiated = Instantiate(Missiles);
+        MissilesLaunched = true;
+        
     }
     void hideCards(int player) {
         Destroy(TowerPanelInstantiated);
@@ -192,7 +174,26 @@ public class MagicFunctions : MonoBehaviour
         testFree = false;
     }
     // Update is called once per frame
+    public void healTowers(int player)
+    {
+        if (player == 0)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                if (positionManager.buildingGameObject[0, j] != null)
+                {
+                    positionManager.buildingGameObject[0, j].gameObject.GetComponent<target>().gainhealth(150);
+                }
+               
+            }
+            GameManagerPartie.instance.player_.GetComponent<target>().gainhealth(50);
+            GameManagerPartie.instance.playerTowerBase_.GetComponent<target>().gainhealth(200);
+        }
+        else
+        {
 
+        }
+    }
 
     void Update()
     {
@@ -207,5 +208,50 @@ public class MagicFunctions : MonoBehaviour
             else
                 currentCoins = GameManagerPartie.instance.playerCoins;
         }
+        if (MissilesLaunched)
+        {
+            if (MissilesInstantiated.transform.childCount ==0)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    if (positionManager.buildingGameObject[1, j] != null)
+                    {
+                        positionManager.buildingGameObject[1, j].GetComponent<target>().takeDamage(75);
+                    }
+                }
+                GameManagerPartie.instance.enemy_.GetComponent<target>().takeDamage(50);
+                GameManagerPartie.instance.enemyTowerBase_.GetComponent<target>().takeDamage(75);
+                Destroy(MissilesInstantiated);
+                MissilesLaunched = false;
+            }
+        }
     }
 }
+/*public void SeeCards(int player)
+{
+    if (player == 0)
+    {
+        TowerPanelInstantiated = Instantiate(towerPanel,GameManagerPartie.instance.itemParent.transform.position,Quaternion.Euler(0,0,0),canvas.transform);
+        for (int i = 0; i < 6; i++)
+        {
+            if (AIeasy.towers[i].cost > GameManagerPartie.instance.enemyCoins)
+            {
+                towerPanel.transform.GetChild(i).GetComponent<Button>().interactable = false;
+                //change sprite to non interactable
+                //itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
+            }
+            else
+            {
+                towerPanel.transform.GetChild(i).GetComponent<Button>().interactable = true;
+                //change sprite to interactable
+                towerPanel.transform.GetChild(i).GetComponentInChildren<Image>().sprite = AIeasy.towers[i].image;
+            }
+            towerPanel.transform.GetChild(i).GetComponentInChildren<Text>().text = AIeasy.towers[i].cost.ToString();
+        }
+        Invoke("hideCards", 2.0f);
+    }
+    else
+    {
+
+    }
+}*/
