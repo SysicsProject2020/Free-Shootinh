@@ -60,7 +60,7 @@ public class GameManagerPartie : MonoBehaviour
             case "robot":
                 /*playerMagic1.GetComponent<Image>().sprite = player.magic1.image;
                 playerMagic2.GetComponent<Image>().sprite = player.magic2.image;*/
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Clone(0); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Accelerate(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Shield(0); });
 
                 break;
@@ -69,8 +69,8 @@ public class GameManagerPartie : MonoBehaviour
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.allCardsFree(0); });
                 break;
             case "snowman":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.FreezTower(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Accelerate(0); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Clone(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.FreezTower(0); });                
                 break;
             case "witcher":
                 
