@@ -1004,7 +1004,7 @@ MonoBehaviour:
     type: 3}
   enemyCoins: 1000
   enemyCoinsTxt: {fileID: 1193077956}
-  enemylvl: 1
+  enemylvl: 2
 --- !u!4 &1441807754
 Transform:
   m_ObjectHideFlags: 0
@@ -1045,6 +1045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diamond: 0
+  TowersNumber: 9
   players:
   - {fileID: 11400000, guid: b526a8851452ac148b5a9349b56c37a2, type: 2}
   - {fileID: 11400000, guid: f60469ddbf516914bab01aec129bfa68, type: 2}
@@ -1060,7 +1061,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 13e8f4edb15a6774ab6063345b385e70, type: 2}
   - {fileID: 11400000, guid: 447a612f0698c154d94896cf5f076015, type: 2}
   - {fileID: 11400000, guid: 59179c4c0714fd34c9a9b94dd6ab5b56, type: 2}
-  - {fileID: 11400000, guid: 4806943ef9b3b6746840ada06f39e5c4, type: 2}
+  - {fileID: 11400000, guid: 11cee3bba39b8fa44a93b9bc6aea1f43, type: 2}
 --- !u!114 &1441807757
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     
        
     public static GameManager instance;
-    public  byte TowersNumber=9;
+    public byte TowersNumber;
     public PlayerScript[] players;
     public GameObject inventory;
     public TowerScript[] Towers;
@@ -36,9 +36,11 @@ public class GameManager : MonoBehaviour
             setPlayer(players[0]);
             remplirSelectedTower();
             diamond = 0;
+            TowersNumber = 9;
             LevelSystem.instance.XP = 0;
             SaveSystem.SavePlayer();
         }
+        FillTowersNotSelected();
     }
     private void loadData()
     {
@@ -83,7 +85,7 @@ public class GameManager : MonoBehaviour
             diamond = data.diamonds;
             LevelSystem.instance.XP = data.XP;
         }
-        FillTowersNotSelected();
+        
 
     }
     public PlayerScript getPlayer()
