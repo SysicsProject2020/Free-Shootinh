@@ -4513,7 +4513,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 219.76, y: 100}
-  m_Spacing: {x: 81.4, y: 217.99}
+  m_Spacing: {x: 103.36, y: 217.99}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &1203953759
@@ -6390,6 +6390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diamond: 0
+  TowersNumber: 9
   players:
   - {fileID: 11400000, guid: b526a8851452ac148b5a9349b56c37a2, type: 2}
   - {fileID: 11400000, guid: f60469ddbf516914bab01aec129bfa68, type: 2}
@@ -6405,6 +6406,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 77ffcf6dfc6798e48b8651cf3d81df8e, type: 2}
   - {fileID: 11400000, guid: 13e8f4edb15a6774ab6063345b385e70, type: 2}
   - {fileID: 11400000, guid: 447a612f0698c154d94896cf5f076015, type: 2}
+  - {fileID: 11400000, guid: 4806943ef9b3b6746840ada06f39e5c4, type: 2}
 --- !u!4 &1607493305
 Transform:
   m_ObjectHideFlags: 0

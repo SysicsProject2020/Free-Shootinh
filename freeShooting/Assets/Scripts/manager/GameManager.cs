@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     
        
     public static GameManager instance;
+    public  byte TowersNumber=9;
     public PlayerScript[] players;
     public GameObject inventory;
     public TowerScript[] Towers;
@@ -25,11 +26,9 @@ public class GameManager : MonoBehaviour
     {
         
         instance = this;
-        
         towersNotSelected = new TowerScript[(Towers.Length - towersSelected.Length)];
         if(SaveSystem.testExist())
-            {
-            
+        {
             loadData();
         }
         else
@@ -40,15 +39,6 @@ public class GameManager : MonoBehaviour
             LevelSystem.instance.XP = 0;
             SaveSystem.SavePlayer();
         }
-        
-        FillTowersNotSelected();
-        
-         //data = SaveSystem.loadPlayerData();
-        
-       // fillSelectedtowers();
-        
-        // Debug.Log(data.SelectedPlayer);
-      
     }
     private void loadData()
     {
@@ -58,21 +48,18 @@ public class GameManager : MonoBehaviour
             if(players[i].name==data.SelectedPlayer)
             {
                 playerSelected = players[i];
-                
             }
-            
             players[i].locked = data.lockPlayersData[i];
             players[i].level = data.playersLevel[i];
         }
         int k = 0;
-        for(int i=0;i<Towers.Length;i++)
+        for(int i=0;i<TowersNumber; i++)
         {
             for(int j = 0; j < 6; j++)
             {
                 if(Towers[i].name==data.SelectedTowers[j])
                 {
                     towersSelected[k] = Towers[i];
-                    // Debug.Log(towersSelected[k].name);
                     k++;
                     break;
                 }
@@ -80,13 +67,24 @@ public class GameManager : MonoBehaviour
             Towers[i].locked = data.lockTowersData[i];
             Towers[i].level = data.towersLevel[i];
         }
+        if (Towers.Length > TowersNumber)
+        {
+            for (int i = TowersNumber; i < Towers.Length; i++)
+            {
+                Towers[i].locked = true;
+                Towers[i].level = 1;
+            }
+            TowersNumber = (byte)Towers.Length;
+        }
+        Debug.Log(TowersNumber);
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "menu")
         {
             diamond = data.diamonds;
             LevelSystem.instance.XP = data.XP;
         }
-        
+        FillTowersNotSelected();
+
     }
     public PlayerScript getPlayer()
     {
@@ -138,7 +136,6 @@ public class GameManager : MonoBehaviour
             {
                 towersNotSelected[h] = Towers[i];
                 h++;
-                //Debug.Log(h);
             }
         }
        

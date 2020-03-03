@@ -8,6 +8,8 @@ public class PlayerData
     public string[] SelectedTowers=new string[6];
     public byte diamonds;
     public int XP;
+    public byte playersNumber;
+    public byte towersNumber;
    // public string[] UnlockedPlayers = new string[GameManager.instance.players.Length];
    // public string[] Unlockedtowers =new string[GameManager.instance.Towers.Length];
     public byte[] towersLevel = new byte[GameManager.instance.Towers.Length];
@@ -24,10 +26,6 @@ public class PlayerData
         SelectedPlayer = GameManager.instance.getPlayer().name;
         for (int i = 0; i < GameManager.instance.Towers.Length;i++)
         {
-            //SelectedTowers[i] = GameManager.instance.GetSelectedTowers()[i].name;
-            // Unlockedtowers[i] = GameManager.instance.GetSelectedTowers()[i].name;
-            // towersUnlockedLevel[i] = GameManager.instance.GetSelectedTowers()[i].level;
-            //Debug.Log(SelectedTowers[i]);
             lockTowersData[i] = GameManager.instance.Towers[i].locked;
             towersLevel[i] = GameManager.instance.Towers[i].level;
         }
@@ -38,15 +36,21 @@ public class PlayerData
         }
         for (int j = 0; j < GameManager.instance.players.Length;j++)
         {
-            /* if(GameManager.instance)
-             UnlockedPlayers[0] = GameManager.instance.players[0].name;
-             playersunlockedLevel[0] = GameManager.instance.players[0].level;*/
             lockPlayersData[j] = GameManager.instance.players[j].locked;
             playersLevel[j] = GameManager.instance.players[j].level;
         }
+        towersNumber = GameManager.instance.TowersNumber;
 
 
 
     }
-    
+    public void addTower()
+    {
+        for (int i = 0; i < GameManager.instance.Towers.Length; i++)
+        {
+            lockTowersData[i] = GameManager.instance.Towers[i].locked;
+            towersLevel[i] = GameManager.instance.Towers[i].level;
+        }
+        SaveSystem.SavePlayer();
+    }
 }

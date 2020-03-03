@@ -144,6 +144,7 @@ public class MenuManager : MonoBehaviour
         }
         for (int j = 0; j < towersNotSelected.Length; j++)
         {
+            Debug.Log(towersNotSelected[j].name);
             towerNotSelectedMenu.transform.GetChild(j).GetComponentInChildren<Image>().sprite = towersNotSelected[j].image;
         }
     }
