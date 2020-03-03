@@ -15,7 +15,8 @@ MonoBehaviour:
   name: tower base 1
   image: {fileID: 21300000, guid: 9da63ff78f23fa24c8e392cfe0056fce, type: 3}
   health: 9808c4098c0ab80be40c
-  damage: 
+  damage: 00000000000000000000
+  fireRate: 0
   prefab: {fileID: 6691245050111619357, guid: fa3de70379caac846affbf240c2f085c, type: 3}
   description: 
   locked: 1

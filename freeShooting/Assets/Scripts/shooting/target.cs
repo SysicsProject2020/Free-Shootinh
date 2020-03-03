@@ -20,9 +20,9 @@ public class target : MonoBehaviour
     {
         this.health = health;
         maxHealth = health;
+        //Debug.Log(health + "    "+  maxHealth);
     }
-
-    private void Start()
+    void Awake()
     {
         healthBarInst();      
     }
@@ -36,8 +36,9 @@ public class target : MonoBehaviour
             die();
             return;
         }
-        healthBar.fillAmount = (float)health / (float)maxHealth;
         //Debug.Log((float)health / (float)maxHealth);
+        healthBar.fillAmount = (float)health / (float)maxHealth;
+        
     }
     public void gainhealth(short gain)
     {
