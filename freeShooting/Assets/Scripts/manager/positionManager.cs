@@ -358,10 +358,6 @@ public class positionManager : MonoBehaviour
                     {
                         buildingGameObject[0, j].GetComponent<freezingTower>().shoot(buildingGameObject[1, j]);
                     }
-                    else
-                    {
-                        buildingGameObject[0, j].GetComponent<freezingTower>().unfreeze();
-                    }
                     break;
 
                 case "lazer tower":

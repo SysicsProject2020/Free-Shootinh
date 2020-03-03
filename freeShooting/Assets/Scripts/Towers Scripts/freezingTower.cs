@@ -6,7 +6,7 @@ public class freezingTower : MonoBehaviour
 {
     Transform firePoint;
     LineRenderer lineRenderer;
-    GameObject target_;
+    public GameObject target_;
     float targetFireRate;
 
     private void Start()
@@ -19,7 +19,7 @@ public class freezingTower : MonoBehaviour
 
     public enum freezingtowerState
     {
-        idle, shoot, finishShooting
+        idle, shoot
         //, die
     }
 
@@ -29,10 +29,6 @@ public class freezingTower : MonoBehaviour
         if (target_.GetComponent<mirrorTower>() == null)
             CurrentState = freezingtowerState.shoot;
     }
-    public void StopShoot()
-    {
-        CurrentState = freezingtowerState.finishShooting;
-    }
 
     // Update is called once per frame
     void Update()
@@ -40,10 +36,6 @@ public class freezingTower : MonoBehaviour
         switch (CurrentState)
         {
             case freezingtowerState.idle:
-                break;
-
-            case freezingtowerState.finishShooting:
-                unfreeze();
                 break;
 
             case freezingtowerState.shoot:
@@ -59,7 +51,7 @@ public class freezingTower : MonoBehaviour
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target_.transform.position);
         targetFireRate = target_.GetComponent<towerInf>().fireRate;
-        target_.GetComponent<towerInf>().fireRate = targetFireRate + ((targetFireRate / 100) * GetComponent<towerInf>().damage);
+        target_.GetComponent<towerInf>().fireRate = (targetFireRate / 100) * gameObject.GetComponent<towerInf>().damage;
         CurrentState = freezingtowerState.idle;
     }
 
