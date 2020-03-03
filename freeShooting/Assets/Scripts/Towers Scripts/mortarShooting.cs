@@ -38,11 +38,13 @@ public class mortarShooting : MonoBehaviour
                 break;
 
             case mortorState.shoot:
+
                 if (Time.time > nextTimeFire)
                 {
                     Vector3 vo = Calculatevelocity(target_.transform.position, firePoint.position, speed);
                     shoot(vo);
-                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
+                    nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
+
                 }
                 break;
         }

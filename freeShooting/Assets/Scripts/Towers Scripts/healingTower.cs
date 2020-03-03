@@ -41,7 +41,7 @@ public class healingTower : MonoBehaviour
                     {
                         targetToHeal.GetComponent<target>().gainhealth(GetComponent<towerInf>().damage);
                     }
-                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
+                    nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
                 }                        
                 break;
         }

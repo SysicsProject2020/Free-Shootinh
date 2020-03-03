@@ -42,7 +42,7 @@ public class TowerScript: ScriptableObject
 
     public short Get_damage_enemy(byte lvl)
     {
-        return health[lvl - 1];
+        return damage[lvl - 1];
     }
 
     public float Get_fireRate_enemy(byte lvl)

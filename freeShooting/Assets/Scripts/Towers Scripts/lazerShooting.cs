@@ -69,7 +69,7 @@ public class lazerShooting : MonoBehaviour
                 if (Time.time > nextTimeFire)
                 {
                     lazer();
-                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
+                    nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
                     damage *= damageMultiplier;
                 } 
                 break;
@@ -79,7 +79,7 @@ public class lazerShooting : MonoBehaviour
                 {
                     lazer();
                     GetComponent<target>().takeDamage(damage);
-                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
+                    nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
                     damage *= damageMultiplier;
                 }
                 break;

@@ -931,80 +931,47 @@ public class positionManager : MonoBehaviour
 
     }
 
-    public static void HealingTower(int i, int p)
+    public static void HealingTower(byte i, byte p)
     {
-        if (p-1 != -1)
+        //need rethinking
+        int j = p - 1;
+        if (j != -1)
         {
-            if (buildingTowerScript[i, p-1] != null)
+            if (buildingTowerScript[i, j] != null)
             {
-                int j = p - 1;
                 if (buildingTowerScript[i, j].name == "healing tower")
                 {
-                    if (j - 1 != -1 && j + 1 != 5 && buildingGameObject[i, j + 1] != null && buildingGameObject[i, j - 1] != null)
+                    if (j - 1 != -1 && buildingGameObject[i, j - 1] != null)
                     {
-                        buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, j + 1], buildingGameObject[i, j - 1] });
+                        buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, j - 1], buildingGameObject[i, p] });
                     }
                     else
-                    {
-                        if (j + 1 != 5 && buildingGameObject[i, j + 1] != null)
-                        {
-                            buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, j + 1] });
-                        }
-                        else
-                        {
-                            if (j - 1 != -1 && buildingGameObject[i, j - 1] != null)
-                            {
-                                buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, j - 1] });
-                            }
-                            else
-                            {
-                                buildingGameObject[i, j].GetComponent<healingTower>().stopHeal();
-                            }
-                        }
-
+                    {                      
+                        buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, p] });
                     }
-
                 }
             }
         }
 
+        j = p + 1;
         if (p + 1 != 5)
         {
             if (buildingTowerScript[i, p + 1] != null)
             {
-                int j = p + 1;
+
                 if (buildingTowerScript[i, j].name == "healing tower")
                 {
-                    if (j - 1 != -1 && j + 1 != 5 && buildingGameObject[i, j + 1] != null && buildingGameObject[i, j - 1] != null)
+                    if ( j + 1 != 5 && buildingGameObject[i, j + 1] != null)
                     {
-                        buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, j + 1], buildingGameObject[i, j - 1] });
+                        buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, j + 1], buildingGameObject[i, p] });
                     }
                     else
-                    {
-                        if (j + 1 != 5 && buildingGameObject[i, j + 1] != null)
-                        {
-                            buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, j + 1] });
-                        }
-                        else
-                        {
-                            if (j - 1 != -1 && buildingGameObject[i, j - 1] != null)
-                            {
-                                buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, j - 1] });
-                            }
-                            else
-                            {
-                                buildingGameObject[i, j].GetComponent<healingTower>().stopHeal();
-                            }
-                        }
-
+                    {                       
+                         buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, p] });
                     }
-
                 }
             }
-        }
-
-
-
+        }      
     }
 
     private static void addCoinEnemy(byte a)

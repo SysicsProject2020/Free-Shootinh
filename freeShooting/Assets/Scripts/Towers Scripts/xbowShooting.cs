@@ -47,7 +47,7 @@ public class xbowShooting : MonoBehaviour
                 if (Time.time > nextTimeFire)
                 {
                     shoot();
-                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
+                    nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
                 }
                 break;
         }
@@ -65,7 +65,7 @@ public class xbowShooting : MonoBehaviour
         GameObject clone = Instantiate(bow, firePoint.position, firePoint.rotation);
         //clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(target_.transform.position.x, target_.transform.position.y, target_.transform.position.z);
         clone.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * speed;
-        clone.GetComponent<bullet>().changedam(GetComponent<towerInf>().damage);
+        clone.GetComponent<bullet>().changedam(gameObject.GetComponent<towerInf>().damage);
         clone.GetComponent<bullet>().sender = gameObject;
     }
 

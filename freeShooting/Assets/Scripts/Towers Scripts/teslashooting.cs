@@ -65,7 +65,7 @@ public class teslashooting : MonoBehaviour
                     {
                         lineRenderer.enabled = false;
                     }
-                    nextTimeFire = Time.time + (1 / gameObject.GetComponent<towerInf>().fireRate);
+                    nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
                     shooting = !shooting;
                 }
                 break;
