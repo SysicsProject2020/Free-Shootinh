@@ -15,7 +15,8 @@ MonoBehaviour:
   name: block tower
   image: {fileID: 21300000, guid: 9da63ff78f23fa24c8e392cfe0056fce, type: 3}
   health: dc05d6064407b207f807
-  damage: 
+  damage: 00000000000000000000
+  fireRate: 0
   prefab: {fileID: 7046931816874122672, guid: ec57c85dd2a3cae4fb7454f944439d6d, type: 3}
   description: 
   locked: 0

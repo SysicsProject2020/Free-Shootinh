@@ -20,7 +20,7 @@ public class target : MonoBehaviour
     {
         this.health = health;
         maxHealth = health;
-        Debug.Log(health + "    "+  maxHealth);
+        //Debug.Log(health + "    "+  maxHealth);
     }
     void Awake()
     {
