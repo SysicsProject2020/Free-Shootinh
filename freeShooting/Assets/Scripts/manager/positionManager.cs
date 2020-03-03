@@ -346,6 +346,24 @@ public class positionManager : MonoBehaviour
         {
             switch (buildingTowerScript[0, j].name)
             {
+                case "block tower":
+                    break;
+
+                case "mirror tower":
+                    break;
+
+                case "freezing tower":
+                    //Debug.Log("lazer");
+                    if (buildingGameObject[1, j] != null)
+                    {
+                        buildingGameObject[0, j].GetComponent<freezingTower>().shoot(buildingGameObject[1, j]);
+                    }
+                    else
+                    {
+                        buildingGameObject[0, j].GetComponent<freezingTower>().unfreeze();
+                    }
+                    break;
+
                 case "lazer tower":
                     //Debug.Log("lazer");
                     if (buildingGameObject[1, j] != null)
@@ -624,6 +642,23 @@ public class positionManager : MonoBehaviour
         {
             switch (buildingTowerScript[1, j].name)
             {
+                case "block tower":
+                    break;
+
+                case "mirror tower":
+                    break;
+
+                case "freezing tower":
+                    //Debug.Log("lazer");
+                    if (buildingGameObject[0, j] != null)
+                    {
+                        buildingGameObject[1, j].GetComponent<freezingTower>().shoot(buildingGameObject[1, j]);
+                    }
+                    else
+                    {
+                        buildingGameObject[1, j].GetComponent<freezingTower>().unfreeze();
+                    }
+                    break;
                 case "lazer tower":
                     //Debug.Log("lazer");
                     if (buildingGameObject[0, j] != null)
