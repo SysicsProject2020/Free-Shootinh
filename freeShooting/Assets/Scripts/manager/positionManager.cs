@@ -696,7 +696,7 @@ public class positionManager : MonoBehaviour
                     }
                     else
                     {
-                        if (j - 1 != 5 && buildingGameObject[1, j + 1] != null)
+                        if (j + 1 != 5 && buildingGameObject[1, j + 1] != null)
                         {
                             buildingGameObject[1, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[1, j + 1] });
                         }
