@@ -32,8 +32,9 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_player());
                         towerZone[0].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(0);
-                        HealingTower(0, 0);
                         addCoinPlayer((short)-(int)buildingTowerScript[0, 0].cost);
+
+                        HealingTowerAdd0(0);
                     }
                     break;
 
@@ -49,8 +50,8 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_player());
                         towerZone[1].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(1);
-                        HealingTower(0, 1);
                         addCoinPlayer((short)-(int)buildingTowerScript[0, 1].cost);
+                        HealingTowerAdd1(0);
                     }
                     break;
 
@@ -66,8 +67,9 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_player());
                         towerZone[2].transform.GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(2);
-                        HealingTower(0, 2);
                         addCoinPlayer((short)-(int)buildingTowerScript[0, 2].cost);
+
+                        HealingTowerAdd2(0);
                     }
                     break;
 
@@ -83,8 +85,9 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_player());
                         towerZone[3].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(3);
-                        HealingTower(0, 3);
                         addCoinPlayer((short)-(int)buildingTowerScript[0, 3].cost);
+
+                        HealingTowerAdd3(0);
                     }
                     break;
 
@@ -100,8 +103,9 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_player());
                         towerZone[4].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(4);
-                        HealingTower(0, 4);
                         addCoinPlayer((short)-(int)buildingTowerScript[0, 4].cost);
+
+                        HealingTowerAdd4(0);
                     }
                     break;
             }
@@ -128,7 +132,7 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(0);
-                        HealingTower(1, 0);
+                        HealingTowerAdd0(1);
                         addCoinEnemy((short)-(int)buildingTowerScript[1, 0].cost);
                     }
                     break;
@@ -144,7 +148,7 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(1);
-                        HealingTower(1, 1);
+                        HealingTowerAdd1(1);
                         addCoinEnemy((short)-(int)buildingTowerScript[1, 1].cost);
                     }
                     break;
@@ -160,7 +164,7 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(2);
-                        HealingTower(1, 2);
+                        HealingTowerAdd2(1);
                         addCoinEnemy((short)-(int)buildingTowerScript[1, 2].cost);
                     }
                     break;
@@ -176,7 +180,7 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(3);
-                        HealingTower(1, 3);
+                        HealingTowerAdd3(1);
                         addCoinEnemy((short)-(int)buildingTowerScript[1, 3].cost);
                     }
                     break;
@@ -192,7 +196,7 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(4);
-                        HealingTower(1, 4);
+                        HealingTowerAdd4(1);
                         addCoinEnemy((short)-(int)buildingTowerScript[1, 4].cost);
                     }
                     break;
@@ -217,7 +221,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 0] = null;
                         buildingTowerScript[0, 0] = null;
                         towerZone[0].GetComponent<BoxCollider>().enabled = true;
-                        HealingTower(0, 0);
+                        HealingTowerDelete0(0);
                     }
                     break;
 
@@ -228,7 +232,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 1] = null;
                         buildingTowerScript[0, 1] = null;
                         towerZone[1].GetComponent<BoxCollider>().enabled = true;
-                        HealingTower(0, 0);
+                        HealingTowerDelete1(0);
                     }
                     break;
 
@@ -239,7 +243,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 2] = null;
                         buildingTowerScript[0, 2] = null;
                         towerZone[2].GetComponent<BoxCollider>().enabled = true;
-                        HealingTower(0, 2);
+                        HealingTowerDelete2(0);
                     }
                     break;
 
@@ -250,7 +254,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 3] = null;
                         buildingTowerScript[0, 3] = null;
                         towerZone[3].GetComponent<BoxCollider>().enabled = true;
-                        HealingTower(0, 3);
+                        HealingTowerDelete3(0);
                     }
                     break;
 
@@ -261,7 +265,7 @@ public class positionManager : MonoBehaviour
                         buildingGameObject[0, 4] = null;
                         buildingTowerScript[0, 4] = null;
                         towerZone[4].GetComponent<BoxCollider>().enabled = true;
-                        HealingTower(0, 4);
+                        HealingTowerDelete4(0);
                     }
                     break;
             }
@@ -282,7 +286,7 @@ public class positionManager : MonoBehaviour
                         addCoinPlayer((short)(buildingTowerScript[1, 0].cost - 50));
                         buildingGameObject[1, 0] = null;
                         buildingTowerScript[1, 0] = null;
-                        HealingTower(1, 0);
+                        HealingTowerDelete0(1);
                     }
                     break;
 
@@ -292,7 +296,7 @@ public class positionManager : MonoBehaviour
                         addCoinPlayer((short)(buildingTowerScript[1, 1].cost - 50));
                         buildingGameObject[1, 1] = null;
                         buildingTowerScript[1, 1] = null;
-                        HealingTower(1, 1);
+                        HealingTowerDelete1(1);
                     }
                     break;
 
@@ -302,7 +306,7 @@ public class positionManager : MonoBehaviour
                         addCoinPlayer((short)(buildingTowerScript[1, 2].cost - 50));
                         buildingGameObject[1, 2] = null;
                         buildingTowerScript[1, 2] = null;
-                        HealingTower(1, 2);
+                        HealingTowerDelete2(1);
                     }
                     break;
 
@@ -312,7 +316,7 @@ public class positionManager : MonoBehaviour
                         addCoinPlayer((short)(buildingTowerScript[1, 3].cost - 50));
                         buildingGameObject[1, 3] = null;
                         buildingTowerScript[1, 3] = null;
-                        HealingTower(1, 3);
+                        HealingTowerDelete3(1);
                     }
                     break;
 
@@ -322,7 +326,7 @@ public class positionManager : MonoBehaviour
                         addCoinPlayer((short)(buildingTowerScript[1, 4].cost - 50));
                         buildingGameObject[1, 4] = null;
                         buildingTowerScript[1, 4] = null;
-                        HealingTower(1, 4);
+                        HealingTowerDelete4(1);
                     }
                     break;
             }
@@ -936,49 +940,6 @@ public class positionManager : MonoBehaviour
 
     }
 
-    public static void HealingTower(byte i, byte p)
-    {
-        //need rethinking
-        int j = p - 1;
-        if (j != -1)
-        {
-            if (buildingTowerScript[i, j] != null)
-            {
-                if (buildingTowerScript[i, j].name == "healing tower")
-                {
-                    if (j - 1 != -1 && buildingGameObject[i, j - 1] != null)
-                    {
-                        buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, j - 1], buildingGameObject[i, p] });
-                    }
-                    else
-                    {                      
-                        buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, p] });
-                    }
-                }
-            }
-        }
-
-        j = p + 1;
-        if (p + 1 != 5)
-        {
-            if (buildingTowerScript[i, p + 1] != null)
-            {
-
-                if (buildingTowerScript[i, j].name == "healing tower")
-                {
-                    if ( j + 1 != 5 && buildingGameObject[i, j + 1] != null)
-                    {
-                        buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, j + 1], buildingGameObject[i, p] });
-                    }
-                    else
-                    {                       
-                         buildingGameObject[i, j].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, p] });
-                    }
-                }
-            }
-        }      
-    }
-
     private static void addCoinEnemy(short a)
     {
         GameManagerPartie.instance.enemyCoins += a;
@@ -990,5 +951,161 @@ public class positionManager : MonoBehaviour
         GameManagerPartie.instance.playerCoins += a;
         GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
         GameManagerPartie.instance.ChangeSprites();
+    }
+
+    public static void HealingTowerAdd0(byte i)
+    {
+        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        {
+            if (buildingGameObject[i, 2] != null)
+            {
+                buildingGameObject[i, 1].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 2], buildingGameObject[i, 0] });
+            }
+            else
+            {
+                buildingGameObject[i, 1].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 0] });
+            }
+        }
+    }
+    public static void HealingTowerAdd1(byte i)
+    {
+        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        {
+            if (buildingGameObject[i, 3] != null)
+            {
+                buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 3], buildingGameObject[i, 1] });
+            }
+            else
+            {
+                buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 1] });
+            }
+        }
+        if (buildingTowerScript[i, 0] != null && buildingTowerScript[i, 0].name == "healing tower")
+        {
+            buildingGameObject[i, 0].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 1] });
+        }
+    }
+    public static void HealingTowerAdd2(byte i)
+    {
+        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        {
+            if (buildingGameObject[i, 0] != null)
+            {
+                buildingGameObject[i, 1].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 2], buildingGameObject[i, 0] });
+            }
+            else
+            {
+                buildingGameObject[i, 1].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 2] });
+            }
+        }
+        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        {
+            if (buildingGameObject[i, 4] != null)
+            {
+                buildingGameObject[i, 3].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 2], buildingGameObject[i, 4] });
+            }
+            else
+            {
+                buildingGameObject[i, 3].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 2] });
+            }
+        }
+    }
+    public static void HealingTowerAdd3(byte i)
+    {
+        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        {
+            if (buildingGameObject[i, 1] != null)
+            {
+                buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 3], buildingGameObject[i, 1] });
+            }
+            else
+            {
+                buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 3] });
+            }
+        }
+        if (buildingTowerScript[i, 4] != null && buildingTowerScript[i, 4].name == "healing tower")
+        {
+            buildingGameObject[i, 4].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 3] });
+        }
+    }
+    public static void HealingTowerAdd4(byte i)
+    {
+        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        {
+            if (buildingGameObject[i, 2] != null)
+            {
+                buildingGameObject[i, 3].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 2], buildingGameObject[i, 4] });
+            }
+            else
+            {
+                buildingGameObject[i, 3].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 4] });
+            }
+        }
+    }
+
+    public static void HealingTowerDelete0(byte i)
+    {
+        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        {
+            if (buildingGameObject[i, 2] != null)
+            {
+                buildingGameObject[i, 1].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 2] });
+            }
+        }
+    }
+    public static void HealingTowerDelete1(byte i)
+    {
+        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        {
+            if (buildingGameObject[i, 3] != null)
+            {
+                buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 3] });
+            }
+        }
+        if (buildingTowerScript[i, 0] != null && buildingTowerScript[i, 0].name == "healing tower")
+        {
+            buildingGameObject[i, 0].GetComponent<healingTower>().heal(new GameObject[] { });
+        }
+    }
+    public static void HealingTowerDelete2(byte i)
+    {
+        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        {
+            if (buildingGameObject[i, 0] != null)
+            {
+                buildingGameObject[i, 1].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 0] });
+            }
+        }
+        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        {
+            if (buildingGameObject[i, 4] != null)
+            {
+                buildingGameObject[i, 3].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 4] });
+            }
+        }
+    }
+    public static void HealingTowerDelete3(byte i)
+    {
+        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        {
+            if (buildingGameObject[i, 1] != null)
+            {
+                buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 1] });
+            }
+        }
+        if (buildingTowerScript[i, 4] != null && buildingTowerScript[i, 0].name == "healing tower")
+        {
+            buildingGameObject[i, 4].GetComponent<healingTower>().heal(new GameObject[] { });
+        }
+    }
+    public static void HealingTowerDelete4(byte i)
+    {
+        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        {
+            if (buildingGameObject[i, 2] != null)
+            {
+                buildingGameObject[i, 3].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 2] });
+            }
+        }
     }
 }
