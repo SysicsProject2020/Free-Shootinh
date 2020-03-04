@@ -46,7 +46,7 @@ public class AIeasy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         //Debug.Log(CurrentState);
 
@@ -160,7 +160,7 @@ public class AIeasy : MonoBehaviour
         LeanTween.moveX(GameManagerPartie.instance.enemy_, rand, time).setEaseLinear();
         yield return new WaitForSeconds (time);
         isMoving = false;
-        Debug.Log("moved");
+        //Debug.Log("moved");
     }
 
     Vector3 choosingDestination()

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -7175208919343516909}
   - component: {fileID: 3654085204790563582}
   - component: {fileID: 8524221342507312373}
+  - component: {fileID: -4608911982023316028}
   m_Layer: 0
   m_Name: tower base 2
   m_TagString: Untagged
@@ -57,7 +58,7 @@ MonoBehaviour:
   health: 2200
   healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
     type: 3}
-  respawnTime: 3
+  PlayerRespawnTime: 3
 --- !u!23 &3654085204790563582
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -109,3 +110,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4608911982023316028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691245050111619357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7476c731b94bb6546971d27d7f015a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  fireRate: 0

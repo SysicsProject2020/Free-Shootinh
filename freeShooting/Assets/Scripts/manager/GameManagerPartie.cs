@@ -86,19 +86,18 @@ public class GameManagerPartie : MonoBehaviour
     private void instantiatePrefabs()
     {
         playerTowerBase_= Instantiate(towerBase.prefab, playerTowerPos, Quaternion.Euler(0, 0, 0));
-        enemyTowerBase_=Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(-180, 0, 0));
+        changeLayerMask(playerTowerBase_, "Player");
+        playerTowerBase_.GetComponent<towerInf>().SetHealth(towerBase.Get_health_player());
+        enemyTowerBase_ =Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(180, 0, 0));
+        changeLayerMask(enemyTowerBase_, "Enemy");
+        enemyTowerBase_.GetComponent<towerInf>().SetHealth(towerBase.Get_health_enemy(enemylvl));
 
         player_ = Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
         enemy_ = Instantiate(enemy.prefab, enemyPos, Quaternion.Euler(-180, 0, 0));
-
-        playerTowerBase_.GetComponent<target>().health = towerBase.Get_health_player();
-        enemyTowerBase_.GetComponent<target>().health = enemybase.Get_health_enemy(enemylvl);
-
         player_.GetComponent<playerShooting>().SetDamage(player.Get_damage_player());
         player_.GetComponent<playerShooting>().SetHealth(player.Get_health_player());
         enemy_.GetComponent<playerShooting>().SetDamage(enemy.Get_damage_enemy(enemylvl));
         enemy_.GetComponent<playerShooting>().SetHealth(enemy.Get_health_enemy(enemylvl));
-
         changeLayerMask(enemy_, "Enemy");
         changeLayerMask(player_, "Player");
     }

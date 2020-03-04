@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class towerInf : MonoBehaviour
 {
-    public short damage;
-    public float fireRate;
+    public short damage = 0;
+    public float fireRate = 0;
     // Start is called before the first frame update
     public void SetDamage(short d)
     {

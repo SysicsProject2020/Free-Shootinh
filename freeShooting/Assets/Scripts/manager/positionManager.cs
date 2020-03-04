@@ -140,8 +140,8 @@ public class positionManager : MonoBehaviour
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 1] = go;
                         buildingTowerScript[1, 1] = tower;
-                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
                         go.GetComponent<towerInf>().SetHealth(tower.Get_health_enemy(lvl));
+                        go.GetComponent<towerInf>().SetDamage(tower.Get_damage_enemy(lvl));
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(1);
                         HealingTower(1, 1);
@@ -987,7 +987,6 @@ public class positionManager : MonoBehaviour
     }
     private static void addCoinPlayer(short a)
     {
-        Debug.Log(a);
         GameManagerPartie.instance.playerCoins += a;
         GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
         GameManagerPartie.instance.ChangeSprites();
