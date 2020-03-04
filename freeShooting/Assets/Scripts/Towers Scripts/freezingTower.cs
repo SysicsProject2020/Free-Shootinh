@@ -25,6 +25,7 @@ public class freezingTower : MonoBehaviour
 
     public void shoot(GameObject targetGameObject)
     {
+        Debug.Log("freeze shoot");
         target_ = targetGameObject;
         if (target_.GetComponent<mirrorTower>() == null)
             CurrentState = freezingtowerState.shoot;
@@ -61,5 +62,13 @@ public class freezingTower : MonoBehaviour
         lineRenderer.enabled = false;
         target_ = null;
         CurrentState = freezingtowerState.idle;
+    }
+
+    public void stopShoot()
+    {
+        if (target_ != null)
+        {
+            unfreeze();
+        }
     }
 }

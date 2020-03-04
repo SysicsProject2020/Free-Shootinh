@@ -66,10 +66,6 @@ public class BuildManager : MonoBehaviour
             {
                 Vector3 towerpos = new Vector3(hit.collider.transform.position.x, transform.position.y, hit.collider.transform.position.z);
                 positionManager.add(towers[nb], towerpos);
-
-                GameManagerPartie.instance.playerCoins -= towers[nb].cost;
-                startCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
-                GameManagerPartie.instance.ChangeSprites();
                 //Debug.Log(GameManagerPartie.instance.playerCoins);
 
             }

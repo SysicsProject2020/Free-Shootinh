@@ -952,6 +952,7 @@ GameObject:
   - component: {fileID: 1441807757}
   - component: {fileID: 1441807758}
   - component: {fileID: 1441807759}
+  - component: {fileID: 1441807760}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1005,6 +1006,7 @@ MonoBehaviour:
   enemyCoins: 1000
   enemyCoinsTxt: {fileID: 1193077956}
   enemylvl: 2
+  AI: {fileID: 1441807760}
 --- !u!4 &1441807754
 Transform:
   m_ObjectHideFlags: 0
@@ -1116,6 +1118,34 @@ MonoBehaviour:
   shield: {fileID: 5808580019842481005, guid: d37b182c72bfa6d449c82e8012d3a2ef, type: 3}
   Missiles: {fileID: 3737483775410786587, guid: c337289d2ffbb1449ab5d9648f0fa67a,
     type: 3}
+--- !u!114 &1441807760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441807752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c263792d11c26e439a7ee6b30d8294c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  TowersWeCanBuild:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 5
+  minCostTower: 0
 --- !u!1 &1852711192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2429149059882561241, guid: e38c3fe726835554a96b8e7b207cf465,

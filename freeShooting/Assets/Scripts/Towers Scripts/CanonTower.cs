@@ -50,23 +50,28 @@ public class CanonTower : MonoBehaviour
             case canonState.shoot:
                 if (Time.time > nextTimeFire)
                 {
-                    rotation();
+                    if (target_ != null)
+                    {
+                        rotation();
 
-                    GameObject go = Instantiate(CanonFireBall, firePoint.position, firePoint.rotation);
-                    go.GetComponent<Rigidbody>().velocity = go.transform.forward * speed;
-                    go.GetComponent<bullet>().changedam(GetComponent<towerInf>().damage);
-                    go.GetComponent<bullet>().sender = gameObject;
-                    go.GetComponent<canonFireBall>().pos(transform.position, target_.transform.position);
-                    nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
+                        GameObject go = Instantiate(CanonFireBall, firePoint.position, firePoint.rotation);
+                        go.GetComponent<Rigidbody>().velocity = go.transform.forward * speed;
+                        go.GetComponent<bullet>().changedam(GetComponent<towerInf>().damage);
+                        go.GetComponent<bullet>().sender = gameObject;
+                        go.GetComponent<canonFireBall>().pos(transform.position, target_.transform.position);
+                        nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
+                    }
+                    
                 }
                 break;
         }  
     }
     void rotation()
-    {
+    { 
         Vector3 relativePos = target_.transform.position - rotationPart.position;
         Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
         rotObject = Quaternion.Euler(transform.rotation.x, rotObject.eulerAngles.y, transform.rotation.z);
         rotationPart.rotation = rotObject;
+
     }
 }

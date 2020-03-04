@@ -37,9 +37,11 @@ public class GameManagerPartie : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        
     }
     void Start()
     {
+       
         player = GameManager.instance.getPlayer();
         Debug.Log(player.name);
         setMagic();
@@ -139,10 +141,19 @@ public class GameManagerPartie : MonoBehaviour
         }
     }
 
-
+    public AIeasy AI;
     void chooseEnemyTowers()
     {
         EnemySelectedTowers = towersSelected;
+        AI.towers = EnemySelectedTowers;
+        
+        for (int i = 1; i < 6; i++)
+        {
+            if (EnemySelectedTowers[i].cost < AI.minCostTower)
+            {
+                AI.minCostTower = (byte)i;
+            }
+        }
     }
 
 

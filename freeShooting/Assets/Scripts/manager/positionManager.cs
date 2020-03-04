@@ -7,7 +7,6 @@ public class positionManager : MonoBehaviour
     public static GameObject[,] buildingGameObject = new GameObject[2, 5];
     public static TowerScript[,] buildingTowerScript = new TowerScript[2, 5];
     public static GameObject[] towerZone = new GameObject[5];
-
     public GameObject[] towerZone_ = new GameObject[5];
 
     private void Start()
@@ -34,6 +33,7 @@ public class positionManager : MonoBehaviour
                         towerZone[0].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(0);
                         HealingTower(0, 0);
+                        addCoinPlayer((short)-(int)buildingTowerScript[0, 0].cost);
                     }
                     break;
 
@@ -50,6 +50,7 @@ public class positionManager : MonoBehaviour
                         towerZone[1].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(1);
                         HealingTower(0, 1);
+                        addCoinPlayer((short)-(int)buildingTowerScript[0, 1].cost);
                     }
                     break;
 
@@ -66,6 +67,7 @@ public class positionManager : MonoBehaviour
                         towerZone[2].transform.GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(2);
                         HealingTower(0, 2);
+                        addCoinPlayer((short)-(int)buildingTowerScript[0, 2].cost);
                     }
                     break;
 
@@ -82,6 +84,7 @@ public class positionManager : MonoBehaviour
                         towerZone[3].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(3);
                         HealingTower(0, 3);
+                        addCoinPlayer((short)-(int)buildingTowerScript[0, 3].cost);
                     }
                     break;
 
@@ -98,6 +101,7 @@ public class positionManager : MonoBehaviour
                         towerZone[4].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(4);
                         HealingTower(0, 4);
+                        addCoinPlayer((short)-(int)buildingTowerScript[0, 4].cost);
                     }
                     break;
             }
@@ -125,6 +129,7 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(0);
                         HealingTower(1, 0);
+                        addCoinEnemy((short)-(int)buildingTowerScript[1, 0].cost);
                     }
                     break;
 
@@ -140,6 +145,7 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(1);
                         HealingTower(1, 1);
+                        addCoinEnemy((short)-(int)buildingTowerScript[1, 1].cost);
                     }
                     break;
 
@@ -155,6 +161,7 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(2);
                         HealingTower(1, 2);
+                        addCoinEnemy((short)-(int)buildingTowerScript[1, 2].cost);
                     }
                     break;
 
@@ -170,6 +177,7 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(3);
                         HealingTower(1, 3);
+                        addCoinEnemy((short)-(int)buildingTowerScript[1, 3].cost);
                     }
                     break;
 
@@ -185,6 +193,7 @@ public class positionManager : MonoBehaviour
                         go.GetComponent<towerInf>().SetFireRate(tower.Get_fireRate_enemy(lvl));
                         EnemyShoot(4);
                         HealingTower(1, 4);
+                        addCoinEnemy((short)-(int)buildingTowerScript[1, 4].cost);
                     }
                     break;
             }
@@ -204,7 +213,7 @@ public class positionManager : MonoBehaviour
                 case -15:
                     if (buildingGameObject[0, 0] != null)
                     {
-                        addCoinEnemy(0);
+                        addCoinEnemy((short)(buildingTowerScript[0, 0].cost - 50));
                         buildingGameObject[0, 0] = null;
                         buildingTowerScript[0, 0] = null;
                         towerZone[0].GetComponent<BoxCollider>().enabled = true;
@@ -215,7 +224,7 @@ public class positionManager : MonoBehaviour
                 case -5:
                     if (buildingGameObject[0, 1] != null)
                     {
-                        addCoinEnemy(1);
+                        addCoinEnemy((short)(buildingTowerScript[0, 1].cost - 50));
                         buildingGameObject[0, 1] = null;
                         buildingTowerScript[0, 1] = null;
                         towerZone[1].GetComponent<BoxCollider>().enabled = true;
@@ -226,7 +235,7 @@ public class positionManager : MonoBehaviour
                 case 5:
                     if (buildingGameObject[0, 2] != null)
                     {
-                        addCoinEnemy(2);
+                        addCoinEnemy((short)(buildingTowerScript[0, 2].cost - 50));
                         buildingGameObject[0, 2] = null;
                         buildingTowerScript[0, 2] = null;
                         towerZone[2].GetComponent<BoxCollider>().enabled = true;
@@ -237,7 +246,7 @@ public class positionManager : MonoBehaviour
                 case 15:
                     if (buildingGameObject[0, 3] != null)
                     {
-                        addCoinEnemy(3);
+                        addCoinEnemy((short)(buildingTowerScript[0, 3].cost - 50));
                         buildingGameObject[0, 3] = null;
                         buildingTowerScript[0, 3] = null;
                         towerZone[3].GetComponent<BoxCollider>().enabled = true;
@@ -248,7 +257,7 @@ public class positionManager : MonoBehaviour
                 case 25:
                     if (buildingGameObject[0, 4] != null)
                     {
-                        addCoinEnemy(4);
+                        addCoinEnemy((short)(buildingTowerScript[0, 4].cost - 50));
                         buildingGameObject[0, 4] = null;
                         buildingTowerScript[0, 4] = null;
                         towerZone[4].GetComponent<BoxCollider>().enabled = true;
@@ -270,7 +279,7 @@ public class positionManager : MonoBehaviour
                 case -15:
                     if (buildingGameObject[1, 0] != null)
                     {
-                        addCoinPlayer(0);
+                        addCoinPlayer((short)(buildingTowerScript[1, 0].cost - 50));
                         buildingGameObject[1, 0] = null;
                         buildingTowerScript[1, 0] = null;
                         HealingTower(1, 0);
@@ -280,7 +289,7 @@ public class positionManager : MonoBehaviour
                 case -5:
                     if (buildingGameObject[1, 1] != null)
                     {
-                        addCoinPlayer(1);
+                        addCoinPlayer((short)(buildingTowerScript[1, 1].cost - 50));
                         buildingGameObject[1, 1] = null;
                         buildingTowerScript[1, 1] = null;
                         HealingTower(1, 1);
@@ -290,7 +299,7 @@ public class positionManager : MonoBehaviour
                 case 5:
                     if (buildingGameObject[1, 2] != null)
                     {
-                        addCoinPlayer(2);
+                        addCoinPlayer((short)(buildingTowerScript[1, 2].cost - 50));
                         buildingGameObject[1, 2] = null;
                         buildingTowerScript[1, 2] = null;
                         HealingTower(1, 2);
@@ -300,7 +309,7 @@ public class positionManager : MonoBehaviour
                 case 15:
                     if (buildingGameObject[1, 3] != null)
                     {
-                        addCoinPlayer(3);
+                        addCoinPlayer((short)(buildingTowerScript[1, 3].cost - 50));
                         buildingGameObject[1, 3] = null;
                         buildingTowerScript[1, 3] = null;
                         HealingTower(1, 3);
@@ -310,7 +319,7 @@ public class positionManager : MonoBehaviour
                 case 25:
                     if (buildingGameObject[1, 4] != null)
                     {
-                        addCoinPlayer(4);
+                        addCoinPlayer((short)(buildingTowerScript[1, 4].cost - 50));
                         buildingGameObject[1, 4] = null;
                         buildingTowerScript[1, 4] = null;
                         HealingTower(1, 4);
@@ -650,10 +659,10 @@ public class positionManager : MonoBehaviour
                     {
                         buildingGameObject[1, j].GetComponent<freezingTower>().shoot(buildingGameObject[1, j]);
                     }
-                    else
+                    /*else
                     {
-                        buildingGameObject[1, j].GetComponent<freezingTower>().unfreeze();
-                    }
+                        buildingGameObject[1, j].GetComponent<freezingTower>().stopShoot();
+                    }*/
                     break;
                 case "lazer tower":
                     //Debug.Log("lazer");
@@ -970,15 +979,16 @@ public class positionManager : MonoBehaviour
         }      
     }
 
-    private static void addCoinEnemy(byte a)
+    private static void addCoinEnemy(short a)
     {
-        GameManagerPartie.instance.enemyCoins += (short)(buildingTowerScript[0, a].cost - 50);
+        GameManagerPartie.instance.enemyCoins += a;
         GameManagerPartie.instance.enemyCoinsTxt.text = GameManagerPartie.instance.enemyCoins.ToString();
         GameManagerPartie.instance.ChangeSprites();
     }
-    private static void addCoinPlayer(byte a)
+    private static void addCoinPlayer(short a)
     {
-        GameManagerPartie.instance.playerCoins += (short)(buildingTowerScript[1, a].cost - 50);
+        Debug.Log(a);
+        GameManagerPartie.instance.playerCoins += a;
         GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
         GameManagerPartie.instance.ChangeSprites();
     }
