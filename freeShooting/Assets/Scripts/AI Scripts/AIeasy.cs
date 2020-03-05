@@ -58,6 +58,10 @@ public class AIeasy : MonoBehaviour
                 startStrategy1();
                 changeState(AIState.idle);
                 break;
+
+
+
+
             case AIState.idle:
                 //  Debug.Log("hani fi idle state");
 
@@ -65,8 +69,6 @@ public class AIeasy : MonoBehaviour
                 {
                     float rand = Random.Range(1, 3);
                     StartCoroutine(move(rand));
-
-
                 }
                 if ((positionManager.testbuild > 0)&& (towers[minCostTower].cost <= GameManagerPartie.instance.enemyCoins))
                 {
@@ -80,12 +82,6 @@ public class AIeasy : MonoBehaviour
                         }
                     }
                 }
-               
-               
-              /*  if((positionManager.buildingGameObject[0, 3] == null))
-                {
-                    LeanTween.moveX(GameManagerPartie.instance.enemy_, 5, 0.2f).setEaseInOutSine();
-                }*/
                 if (!GameManagerPartie.instance.player_.activeSelf)
                 {
                     changeState(AIState.shoot);
@@ -113,27 +109,22 @@ public class AIeasy : MonoBehaviour
                 break;
 
             case AIState.build:
-                int j = 0;
-                //Debug.Log("hani fi build state");
-                for (int i = 0; i < 6; i++)
-                {
-                    if (towers[i].cost <= GameManagerPartie.instance.enemyCoins)
-                    {
-                        TowersWeCanBuild[j] = towers[i];
-                        j++;
-                    }
-                }
-                positionManager.add(TowersWeCanBuild[Random.Range(0, j - 1)], buildPos, GameManagerPartie.instance.enemylvl);
-                changeState(AIState.idle);
+                /* int j = 0;
+                 //Debug.Log("hani fi build state");
+                 for (int i = 0; i < 6; i++)
+                 {
+                     if (towers[i].cost <= GameManagerPartie.instance.enemyCoins)
+                     {
+                         TowersWeCanBuild[j] = towers[i];
+                         j++;
+                     }
+                 }
+                 positionManager.add(TowersWeCanBuild[Random.Range(0, j - 1)], buildPos, GameManagerPartie.instance.enemylvl);
+                 changeState(AIState.idle);*/
+                strategy1();
                 break;
 
             case AIState.shoot:
-                /*destination = choosingDestination();
-                transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
-                if (transform.position == destination)
-                {
-                    changeState(AIState.idle);
-                }*/
                 LeanTween.moveX(GameManagerPartie.instance.enemy_, 5, 0.2f).setEaseInOutSine();
                 if (GameManagerPartie.instance.player_.activeSelf)
                 {
@@ -151,15 +142,10 @@ public class AIeasy : MonoBehaviour
                     }
                 }
                 break;
-
-
-
             case AIState.die:
                 //player win
                 break;
         }
-
-
     }
     bool isMoving = false;
     IEnumerator move(float time)
@@ -192,18 +178,17 @@ public class AIeasy : MonoBehaviour
         towers = Inventory1;
         if (positionManager.buildingGameObject[1, 2] == null)
         {
-            if (towers[0].cost <= GameManagerPartie.instance.enemyCoins)
+            int random = Random.Range(0, 2);
+            if (random == 0 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
             {
-                positionManager.add(towers[0],BuildPos[2],GameManagerPartie.instance.enemylvl);
+                positionManager.add(towers[(byte)random], BuildPos[2], GameManagerPartie.instance.enemylvl);
             }
-            else if (towers[1].cost <= GameManagerPartie.instance.enemyCoins)
+            else if (random == 1 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
             {
-                positionManager.add(towers[1], BuildPos[2], GameManagerPartie.instance.enemylvl);
+                positionManager.add(towers[(byte)random], BuildPos[2], GameManagerPartie.instance.enemylvl);
             }
             else
-            {
                 return;
-            }
         }
         if(positionManager.buildingGameObject[1,0]==null)
         {
@@ -271,82 +256,920 @@ public class AIeasy : MonoBehaviour
     }
     public void strategy1 ()
     {
-        if (positionManager.buildingGameObject[1, 2] == null)
-        {
-            if (towers[0].cost <= GameManagerPartie.instance.enemyCoins)
-            {
-                positionManager.add(towers[0], BuildPos[2], GameManagerPartie.instance.enemylvl);
-            }
-            else if (towers[1].cost <= GameManagerPartie.instance.enemyCoins)
-            {
-                positionManager.add(towers[1], BuildPos[2], GameManagerPartie.instance.enemylvl);
-            }
-            else
-            {
-                return;
-            }
-        }
-        if (positionManager.buildingGameObject[1, 0] == null)
-        {
-            int random = Random.Range(2, 4);
 
-            if (random == 2 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
-            {
-                positionManager.add(towers[(byte)random], BuildPos[0], GameManagerPartie.instance.enemylvl);
-            }
-            else if (random == 3 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
-            {
-                positionManager.add(towers[(byte)random], BuildPos[0], GameManagerPartie.instance.enemylvl);
-            }
-            else
-                return;
-        }
-        if (positionManager.buildingGameObject[1, 4] == null)
+        int j;
+        switch (buildPos.x)
         {
-            int random = Random.Range(2, 4);
+            case -15:
+                if (positionManager.buildingTowerScript[0, 0] != null)
+                {
+                    
+                    switch (positionManager.buildingTowerScript[0, 0].name)
+                    {
+                        case "block tower":
 
-            if (random == 2 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
-            {
-                positionManager.add(towers[(byte)random], BuildPos[4], GameManagerPartie.instance.enemylvl);
-            }
-            else if (random == 3 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
-            {
-                positionManager.add(towers[(byte)random], BuildPos[4], GameManagerPartie.instance.enemylvl);
-            }
-            else
-                return;
+                             j = 0;
+                            for (int i = 2; i < 6; i++)
+                            {
+                                if (towers[i].cost <= GameManagerPartie.instance.enemyCoins)
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                                changeState(AIState.idle);
+                            break;
+
+                        case "mirror tower":
+                             j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins)&&((towers[i].name== "block tower")||(towers[i].name == "healing tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "freezing tower":
+                             j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "block tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "lazer tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+                           
+
+                        case "tesla":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "healing tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "healing tower") || (towers[i].name == "lazer tower") ))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "canon":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "mortar":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") ))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+                        case "x-bow":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+                     
+                    }
+                }
+
+                break;
+            case -5:
+                if (positionManager.buildingTowerScript[0, 1] != null)
+                {
+
+                    switch (positionManager.buildingTowerScript[0, 1].name)
+                    {
+                        case "block tower":
+
+                            j = 0;
+                            for (int i = 2; i < 6; i++)
+                            {
+                                if (towers[i].cost <= GameManagerPartie.instance.enemyCoins)
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "mirror tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "block tower") || (towers[i].name == "healing tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "freezing tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "block tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "lazer tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+
+                        case "tesla":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "healing tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "healing tower") || (towers[i].name == "lazer tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "canon":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "mortar":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+                        case "x-bow":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                    }
+                }
+                break;
+            case 5:
+                if (positionManager.buildingTowerScript[0, 2] != null)
+                {
+
+                    switch (positionManager.buildingTowerScript[0, 2].name)
+                    {
+                        case "block tower":
+
+                            j = 0;
+                            for (int i = 2; i < 6; i++)
+                            {
+                                if (towers[i].cost <= GameManagerPartie.instance.enemyCoins)
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "mirror tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "block tower") || (towers[i].name == "healing tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "freezing tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "block tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "lazer tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+
+                        case "tesla":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "healing tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "healing tower") || (towers[i].name == "lazer tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "canon":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "mortar":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+                        case "x-bow":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                    }
+                }
+                break;
+            case 15:
+                if (positionManager.buildingTowerScript[0, 3] != null)
+                {
+
+                    switch (positionManager.buildingTowerScript[0, 3].name)
+                    {
+                        case "block tower":
+
+                            j = 0;
+                            for (int i = 2; i < 6; i++)
+                            {
+                                if (towers[i].cost <= GameManagerPartie.instance.enemyCoins)
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "mirror tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "block tower") || (towers[i].name == "healing tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "freezing tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "block tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "lazer tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+
+                        case "tesla":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "healing tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "healing tower") || (towers[i].name == "lazer tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "canon":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "mortar":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+                        case "x-bow":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                    }
+                }
+                break;
+            case 25:
+                if (positionManager.buildingTowerScript[0, 4] != null)
+                {
+
+                    switch (positionManager.buildingTowerScript[0, 4].name)
+                    {
+                        case "block tower":
+
+                            j = 0;
+                            for (int i = 2; i < 6; i++)
+                            {
+                                if (towers[i].cost <= GameManagerPartie.instance.enemyCoins)
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "mirror tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "block tower") || (towers[i].name == "healing tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "freezing tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "block tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "lazer tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+
+                        case "tesla":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "healing tower":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "healing tower") || (towers[i].name == "lazer tower")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "canon":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow") || (towers[i].name == "mortar")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                        case "mortar":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+                        case "x-bow":
+                            j = 0;
+                            for (int i = 0; i < 6; i++)
+                            {
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "mirror tower") || (towers[i].name == "x-bow")))
+                                {
+                                    TowersWeCanBuild[j] = towers[i];
+                                    j++;
+                                }
+                            }
+                            if (j > 0)
+                            {
+                                int random = Random.Range(0, j);
+
+                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                            }
+                            changeState(AIState.idle);
+                            break;
+
+                    }
+                }
+                break;
+
+
         }
-        if (positionManager.buildingGameObject[1, 1] == null)
-        {
-
-            int random = Random.Range(4, 6);
-
-            if (random == 4 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
-            {
-                positionManager.add(towers[(byte)random], BuildPos[1], GameManagerPartie.instance.enemylvl);
-            }
-            else if (random == 5 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
-            {
-                positionManager.add(towers[(byte)random], BuildPos[1], GameManagerPartie.instance.enemylvl);
-            }
-            else
-                return;
-        }
-        if (positionManager.buildingGameObject[1, 3] == null)
-        {
-            int random = Random.Range(4, 6);
-
-            if (random == 4 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
-            {
-                positionManager.add(towers[(byte)random], BuildPos[3], GameManagerPartie.instance.enemylvl);
-            }
-            else if (random == 5 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
-            {
-                positionManager.add(towers[(byte)random], BuildPos[3], GameManagerPartie.instance.enemylvl);
-            }
-            else
-                return;
-        }
+       
     }
 
 

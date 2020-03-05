@@ -1006,7 +1006,6 @@ MonoBehaviour:
   enemyCoins: 1000
   enemyCoinsTxt: {fileID: 1193077956}
   enemylvl: 2
-  AI: {fileID: 1441807760}
 --- !u!4 &1441807754
 Transform:
   m_ObjectHideFlags: 0
@@ -1145,6 +1144,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   speed: 5
+  Inventory1:
+  - {fileID: 11400000, guid: f9241cd7a95bb1d40b6580f88f321bc8, type: 2}
+  - {fileID: 11400000, guid: d4656323c59403146bd3a97bf56589b4, type: 2}
+  - {fileID: 11400000, guid: 77ffcf6dfc6798e48b8651cf3d81df8e, type: 2}
+  - {fileID: 11400000, guid: 447a612f0698c154d94896cf5f076015, type: 2}
+  - {fileID: 11400000, guid: 69ad6ab99c26762409f20b231c93d2ff, type: 2}
+  - {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}
   minCostTower: 0
 --- !u!1 &1852711192 stripped
 GameObject:
