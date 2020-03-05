@@ -140,19 +140,19 @@ public class GameManagerPartie : MonoBehaviour
         }
     }
 
-    public AIeasy AI;
+    //public AIeasy AI;
     void chooseEnemyTowers()
     {
-        EnemySelectedTowers = towersSelected;
-        AI.towers = EnemySelectedTowers;
+        //EnemySelectedTowers = towersSelected;
+        //AI.towers = EnemySelectedTowers;
         
-        for (int i = 1; i < 6; i++)
+       /* for (int i = 1; i < 6; i++)
         {
             if (EnemySelectedTowers[i].cost < AI.minCostTower)
             {
                 AI.minCostTower = (byte)i;
             }
-        }
+        }*/
     }
 
 
