@@ -56,6 +56,7 @@ public class AIeasy : MonoBehaviour
         {
             case AIState.start:
                 startStrategy1();
+                changeState(AIState.idle);
                 break;
             case AIState.idle:
                 //  Debug.Log("hani fi idle state");
@@ -270,7 +271,82 @@ public class AIeasy : MonoBehaviour
     }
     public void strategy1 ()
     {
+        if (positionManager.buildingGameObject[1, 2] == null)
+        {
+            if (towers[0].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[0], BuildPos[2], GameManagerPartie.instance.enemylvl);
+            }
+            else if (towers[1].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[1], BuildPos[2], GameManagerPartie.instance.enemylvl);
+            }
+            else
+            {
+                return;
+            }
+        }
+        if (positionManager.buildingGameObject[1, 0] == null)
+        {
+            int random = Random.Range(2, 4);
 
+            if (random == 2 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[0], GameManagerPartie.instance.enemylvl);
+            }
+            else if (random == 3 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[0], GameManagerPartie.instance.enemylvl);
+            }
+            else
+                return;
+        }
+        if (positionManager.buildingGameObject[1, 4] == null)
+        {
+            int random = Random.Range(2, 4);
+
+            if (random == 2 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[4], GameManagerPartie.instance.enemylvl);
+            }
+            else if (random == 3 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[4], GameManagerPartie.instance.enemylvl);
+            }
+            else
+                return;
+        }
+        if (positionManager.buildingGameObject[1, 1] == null)
+        {
+
+            int random = Random.Range(4, 6);
+
+            if (random == 4 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[1], GameManagerPartie.instance.enemylvl);
+            }
+            else if (random == 5 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[1], GameManagerPartie.instance.enemylvl);
+            }
+            else
+                return;
+        }
+        if (positionManager.buildingGameObject[1, 3] == null)
+        {
+            int random = Random.Range(4, 6);
+
+            if (random == 4 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[3], GameManagerPartie.instance.enemylvl);
+            }
+            else if (random == 5 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[3], GameManagerPartie.instance.enemylvl);
+            }
+            else
+                return;
+        }
     }
 
 
