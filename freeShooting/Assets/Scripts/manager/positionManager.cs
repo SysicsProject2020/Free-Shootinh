@@ -8,6 +8,7 @@ public class positionManager : MonoBehaviour
     public static TowerScript[,] buildingTowerScript = new TowerScript[2, 5];
     public static GameObject[] towerZone = new GameObject[5];
     public GameObject[] towerZone_ = new GameObject[5];
+    public static byte testbuild = 5;
 
     private void Start()
     {
@@ -33,7 +34,6 @@ public class positionManager : MonoBehaviour
                         towerZone[0].GetComponent<BoxCollider>().enabled = false;
                         PlayerShoot(0);
                         addCoinPlayer((short)-(int)buildingTowerScript[0, 0].cost);
-
                         HealingTowerAdd0(0);
                     }
                     break;
@@ -119,6 +119,7 @@ public class positionManager : MonoBehaviour
         else
         {
             //enemy
+            testbuild--;
             switch (place.x)
             {
                 case -15:
@@ -134,6 +135,7 @@ public class positionManager : MonoBehaviour
                         EnemyShoot(0);
                         HealingTowerAdd0(1);
                         addCoinEnemy((short)-(int)buildingTowerScript[1, 0].cost);
+                       
                     }
                     break;
 
@@ -278,6 +280,9 @@ public class positionManager : MonoBehaviour
         }
         else
         {
+            testbuild++;
+          
+            
             switch (place.x)
             {
                 case -15:
@@ -1093,7 +1098,7 @@ public class positionManager : MonoBehaviour
                 buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 1] });
             }
         }
-        if (buildingTowerScript[i, 4] != null && buildingTowerScript[i, 0].name == "healing tower")
+        if (buildingTowerScript[i, 4] != null && buildingTowerScript[i, 4].name == "healing tower")
         {
             buildingGameObject[i, 4].GetComponent<healingTower>().heal(new GameObject[] { });
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AIeasy : MonoBehaviour
 {
-    public static AIState CurrentState = AIState.idle;
+    public static AIState CurrentState = AIState.start;
     public  TowerScript[] towers= new TowerScript[6];
     private Vector3 buildPos;
     public TowerScript[] TowersWeCanBuild=new TowerScript[6];
@@ -19,6 +19,7 @@ public class AIeasy : MonoBehaviour
         new Vector3(15,2,10),
         new Vector3(25,2,15),
         };
+    public TowerScript[] Inventory1;
 
     //can replace with buildpos.x
     private float[] hiding = { -15, -5, 5, 15, 25 };
@@ -26,7 +27,7 @@ public class AIeasy : MonoBehaviour
 
     public enum AIState
     {
-        idle, die, shoot, build, hide
+        idle, die, shoot, build, hide,start
     }
     public static void changeState(AIState state)
     {
@@ -39,6 +40,7 @@ public class AIeasy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         //towers = GameManagerPartie.instance.EnemySelectedTowers;
         selectPlayer();
         //enemyBuildZone = GameObject.FindGameObjectsWithTag("EnemyTowersZones");
@@ -52,6 +54,9 @@ public class AIeasy : MonoBehaviour
 
         switch(CurrentState)
         {
+            case AIState.start:
+                startStrategy1();
+                break;
             case AIState.idle:
                 //  Debug.Log("hani fi idle state");
 
@@ -62,18 +67,18 @@ public class AIeasy : MonoBehaviour
 
 
                 }
-                for (int i = 0; i < 5; i++)
+                if ((positionManager.testbuild > 0)&& (towers[minCostTower].cost <= GameManagerPartie.instance.enemyCoins))
                 {
-                    if (positionManager.buildingGameObject[1, i] == null && towers[minCostTower].cost <= GameManagerPartie.instance.enemyCoins)
+                   
+                    for (int i = 0; i < 5; i++)
                     {
-                        buildPos = BuildPos[i];
-                        changeState(AIState.build);
-                        //Debug.Log("fama 7aja far4a fi position manager");
-                        //return;
+                        if (positionManager.buildingGameObject[1, i] == null )
+                        {
+                            buildPos = BuildPos[i];
+                            changeState(AIState.build);
+                        }
                     }
                 }
-
-                //Debug.Log(isMoving);
                
                
               /*  if((positionManager.buildingGameObject[0, 3] == null))
@@ -110,20 +115,13 @@ public class AIeasy : MonoBehaviour
             case AIState.build:
                 int j = 0;
                 //Debug.Log("hani fi build state");
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 6; i++)
                 {
-                   
                     if (towers[i].cost <= GameManagerPartie.instance.enemyCoins)
                     {
-                        
-                        //Debug.Log(i);
                         TowersWeCanBuild[j] = towers[i];
                         j++;
-                       
-                        //towersWeCanBuild[j] = GameManagerPartie.instance.EnemySelectedTowers[i];
-                        //towersWeCanBuild[j] = GameManager.instance.GetSelectedTowers()[i];
                     }
-                   
                 }
                 positionManager.add(TowersWeCanBuild[Random.Range(0, j - 1)], buildPos, GameManagerPartie.instance.enemylvl);
                 changeState(AIState.idle);
@@ -140,6 +138,17 @@ public class AIeasy : MonoBehaviour
                 if (GameManagerPartie.instance.player_.activeSelf)
                 {
                     changeState(AIState.idle);
+                }
+                if ((positionManager.testbuild > 0) && (towers[minCostTower].cost <= GameManagerPartie.instance.enemyCoins))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (positionManager.buildingGameObject[1, i] == null)
+                        {
+                            buildPos = BuildPos[i];
+                            changeState(AIState.build);
+                        }
+                    }
                 }
                 break;
 
@@ -178,6 +187,92 @@ public class AIeasy : MonoBehaviour
     TowerScript choosingBuild() { return towers[Random.Range(0, 5)]; }
     void seePlayer() { //see player build on idle state 
     }
-    
+    public void startStrategy1()
+    {
+        towers = Inventory1;
+        if (positionManager.buildingGameObject[1, 2] == null)
+        {
+            if (towers[0].cost < GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[0],BuildPos[2],GameManagerPartie.instance.enemylvl);
+            }
+            else if (towers[1].cost < GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[1], BuildPos[2], GameManagerPartie.instance.enemylvl);
+            }
+            else
+            {
+                return;
+            }
+        }
+        if(positionManager.buildingGameObject[1,0]==null)
+        {
+            float random = Random.Range(2, 3);
+            
+            if (random == 2 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[0], GameManagerPartie.instance.enemylvl);
+            }
+            else if (random == 3 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[0], GameManagerPartie.instance.enemylvl);
+            }
+            else
+                return;   
+        }
+        if (positionManager.buildingGameObject[1, 4] == null)
+        {
+            float random = Random.Range(2, 3);
+            
+            if (random == 2 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[4], GameManagerPartie.instance.enemylvl);
+            }
+            else if (random == 3 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[4], GameManagerPartie.instance.enemylvl);
+            }
+            else
+                return;
+        }
+        if (positionManager.buildingGameObject[1, 1] == null)
+        {
+            
+            float random = Random.Range(4, 5);
+          
+            if (random == 4 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[1], GameManagerPartie.instance.enemylvl);
+            }
+            else if (random == 5 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[1], GameManagerPartie.instance.enemylvl);
+            }
+            else
+                return;
+        }
+        if (positionManager.buildingGameObject[1, 3] == null)
+        {
+            float random = Random.Range(4, 5);
+           
+            if (random == 4 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[3], GameManagerPartie.instance.enemylvl);
+            }
+            else if (random == 5 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
+            {
+                positionManager.add(towers[(byte)random], BuildPos[3], GameManagerPartie.instance.enemylvl);
+            }
+            else
+                return;
+        }
+
+
+    }
+    public void strategy1 ()
+    {
+
+    }
+
 
 }
