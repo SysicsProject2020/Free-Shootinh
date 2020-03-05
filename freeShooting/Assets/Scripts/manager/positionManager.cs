@@ -126,7 +126,7 @@ public class positionManager : MonoBehaviour
             switch (place.x)
             {
                 case -15:
-                    if (buildingGameObject[0, 0] == null)
+                    if (buildingGameObject[1, 0] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
                         changeLayerMask(go, "Enemy");
@@ -143,7 +143,7 @@ public class positionManager : MonoBehaviour
                     break;
 
                 case -5:
-                    if (buildingGameObject[0, 1] == null)
+                    if (buildingGameObject[1, 1] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
                         changeLayerMask(go, "Enemy");
