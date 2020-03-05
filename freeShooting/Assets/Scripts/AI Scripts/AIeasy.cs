@@ -109,7 +109,6 @@ public class AIeasy : MonoBehaviour
                 {
                     changeState(AIState.idle);
                 }
-
                 break;
 
             case AIState.build:
@@ -192,11 +191,11 @@ public class AIeasy : MonoBehaviour
         towers = Inventory1;
         if (positionManager.buildingGameObject[1, 2] == null)
         {
-            if (towers[0].cost < GameManagerPartie.instance.enemyCoins)
+            if (towers[0].cost <= GameManagerPartie.instance.enemyCoins)
             {
                 positionManager.add(towers[0],BuildPos[2],GameManagerPartie.instance.enemylvl);
             }
-            else if (towers[1].cost < GameManagerPartie.instance.enemyCoins)
+            else if (towers[1].cost <= GameManagerPartie.instance.enemyCoins)
             {
                 positionManager.add(towers[1], BuildPos[2], GameManagerPartie.instance.enemylvl);
             }
@@ -207,7 +206,7 @@ public class AIeasy : MonoBehaviour
         }
         if(positionManager.buildingGameObject[1,0]==null)
         {
-            float random = Random.Range(2, 3);
+            int random = Random.Range(2, 4);
             
             if (random == 2 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
             {
@@ -222,7 +221,7 @@ public class AIeasy : MonoBehaviour
         }
         if (positionManager.buildingGameObject[1, 4] == null)
         {
-            float random = Random.Range(2, 3);
+            int random = Random.Range(2, 4);
             
             if (random == 2 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
             {
@@ -238,7 +237,7 @@ public class AIeasy : MonoBehaviour
         if (positionManager.buildingGameObject[1, 1] == null)
         {
             
-            float random = Random.Range(4, 5);
+            int random = Random.Range(4, 6);
           
             if (random == 4 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
             {
@@ -253,7 +252,7 @@ public class AIeasy : MonoBehaviour
         }
         if (positionManager.buildingGameObject[1, 3] == null)
         {
-            float random = Random.Range(4, 5);
+            int random = Random.Range(4, 6);
            
             if (random == 4 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
             {
