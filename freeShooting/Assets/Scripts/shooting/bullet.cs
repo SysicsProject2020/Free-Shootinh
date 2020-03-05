@@ -41,7 +41,10 @@ public class bullet : MonoBehaviour
             collision.transform.GetComponent<target>().takeDamage(damage);
             if (collision.transform.GetComponent<mirrorTower>() != null)
             {
-                sender.GetComponent<target>().takeDamage(damage);
+                if (sender != null)
+                {
+                    sender.GetComponent<target>().takeDamage(damage);
+                }       
             }
             //hitSound[choose].Play();           
         }

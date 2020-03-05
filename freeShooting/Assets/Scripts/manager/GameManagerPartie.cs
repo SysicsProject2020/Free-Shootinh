@@ -29,7 +29,7 @@ public class GameManagerPartie : MonoBehaviour
     public  TowerScript[] EnemySelectedTowers = new TowerScript[6];
     public  GameObject enemy_;
     public GameObject enemyTowerBase_;
-    public short enemyCoins = 1000;
+    public short enemyCoins = 10000;
     public Text enemyCoinsTxt;
     [Range(1,5)]
     public byte enemylvl;
@@ -143,10 +143,11 @@ public class GameManagerPartie : MonoBehaviour
     //public AIeasy AI;
     void chooseEnemyTowers()
     {
-        //EnemySelectedTowers = towersSelected;
-        //AI.towers = EnemySelectedTowers;
+        /*
+        EnemySelectedTowers = towersSelected;
+        AI.towers = EnemySelectedTowers;
         
-       /* for (int i = 1; i < 6; i++)
+       for (int i = 1; i < 6; i++)
         {
             if (EnemySelectedTowers[i].cost < AI.minCostTower)
             {

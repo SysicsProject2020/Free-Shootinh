@@ -5,12 +5,10 @@ using UnityEngine;
 public class AIeasy : MonoBehaviour
 {
     public static AIState CurrentState = AIState.start;
-    public  TowerScript[] towers= new TowerScript[6];
-    private Vector3 buildPos;
-    public TowerScript[] TowersWeCanBuild=new TowerScript[6];
+    public static TowerScript[] towers= new TowerScript[6];
+    private byte buildPos;
+    private TowerScript[] TowersWeCanBuild=new TowerScript[6];
 
-    private GameObject player;
-    private short currentHealth;
     public float speed = 5f;
     Vector3[] BuildPos = new[]{
         new Vector3(-15,2,15),
@@ -20,10 +18,9 @@ public class AIeasy : MonoBehaviour
         new Vector3(25,2,15),
         };
     public TowerScript[] Inventory1;
-
+    public static byte minCostTower;
     //can replace with buildpos.x
     private float[] hiding = { -15, -5, 5, 15, 25 };
-
 
     public enum AIState
     {
@@ -34,24 +31,10 @@ public class AIeasy : MonoBehaviour
         CurrentState = state;
         //Debug.Log(state);
     }
-
-    void selectPlayer() { player = GameManagerPartie.instance.player_; }
-    public byte minCostTower = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-        //towers = GameManagerPartie.instance.EnemySelectedTowers;
-        selectPlayer();
-        //enemyBuildZone = GameObject.FindGameObjectsWithTag("EnemyTowersZones");
-        //currentHealth = player.Get_health();
-    }
-
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         //Debug.Log(CurrentState);
-
         switch(CurrentState)
         {
             case AIState.start:
@@ -59,29 +42,15 @@ public class AIeasy : MonoBehaviour
                 changeState(AIState.idle);
                 break;
 
-
-
-
             case AIState.idle:
-                //  Debug.Log("hani fi idle state");
 
+                //  Debug.Log("hani fi idle state");
                 if (!isMoving)
                 {
                     float rand = Random.Range(1, 3);
                     StartCoroutine(move(rand));
                 }
-                if ((positionManager.testbuild > 0)&& (towers[minCostTower].cost <= GameManagerPartie.instance.enemyCoins))
-                {
-                   
-                    for (int i = 0; i < 5; i++)
-                    {
-                        if (positionManager.buildingGameObject[1, i] == null )
-                        {
-                            buildPos = BuildPos[i];
-                            changeState(AIState.build);
-                        }
-                    }
-                }
+               
                 if (!GameManagerPartie.instance.player_.activeSelf)
                 {
                     changeState(AIState.shoot);
@@ -109,19 +78,17 @@ public class AIeasy : MonoBehaviour
                 break;
 
             case AIState.build:
-                /* int j = 0;
-                 //Debug.Log("hani fi build state");
-                 for (int i = 0; i < 6; i++)
-                 {
-                     if (towers[i].cost <= GameManagerPartie.instance.enemyCoins)
-                     {
-                         TowersWeCanBuild[j] = towers[i];
-                         j++;
-                     }
-                 }
-                 positionManager.add(TowersWeCanBuild[Random.Range(0, j - 1)], buildPos, GameManagerPartie.instance.enemylvl);
-                 changeState(AIState.idle);*/
-                strategy1();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    if (positionManager.buildingGameObject[1, i] == null)
+                    {
+                        buildPos = (byte)i;
+                        strategy1();
+                        changeState(AIState.idle);
+                        //break;
+                    }
+                }    
                 break;
 
             case AIState.shoot:
@@ -130,6 +97,7 @@ public class AIeasy : MonoBehaviour
                 {
                     changeState(AIState.idle);
                 }
+                /*
                 if ((positionManager.testbuild > 0) && (towers[minCostTower].cost <= GameManagerPartie.instance.enemyCoins))
                 {
                     for (int i = 0; i < 5; i++)
@@ -140,7 +108,7 @@ public class AIeasy : MonoBehaviour
                             changeState(AIState.build);
                         }
                     }
-                }
+                }*/
                 break;
             case AIState.die:
                 //player win
@@ -158,25 +126,11 @@ public class AIeasy : MonoBehaviour
         //Debug.Log("moved");
     }
 
-    Vector3 choosingDestination()
-    {
-        Vector3 position;
-        do
-        {
-            position = new Vector3(Random.Range(-17.8f, 28.8f), 1.8f, 25);
-        }
-        while (position.x < 5);
-        return position;
-    } 
-    Vector3 choosingPos() { return BuildPos[Random.Range(0, 5)];}
-
-    TowerScript choosingBuild() { return towers[Random.Range(0, 5)]; }
-    void seePlayer() { //see player build on idle state 
-    }
     public void startStrategy1()
     {
+        minCostTower = 4;
         towers = Inventory1;
-        if (positionManager.buildingGameObject[1, 2] == null)
+        /*if (positionManager.buildingGameObject[1, 2] == null)
         {
             int random = Random.Range(0, 2);
             if (random == 0 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
@@ -239,7 +193,7 @@ public class AIeasy : MonoBehaviour
         if (positionManager.buildingGameObject[1, 3] == null)
         {
             int random = Random.Range(4, 6);
-           
+
             if (random == 4 && towers[(byte)random].cost <= GameManagerPartie.instance.enemyCoins)
             {
                 positionManager.add(towers[(byte)random], BuildPos[3], GameManagerPartie.instance.enemylvl);
@@ -250,15 +204,14 @@ public class AIeasy : MonoBehaviour
             }
             else
                 return;
-        }
-
+        }*/
+        positionManager.aiCanBuild();
 
     }
     public void strategy1 ()
     {
-
         int j;
-        switch (buildPos.x)
+        switch (BuildPos[buildPos].x)
         {
             case -15:
                 if (positionManager.buildingTowerScript[0, 0] != null)
@@ -268,7 +221,7 @@ public class AIeasy : MonoBehaviour
                     {
                         case "block tower":
 
-                             j = 0;
+                            j = 0;
                             for (int i = 2; i < 6; i++)
                             {
                                 if (towers[i].cost <= GameManagerPartie.instance.enemyCoins)
@@ -280,8 +233,7 @@ public class AIeasy : MonoBehaviour
                             if (j > 0)
                             {
                                 int random = Random.Range(0, j);
-
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                                 changeState(AIState.idle);
                             break;
@@ -300,7 +252,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -319,7 +271,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -338,7 +290,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -358,7 +310,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -367,7 +319,7 @@ public class AIeasy : MonoBehaviour
                             j = 0;
                             for (int i = 0; i < 6; i++)
                             {
-                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ((towers[i].name == "healing tower") || (towers[i].name == "lazer tower") ))
+                                if ((towers[i].cost <= GameManagerPartie.instance.enemyCoins) && ( (towers[i].name == "healing tower") || (towers[i].name == "lazer tower") ))
                                 {
                                     TowersWeCanBuild[j] = towers[i];
                                     j++;
@@ -377,7 +329,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -396,7 +348,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -415,7 +367,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -433,11 +385,10 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
-                            break;
-                     
+                            break;         
                     }
                 }
 
@@ -463,7 +414,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -482,7 +433,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -501,7 +452,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -520,7 +471,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -540,7 +491,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -559,7 +510,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -578,7 +529,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -597,7 +548,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -615,7 +566,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -644,7 +595,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -663,7 +614,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -682,7 +633,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -701,7 +652,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -721,7 +672,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -740,7 +691,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -759,7 +710,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -778,7 +729,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -796,7 +747,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -825,7 +776,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -844,7 +795,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -863,7 +814,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -882,7 +833,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -902,7 +853,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -921,7 +872,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -940,7 +891,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -959,7 +910,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -977,7 +928,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -1006,7 +957,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -1025,7 +976,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -1044,7 +995,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -1063,7 +1014,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -1083,7 +1034,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -1102,7 +1053,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -1121,7 +1072,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -1140,7 +1091,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
@@ -1158,7 +1109,7 @@ public class AIeasy : MonoBehaviour
                             {
                                 int random = Random.Range(0, j);
 
-                                positionManager.add(towers[(byte)random], buildPos, GameManagerPartie.instance.enemylvl);
+                                positionManager.add(towers[(byte)random], BuildPos[buildPos], GameManagerPartie.instance.enemylvl);
                             }
                             changeState(AIState.idle);
                             break;
