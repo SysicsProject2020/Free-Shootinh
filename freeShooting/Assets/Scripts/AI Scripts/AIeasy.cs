@@ -11,7 +11,9 @@ public class AIeasy : MonoBehaviour
 
     public TowerScript[] test = new TowerScript[6];
     public TowerScript[] test2 = new TowerScript[6];
-
+    private float nextTimeToBuild = 0;
+    public float buildTime;
+    private byte lastUnbuildedtower;
     public float speed = 5f;
     Vector3[] BuildPos = new[]{
         new Vector3(-15,2,15),
@@ -27,7 +29,7 @@ public class AIeasy : MonoBehaviour
 
     public enum AIState
     {
-        idle, die, shoot, build, hide,start
+        idle, die, shoot, build, hide,start,BuildRandom
     }
     public static void changeState(AIState state)
     {
@@ -63,7 +65,53 @@ public class AIeasy : MonoBehaviour
                 if (!GameManagerPartie.instance.player_.activeSelf)
                 {
                     changeState(AIState.shoot);
-                }        
+                }
+                if (Time.time > nextTimeToBuild)
+                {
+                    if ((positionManager.numBuildedTowers>= lastUnbuildedtower)&& (towers[minCostTower].cost <= GameManagerPartie.instance.enemyCoins))
+                    {
+                        Debug.Log(lastUnbuildedtower);
+                        lastUnbuildedtower = positionManager.numBuildedTowers;
+                        changeState(AIState.BuildRandom);
+                    }
+                    nextTimeToBuild = Time.time + buildTime;
+                    lastUnbuildedtower = positionManager.numBuildedTowers;
+
+                    Debug.Log("idle"); 
+                }
+                break;
+            case AIState.BuildRandom:
+                
+                Debug.Log("buildrandom");
+                buildPos = new byte[5];
+                 int k1 = 0;
+                for (int i = 0; i < 5; i++)
+                {
+                    if (positionManager.buildingGameObject[1, i] == null)
+                    {
+                        buildPos[k1] = (byte)i;
+                        k1++;
+                    }
+                }
+                int randomBuildPos = Random.Range(0,k1);
+                k1 = 0;
+                for (int i = 2; i < 6; i++)
+                {
+                    if (towers[i].cost <= GameManagerPartie.instance.enemyCoins)
+                    {
+                        TowersWeCanBuild[k1] = towers[i];
+                        k1++;
+                    }
+                }
+                if (k1 > 0)
+                {
+                    int randomTower = Random.Range(0, k1);
+                    positionManager.add(towers[randomTower], BuildPos[buildPos[randomBuildPos]], GameManagerPartie.instance.enemylvl);
+                }
+                
+                
+                
+                changeState(AIState.idle);
                 break;
             case AIState.hide:
                 Vector3 destination = new Vector3(0, transform.position.y, transform.position.z);
@@ -144,7 +192,7 @@ public class AIeasy : MonoBehaviour
 
     public void startStrategy1()
     {
-        minCostTower = 4;
+        minCostTower = 5;
         towers = Inventory1;
         /*if (positionManager.buildingGameObject[1, 2] == null)
         {

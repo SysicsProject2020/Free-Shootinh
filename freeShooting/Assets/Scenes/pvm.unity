@@ -1129,20 +1129,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c263792d11c26e439a7ee6b30d8294c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towers:
+  buildPos: 
+  test:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  TowersWeCanBuild:
+  test2:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  buildTime: 5
   speed: 5
   Inventory1:
   - {fileID: 11400000, guid: f9241cd7a95bb1d40b6580f88f321bc8, type: 2}
@@ -1151,7 +1153,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 447a612f0698c154d94896cf5f076015, type: 2}
   - {fileID: 11400000, guid: 69ad6ab99c26762409f20b231c93d2ff, type: 2}
   - {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}
-  minCostTower: 0
 --- !u!1 &1852711192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2429149059882561241, guid: e38c3fe726835554a96b8e7b207cf465,
