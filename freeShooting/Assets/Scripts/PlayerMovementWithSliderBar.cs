@@ -9,7 +9,11 @@ public class PlayerMovementWithSliderBar : MonoBehaviour
     GameObject enemy;
     GameObject enemytowerBase;
 
-   
+    public void SetHealth(short h)
+    {
+        GetComponent<target>().Sethealth(h);
+    }
+
     private void Start()
     {
         enemy = GameManagerPartie.instance.enemy_;

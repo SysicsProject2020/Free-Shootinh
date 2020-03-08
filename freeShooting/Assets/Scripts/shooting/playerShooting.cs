@@ -13,15 +13,20 @@ public class playerShooting : MonoBehaviour
     private float nextTimeFire = 0f;
     public short speed = 25;
     public GameObject bullet_;
-    public Transform firePoint;
+    private Transform firePoint;
 
     public void SetDamage(short d)
     {
         damage = d;
     }
-    public void SetHealth(short h)
+    public void SetFireRate(float f)
     {
-        this.GetComponent<target>().Sethealth(h);
+        fireRate = f;
+    }
+
+    private void Start()
+    {
+        firePoint = transform.GetChild(0);
     }
     //public ParticleSystem muzzleFlash;
     //public AudioSource[] hitSound = new AudioSource[4];

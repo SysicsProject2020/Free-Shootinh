@@ -1046,6 +1046,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diamond: 0
+  guns:
+  - {fileID: 11400000, guid: 3c0c4e9a80e81f644b2cb07f96d97bf3, type: 2}
+  - {fileID: 11400000, guid: 5bbc5483d1e53d449b2085893826e2b5, type: 2}
+  - {fileID: 11400000, guid: 7f6cb859e390d6e45a45bc4280ade9ea, type: 2}
+  - {fileID: 11400000, guid: 61ae5a7d4992d334388baa0298f25757, type: 2}
+  - {fileID: 11400000, guid: 0f5cf9db0a088f741842bd391dccba34, type: 2}
+  - {fileID: 11400000, guid: 332c939bb4db8904da5fd7d8d3062a6b, type: 2}
+  - {fileID: 11400000, guid: 2e6ad92ed2923ff40be2a55d2ab318fd, type: 2}
+  - {fileID: 11400000, guid: 063c154058b121c49b0fa8f311fd0c40, type: 2}
+  - {fileID: 11400000, guid: bec1f96379bb9d24680dcd7a3bc64656, type: 2}
+  - {fileID: 11400000, guid: bc4b6534deaee664f9fd5c58399238f1, type: 2}
   TowersNumber: 9
   players:
   - {fileID: 11400000, guid: b526a8851452ac148b5a9349b56c37a2, type: 2}

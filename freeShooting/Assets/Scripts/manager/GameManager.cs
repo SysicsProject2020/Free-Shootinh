@@ -8,14 +8,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public byte diamond;
-    
-       
+
+    public GunsScript[] guns = new GunsScript[10];   
     public static GameManager instance;
     public byte TowersNumber;
     public PlayerScript[] players;
     public GameObject inventory;
     public TowerScript[] Towers;
     private PlayerScript playerSelected;
+    private GunsScript GunSelected;
     private TowerScript[] towersSelected = new TowerScript[6];
     private TowerScript[] towersNotSelected;
    // public PlayerData data;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            GunSelected = guns[0];
             setPlayer(players[0]);
             remplirSelectedTower();
             diamond = 0;
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
             SaveSystem.SavePlayer();
         }
         FillTowersNotSelected();
+        Debug.Log(getGun().name);
     }
     private void loadData()
     {
@@ -53,6 +56,15 @@ public class GameManager : MonoBehaviour
             }
             players[i].locked = data.lockPlayersData[i];
             players[i].level = data.playersLevel[i];
+        }
+        for (int i = 0; i < guns.Length; i++)
+        {
+            if (guns[i].name == data.selectedGun)
+            {
+                GunSelected = guns[i];
+            }
+            guns[i].locked = data.gunsLocked[i];
+            guns[i].level = data.gunsLevel[i];
         }
         int k = 0;
         for(int i=0;i<TowersNumber; i++)
@@ -160,6 +172,14 @@ public class GameManager : MonoBehaviour
     public void  setSelectedTower(TowerScript[] towers)
     {
         towersSelected = towers;
+    }
+    public GunsScript getGun()
+    {
+        return GunSelected;
+    }
+    public void setGun(GunsScript gun)
+    {
+        GunSelected = gun;
     }
 
 }

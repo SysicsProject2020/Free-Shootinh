@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     float speed = 10f; //how fast it shakes
     float amount = 10f;
     private int playerClicked = 0;
+    private byte GunClicked;
     public Text DiamondTxt;
     public GameObject XPBar;
     public GameObject AreYouSureTowersPanel;
@@ -21,12 +22,17 @@ public class MenuManager : MonoBehaviour
     public GameObject optionPanel;
     public GameObject inventoryPanel;
     public GameObject characterPanel;
+    public GameObject shopPanel;
     public GameObject SelectGameDiffPanel;
     public Button backMainFromcharacterBtn;
+    public Button backMainFromShopBtn;
     public GameObject PlayerdetailsPanel;
     public GameObject PlayerSlot;
     public GameObject PlayerSelection;
     public GameObject towerSlot;
+    public GameObject GunSlot;
+    public GameObject ShopSelection;
+    public GameObject GunDetailsPanel;
     public GameObject inventory;
     private bool testClick=false;
     private int TowerNotSelectedClicked;
@@ -37,12 +43,16 @@ public class MenuManager : MonoBehaviour
     private TowerScript[] towersNotSelected;
     private TMPro.TextMeshProUGUI txtTowerDetails;
     private TMPro.TextMeshProUGUI txtPlayerDetails;
+    private TMPro.TextMeshProUGUI txtGunDetails;
     private TMPro.TextMeshProUGUI UnlockDetails;
 
 
     public GameObject upgradePlayersBtn;
+    public GameObject upgradeGunBtn;
     public GameObject UnlockPlayerBtn;
+    public GameObject UnlockGunBtn;
     public GameObject UsePlayerButton;
+    public GameObject UseGunButton;
 
 
     public GameObject NotEnoughDiamonds;
@@ -68,11 +78,13 @@ public class MenuManager : MonoBehaviour
         DiamondTxt.text = GameManager.instance.diamond + "Diamonds";
         txtTowerDetails = towerdetailsPanel.transform.Find("description").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
         txtPlayerDetails = PlayerdetailsPanel.transform.Find("description").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
+        txtGunDetails = GunDetailsPanel.transform.Find("description").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
         UnlockDetails = AreYouSureTowersPanel.transform.Find("description").gameObject.GetComponent<TMPro.TextMeshProUGUI>();
         startingPos.x = inventory.transform.position.x;
         startingPos.y = inventory.transform.position.y;
         playerMenuInstantiate();
         towersMenuInstantiate();
+        ShopMenuInstantiate();
         fillSprites();
 
         //  Debug.Log(GameManager.instance.getPlayer().name);
@@ -112,6 +124,28 @@ public class MenuManager : MonoBehaviour
             RegisterListener(ChildGameObject1, i);
         }
 
+        
+    }
+    void ShopMenuInstantiate()
+    {
+        for (int i = 0; i < GameManager.instance.guns.Length; i++)
+        {
+            GameObject go = Instantiate(GunSlot, ShopSelection.transform.position, Quaternion.identity) as GameObject;
+
+            go.transform.SetParent(ShopSelection.transform);
+            GameObject ChildGameObject1 = go.transform.GetChild(0).gameObject;
+            GameObject ChildGameObject2 = ChildGameObject1.transform.GetChild(0).gameObject;
+            ChildGameObject2.GetComponent<Image>().sprite = GameManager.instance.guns[i].image;
+            RegisterListenerShop(ChildGameObject1, i);
+        }
+
+    }
+
+    public void RegisterListenerShop(GameObject obj, int i)
+    {
+        Button myButton = obj.GetComponent<Button>();
+        myButton.onClick.AddListener(() => { OnGunClick(i); });
+
     }
     public void RegisterListener(GameObject obj, int i)
     {
@@ -137,10 +171,7 @@ public class MenuManager : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-
              inventory.transform.GetChild(i).GetComponentInChildren<Image>().sprite = GameManager.instance.GetSelectedTowers()[i].image;
-            //Debug.Log(GameManager.instance.GetSelectedTowers()[i].name);
-
         }
         for (int j = 0; j < towersNotSelected.Length; j++)
         {
@@ -287,10 +318,60 @@ public class MenuManager : MonoBehaviour
         
         
     }
+    public void OnGunClick(int i)
+    {
+
+        GunClicked = (byte)i;
+        GunDetailsPanel.SetActive(true);
+        backMainFromcharacterBtn.interactable = false;
+        for (int j = 0; j < GameManager.instance.guns.Length; j++)
+        {
+            if (GameManager.instance.guns[GunClicked] == GameManager.instance.getGun())
+            {
+                UseGunButton.SetActive(true);
+                UseGunButton.GetComponent<Button>().interactable = false;
+                UnlockGunBtn.SetActive(false);
+                if (GameManager.instance.guns[GunClicked].level < 5)
+                {
+                    upgradeGunBtn.GetComponent<Button>().interactable = true;
+                }
+                else { upgradeGunBtn.GetComponent<Button>().interactable = false; }
+
+            }
+            else if (GameManager.instance.guns[GunClicked].locked == true)
+            {
+                UseGunButton.SetActive(false);
+                UnlockGunBtn.SetActive(true);
+                upgradeGunBtn.GetComponent<Button>().interactable = false;
+            }
+            else if (GameManager.instance.guns[GunClicked].locked == false)
+            {
+                UseGunButton.GetComponent<Button>().interactable = true;
+                UseGunButton.SetActive(true);
+                UnlockGunBtn.SetActive(false);
+                if (GameManager.instance.guns[GunClicked].level < 5)
+                {
+                    upgradeGunBtn.GetComponent<Button>().interactable = true;
+                }
+                else { upgradeGunBtn.GetComponent<Button>().interactable = false; }
+            }
+
+        }
+        txtGunDetails.text = "Gun Name : " + GameManager.instance.guns[GunClicked].name + " Speed = " + GameManager.instance.guns[GunClicked].speed + "level = " + GameManager.instance.guns[GunClicked].level;
+    }
     public void UseButton() {
         GameManager.instance.setPlayer(GameManager.instance.players[playerClicked]);
         PlayerdetailsPanel.SetActive(false);
         backMainFromcharacterBtn.interactable = true;
+        //Debug.Log(GameManager.instance.getPlayer().name);
+
+
+    }
+    public void UseGun()
+    {
+        GameManager.instance.setGun(GameManager.instance.guns[GunClicked]);
+        GunDetailsPanel.SetActive(false);
+        backMainFromShopBtn.interactable = true;
         //Debug.Log(GameManager.instance.getPlayer().name);
 
 
@@ -309,6 +390,18 @@ public class MenuManager : MonoBehaviour
     public void UpgradePlayerBtn() {
         if (GameManager.instance.players[playerClicked].level <= 5) { GameManager.instance.players[playerClicked].level++; }
         backMainFromcharacterBtn.interactable = true;
+    }
+    public void UpgradeGunBtn()
+    {
+        if (GameManager.instance.guns[GunClicked].level <= 5) {
+            GameManager.instance.guns[GunClicked].level++;
+            GunDetailsPanel.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("cannot upgrade more");
+        }
+        backMainFromShopBtn.interactable = true;
     }
     public void UpgradeTowerNotSelectedBtn() {
         towersNotSelected[TowerNotSelectedClicked].level++;
@@ -343,6 +436,25 @@ public class MenuManager : MonoBehaviour
            // Congrats.SetActive(true);
         }
     }
+    public void UnlockGun()
+    {
+
+        AreYouSureTowersPanel.SetActive(false);
+        GameManager.instance.guns[GunClicked].locked = false;
+        GunDetailsPanel.SetActive(false);
+       backMainFromShopBtn.GetComponent<Button>().interactable = true;
+        if (GameManager.instance.guns[GunClicked].UnlockPrice > GameManager.instance.diamond)
+        {
+            //you don't have enough diamonds to unlock this gun panel
+            //NotEnoughDiamonds.SetActive(true);
+        }
+        else
+        {
+            //congrats you unlocked this gun and diamond minus the price of the gun
+            //GameManager.instance.diamond -= (byte)GameMAnager.instance.guns[GunsClicked].UnlockPrice;
+            // Congrats.SetActive(true);
+        }
+    }
     public void back()
     {
         PlayerdetailsPanel.gameObject.SetActive(false);
@@ -353,16 +465,27 @@ public class MenuManager : MonoBehaviour
         towerdetailsPanel.SetActive(false);
         backMainFromInventoryBtn.GetComponent<Button>().interactable = true;
     }
+    public void backGunDetailsPanel()
+    {
+        GunDetailsPanel.SetActive(false);
+        backMainFromInventoryBtn.GetComponent<Button>().interactable = true;
+    }
     public void playPvm()
     {
-        XPBar.SetActive(false);
+     
         mainPanel.SetActive(false);
         SelectGameDiffPanel.SetActive(true);
     }
     public void option()
     {
-        XPBar.SetActive(false);
+       
         optionPanel.SetActive(true);
+        mainPanel.SetActive(false);
+    }
+    public void shop()
+    {
+        
+        shopPanel.SetActive(true);
         mainPanel.SetActive(false);
     }
     public void exit()
@@ -373,26 +496,32 @@ public class MenuManager : MonoBehaviour
     }
     public void character()
     {
-        XPBar.SetActive(false);
+     
         mainPanel.SetActive(false);
         characterPanel.SetActive(true);
     }
     public void inventorypanel()
     {
-        XPBar.SetActive(false);
+       
         mainPanel.SetActive(false);
         inventoryPanel.SetActive(true);
        
     }
     public void backMainFromInventory()
     {
-        XPBar.SetActive(true);
+        
         mainPanel.SetActive(true);
         inventoryPanel.SetActive(false);
     }
+    public void backMainFromShop()
+    {
+        
+        mainPanel.SetActive(true);
+        shopPanel.SetActive(false);
+    }
     public void backMainFromcharacter()
     {
-        XPBar.SetActive(true);
+       
         mainPanel.SetActive(true);
         characterPanel.SetActive(false);
       
@@ -400,7 +529,7 @@ public class MenuManager : MonoBehaviour
     }
     public void backMainFromOption()
     {
-        XPBar.SetActive(true);
+      
         mainPanel.SetActive(true);
         optionPanel.SetActive(false);
     }
