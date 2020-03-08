@@ -6,10 +6,10 @@ public class freezingTower : MonoBehaviour
 {
     Transform firePoint;
     LineRenderer lineRenderer;
-    public GameObject target_;
+    public GameObject target_ = null;
     float targetFireRate;
 
-    private void Start()
+    private void Awake()
     {
         firePoint = transform.GetChild(0);
         lineRenderer = firePoint.GetChild(0).GetComponent<LineRenderer>();
@@ -60,13 +60,13 @@ public class freezingTower : MonoBehaviour
 
     public void unfreeze()
     {
-        if (target_ != null)
-        {
-            target_.GetComponent<towerInf>().fireRate = targetFireRate;
-        }
-       
-        lineRenderer.enabled = false;
         target_ = null;
+        lineRenderer.enabled = false; 
         CurrentState = freezingtowerState.idle;
+    }
+
+    public void reverse()
+    {
+        target_.GetComponent<towerInf>().fireRate = targetFireRate;
     }
 }

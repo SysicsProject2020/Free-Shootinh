@@ -15,18 +15,17 @@ MonoBehaviour:
   name: carrot
   description: 
   image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}
-  prefab: {fileID: 821469829679679319, guid: 1eef0ae21892231438d132e7f238e201, type: 3}
+  prefab: {fileID: 821469829679679319, guid: 4778e117139fb9f4e81d3b945e611a15, type: 3}
   GunBullet: {fileID: 8041889832026840242, guid: 4304a9b60e2e6d2489af02b4dc219b43,
     type: 3}
   speed: 0
-  firePoint: {fileID: 0}
-  locked: 1
+  locked: 0
   fireRate:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  damage: 00000000000000000000
-  level: 0
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  damage: 0a000f00140019005a00
+  level: 3
   UnlockPrice: 0

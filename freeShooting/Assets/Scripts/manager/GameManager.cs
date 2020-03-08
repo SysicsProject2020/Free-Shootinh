@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
             SaveSystem.SavePlayer();
         }
         FillTowersNotSelected();
-        Debug.Log(getGun().name);
+        //Debug.Log(getGun().name);
     }
     private void loadData()
     {

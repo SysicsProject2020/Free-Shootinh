@@ -53,7 +53,7 @@ public class target : MonoBehaviour
     }
     void die()
     {
-        if (gameObject.GetComponent<playerShooting>() != null)
+        if (gameObject.GetComponent<playerMovement>() != null)
         {
             
             gameObject.SetActive(false);
@@ -81,7 +81,7 @@ public class target : MonoBehaviour
         {
             if (gameObject.GetComponent<freezingTower>() != null)
             {
-                gameObject.GetComponent<freezingTower>().unfreeze();
+                gameObject.GetComponent<freezingTower>().reverse();
             }
             positionManager.delete(transform.position);
             Destroy(gameObject);           

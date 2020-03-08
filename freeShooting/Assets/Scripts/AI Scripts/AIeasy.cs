@@ -69,7 +69,6 @@ public class AIeasy : MonoBehaviour
                 }
                 if (Time.time > nextTimeToBuildRandom)
                 {
-                    Debug.Log("next time to build = " + nextTimeToBuildRandom);
                     if ((positionManager.numBuildedTowers != lastUnbuildedtower)&& (towers[minCostTower].cost <= GameManagerPartie.instance.enemyCoins)&&AiCanBuildRandomly)
                     {
                         Debug.Log("ai can build = " + AiCanBuildRandomly);

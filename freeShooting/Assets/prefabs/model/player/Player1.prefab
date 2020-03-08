@@ -119,7 +119,6 @@ GameObject:
   - component: {fileID: 379894592849315852}
   - component: {fileID: 2923821790068072663}
   - component: {fileID: 1842619244766407511}
-  - component: {fileID: 8610583899468295112}
   - component: {fileID: -786921781837993041}
   - component: {fileID: 2101573892944653371}
   m_Layer: 0
@@ -174,23 +173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
---- !u!114 &8610583899468295112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7574070224920712239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d8f194cb6af5b64eb59eaababaeea68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  fireRate: 4
-  speed: 30
-  bullet_: {fileID: 8041889832026840242, guid: 4304a9b60e2e6d2489af02b4dc219b43, type: 3}
-  firePoint: {fileID: 6134278595339509966}
 --- !u!114 &-786921781837993041
 MonoBehaviour:
   m_ObjectHideFlags: 0

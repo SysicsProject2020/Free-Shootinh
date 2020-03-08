@@ -11,19 +11,21 @@ public class GunsScript : ScriptableObject
     public GameObject prefab;
     public GameObject GunBullet;
     public short speed;
-    public Transform firePoint;
     public bool locked = true;
     [SerializeField]
     private float[] fireRate=new float[5];
     [SerializeField]
     private short[] damage = new short[5];
     [Range(1, 5)]
-    public byte level;
+    public byte level = 1;
     public short UnlockPrice;
 
     public short Get_damage_Gun_player()
     {
+        Debug.Log(level);
+        Debug.Log(damage[level - 1]);
         return damage[level - 1];
+        
     }
     public float Get_fireRate_Gun_player()
     {
