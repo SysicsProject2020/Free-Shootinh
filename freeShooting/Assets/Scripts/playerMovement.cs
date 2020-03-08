@@ -9,6 +9,11 @@ public class playerMovement : MonoBehaviour
     Vector3 destination;
     //public Transform PlayerZone;
 
+    public void SetHealth(short h)
+    {
+        GetComponent<target>().Sethealth(h);
+    }
+
     // Update is called once per frame
     private void Update()
     {

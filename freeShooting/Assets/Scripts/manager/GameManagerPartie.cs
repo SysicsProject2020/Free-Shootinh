@@ -15,6 +15,8 @@ public class GameManagerPartie : MonoBehaviour
     public Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
     public  TowerScript[] towersSelected = new TowerScript[6];
     public  GameObject player_;
+    public GameObject playerGun_;
+    public GunsScript playerGun;
     public  GameObject playerTowerBase_;
     public short playerCoins = 1000;
     public Text playerCoinsTxt;
@@ -28,6 +30,8 @@ public class GameManagerPartie : MonoBehaviour
     public Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
     public  TowerScript[] EnemySelectedTowers = new TowerScript[6];
     public  GameObject enemy_;
+    public GameObject enemyGun_;
+    public GunsScript enemyGun;
     public GameObject enemyTowerBase_;
     public short enemyCoins = 10000;
     public Text enemyCoinsTxt;
@@ -41,7 +45,7 @@ public class GameManagerPartie : MonoBehaviour
     }
     void Start()
     {
-       
+        
         player = GameManager.instance.getPlayer();
         //Debug.Log(player.name);
         setMagic();
@@ -85,6 +89,9 @@ public class GameManagerPartie : MonoBehaviour
 
     private void instantiatePrefabs()
     {
+        playerGun = GameManager.instance.getGun();
+        enemyGun = GameManager.instance.getGun();
+
         playerTowerBase_= Instantiate(towerBase.prefab, playerTowerPos, Quaternion.Euler(0, 0, 0));
         changeLayerMask(playerTowerBase_, "Player");
         playerTowerBase_.GetComponent<towerInf>().SetHealth(towerBase.Get_health_player());
@@ -93,13 +100,20 @@ public class GameManagerPartie : MonoBehaviour
         enemyTowerBase_.GetComponent<towerInf>().SetHealth(towerBase.Get_health_enemy(enemylvl));
 
         player_ = Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
-        enemy_ = Instantiate(enemy.prefab, enemyPos, Quaternion.Euler(-180, 0, 0));
+        enemy_ = Instantiate(enemy.prefab, enemyPos, Quaternion.Euler(180, 0, 0));
         player_.GetComponent<playerShooting>().SetDamage(player.Get_damage_player());
-        player_.GetComponent<playerShooting>().SetHealth(player.Get_health_player());
+        player_.GetComponent<PlayerMovementWithSliderBar>().SetHealth(player.Get_health_player());
         enemy_.GetComponent<playerShooting>().SetDamage(enemy.Get_damage_enemy(enemylvl));
-        enemy_.GetComponent<playerShooting>().SetHealth(enemy.Get_health_enemy(enemylvl));
+        enemy_.GetComponent<PlayerMovementWithSliderBar>().SetHealth(enemy.Get_health_enemy(enemylvl));
         changeLayerMask(enemy_, "Enemy");
         changeLayerMask(player_, "Player");
+
+        playerGun_ = Instantiate(playerGun.prefab, playerPos, Quaternion.Euler(0, 0, 0),player_.transform.GetChild(0));
+        enemyGun_ = Instantiate(enemyGun.prefab, enemyPos, Quaternion.Euler(180, 0, 0),enemy_.transform.GetChild(0));
+        playerGun_.GetComponent<playerShooting>().SetDamage(playerGun.Get_damage_Gun_player());
+        playerGun_.GetComponent<playerShooting>().SetFireRate(playerGun.Get_fireRate_Gun_player());
+        enemyGun_.GetComponent<playerShooting>().SetDamage(playerGun.Get_damage_Gun_enemy(enemylvl));
+        enemyGun_.GetComponent<playerShooting>().SetFireRate(playerGun.Get_fireRate_Gun_enemy(enemylvl));
     }
     public void ChangeInteractableSprites()
     {
