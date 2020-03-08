@@ -26,9 +26,11 @@ public class freezingTower : MonoBehaviour
     public void shoot(GameObject targetGameObject)
     {
         Debug.Log("freeze shoot");
-        target_ = targetGameObject;
-        if (target_.GetComponent<mirrorTower>() == null)
+        if (targetGameObject.GetComponent<mirrorTower>() == null)
+        {
+            target_ = targetGameObject;
             CurrentState = freezingtowerState.shoot;
+        }
     }
 
     // Update is called once per frame
@@ -58,17 +60,13 @@ public class freezingTower : MonoBehaviour
 
     public void unfreeze()
     {
-        target_.GetComponent<towerInf>().fireRate = targetFireRate;
+        if (target_ != null)
+        {
+            target_.GetComponent<towerInf>().fireRate = targetFireRate;
+        }
+       
         lineRenderer.enabled = false;
         target_ = null;
         CurrentState = freezingtowerState.idle;
-    }
-
-    public void stopShoot()
-    {
-        if (target_ != null)
-        {
-            unfreeze();
-        }
     }
 }

@@ -227,11 +227,11 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[0, 0] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 0].cost - 50));
-                        aiCanBuild();
                         buildingGameObject[0, 0] = null;
                         buildingTowerScript[0, 0] = null;
                         towerZone[0].GetComponent<BoxCollider>().enabled = true;
                         HealingTowerDelete0(0);
+                        aiCanBuild();
                     }
                     break;
 
@@ -239,11 +239,11 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[0, 1] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 1].cost - 50));
-                        aiCanBuild();
                         buildingGameObject[0, 1] = null;
                         buildingTowerScript[0, 1] = null;
                         towerZone[1].GetComponent<BoxCollider>().enabled = true;
                         HealingTowerDelete1(0);
+                        aiCanBuild();
                     }
                     break;
 
@@ -251,11 +251,11 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[0, 2] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 2].cost - 50));
-                        aiCanBuild();
                         buildingGameObject[0, 2] = null;
                         buildingTowerScript[0, 2] = null;
                         towerZone[2].GetComponent<BoxCollider>().enabled = true;
                         HealingTowerDelete2(0);
+                        aiCanBuild();
                     }
                     break;
 
@@ -263,11 +263,11 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[0, 3] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 3].cost - 50));
-                        aiCanBuild();
                         buildingGameObject[0, 3] = null;
                         buildingTowerScript[0, 3] = null;
                         towerZone[3].GetComponent<BoxCollider>().enabled = true;
                         HealingTowerDelete3(0);
+                        aiCanBuild();
                     }
                     break;
 
@@ -275,11 +275,11 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[0, 4] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 4].cost - 50));
-                        aiCanBuild();
                         buildingGameObject[0, 4] = null;
                         buildingTowerScript[0, 4] = null;
                         towerZone[4].GetComponent<BoxCollider>().enabled = true;
                         HealingTowerDelete4(0);
+                        aiCanBuild();
                     }
                     break;
             }
@@ -394,6 +394,10 @@ public class positionManager : MonoBehaviour
                     if (buildingGameObject[1, j] != null)
                     {
                         buildingGameObject[0, j].GetComponent<freezingTower>().shoot(buildingGameObject[1, j]);
+                    }
+                    else
+                    {
+                        buildingGameObject[0, j].GetComponent<freezingTower>().unfreeze();
                     }
                     break;
 
@@ -682,15 +686,14 @@ public class positionManager : MonoBehaviour
                     break;
 
                 case "freezing tower":
-                    //Debug.Log("lazer");
                     if (buildingGameObject[0, j] != null)
                     {
-                        buildingGameObject[1, j].GetComponent<freezingTower>().shoot(buildingGameObject[1, j]);
+                        buildingGameObject[1, j].GetComponent<freezingTower>().shoot(buildingGameObject[0, j]);
                     }
-                    /*else
+                    else
                     {
-                        buildingGameObject[1, j].GetComponent<freezingTower>().stopShoot();
-                    }*/
+                        buildingGameObject[1, j].GetComponent<freezingTower>().unfreeze();
+                    }
                     break;
                 case "lazer tower":
                     //Debug.Log("lazer");

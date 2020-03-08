@@ -81,7 +81,7 @@ public class target : MonoBehaviour
         {
             if (gameObject.GetComponent<freezingTower>() != null)
             {
-                gameObject.GetComponent<freezingTower>().stopShoot();
+                gameObject.GetComponent<freezingTower>().unfreeze();
             }
             positionManager.delete(transform.position);
             Destroy(gameObject);           
