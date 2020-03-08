@@ -39,6 +39,7 @@ public class healingTower : MonoBehaviour
                 {
                     foreach (var targetToHeal in target_)
                     {
+                        if(targetToHeal!=null)
                         targetToHeal.GetComponent<target>().gainhealth(GetComponent<towerInf>().damage);
                     }
                     nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;

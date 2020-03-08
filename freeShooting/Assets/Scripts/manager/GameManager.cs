@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
             }
             TowersNumber = (byte)Towers.Length;
         }
-        Debug.Log(TowersNumber);
+        //Debug.Log(TowersNumber);
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "menu")
         {

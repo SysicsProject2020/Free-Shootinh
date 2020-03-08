@@ -1144,7 +1144,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  buildTime: 5
+  buildTimeRandom: 5
   speed: 5
   Inventory1:
   - {fileID: 11400000, guid: f9241cd7a95bb1d40b6580f88f321bc8, type: 2}
@@ -1153,6 +1153,27 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 447a612f0698c154d94896cf5f076015, type: 2}
   - {fileID: 11400000, guid: 69ad6ab99c26762409f20b231c93d2ff, type: 2}
   - {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}
+  Inventory2:
+  - {fileID: 11400000, guid: 13e8f4edb15a6774ab6063345b385e70, type: 2}
+  - {fileID: 11400000, guid: 69ad6ab99c26762409f20b231c93d2ff, type: 2}
+  - {fileID: 11400000, guid: d4656323c59403146bd3a97bf56589b4, type: 2}
+  - {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}
+  - {fileID: 11400000, guid: 11cee3bba39b8fa44a93b9bc6aea1f43, type: 2}
+  - {fileID: 11400000, guid: 59179c4c0714fd34c9a9b94dd6ab5b56, type: 2}
+  Inventory3:
+  - {fileID: 11400000, guid: 447a612f0698c154d94896cf5f076015, type: 2}
+  - {fileID: 11400000, guid: 59179c4c0714fd34c9a9b94dd6ab5b56, type: 2}
+  - {fileID: 11400000, guid: d4656323c59403146bd3a97bf56589b4, type: 2}
+  - {fileID: 11400000, guid: 11cee3bba39b8fa44a93b9bc6aea1f43, type: 2}
+  - {fileID: 11400000, guid: 13e8f4edb15a6774ab6063345b385e70, type: 2}
+  - {fileID: 11400000, guid: 77ffcf6dfc6798e48b8651cf3d81df8e, type: 2}
+  Inventory4:
+  - {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}
+  - {fileID: 11400000, guid: d4656323c59403146bd3a97bf56589b4, type: 2}
+  - {fileID: 11400000, guid: 11cee3bba39b8fa44a93b9bc6aea1f43, type: 2}
+  - {fileID: 11400000, guid: 13e8f4edb15a6774ab6063345b385e70, type: 2}
+  - {fileID: 11400000, guid: 69ad6ab99c26762409f20b231c93d2ff, type: 2}
+  - {fileID: 11400000, guid: 59179c4c0714fd34c9a9b94dd6ab5b56, type: 2}
 --- !u!1 &1852711192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2429149059882561241, guid: e38c3fe726835554a96b8e7b207cf465,

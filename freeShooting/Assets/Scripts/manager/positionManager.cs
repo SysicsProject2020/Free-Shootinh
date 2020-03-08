@@ -302,7 +302,7 @@ public class positionManager : MonoBehaviour
                         buildingTowerScript[1, 0] = null;
                         HealingTowerDelete0(1);
                         numBuildedTowers--;
-                        aiCanBuild();
+                       // aiCanBuild();
                     }
                     break;
 
@@ -314,7 +314,7 @@ public class positionManager : MonoBehaviour
                         buildingTowerScript[1, 1] = null;
                         HealingTowerDelete1(1);
                         numBuildedTowers--;
-                        aiCanBuild();
+                       // aiCanBuild();
                     }
                     break;
 
@@ -326,7 +326,7 @@ public class positionManager : MonoBehaviour
                         buildingTowerScript[1, 2] = null;
                         HealingTowerDelete2(1);
                         numBuildedTowers--;
-                        aiCanBuild();
+                        //aiCanBuild();
                     }
                     break;
 
@@ -338,7 +338,7 @@ public class positionManager : MonoBehaviour
                         buildingTowerScript[1, 3] = null;
                         HealingTowerDelete3(1);
                         numBuildedTowers--;
-                        aiCanBuild();
+                       // aiCanBuild();
                     }
                     break;
 
@@ -350,7 +350,7 @@ public class positionManager : MonoBehaviour
                         buildingTowerScript[1, 4] = null;
                         HealingTowerDelete4(1);
                         numBuildedTowers--;
-                        aiCanBuild();
+                       // aiCanBuild();
                     }
                     break;
             }

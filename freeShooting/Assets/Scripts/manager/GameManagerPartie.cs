@@ -43,7 +43,7 @@ public class GameManagerPartie : MonoBehaviour
     {
        
         player = GameManager.instance.getPlayer();
-        Debug.Log(player.name);
+        //Debug.Log(player.name);
         setMagic();
         towersSelected = GameManager.instance.GetSelectedTowers();
 
