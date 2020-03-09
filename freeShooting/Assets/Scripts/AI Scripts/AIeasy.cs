@@ -15,6 +15,7 @@ public class AIeasy : MonoBehaviour
     public float buildTimeRandom;
     private byte lastUnbuildedtower;
     public float speed = 5f;
+    private byte strategy;
     private bool AiCanBuildRandomly = true;
     Vector3[] BuildPos = new[]{
         new Vector3(-15,2,15),
@@ -40,17 +41,35 @@ public class AIeasy : MonoBehaviour
         CurrentState = state;
         //Debug.Log(state);
     }
+
+    private void Start()
+    {
+        strategy = (byte)Random.Range(0, 4);
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {
-      
-        
         //Debug.Log(CurrentState);
         switch(CurrentState)
         {
             case AIState.start:
-                startStrategy4();
-              
+                switch (strategy)
+                {
+                    case 0:
+                        startStrategy1();
+                        break;
+                    case 1:
+                        startStrategy2();
+                        break;
+                    case 2:
+                        startStrategy3();
+                        break;
+                    case 3:
+                        startStrategy4();
+                        break;
+                }
+
                 changeState(AIState.idle);
                 break;
 
@@ -177,7 +196,21 @@ public class AIeasy : MonoBehaviour
     {
         AiCanBuildRandomly = false;
         yield return new WaitForSeconds(3);
-        strategy4(buildPos[i]);    
+        switch (strategy)
+        {
+            case 0:
+                strategy1(buildPos[i]);
+                break;
+            case 1:
+                strategy2(buildPos[i]);
+                break;
+            case 2:
+                strategy3(buildPos[i]);
+                break;
+            case 3:
+                strategy4(buildPos[i]);
+                break;
+        }   
     }
 
     public void startStrategy1()
