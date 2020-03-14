@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class bullet : MonoBehaviour
 {
@@ -39,13 +40,23 @@ public class bullet : MonoBehaviour
         if (collision.transform.GetComponent<target>() != null)
         {
             collision.transform.GetComponent<target>().takeDamage(damage);
-            if (collision.transform.GetComponent<mirrorTower>() != null)
+            if (sender != null)
             {
-                if (sender != null)
+                if (collision.transform.GetComponent<mirrorTower>() != null)
                 {
                     sender.GetComponent<target>().takeDamage(damage);
-                }       
+                }
+                if (sender == GameManagerPartie.instance.player_)
+                {
+                    GameManagerPartie.instance.playerDamage += damage;
+                    if (GameManagerPartie.instance.playerDamage >= 1000)
+                    {
+                        GameManagerPartie.instance.playerMagic1.GetComponent<Button>().interactable = true;
+                    }
+                }
             }
+           
+         
             //hitSound[choose].Play();           
         }
         Destroy(gameObject);

@@ -11,25 +11,26 @@ public class GameManagerPartie : MonoBehaviour
     public TowerScript towerBase;
     private PlayerScript player;
     public GameObject itemParent;
-    public  Vector3 playerPos = new Vector3(25, 1.8f, -25);
+    public Vector3 playerPos = new Vector3(25, 1.8f, -25);
     public Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
-    public  TowerScript[] towersSelected = new TowerScript[6];
-    public  GameObject player_;
+    public TowerScript[] towersSelected = new TowerScript[6];
+    public GameObject player_;
     public GameObject playerGun_;
     public GunsScript playerGun;
-    public  GameObject playerTowerBase_;
+    public GameObject playerTowerBase_;
     public short playerCoins = 1000;
     public Text playerCoinsTxt;
     public GameObject playerMagic1;
     public GameObject playerMagic2;
+    public short playerDamage=0;
 
     [Header("Player 2: enemy")]
     public TowerScript enemybase;
     public PlayerScript enemy;
-    public  Vector3 enemyPos = new Vector3(-15, 1.8f, 25);
+    public Vector3 enemyPos = new Vector3(-15, 1.8f, 25);
     public Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
-    public  TowerScript[] EnemySelectedTowers = new TowerScript[6];
-    public  GameObject enemy_;
+    public TowerScript[] EnemySelectedTowers = new TowerScript[6];
+    public GameObject enemy_;
     public GameObject enemyGun_;
     public GunsScript enemyGun;
     public GameObject enemyTowerBase_;
@@ -57,6 +58,7 @@ public class GameManagerPartie : MonoBehaviour
 
         playerCoinsTxt.text = playerCoins.ToString();
         enemyCoinsTxt.text = enemyCoins.ToString();
+        
     }
     private void setMagic()
     {
@@ -68,7 +70,6 @@ public class GameManagerPartie : MonoBehaviour
                 playerMagic2.GetComponent<Image>().sprite = player.magic2.image;*/
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Accelerate(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Shield(0); });
-
                 break;
             case "shadow":
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.healTowers(0); });
@@ -85,6 +86,8 @@ public class GameManagerPartie : MonoBehaviour
 
                 break;
         }
+        playerMagic1.GetComponent<Button>().interactable = false;
+        playerMagic2.GetComponent<Button>().interactable = false;
     }
 
     private void instantiatePrefabs()
