@@ -12,7 +12,7 @@ public class bullet : MonoBehaviour
     {
         damage = dam;
     }
-    private void Start()
+    private void Awake()
     {
         if (transform.position.z < 0)
         {
@@ -24,64 +24,34 @@ public class bullet : MonoBehaviour
         }          
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "stadium")
-        {
-            Destroy(gameObject);
-            return;
-        }
-        /*if (collision.transform.tag == "bullet")
-        {
-            Destroy(gameObject);
-            return;
-        }*/
         if (collision.transform.GetComponent<target>() != null)
-        {
-            collision.transform.GetComponent<target>().takeDamage(damage);
+        {       
             if (sender != null)
             {
                 if (collision.transform.GetComponent<mirrorTower>() != null)
                 {
-                    sender.GetComponent<target>().takeDamage(damage);
+                    sender.transform.root.GetComponent<target>().takeDamage(damage);
                 }
-                if (sender == GameManagerPartie.instance.player_)
+                if (sender.transform.root.name == GameManagerPartie.instance.player_.name)
                 {
                     GameManagerPartie.instance.playerDamage += damage;
                     if (GameManagerPartie.instance.playerDamage >= 1000)
                     {
                         GameManagerPartie.instance.playerMagic1.GetComponent<Button>().interactable = true;
+                        /*
+                         GameManagerPartie.instance.playerMagic1.GetComponent<Button>().interactable = false;
+                         GameManagerPartie.instance.playerDamage = 0;
+                        */
                     }
                 }
             }
-           
-         
+            collision.transform.GetComponent<target>().takeDamage(damage);
+
             //hitSound[choose].Play();           
         }
         Destroy(gameObject);
     }
-   /* private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.tag == "stadium")
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        if (other.transform.tag == "bullet")
-        {
-            //Destroy(gameObject);
-            return;
-
-        }
-        if (other.transform.GetComponent<target>() != null)
-        {
-            other.transform.GetComponent<target>().takeDamage(damage);
-            //hitSound[choose].Play();           
-        }
-        Destroy(gameObject);
-    }*/
-
 }
 
