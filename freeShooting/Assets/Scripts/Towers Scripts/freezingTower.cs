@@ -67,6 +67,7 @@ public class freezingTower : MonoBehaviour
 
     public void reverse()
     {
+        if(target_!=null)
         target_.GetComponent<towerInf>().fireRate = targetFireRate;
     }
 }

@@ -53,9 +53,14 @@ public class target : MonoBehaviour
     }
     void die()
     {
+        GameManagerPartie.instance.playerKills++;
+        if (GameManagerPartie.instance.playerKills >= 5)
+        {
+            GameManagerPartie.instance.playerMagic2.GetComponent<Button>().interactable = true;
+        }
+
         if (gameObject.GetComponent<playerMovement>() != null)
         {
-            
             gameObject.SetActive(false);
             health = maxHealth;
             healthBar.fillAmount = (float)health / (float)maxHealth;

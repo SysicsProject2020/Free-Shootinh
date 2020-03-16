@@ -23,6 +23,7 @@ public class GameManagerPartie : MonoBehaviour
     public GameObject playerMagic1;
     public GameObject playerMagic2;
     public short playerDamage=0;
+    public byte playerKills = 0;
 
     [Header("Player 2: enemy")]
     public TowerScript enemybase;
