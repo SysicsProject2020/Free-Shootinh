@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private GunsScript GunSelected;
     private TowerScript[] towersSelected = new TowerScript[6];
     private TowerScript[] towersNotSelected;
+    public GameObject[] bases= new GameObject[3];
    // public PlayerData data;
 
 

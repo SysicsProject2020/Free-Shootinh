@@ -6,15 +6,15 @@ public class TowerScript: ScriptableObject
     public new string name;
     public Sprite image;
     [SerializeField]
-    private short[] health =new short[5] ;
+    private short[] health =new short[3] ;
     [SerializeField]
-    private short[] damage = new short[5];
+    private short[] damage = new short[3];
     public float fireRate; 
     public GameObject prefab;
     public string description;
     public bool locked = true;
     
-    [Range(1, 5)]
+    [Range(1, 3)]
     public byte level;
     public short cost;
     public short UnlockPrice;

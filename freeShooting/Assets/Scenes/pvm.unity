@@ -984,11 +984,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   player_: {fileID: 0}
+  playerGun_: {fileID: 0}
+  playerGun: {fileID: 0}
   playerTowerBase_: {fileID: 0}
   playerCoins: 1000
   playerCoinsTxt: {fileID: 356010484}
   playerMagic1: {fileID: 2368429}
   playerMagic2: {fileID: 506122757}
+  playerDamage: 0
+  playerKills: 0
   enemybase: {fileID: 11400000, guid: 02da2778ed4188c4a90222d86837d602, type: 2}
   enemy: {fileID: 11400000, guid: b526a8851452ac148b5a9349b56c37a2, type: 2}
   enemyPos: {x: -15, y: 1.8, z: 25}
@@ -1001,6 +1005,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemy_: {fileID: 0}
+  enemyGun_: {fileID: 0}
+  enemyGun: {fileID: 0}
   enemyTowerBase_: {fileID: 6691245050111619357, guid: d2ba556787281f249b4ac1eb3b236626,
     type: 3}
   enemyCoins: 1000
@@ -1065,15 +1071,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 691d09d4df872d84793ff38798a80e6a, type: 2}
   inventory: {fileID: 0}
   Towers:
-  - {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}
   - {fileID: 11400000, guid: d4656323c59403146bd3a97bf56589b4, type: 2}
+  - {fileID: 11400000, guid: 59179c4c0714fd34c9a9b94dd6ab5b56, type: 2}
+  - {fileID: 11400000, guid: e178567d62a5aaf45b302d8506f2c536, type: 2}
   - {fileID: 11400000, guid: 69ad6ab99c26762409f20b231c93d2ff, type: 2}
   - {fileID: 11400000, guid: f9241cd7a95bb1d40b6580f88f321bc8, type: 2}
   - {fileID: 11400000, guid: 77ffcf6dfc6798e48b8651cf3d81df8e, type: 2}
   - {fileID: 11400000, guid: 13e8f4edb15a6774ab6063345b385e70, type: 2}
   - {fileID: 11400000, guid: 447a612f0698c154d94896cf5f076015, type: 2}
-  - {fileID: 11400000, guid: 59179c4c0714fd34c9a9b94dd6ab5b56, type: 2}
   - {fileID: 11400000, guid: 11cee3bba39b8fa44a93b9bc6aea1f43, type: 2}
+  bases:
+  - {fileID: 3284376059890886023, guid: b8e51b2e29019974484c9c1d3186e366, type: 3}
+  - {fileID: 8777748584492466185, guid: abe3a233522cef344ad20f2ef94d326d, type: 3}
+  - {fileID: 9186346066295716581, guid: 5dbc4f23db3ffef4387db0c5b1edb0f7, type: 3}
 --- !u!114 &1441807757
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,7 +24,8 @@ public class positionManager : MonoBehaviour
                 case -15:
                     if (buildingGameObject[0, 0] == null)
                     {
-                        GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
+                        GameObject go1 = Instantiate(GameManager.instance.bases[tower.level-1], place, Quaternion.Euler(0, 0, 0));
+                        GameObject go = Instantiate(tower.prefab, new Vector3(place.x,tower.prefab.transform.position.y,place.z), Quaternion.Euler(0, 0, 0),go1.transform);
                         changeLayerMask(go, "Player");
                         buildingGameObject[0, 0] = go;
                         buildingTowerScript[0, 0] = tower;
@@ -42,7 +43,8 @@ public class positionManager : MonoBehaviour
                 case -5:
                     if (buildingGameObject[0, 1] == null)
                     {
-                        GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
+                        GameObject go1 = Instantiate(GameManager.instance.bases[tower.level - 1], place, Quaternion.Euler(0, 0, 0));
+                        GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0), go1.transform);
                         changeLayerMask(go, "Player");
                         buildingGameObject[0, 1] = go;
                         buildingTowerScript[0, 1] = tower;
@@ -60,7 +62,8 @@ public class positionManager : MonoBehaviour
                 case 5:
                     if (buildingGameObject[0, 2] == null)
                     {
-                        GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
+                        GameObject go1 = Instantiate(GameManager.instance.bases[tower.level - 1], place, Quaternion.Euler(0, 0, 0));
+                        GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0), go1.transform);
                         changeLayerMask(go, "Player");
                         buildingGameObject[0, 2] = go;
                         buildingTowerScript[0, 2] = tower;
@@ -79,7 +82,8 @@ public class positionManager : MonoBehaviour
                 case 15:
                     if (buildingGameObject[0, 3] == null)
                     {
-                        GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
+                        GameObject go1 = Instantiate(GameManager.instance.bases[tower.level - 1], place, Quaternion.Euler(0, 0, 0));
+                        GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0), go1.transform);
                         changeLayerMask(go, "Player");
                         buildingGameObject[0, 3] = go;
                         buildingTowerScript[0, 3] = tower;
@@ -98,7 +102,8 @@ public class positionManager : MonoBehaviour
                 case 25:
                     if (buildingGameObject[0, 4] == null)
                     {
-                        GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
+                        GameObject go1 = Instantiate(GameManager.instance.bases[tower.level - 1], place, Quaternion.Euler(0, 0, 0));
+                        GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0), go1.transform);
                         changeLayerMask(go, "Player");
                         buildingGameObject[0, 4] = go;
                         buildingTowerScript[0, 4] = tower;
@@ -128,7 +133,8 @@ public class positionManager : MonoBehaviour
                 case -15:
                     if (buildingGameObject[1, 0] == null)
                     {
-                        GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
+                        GameObject go1 = Instantiate(GameManager.instance.bases[lvl], place, Quaternion.Euler(0, 0, 0));
+                        GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0), go1.transform);
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 0] = go;
                         buildingTowerScript[1, 0] = tower;
@@ -145,7 +151,8 @@ public class positionManager : MonoBehaviour
                 case -5:
                     if (buildingGameObject[1, 1] == null)
                     {
-                        GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
+                        GameObject go1 = Instantiate(GameManager.instance.bases[lvl], place, Quaternion.Euler(0, 0, 0));
+                        GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0), go1.transform);
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 1] = go;
                         buildingTowerScript[1, 1] = tower;
@@ -162,7 +169,8 @@ public class positionManager : MonoBehaviour
                 case 5:
                     if (buildingGameObject[1, 2] == null)
                     {
-                        GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
+                        GameObject go1 = Instantiate(GameManager.instance.bases[lvl], place, Quaternion.Euler(0, 0, 0));
+                        GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0), go1.transform);
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 2] = go;
                         buildingTowerScript[1, 2] = tower;
@@ -179,7 +187,8 @@ public class positionManager : MonoBehaviour
                 case 15:
                     if (buildingGameObject[1, 3] == null)
                     {
-                        GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
+                        GameObject go1 = Instantiate(GameManager.instance.bases[lvl], place, Quaternion.Euler(0, 0, 0));
+                        GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0), go1.transform);
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 3] = go;
                         buildingTowerScript[1, 3] = tower;
@@ -196,7 +205,8 @@ public class positionManager : MonoBehaviour
                 case 25:
                     if (buildingGameObject[1, 4] == null)
                     {
-                        GameObject go = Instantiate(tower.prefab, place, Quaternion.Euler(0, 0, 0));
+                        GameObject go1 = Instantiate(GameManager.instance.bases[lvl], place, Quaternion.Euler(0, 0, 0));
+                        GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0), go1.transform);
                         changeLayerMask(go, "Enemy");
                         buildingGameObject[1, 4] = go;
                         buildingTowerScript[1, 4] = tower;
