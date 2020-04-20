@@ -10,7 +10,7 @@ public class lazerShooting : MonoBehaviour
     private byte damageMultiplier = 2;
     private float nextTimeFire = 0f;
 
-    Transform firePoint;
+    public Transform firePoint;
 
     LineRenderer lineRenderer;
 
@@ -20,7 +20,6 @@ public class lazerShooting : MonoBehaviour
 
     private void Start()
     {
-        firePoint = transform.GetChild(0);
         lineRenderer = firePoint.GetComponent<LineRenderer>();
         damage = GetComponent<towerInf>().damage;
     }

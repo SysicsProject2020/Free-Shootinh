@@ -5,15 +5,14 @@ using UnityEngine;
 public class teslashooting : MonoBehaviour
 {
     private float nextTimeFire = 0f;
-    Transform firePoint;
+    public Transform firePoint;
     bool shooting = true;
     LineRenderer lineRenderer;
     GameObject target_;
 
     private void Start()
-    {
-        firePoint = transform.GetChild(0);
-        lineRenderer = firePoint.GetChild(0).GetComponent<LineRenderer>();
+    {      
+        lineRenderer = firePoint.GetComponent<LineRenderer>();
     }
 
     public teslaState CurrentState = teslaState.idle;

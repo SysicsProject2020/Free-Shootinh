@@ -7,8 +7,8 @@ public class CanonTower : MonoBehaviour
     float nextTimeFire;
     GameObject target_;
     public GameObject CanonFireBall;
-    Transform firePoint;
-    Transform rotationPart;
+    public Transform firePoint;
+    public Transform rotationPart;
     public byte speed = 19;
     //private GameObject head;
 
@@ -17,9 +17,7 @@ public class CanonTower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nextTimeFire = Time.time;
-        firePoint = transform.GetChild(0).GetChild(0);
-        rotationPart = transform.GetChild(0);
+        nextTimeFire = Time.time;;
     }
     private canonState CurrentState = canonState.idle;
 

@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class freezingTower : MonoBehaviour
 {
-    Transform firePoint;
+    public Transform firePoint;
     LineRenderer lineRenderer;
     public GameObject target_ = null;
     float targetFireRate;
 
     private void Awake()
     {
-        firePoint = transform.GetChild(0);
-        lineRenderer = firePoint.GetChild(0).GetComponent<LineRenderer>();
+        lineRenderer = firePoint.GetComponent<LineRenderer>();
     }
 
     public freezingtowerState CurrentState = freezingtowerState.idle;
@@ -61,7 +60,7 @@ public class freezingTower : MonoBehaviour
     public void unfreeze()
     {
         target_ = null;
-        lineRenderer.enabled = false; 
+        lineRenderer.enabled = false;
         CurrentState = freezingtowerState.idle;
     }
 
