@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7516a8b0a68a27842a46580bfa87ac34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 2723273172541212543}
   target_: {fileID: 0}
   CurrentState: 0
 --- !u!114 &6724596844142188928
