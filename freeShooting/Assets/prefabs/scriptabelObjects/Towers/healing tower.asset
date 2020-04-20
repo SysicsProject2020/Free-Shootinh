@@ -17,9 +17,9 @@ MonoBehaviour:
   health: 260258028a02bc02ee02
   damage: 250028002c0031003700
   fireRate: 1
-  prefab: {fileID: -927199367670048503, guid: 9b89226852e9b174f8df9b8531e5afa0, type: 3}
+  prefab: {fileID: 5002625035305690041, guid: d4061aff61aaa554bbfbc85ea994fddb, type: 3}
   description: 
   locked: 0
-  level: 2
+  level: 1
   cost: 150
   UnlockPrice: 50
