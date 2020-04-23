@@ -139,10 +139,10 @@ GameObject:
   - component: {fileID: 8503404991435198526}
   - component: {fileID: 2683759046326791367}
   - component: {fileID: 7065541097469395121}
-  - component: {fileID: 5106202836434969666}
   - component: {fileID: 2762388159358964424}
   - component: {fileID: 9026648576273259008}
   - component: {fileID: 7925661255591564757}
+  - component: {fileID: 3991038648292652155}
   m_Layer: 0
   m_Name: lazer
   m_TagString: Untagged
@@ -226,21 +226,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.7437582, y: 3.6624947, z: 3.6381721}
-  m_Center: {x: 0.035111904, y: -3.1197348, z: -0.0078041553}
---- !u!65 &5106202836434969666
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4396206678624606235}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.1638865, y: 3.8450499, z: 1.1306688}
-  m_Center: {x: 0.008904576, y: 0.00000023841858, z: -0.010298431}
+  m_Size: {x: 3.7437582, y: 3.14645, z: 3.6381721}
+  m_Center: {x: 0.035111904, y: -3.377757, z: -0.0078041553}
 --- !u!114 &2762388159358964424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,3 +273,16 @@ MonoBehaviour:
   healthBarInstatiate: {fileID: 262082680603429188, guid: 66dabcda2eba50c47a69b1a1878145a1,
     type: 3}
   PlayerRespawnTime: 3
+--- !u!65 &3991038648292652155
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396206678624606235}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.422121, y: 3.8450499, z: 1.4221209}
+  m_Center: {x: 0, y: 0.00000017881393, z: 0}

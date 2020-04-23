@@ -237,6 +237,7 @@ public class positionManager : MonoBehaviour
                 case -16.52f:
                     if (buildingGameObject[0, 0] != null)
                     {
+                        //Debug.Log("0000000.000000" + buildingTowerScript[0, 0].name);
                         addCoinEnemy((short)(buildingTowerScript[0, 0].cost - 50));
                         buildingGameObject[0, 0] = null;
                         buildingTowerScript[0, 0] = null;
