@@ -28,6 +28,7 @@ public class xbowShooting : MonoBehaviour
     {
         CurrentState = xbowState.shoot;
         target_ = targetGameObject;
+        rotation();
     }
     public void stopShoot()
     {
@@ -54,14 +55,15 @@ public class xbowShooting : MonoBehaviour
         
     }
 
-    private void shoot()
+    void rotation()
     {
         Vector3 relativePos = target_.transform.position - rotationPart.position;
         Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
-        //rotObject = Quaternion.Euler(rotObject.eulerAngles.x, rotObject.eulerAngles.y, rotObject.eulerAngles.z);
-        rotationPart.transform.rotation = rotObject;
-
-
+        //rotObject = Quaternion.Euler(transform.rotation.x, rotObject.eulerAngles.y, transform.rotation.z);
+        rotationPart.rotation = rotObject;
+    }
+    private void shoot()
+    {
         GameObject clone = Instantiate(bow, firePoint.position, firePoint.rotation);
         //clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(target_.transform.position.x, target_.transform.position.y, target_.transform.position.z);
         clone.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * speed;

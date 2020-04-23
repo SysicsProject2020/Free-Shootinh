@@ -18,11 +18,11 @@ public class AIeasy : MonoBehaviour
     private byte strategy;
     private bool AiCanBuildRandomly = true;
     Vector3[] BuildPos = new[]{
-        new Vector3(-15,2,15),
-        new Vector3(-5,2,10),
-        new Vector3(5,2,8),
-        new Vector3(15,2,10),
-        new Vector3(25,2,15),
+        new Vector3(-16.52f,2,18.78f),
+        new Vector3(-8.27f,2,13.36f),
+        new Vector3(0,2,7.94f),
+        new Vector3(8.27f,2,13.36f),
+        new Vector3(16.52f,2,18.78f),
         };
     public TowerScript[] Inventory1;
     public TowerScript[] Inventory2;
@@ -187,7 +187,7 @@ public class AIeasy : MonoBehaviour
     IEnumerator move(float time)
     {
         isMoving = true;
-        float rand = Random.Range(-18, 28);
+        float rand = Random.Range(-19, 19);
         LeanTween.moveX(GameManagerPartie.instance.enemy_, rand, time).setEaseLinear();
         yield return new WaitForSeconds (time);
         isMoving = false;

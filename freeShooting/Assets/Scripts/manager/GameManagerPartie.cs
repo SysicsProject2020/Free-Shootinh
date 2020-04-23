@@ -11,8 +11,8 @@ public class GameManagerPartie : MonoBehaviour
     public TowerScript towerBase;
     private PlayerScript player;
     public GameObject itemParent;
-    public Vector3 playerPos = new Vector3(25, 1.8f, -25);
-    public Vector3 playerTowerPos = new Vector3(5, 2.2f, -38);
+    public Vector3 playerPos = new Vector3(0, 1.8f, -28);
+    public Vector3 playerTowerPos = new Vector3(0, 2.2f, -38);
     public TowerScript[] towersSelected = new TowerScript[6];
     public GameObject player_;
     public GameObject playerGun_;
@@ -28,8 +28,8 @@ public class GameManagerPartie : MonoBehaviour
     [Header("Player 2: enemy")]
     public TowerScript enemybase;
     public PlayerScript enemy;
-    public Vector3 enemyPos = new Vector3(-15, 1.8f, 25);
-    public Vector3 enemyTowerPos = new Vector3(5, 2.2f, 38);
+    public Vector3 enemyPos = new Vector3(0, 1.8f, 28);
+    public Vector3 enemyTowerPos = new Vector3(0, 2.2f, 38);
     public TowerScript[] EnemySelectedTowers = new TowerScript[6];
     public GameObject enemy_;
     public GameObject enemyGun_;

@@ -21,7 +21,7 @@ public class positionManager : MonoBehaviour
             //player
             switch (place.x)
             {
-                case -15:
+                case -16.52f:
                     if (buildingGameObject[0, 0] == null)
                     {
 
@@ -41,7 +41,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case -5:
+                case -8.27f:
                     if (buildingGameObject[0, 1] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0));
@@ -60,7 +60,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 5:
+                case 0:
                     if (buildingGameObject[0, 2] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0));
@@ -80,7 +80,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 15:
+                case 8.27f:
                     if (buildingGameObject[0, 3] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0));
@@ -100,7 +100,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 25:
+                case 16.52f:
                     if (buildingGameObject[0, 4] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0));
@@ -131,7 +131,7 @@ public class positionManager : MonoBehaviour
             //enemy
             switch (place.x)
             {
-                case -15:
+                case -16.52f:
                     if (buildingGameObject[1, 0] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -149,7 +149,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case -5:
+                case -8.27f:
                     if (buildingGameObject[1, 1] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -167,7 +167,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 5:
+                case 0:
                     if (buildingGameObject[1, 2] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -185,7 +185,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 15:
+                case 8.27f:
                     if (buildingGameObject[1, 3] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -203,7 +203,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 25:
+                case 16.52f:
                     if (buildingGameObject[1, 4] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -234,7 +234,7 @@ public class positionManager : MonoBehaviour
         {
             switch (place.x)
             {
-                case -15:
+                case -16.52f:
                     if (buildingGameObject[0, 0] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 0].cost - 50));
@@ -246,7 +246,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case -5:
+                case -8.27f:
                     if (buildingGameObject[0, 1] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 1].cost - 50));
@@ -258,7 +258,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 5:
+                case 0:
                     if (buildingGameObject[0, 2] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 2].cost - 50));
@@ -270,7 +270,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 15:
+                case 8.17f:
                     if (buildingGameObject[0, 3] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 3].cost - 50));
@@ -282,7 +282,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 25:
+                case 16.52f:
                     if (buildingGameObject[0, 4] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 4].cost - 50));
