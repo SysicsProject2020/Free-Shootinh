@@ -31,6 +31,7 @@ public class CanonTower : MonoBehaviour
     {
         CurrentState = canonState.shoot;
         target_ = targetGameObject;
+        rotation();
     }
     public void stopShoot()
     {
@@ -50,8 +51,6 @@ public class CanonTower : MonoBehaviour
                 {
                     if (target_ != null)
                     {
-                        rotation();
-
                         GameObject go = Instantiate(CanonFireBall, firePoint.position, firePoint.rotation);
                         go.GetComponent<Rigidbody>().velocity = go.transform.forward * speed;
                         go.GetComponent<bullet>().changedam(GetComponent<towerInf>().damage);
@@ -68,8 +67,7 @@ public class CanonTower : MonoBehaviour
     { 
         Vector3 relativePos = target_.transform.position - rotationPart.position;
         Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
-        rotObject = Quaternion.Euler(transform.rotation.x, rotObject.eulerAngles.y, transform.rotation.z);
+        //rotObject = Quaternion.Euler(transform.rotation.x, rotObject.eulerAngles.y, transform.rotation.z);
         rotationPart.rotation = rotObject;
-
     }
 }

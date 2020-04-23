@@ -17,7 +17,7 @@ MonoBehaviour:
   health: 8a02a302bc02d502ee02
   damage: 1400160018001a001e00
   fireRate: 0.3
-  prefab: {fileID: 2089715806900817170, guid: 28a39ae4aac06254da6beabb12461827, type: 3}
+  prefab: {fileID: 8911417092853201207, guid: 28a39ae4aac06254da6beabb12461827, type: 3}
   description: 
   locked: 1
   level: 1
