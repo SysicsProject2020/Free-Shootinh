@@ -171,7 +171,7 @@ public class AIeasy : MonoBehaviour
                 break;
 
             case AIState.shoot:
-                LeanTween.moveX(GameManagerPartie.instance.enemy_, 5, 0.2f).setEaseInOutSine();
+                LeanTween.moveX(GameManagerPartie.instance.enemy_, 0, 0.2f).setEaseInOutSine();
                 if (GameManagerPartie.instance.player_.activeSelf)
                 {
                     changeState(AIState.idle);

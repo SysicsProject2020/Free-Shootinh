@@ -134,7 +134,6 @@ public class positionManager : MonoBehaviour
                 case -16.52f:
                     if (buildingGameObject[1, 0] == null)
                     {
-                        Debug.Log(tower.name +"  "+ place.x);
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
                         Instantiate(GameManager.instance.bases[lvl], place, Quaternion.Euler(0, 0, 0),go.transform);
                         changeLayerMask(go, "Enemy");
