@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 9123208887500365973}
   - component: {fileID: 4733215367563943259}
   - component: {fileID: 766505645642798299}
+  - component: {fileID: 7774826744739043203}
   m_Layer: 0
   m_Name: xbow
   m_TagString: Untagged
@@ -341,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  bow: {fileID: 8041889832026840242, guid: f6bd45c06a0fc4046be7b647e4de0587, type: 3}
+  bow: {fileID: 1468598658669141785, guid: 5747c7c9d1adb8c429b785b8f83e127a, type: 3}
   firePoint: {fileID: 7199027791016258824}
   rotationPart: {fileID: 8036748966086470627}
 --- !u!114 &4733215367563943259
@@ -374,3 +375,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   fireRate: 0
+--- !u!65 &7774826744739043203
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8911417092853201207}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.81479436, y: 0.39454842, z: 2.9254103}
+  m_Center: {x: 0.0009031594, y: 4.59095, z: 0.03001237}
