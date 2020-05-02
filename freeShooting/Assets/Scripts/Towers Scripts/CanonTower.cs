@@ -58,6 +58,10 @@ public class CanonTower : MonoBehaviour
                         go.GetComponent<canonFireBall>().pos(transform.position, target_.transform.position);
                         nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
                     }
+                    else
+                    {
+                        CurrentState = canonState.idle;
+                    }
                     
                 }
                 break;

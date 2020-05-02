@@ -237,7 +237,6 @@ public class positionManager : MonoBehaviour
                 case -16.52f:
                     if (buildingGameObject[0, 0] != null)
                     {
-                        //Debug.Log("0000000.000000" + buildingTowerScript[0, 0].name);
                         addCoinEnemy((short)(buildingTowerScript[0, 0].cost - 50));
                         buildingGameObject[0, 0] = null;
                         buildingTowerScript[0, 0] = null;
@@ -390,7 +389,6 @@ public class positionManager : MonoBehaviour
 
     public static void PlayerShoot(int j)
     {
-
         if (buildingTowerScript[0, j] != null)
         {
             switch (buildingTowerScript[0, j].name)
@@ -460,7 +458,6 @@ public class positionManager : MonoBehaviour
                                 buildingGameObject[0, j].GetComponent<healingTower>().stopHeal();
                             }
                         }
-
                     }
                     break;
 

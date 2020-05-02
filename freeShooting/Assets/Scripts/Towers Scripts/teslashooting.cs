@@ -51,7 +51,11 @@ public class teslashooting : MonoBehaviour
                 break;
 
             case teslaState.shoot:
-
+                if (target_ == null)
+                {
+                    CurrentState = teslaState.idle;
+                    return;
+                }
                 if (Time.time > nextTimeFire)
                 {
                     /*****************************************************/
@@ -69,7 +73,11 @@ public class teslashooting : MonoBehaviour
                 }
                 break;
             case teslaState.shootMirror:
-
+                if (target_ == null)
+                {
+                    CurrentState = teslaState.idle;
+                    return;
+                }
                 if (Time.time > nextTimeFire)
                 {
                     /*****************************************************/

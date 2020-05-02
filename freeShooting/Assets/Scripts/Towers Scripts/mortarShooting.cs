@@ -47,6 +47,10 @@ public class mortarShooting : MonoBehaviour
                         shoot(vo);
                         nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
                     }
+                    else
+                    {
+                        CurrentState = mortorState.idle;
+                    }
 
                 }
                 break;

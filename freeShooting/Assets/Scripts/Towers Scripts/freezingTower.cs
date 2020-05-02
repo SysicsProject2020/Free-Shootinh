@@ -49,6 +49,11 @@ public class freezingTower : MonoBehaviour
 
     void freeze()
     {
+        if (target_ == null)
+        {
+            CurrentState = freezingtowerState.idle;
+            return;
+        }
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target_.transform.position);

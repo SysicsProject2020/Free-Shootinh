@@ -88,6 +88,11 @@ public class lazerShooting : MonoBehaviour
 
     void lazer()
     {
+        if (target_ == null)
+        {
+            CurrentState = lazerState.idle;
+            return;
+        }
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target_.transform.position);

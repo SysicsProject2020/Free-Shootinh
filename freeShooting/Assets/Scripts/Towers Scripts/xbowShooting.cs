@@ -47,8 +47,17 @@ public class xbowShooting : MonoBehaviour
             case xbowState.shoot:
                 if (Time.time > nextTimeFire)
                 {
-                    shoot();
-                    nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
+                    if (target_ != null)
+                    {
+                        shoot();
+                        nextTimeFire = Time.time + gameObject.GetComponent<towerInf>().fireRate;
+                    }
+                    else
+                    {
+                        CurrentState = xbowState.idle;
+                    }
+                  
+                    
                 }
                 break;
         }
