@@ -162,6 +162,7 @@ public class MenuManager1 : MonoBehaviour
         {
             GameObject go = Instantiate(towerSlot,towerNotSelectedMenu.transform);
             RegisterListenerTowerSwitch(go, j);
+          
         }
     }
     public void RegisterListenerTowerSwitch(GameObject obj, int i)
@@ -177,7 +178,7 @@ public class MenuManager1 : MonoBehaviour
         }
         for (int j = 0; j < towersNotSelected.Length; j++)
         {
-            Debug.Log(towersNotSelected[j].name);
+            
             towerNotSelectedMenu.transform.GetChild(j).GetComponentInChildren<Image>().sprite = towersNotSelected[j].image;
         }
     }

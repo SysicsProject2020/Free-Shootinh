@@ -1005,7 +1005,7 @@ MonoBehaviour:
   towerBase: {fileID: 11400000, guid: fce7b7f5628c3804bab2c8383a85a5d4, type: 2}
   itemParent: {fileID: 127342299}
   playerPos: {x: 0, y: 1.8, z: -28}
-  playerTowerPos: {x: 0, y: 2.2, z: -38}
+  playerTowerPos: {x: 0, y: -7.4, z: -38}
   towersSelected:
   - {fileID: 0}
   - {fileID: 0}
@@ -1026,7 +1026,7 @@ MonoBehaviour:
   enemybase: {fileID: 11400000, guid: 02da2778ed4188c4a90222d86837d602, type: 2}
   enemy: {fileID: 11400000, guid: b526a8851452ac148b5a9349b56c37a2, type: 2}
   enemyPos: {x: 0, y: 1.8, z: 28}
-  enemyTowerPos: {x: 0, y: 2.2, z: 38}
+  enemyTowerPos: {x: 0, y: -7.4, z: 38}
   EnemySelectedTowers:
   - {fileID: 0}
   - {fileID: 0}
@@ -1088,11 +1088,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7f6cb859e390d6e45a45bc4280ade9ea, type: 2}
   - {fileID: 11400000, guid: 61ae5a7d4992d334388baa0298f25757, type: 2}
   - {fileID: 11400000, guid: 0f5cf9db0a088f741842bd391dccba34, type: 2}
-  - {fileID: 11400000, guid: 332c939bb4db8904da5fd7d8d3062a6b, type: 2}
-  - {fileID: 11400000, guid: 2e6ad92ed2923ff40be2a55d2ab318fd, type: 2}
-  - {fileID: 11400000, guid: 063c154058b121c49b0fa8f311fd0c40, type: 2}
-  - {fileID: 11400000, guid: bec1f96379bb9d24680dcd7a3bc64656, type: 2}
-  - {fileID: 11400000, guid: bc4b6534deaee664f9fd5c58399238f1, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   TowersNumber: 9
   players:
   - {fileID: 11400000, guid: b526a8851452ac148b5a9349b56c37a2, type: 2}

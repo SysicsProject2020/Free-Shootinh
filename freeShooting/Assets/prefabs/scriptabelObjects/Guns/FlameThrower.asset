@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb30d8c0853c4c64b9bfdbc1426dac37, type: 3}
-  m_Name: carrot 6
+  m_Name: FlameThrower
   m_EditorClassIdentifier: 
   name: 
   description: 
-  image: {fileID: 21300000, guid: 492b9988436bd45049a9a6bc52ac8fb0, type: 3}
-  prefab: {fileID: 821469829679679319, guid: 1854585169a65444cb6cd623f2a040a6, type: 3}
+  image: {fileID: 21300000, guid: 5f7fa9a7940a64e79b5a42d9f661d42c, type: 3}
+  prefab: {fileID: 821469829679679319, guid: f06def618b4c2a6409428742005a2478, type: 3}
   GunBullet: {fileID: 8041889832026840242, guid: 4304a9b60e2e6d2489af02b4dc219b43,
     type: 3}
   speed: 0
-  locked: 1
+  locked: 0
   fireRate:
   - 4
   - 4
   - 4
   - 4
   - 4
-  damage: 00000000000000000000
-  level: 0
+  damage: 0a000f00140019001e00
+  level: 1
   UnlockPrice: 0

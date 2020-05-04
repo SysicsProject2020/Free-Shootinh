@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb30d8c0853c4c64b9bfdbc1426dac37, type: 3}
-  m_Name: carrot 4
+  m_Name: AK
   m_EditorClassIdentifier: 
-  name: 
+  name: sfenerya
   description: 
-  image: {fileID: 21300000, guid: c4c548a339b4d41a590928c0c98934a7, type: 3}
-  prefab: {fileID: 821469829679679319, guid: 962b5d5c36a172c4ba9200bbce54de13, type: 3}
+  image: {fileID: 21300000, guid: 62cd9273bc05e73439e0268bcbc5b322, type: 3}
+  prefab: {fileID: 821469829679679319, guid: 651298e561b1cc444a913a3233e29673, type: 3}
   GunBullet: {fileID: 8041889832026840242, guid: 4304a9b60e2e6d2489af02b4dc219b43,
     type: 3}
   speed: 0
-  locked: 1
+  locked: 0
   fireRate:
   - 4
   - 4
   - 4
   - 4
   - 4
-  damage: 00000000000000000000
+  damage: 0a000f00140019001e00
   level: 1
   UnlockPrice: 0

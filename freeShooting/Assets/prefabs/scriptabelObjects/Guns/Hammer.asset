@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb30d8c0853c4c64b9bfdbc1426dac37, type: 3}
-  m_Name: carrot 5
+  m_Name: Hammer
   m_EditorClassIdentifier: 
   name: 
   description: 
-  image: {fileID: 21300000, guid: ef31bc3f46d6047b29ff513e55daf05b, type: 3}
-  prefab: {fileID: 821469829679679319, guid: 54549bf5f4453494da23f951d9e58a4d, type: 3}
+  image: {fileID: 21300000, guid: c4c548a339b4d41a590928c0c98934a7, type: 3}
+  prefab: {fileID: 821469829679679319, guid: 962b5d5c36a172c4ba9200bbce54de13, type: 3}
   GunBullet: {fileID: 8041889832026840242, guid: 4304a9b60e2e6d2489af02b4dc219b43,
     type: 3}
   speed: 0
-  locked: 1
+  locked: 0
   fireRate:
   - 4
   - 4
@@ -27,5 +27,5 @@ MonoBehaviour:
   - 4
   - 4
   damage: 00000000000000000000
-  level: 0
+  level: 3
   UnlockPrice: 0
