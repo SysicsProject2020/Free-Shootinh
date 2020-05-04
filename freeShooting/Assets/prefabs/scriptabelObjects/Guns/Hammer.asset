@@ -15,7 +15,7 @@ MonoBehaviour:
   name: 
   description: 
   image: {fileID: 21300000, guid: c4c548a339b4d41a590928c0c98934a7, type: 3}
-  prefab: {fileID: 821469829679679319, guid: 962b5d5c36a172c4ba9200bbce54de13, type: 3}
+  prefab: {fileID: 6934442477427719507, guid: 422e37932d5bc3e44af957ad8c4940bd, type: 3}
   GunBullet: {fileID: 8041889832026840242, guid: 4304a9b60e2e6d2489af02b4dc219b43,
     type: 3}
   speed: 0

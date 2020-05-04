@@ -1088,11 +1088,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7f6cb859e390d6e45a45bc4280ade9ea, type: 2}
   - {fileID: 11400000, guid: 61ae5a7d4992d334388baa0298f25757, type: 2}
   - {fileID: 11400000, guid: 0f5cf9db0a088f741842bd391dccba34, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   TowersNumber: 9
   players:
   - {fileID: 11400000, guid: b526a8851452ac148b5a9349b56c37a2, type: 2}
