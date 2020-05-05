@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb30d8c0853c4c64b9bfdbc1426dac37, type: 3}
   m_Name: RPG
   m_EditorClassIdentifier: 
-  name: carrot
+  name: RPG
   description: 
   image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}
   prefab: {fileID: 6246786344099212245, guid: c2b7b7909ffcf2a43852d71b045505d5, type: 3}

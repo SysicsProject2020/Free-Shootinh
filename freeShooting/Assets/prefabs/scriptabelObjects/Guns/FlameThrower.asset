@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb30d8c0853c4c64b9bfdbc1426dac37, type: 3}
   m_Name: FlameThrower
   m_EditorClassIdentifier: 
-  name: 
+  name: FlameThrower
   description: 
   image: {fileID: 21300000, guid: 5f7fa9a7940a64e79b5a42d9f661d42c, type: 3}
   prefab: {fileID: 2132370576548996699, guid: 148f9ac1e9828c8418de61edc053214e, type: 3}

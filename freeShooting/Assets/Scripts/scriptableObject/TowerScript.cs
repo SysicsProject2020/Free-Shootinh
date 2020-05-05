@@ -13,7 +13,7 @@ public class TowerScript: ScriptableObject
     public GameObject prefab;
     public string description;
     public bool locked = true;
-    
+    public string target;
     [Range(1, 3)]
     public byte level;
     public short cost;
