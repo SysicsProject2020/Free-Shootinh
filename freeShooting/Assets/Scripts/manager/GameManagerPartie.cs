@@ -104,7 +104,7 @@ public class GameManagerPartie : MonoBehaviour
         enemyTowerBase_.GetComponent<towerInf>().SetHealth(towerBase.Get_health_enemy(enemylvl));
 
         player_ = Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
-        enemy_ = Instantiate(enemy.prefab, enemyPos, Quaternion.Euler(180, 0, 0));
+        enemy_ = Instantiate(enemy.prefab, enemyPos, Quaternion.Euler(0, 180, 0));
         player_.GetComponent<PlayerMovementWithSliderBar>().SetHealth(player.Get_health_player());
         enemy_.GetComponent<PlayerMovementWithSliderBar>().SetHealth(enemy.Get_health_enemy(enemylvl));
         changeLayerMask(enemy_, "Enemy");

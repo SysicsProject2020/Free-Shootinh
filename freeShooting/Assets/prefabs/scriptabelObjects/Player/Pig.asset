@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d85ad5116c069f4096649a43066d4fb, type: 3}
-  m_Name: shadow
+  m_Name: Pig
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7574070224920712239, guid: 330d42003fd955a40bd438f35ac54322, type: 3}
+  prefab: {fileID: 7364589987089995598, guid: 6b05b94914489424e80b43e80df260b5, type: 3}
   level: 1
-  name: shadow
-  image: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  magic1: {fileID: 11400000, guid: 59d1c490366a25d4fae05c443422101c, type: 2}
-  magic2: {fileID: 11400000, guid: 7d60792bfecbc4a42af6e1289b483517, type: 2}
-  locked: 1
+  name: Pig
+  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  magic1: {fileID: 11400000, guid: fa6ecc5c899c0574b8897da05e8bce62, type: 2}
+  magic2: {fileID: 11400000, guid: ca7b2a03bba170041bb6ec13adbc8279, type: 2}
+  locked: 0
