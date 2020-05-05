@@ -7,8 +7,14 @@ public class playerMovement : MonoBehaviour
     public float speed = 5F;
     bool move = false;
     Vector3 destination;
+    public Animator anim;
     //public Transform PlayerZone;
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        anim.SetFloat("x", 0.5f);
 
+    }
     public void SetHealth(short h)
     {
         GetComponent<target>().Sethealth(h);
@@ -24,11 +30,18 @@ public class playerMovement : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 //need to be changing for each player 
-                if (hit.collider.name == "PlayerZone")
+                if (hit.point.x < GameManagerPartie.instance.player_.transform.position.x)
                 {
-                    destination = new Vector3(hit.point.x, transform.position.y, transform.position.z);
-                    move = true;
+
+                    GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 0);
+
                 }
+                else
+                    GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 1);
+
+                destination = new Vector3(hit.point.x, transform.position.y, transform.position.z);
+                    move = true;
+                
             }
         }
         if (move)
@@ -36,7 +49,9 @@ public class playerMovement : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
             if (transform.position == destination)
             {
+                
                 move = false;
+                GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 0.5f);
             }
         }
     }

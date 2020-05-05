@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovementWithSliderBar : MonoBehaviour
 {
     public float speed =10f;
-    
+    public Animator anim;
     GameObject enemy;
     GameObject enemytowerBase;
 
@@ -13,11 +13,14 @@ public class PlayerMovementWithSliderBar : MonoBehaviour
     {
         GetComponent<target>().Sethealth(h);
     }
-
+ 
     private void Start()
     {
         enemy = GameManagerPartie.instance.enemy_;
         enemytowerBase = GameManagerPartie.instance.enemyTowerBase_;
+        anim = GetComponent<Animator>();
+        anim.SetFloat("x", 0.5f);
+       
     }
 
     private void Update()
@@ -45,7 +48,18 @@ public class PlayerMovementWithSliderBar : MonoBehaviour
     {
         Vector3 pos = new Vector3(position, GameManagerPartie.instance.playerPos.y, GameManagerPartie.instance.playerPos.z);
         //GameManagerPartie.player_.transform.position = Vector3.Lerp(GameManagerPartie.player_.transform.position, pos, speed * Time.deltaTime);
+        if (position < GameManagerPartie.instance.player_.transform.position.x)
+        {
+            
+           GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 0);
+           
+        }
+        else
+            GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 1);
+            
         GameManagerPartie.instance.player_.transform.position = new Vector3(position, GameManagerPartie.instance.playerPos.y, GameManagerPartie.instance.playerPos.z);
        // Debug.Log(GameManagerPartie.player_.transform.position);
+       
     }
+
 }

@@ -814,6 +814,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSlider
       objectReference: {fileID: 0}
+    - target: {fileID: 4090470583508208276, guid: 202b7371dd3cb494c838d4dd2afe0f20,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4090470583508208277, guid: 202b7371dd3cb494c838d4dd2afe0f20,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -922,27 +927,27 @@ PrefabInstance:
     - target: {fileID: 4090470583159673315, guid: 202b7371dd3cb494c838d4dd2afe0f20,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4090470583159673315, guid: 202b7371dd3cb494c838d4dd2afe0f20,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4090470583238357112, guid: 202b7371dd3cb494c838d4dd2afe0f20,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4090470583238357112, guid: 202b7371dd3cb494c838d4dd2afe0f20,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4090470583238357112, guid: 202b7371dd3cb494c838d4dd2afe0f20,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4090470583508208282, guid: 202b7371dd3cb494c838d4dd2afe0f20,
         type: 3}

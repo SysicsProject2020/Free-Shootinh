@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 03975009e7261c441ad713e8f7f908dd
+guid: 14f97f669c81c7e47810fbb62ebad819
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Right Strafe Walk
+    second: Idle
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Right Strafe Walk
+      name: Idle
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 55
+      lastFrame: 997
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -59,52 +59,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: RigPelvis
-        weight: 1
-      - path: RigPelvis/RigLLeg1
-        weight: 1
-      - path: RigPelvis/RigLLeg1/RigLLeg2
-        weight: 1
-      - path: RigPelvis/RigLLeg1/RigLLeg2/RigLLegAnkle
-        weight: 1
-      - path: RigPelvis/RigRLeg1
-        weight: 1
-      - path: RigPelvis/RigRLeg1/RigRLeg2
-        weight: 1
-      - path: RigPelvis/RigRLeg1/RigRLeg2/RigRLegAnkle
-        weight: 1
-      - path: RigPelvis/RigSpine1
-        weight: 1
-      - path: RigPelvis/RigSpine1/RigSpine2
-        weight: 1
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3
-        weight: 1
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage
-        weight: 1
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigLArm1
-        weight: 1
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigLArm1/RigLArm2
-        weight: 0
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigLArm1/RigLArm2/RigLArmPalm
-        weight: 0
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigNeck1
-        weight: 0
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigNeck1/RigNeck2
-        weight: 0
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigNeck1/RigNeck2/RigHead
-        weight: 0
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigNeck1/RigNeck2/RigHead/RigJaw
-        weight: 0
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigRArm1
-        weight: 1
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigRArm1/RigRArm2
-        weight: 0
-      - path: RigPelvis/RigSpine1/RigSpine2/RigSpine3/RigRibcage/RigRArm1/RigRArm2/RigRArmPalm
-        weight: 0
-      maskType: 0
+      transformMask: []
+      maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     isReadable: 0
