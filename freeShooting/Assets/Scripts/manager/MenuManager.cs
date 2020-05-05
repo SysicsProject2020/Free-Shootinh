@@ -20,6 +20,15 @@ public class MenuManager : MonoBehaviour
     public GameObject GunsPanel;
     public GameObject GunButton;
 
+    public GameObject unselectedTowerButton; 
+    public GameObject unselectedPlayerButton;
+    public GameObject unselectedGunButton;
+    public GameObject selectedTowerButton;
+    public GameObject selectedPlayerButton;
+    public GameObject selectedGunButton;
+    public GameObject towerPanel;
+    public GameObject playerPanel;
+    public GameObject gunpanel;
 
     private void Start()
     {
@@ -28,6 +37,44 @@ public class MenuManager : MonoBehaviour
         playerMenuInstantiate();
         ShopMenuInstantiate();
     }
+
+    public void tower()
+    {
+        unselectedTowerButton.SetActive(false);
+        unselectedPlayerButton.SetActive(true);
+        unselectedGunButton.SetActive(true);
+        selectedTowerButton.SetActive(true);
+        selectedPlayerButton.SetActive(false);
+        selectedGunButton.SetActive(false);
+        towerPanel.SetActive(true);
+        playerPanel.SetActive(false);
+        gunpanel.SetActive(false);
+    }
+    public void player()
+    {
+        unselectedTowerButton.SetActive(true);
+        unselectedPlayerButton.SetActive(false);
+        unselectedGunButton.SetActive(true);
+        selectedTowerButton.SetActive(false);
+        selectedPlayerButton.SetActive(true);
+        selectedGunButton.SetActive(false);
+        towerPanel.SetActive(false);
+        playerPanel.SetActive(true);
+        gunpanel.SetActive(false);
+    }
+    public void gun()
+    {
+        unselectedTowerButton.SetActive(true);
+        unselectedPlayerButton.SetActive(true);
+        unselectedGunButton.SetActive(false);
+        selectedTowerButton.SetActive(false);
+        selectedPlayerButton.SetActive(false);
+        selectedGunButton.SetActive(true);
+        towerPanel.SetActive(false);
+        playerPanel.SetActive(false);
+        gunpanel.SetActive(true);
+    }
+    
     public void playPvm()
     {
         SceneManager.LoadScene("pvm");
