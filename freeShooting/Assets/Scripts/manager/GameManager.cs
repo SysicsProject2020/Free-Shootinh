@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
             remplirSelectedTower();
             diamond = 0;
             TowersNumber = 9;
-            LevelSystem.instance.XP = 0;
+           // LevelSystem.instance.XP = 0;
             SaveSystem.SavePlayer();
         }
         FillTowersNotSelected();
