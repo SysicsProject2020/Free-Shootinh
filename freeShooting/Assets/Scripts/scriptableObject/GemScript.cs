@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Gem", menuName = "Gem")]
 public class GemScript : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public short gemCount;
+    public Sprite image;
+    public float price;
+    public float onSalePercentage;
 }
