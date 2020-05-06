@@ -658,8 +658,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 68.18
-  far clip plane: 115.6
+  near clip plane: 60
+  far clip plane: 116
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -985,7 +985,6 @@ GameObject:
   - component: {fileID: 1441807755}
   - component: {fileID: 1441807756}
   - component: {fileID: 1441807757}
-  - component: {fileID: 1441807758}
   - component: {fileID: 1441807759}
   - component: {fileID: 1441807760}
   m_Layer: 0
@@ -1018,10 +1017,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  player_: {fileID: 0}
-  playerGun_: {fileID: 0}
-  playerGun: {fileID: 0}
-  playerTowerBase_: {fileID: 0}
+  player_: {fileID: 7516014306926793344, guid: c116f6df38138ff44ad8ccbc46350a54, type: 3}
+  playerGun_: {fileID: 4484554553889008163, guid: c0faab785d6711248bcb4aa247d9a1c2,
+    type: 3}
+  playerGun: {fileID: 11400000, guid: 5bbc5483d1e53d449b2085893826e2b5, type: 2}
+  playerTowerBase_: {fileID: 7643052498203698644, guid: f85160bfee20b5f45a93495333f1d1c1,
+    type: 3}
   playerCoins: 1000
   playerCoinsTxt: {fileID: 356010484}
   playerMagic1: {fileID: 2368429}
@@ -1039,10 +1040,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  enemy_: {fileID: 0}
-  enemyGun_: {fileID: 0}
-  enemyGun: {fileID: 0}
-  enemyTowerBase_: {fileID: 6691245050111619357, guid: d2ba556787281f249b4ac1eb3b236626,
+  enemy_: {fileID: 7364589987089995598, guid: 6b05b94914489424e80b43e80df260b5, type: 3}
+  enemyGun_: {fileID: 4484554553889008163, guid: c0faab785d6711248bcb4aa247d9a1c2,
+    type: 3}
+  enemyGun: {fileID: 11400000, guid: 5bbc5483d1e53d449b2085893826e2b5, type: 2}
+  enemyTowerBase_: {fileID: 7643052498203698644, guid: f85160bfee20b5f45a93495333f1d1c1,
     type: 3}
   enemyCoins: 1000
   enemyCoinsTxt: {fileID: 1193077956}
@@ -1132,23 +1134,6 @@ MonoBehaviour:
   - {fileID: 116604627}
   - {fileID: 1551708354}
   - {fileID: 81747295}
---- !u!114 &1441807758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441807752}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2924e0397e87ab24cbc7fbb840ce3714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  XP: 0
-  currentLevel: 0
-  XpBar: {fileID: 0}
-  fill: {fileID: 0}
-  XPtxt: {fileID: 0}
 --- !u!114 &1441807759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1292,10 +1277,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8332987680922257623, guid: e97403f55c62d5d4790f74f0ef4828b4,
+    - target: {fileID: 3055795144864432206, guid: e97403f55c62d5d4790f74f0ef4828b4,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.4449
+      propertyPath: m_LocalPosition.z
+      value: -28.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008113013654696800, guid: e97403f55c62d5d4790f74f0ef4828b4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e97403f55c62d5d4790f74f0ef4828b4, type: 3}

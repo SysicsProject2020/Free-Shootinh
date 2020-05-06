@@ -7,13 +7,12 @@ public class playerMovement : MonoBehaviour
     public float speed = 5F;
     bool move = false;
     Vector3 destination;
-    public Animator anim;
-    //public Transform PlayerZone;
+    Animator anim;
+    float distance = 1F;
     private void Start()
     {
         anim = GetComponent<Animator>();
         anim.SetFloat("x", 0.5f);
-
     }
     public void SetHealth(short h)
     {
@@ -30,28 +29,32 @@ public class playerMovement : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 //need to be changing for each player 
-                if (hit.point.x < GameManagerPartie.instance.player_.transform.position.x)
+                if (hit.transform.tag == "heroTouchCollider") 
                 {
+                    if (hit.point.x < GameManagerPartie.instance.player_.transform.position.x)
+                    {
 
-                    GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 0);
+                        GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 0);
 
-                }
-                else
-                    GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 1);
+                    }
+                    else
+                        GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 1);
 
-                destination = new Vector3(hit.point.x, transform.position.y, transform.position.z);
+                    destination = new Vector3(hit.point.x, transform.position.y, transform.position.z);
+                    distance = Mathf.Abs(hit.point.x - transform.position.x);
                     move = true;
+                }
                 
             }
         }
         if (move)
         {
-            transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
-            if (transform.position == destination)
-            {
-                
+            Debug.Log(distance);
+            transform.position = Vector3.Lerp(transform.position, destination, distance * speed * Time.deltaTime);
+            if (Mathf.Abs(destination.x - transform.position.x) < 0.2f)
+            {               
                 move = false;
-                GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 0.5f);
+                transform.GetComponent<Animator>().SetFloat("x", 0.5f);
             }
         }
     }

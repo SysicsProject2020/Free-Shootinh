@@ -96,10 +96,11 @@ public class target : MonoBehaviour
     void respawn()
     {
         gameObject.SetActive(true);
+        transform.GetComponent<Animator>().SetFloat("x", 0.5f);
     }
 
-    //nbadel na3mel lel player public methode w lel towers public methode an9es if(s)
-    void healthBarInst()
+        //nbadel na3mel lel player public methode w lel towers public methode an9es if(s)
+        void healthBarInst()
     {
         Vector3 pos;
         if (transform.position.z > 0)//enemy

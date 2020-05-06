@@ -7,10 +7,10 @@ TagManager:
   - TowerBaseZone
   - TowerDefendZone
   - TowersCanvas
-  - stadium
   - bullet
   - wall
   - EnemyTowersZones
+  - heroTouchCollider
   layers:
   - Default
   - TransparentFX
