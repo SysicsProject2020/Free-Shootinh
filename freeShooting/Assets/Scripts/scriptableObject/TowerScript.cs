@@ -16,6 +16,8 @@ public class TowerScript: ScriptableObject
     public string target;
     [Range(1, 3)]
     public byte level;
+    
+    public short[] UpgradePrice = new short[3];
     public short cost;
     public short UnlockPrice;
 

@@ -16,6 +16,7 @@ public class GunsScript : ScriptableObject
     private float[] fireRate=new float[5];
     [SerializeField]
     private short[] damage = new short[5];
+    public short[] UpgradePrice = new short[3];
     [Range(1, 3)]
     public byte level = 1;
     public short UnlockPrice;

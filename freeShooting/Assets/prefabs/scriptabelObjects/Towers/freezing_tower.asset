@@ -22,5 +22,6 @@ MonoBehaviour:
   locked: 1
   target: 
   level: 1
+  UpgradePrice: 000000000000
   cost: 250
   UnlockPrice: 50
