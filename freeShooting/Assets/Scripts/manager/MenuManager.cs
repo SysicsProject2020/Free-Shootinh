@@ -7,7 +7,8 @@ using TMPro;
 
 
 public class MenuManager : MonoBehaviour
-{    
+{
+    private bool testTowerClick = false;
     public GameObject mainPanel;
     public GameObject settingPanel;
     public GameObject inventoryPanel;
@@ -160,7 +161,7 @@ public class MenuManager : MonoBehaviour
     public void RegisterListenerTowerSwitch(GameObject obj, int i)
     {
         Button myButton = obj.GetComponent<Button>();
-        myButton.onClick.AddListener(() => { OnTowerClick(i); });
+        myButton.onClick.AddListener(() => { OnNotSelectedTowerClick(i); });
     }
     void playerMenuInstantiate()
     {
@@ -205,51 +206,42 @@ public class MenuManager : MonoBehaviour
         GunDamage.text = GameManager.instance.guns[i].Get_damage_Gun_player().ToString();
         GunHitSpeed.text = GameManager.instance.guns[i].Get_fireRate_Gun_player().ToString();
         GunDescription.text = GameManager.instance.guns[i].description;
-
-
-        /*
+        GunImage.sprite = GameManager.instance.guns[i].image;
         GunClicked = (byte)i;
-        for (int j = 0; j < GameManager.instance.guns.Length; j++)
+        if (GameManager.instance.guns[i].locked)
         {
-            if (GameManager.instance.guns[GunClicked] == GameManager.instance.getGun())
+            UseGunButton.SetActive(false);
+            upgradeGunButton.SetActive(false);
+            UnlockGunButton.SetActive(true);
+        }
+        else
+        {
+            UseGunButton.SetActive(true);
+            upgradeGunButton.SetActive(true);
+            UnlockGunButton.SetActive(false);
+            if (GameManager.instance.guns[i] == GameManager.instance.getGun())
             {
-                UseGunButton.SetActive(true);
                 UseGunButton.GetComponent<Button>().interactable = false;
-                UnlockGunButton.SetActive(false);
-                if (GameManager.instance.guns[GunClicked].level < 5)
-                {
-                    upgradeGunButton.GetComponent<Button>().interactable = true;
-                }
-                else { upgradeGunButton.GetComponent<Button>().interactable = false; }
-
             }
-            else if (GameManager.instance.guns[GunClicked].locked == true)
-            {
-                UseGunButton.SetActive(false);
-                UnlockGunButton.SetActive(true);
-                upgradeGunButton.GetComponent<Button>().interactable = false;
-            }
-            else if (GameManager.instance.guns[GunClicked].locked == false)
+            else
             {
                 UseGunButton.GetComponent<Button>().interactable = true;
-                UseGunButton.SetActive(true);
-                UnlockGunButton.SetActive(false);
-                if (GameManager.instance.guns[GunClicked].level < 5)
-                {
-                    upgradeGunButton.GetComponent<Button>().interactable = true;
-                }
-                else { upgradeGunButton.GetComponent<Button>().interactable = false; }
             }
-
+            if (GameManager.instance.guns[i].level >= 3)
+            {
+                upgradeGunButton.GetComponent<Button>().interactable = false;
+            }
+            else
+                upgradeGunButton.GetComponent<Button>().interactable = true;
         }
-        //txtGunDetails.text = "Gun Name : " + GameManager.instance.guns[GunClicked].name + " Speed = " + GameManager.instance.guns[GunClicked].speed + "level = " + GameManager.instance.guns[GunClicked].level;
-    */}
+    }
     public void exitGunDetailsPanel()
     {
         GunDetailsPanel.SetActive(false);
     }
-    public void OnTowerClick(int i)
+    public void OnNotSelectedTowerClick(int i)
     {
+        TowerNotSelectedClicked = (byte)i;
         TowerdetailsPanel.SetActive(true);
         TowerDescription.text = GameManager.instance.GetNonSelectedTowers()[i].description;
         TowerName.text = GameManager.instance.GetNonSelectedTowers()[i].name;
@@ -258,40 +250,93 @@ public class MenuManager : MonoBehaviour
         TowerHitSpeed.text = GameManager.instance.GetNonSelectedTowers()[i].Get_fireRate_player().ToString();
         TowerTarget.text = GameManager.instance.GetNonSelectedTowers()[i].target;
         towerImage.sprite = GameManager.instance.GetNonSelectedTowers()[i].image;
+        if (GameManager.instance.GetNonSelectedTowers()[i].locked)
+        {
+            UnlockTowerButton.SetActive(true);
+            UseTowerButton.SetActive(false);
+            upgradeTowerButton.SetActive(false);
+        }
+        else
+        {
+            UnlockTowerButton.SetActive(false);
+            UseTowerButton.SetActive(true);
+            upgradeTowerButton.SetActive(true);
+            UseTowerButton.GetComponent<Button>().interactable =true;
+            if (GameManager.instance.GetNonSelectedTowers()[i].level >= 3)
+            {
+                upgradeTowerButton.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                upgradeTowerButton.GetComponent<Button>().interactable = true;
+            }
+        }
 
-        /* upgradeTowersNotSelectedBtn.SetActive(true);
-
-         upgradeTowersBtn.SetActive(false);
-         txtTowerDetails.text = "Tower Name : " + GameManager.instance.GetNonSelectedTowers()[i].name + "level = " + towersNotSelected[i].level;
-         towerdetailsPanel.transform.Find("UseButton").gameObject.GetComponent<Button>().interactable = true;
-         TowerNotSelectedClicked = (byte)i;
-         if (towersNotSelected[i].locked == true)
-         {
-             UnlockTowerBtn.SetActive(true);
-             useTowerButton.SetActive(false);
-             upgradeTowersNotSelectedBtn.GetComponent<Button>().interactable = false;
-
-         }
-         else
-         {
-             UnlockTowerBtn.SetActive(false);
-             useTowerButton.SetActive(true);
-             if (towersNotSelected[i].level < 5)
-             {
-
-                 upgradeTowersNotSelectedBtn.GetComponent<Button>().interactable = true;
-             }
-             else
-             {
-                 upgradeTowersBtn.GetComponent<Button>().interactable = false;
-             }
-
-         }*/
+        
 
     }
+    public void OnSelectedTowerClick(int i)
+    {
+      
+        if (testTowerClick == true)
+        {
+            SwitchTowers(i, TowerNotSelectedClicked);
+            fillTowersSprites();
+            testTowerClick = false;
+        }
+        else
+        {
+
+            TowerdetailsPanel.SetActive(true);
+            TowerDescription.text = GameManager.instance.GetSelectedTowers()[i].description;
+            TowerName.text = GameManager.instance.GetSelectedTowers()[i].name;
+            TowerDamage.text = GameManager.instance.GetSelectedTowers()[i].Get_damage_player().ToString();
+            TowerHealth.text = GameManager.instance.GetSelectedTowers()[i].Get_health_player().ToString();
+            TowerHitSpeed.text = GameManager.instance.GetSelectedTowers()[i].Get_fireRate_player().ToString();
+            TowerTarget.text = GameManager.instance.GetSelectedTowers()[i].target;
+            towerImage.sprite = GameManager.instance.GetSelectedTowers()[i].image;
+            UnlockTowerButton.SetActive(false);
+            UseTowerButton.SetActive(true);
+            upgradeTowerButton.SetActive(true);
+            UseTowerButton.GetComponent<Button>().interactable = false;
+            if (GameManager.instance.GetSelectedTowers()[i].level >= 3)
+            {
+                upgradeTowerButton.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                upgradeTowerButton.GetComponent<Button>().interactable = true;
+            }
+        }
+
+
+    }
+
     public void exitTowerDetailsPanel()
     {
         TowerdetailsPanel.SetActive(false);
     }
+    private void SwitchTowers(int i, int j)
+    {
+        TowerScript tower =GameManager.instance.GetSelectedTowers()[i];
+        GameManager.instance.GetSelectedTowers()[i] = GameManager.instance.GetNonSelectedTowers()[j];
+        GameManager.instance.GetNonSelectedTowers()[j] = tower;
+        GameManager.instance.setSelectedTower(GameManager.instance.GetSelectedTowers());
+    }
+    public void OnUseTowerClick()
+    {
+        TowerdetailsPanel.SetActive(false);
+        testTowerClick = true;
+        
+    }
+    public void OnUseGunClick()
+    {
+        GameManager.instance.setGun(GameManager.instance.guns[GunClicked]);
+        GunDetailsPanel.SetActive(false);
+    }
+    public void OnUpgradeTowerClick() { }
+    public void OnUpgradeGunClick() { }
+    public void OnUnlockTowerClick() { }
+    public void OnUnlockGunClick() { }
 }
 
