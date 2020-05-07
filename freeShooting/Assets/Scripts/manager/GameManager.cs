@@ -20,13 +20,14 @@ public class GameManager : MonoBehaviour
     private TowerScript[] towersSelected = new TowerScript[6];
     private TowerScript[] towersNotSelected;
     public GameObject[] bases= new GameObject[3];
-   // public PlayerData data;
+    // public PlayerData data;
+    [Header("shop")]
+    public GemScript[] packs = new GemScript[4];
 
-
+    
 
     private void Awake()
     {
-        
         instance = this;
         towersNotSelected = new TowerScript[(Towers.Length - towersSelected.Length)];
         if(SaveSystem.testExist())

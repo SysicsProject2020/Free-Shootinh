@@ -33,12 +33,12 @@ public class MenuManager : MonoBehaviour
 
 
 
-    [Header("GUNS Shop")]
+    [Header("GUNS Panel")]
     public GameObject GunDetailsPanel;
-    public TMPro.TextMeshProUGUI GunName;
-    public TMPro.TextMeshProUGUI GunDescription;
-    public TMPro.TextMeshProUGUI GunDamage;
-    public TMPro.TextMeshProUGUI GunHitSpeed;
+    public TextMeshProUGUI GunName;
+    public TextMeshProUGUI GunDescription;
+    public TextMeshProUGUI GunDamage;
+    public TextMeshProUGUI GunHitSpeed;
     public Image GunImage;
     byte GunClicked;
     public GameObject upgradeGunButton;
@@ -47,18 +47,18 @@ public class MenuManager : MonoBehaviour
     public GameObject GunStarlvl1;
     public GameObject GunStarlvl2;
     public GameObject GunStarlvl3;
-    public TMPro.TextMeshProUGUI gunUpgradeValue;
-    public TMPro.TextMeshProUGUI gunUnlockValue;
+    public TextMeshProUGUI gunUpgradeValue;
+    public TextMeshProUGUI gunUnlockValue;
 
-    [Header("TOWERS Shop")]
+    [Header("TOWERS Panel")]
     public GameObject TowerdetailsPanel;
     byte TowerNotSelectedClicked;
-    public TMPro.TextMeshProUGUI TowerName;
-    public TMPro.TextMeshProUGUI TowerDescription;
-    public TMPro.TextMeshProUGUI TowerDamage;
-    public TMPro.TextMeshProUGUI TowerHealth;
-    public TMPro.TextMeshProUGUI TowerTarget;
-    public TMPro.TextMeshProUGUI TowerHitSpeed;
+    public TextMeshProUGUI TowerName;
+    public TextMeshProUGUI TowerDescription;
+    public TextMeshProUGUI TowerDamage;
+    public TextMeshProUGUI TowerHealth;
+    public TextMeshProUGUI TowerTarget;
+    public TextMeshProUGUI TowerHitSpeed;
     public Image towerImage;
     public GameObject upgradeTowerButton;
     public GameObject UseTowerButton;
@@ -67,9 +67,12 @@ public class MenuManager : MonoBehaviour
     public GameObject TowerStarlvl1;
     public GameObject TowerStarlvl2;
     public GameObject TowerStarlvl3;
-    public TMPro.TextMeshProUGUI towerUpgradeValue;
-    public TMPro.TextMeshProUGUI towerUnlockValue;
+    public TextMeshProUGUI towerUpgradeValue;
+    public TextMeshProUGUI towerUnlockValue;
 
+    [Header("Shop")]
+    public GameObject pack;
+    public GameObject packContent;
 
 
 
@@ -80,6 +83,16 @@ public class MenuManager : MonoBehaviour
         fillTowersSprites();
         playerMenuInstantiate();
         ShopMenuInstantiate();
+        shopPackInstantiate();
+    }
+
+    void shopPackInstantiate()
+    {
+        foreach (GemScript p in GameManager.instance.packs)
+        {
+            GameObject inst = Instantiate(pack, packContent.transform);
+            inst.GetComponent<packInf>().packwrite(p.gemCount, p.image, p.price, p.onSalePercentage);
+        }
     }
 
     public void tower()
@@ -202,7 +215,6 @@ public class MenuManager : MonoBehaviour
             GunsPanel.transform.GetChild(i).GetComponentInChildren<Image>().sprite = GameManager.instance.guns[i].image;
             RegisterListenerShop(go, i);
         }
-
     }
 
     public void RegisterListenerShop(GameObject obj, int i)

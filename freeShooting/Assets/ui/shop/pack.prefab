@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3830141187741456305}
   - component: {fileID: 3830141187741455439}
   - component: {fileID: 3830141187741455438}
+  - component: {fileID: 8715836701953992551}
   m_Layer: 5
   m_Name: pack
   m_TagString: Untagged
@@ -77,6 +78,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8715836701953992551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830141187741456304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ed1cd6916cca4419eb0e9d8bfd25ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gemCount: {fileID: 3830141189396917160}
+  sprite: {fileID: 3830141189500013676}
+  price: {fileID: 3830141189712756650}
+  sale: {fileID: 3830141188323512548}
+  saleDel: {fileID: 3830141188552355983}
 --- !u!1 &3830141188219603810
 GameObject:
   m_ObjectHideFlags: 0
