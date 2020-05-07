@@ -13,6 +13,7 @@ public class playerMovement : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         anim.SetFloat("x", 0.5f);
+       //GameManagerPartie.instance.player_.GetComponent<Animator>().
     }
     public void SetHealth(short h)
     {

@@ -17,6 +17,7 @@ public class AIeasy : MonoBehaviour
     public float speed = 5f;
     private byte strategy;
     private bool AiCanBuildRandomly = true;
+    Animator anim;
     Vector3[] BuildPos = new[]{
         new Vector3(-16.52f,2,18.78f),
         new Vector3(-8.27f,2,13.36f),
@@ -45,6 +46,7 @@ public class AIeasy : MonoBehaviour
     private void Start()
     {
         strategy = (byte)Random.Range(0, 4);
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -100,7 +102,7 @@ public class AIeasy : MonoBehaviour
                 }
                 break;
             case AIState.BuildRandom:
-                
+                GameManagerPartie.instance.enemy_.GetComponent<Animator>().SetFloat("x", 0.5f);
                 Debug.Log("buildrandom");
                 buildPos = new byte[5];
                 k = 0;
@@ -143,7 +145,7 @@ public class AIeasy : MonoBehaviour
                         minDist = dist;
                     }
                 }
-                
+                GameManagerPartie.instance.enemy_.GetComponent<Animator>().SetFloat("x", 0.5f);
                 transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
                 if (Mathf.Abs(transform.position.x - destination.x) < 0.001f)
                 {
@@ -172,6 +174,7 @@ public class AIeasy : MonoBehaviour
 
             case AIState.shoot:
                 LeanTween.moveX(GameManagerPartie.instance.enemy_, 0, 0.2f).setEaseInOutSine();
+                GameManagerPartie.instance.enemy_.GetComponent<Animator>().SetFloat("x", 0.5f);
                 if (GameManagerPartie.instance.player_.activeSelf)
                 {
                     changeState(AIState.idle);
@@ -188,12 +191,22 @@ public class AIeasy : MonoBehaviour
     {
         isMoving = true;
         float rand = Random.Range(-19, 19);
+        if (rand < GameManagerPartie.instance.enemy_.transform.position.x)
+        {
+                GameManagerPartie.instance.enemy_.GetComponent<Animator>().SetFloat("x", 1);
+                
+        }
+        else
+        {
+            GameManagerPartie.instance.enemy_.GetComponent<Animator>().SetFloat("x", 0);
+        }
         LeanTween.moveX(GameManagerPartie.instance.enemy_, rand, time).setEaseLinear();
         yield return new WaitForSeconds (time);
         isMoving = false;
     }
     IEnumerator building (int i)
     {
+        GameManagerPartie.instance.enemy_.GetComponent<Animator>().SetFloat("x", 0.5f);
         AiCanBuildRandomly = false;
         yield return new WaitForSeconds(3);
         switch (strategy)
