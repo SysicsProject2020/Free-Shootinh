@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b9099d3e599a1f489543ccb7f6da773, type: 3}
   m_Name: gem 81
   m_EditorClassIdentifier: 
-  gemCount: 0
-  image: {fileID: 0}
-  price: 0
+  gemCount: 800
+  image: {fileID: 21300000, guid: cc75128fe3b602349ad1aa393cb3ac99, type: 3}
+  price: 4.99
   onSalePercentage: 0
