@@ -27,6 +27,6 @@ MonoBehaviour:
   - 4
   - 4
   damage: 00000000000000000000
-  UpgradePrice: 000000000000
+  UpgradePrice: 05003f007b00
   level: 1
-  UnlockPrice: 1
+  UnlockPrice: 223

@@ -21,7 +21,7 @@ MonoBehaviour:
   description: 
   locked: 0
   target: 
-  level: 3
-  UpgradePrice: 0a0014001e00
+  level: 1
+  UpgradePrice: 05000a001400
   cost: 175
   UnlockPrice: 50

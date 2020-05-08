@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LevelSystem : MonoBehaviour
 {
     public static LevelSystem instance;
     public int XP;
     public int currentLevel;
-    public GameObject XpBar;
-    public Image fill;
-    public Text XPtxt;
+    public Slider fill;
+    public TextMeshProUGUI currentLevelText;
+    public TextMeshProUGUI nextLevelText;
     private void Awake()
     {
         instance = this;
@@ -29,11 +30,14 @@ public class LevelSystem : MonoBehaviour
         if (curlvl != currentLevel)
         {
             currentLevel = curlvl;
+            Debug.Log("level UP");
         }
+
         int xpnextlevel = 100 * (currentLevel + 1) * (currentLevel + 1);
         int differenceXp = xpnextlevel - XP;
         int totaldifference = xpnextlevel - (100 * currentLevel * currentLevel);
-        fill.fillAmount = (float)differenceXp / (float)totaldifference;
-        XPtxt.text = (XP +"/"+ xpnextlevel).ToString();
+        fill.value = 1 -(float)differenceXp / (float)totaldifference;
+        currentLevelText.text = currentLevel.ToString();
+        nextLevelText.text = (currentLevel + 1).ToString();
     }
 }

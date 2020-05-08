@@ -19,9 +19,9 @@ MonoBehaviour:
   fireRate: 0
   prefab: {fileID: 1816674117277820873, guid: 30d4599a74e00bb4aa41af6e584d4ffa, type: 3}
   description: 
-  locked: 1
+  locked: 0
   target: 
   level: 1
-  UpgradePrice: 000000000000
+  UpgradePrice: 05000a001400
   cost: 250
   UnlockPrice: 50
