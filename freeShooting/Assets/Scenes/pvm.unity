@@ -1010,7 +1010,7 @@ MonoBehaviour:
   towerBase: {fileID: 11400000, guid: fce7b7f5628c3804bab2c8383a85a5d4, type: 2}
   itemParent: {fileID: 127342299}
   playerPos: {x: 0, y: 1.8, z: -28}
-  playerTowerPos: {x: 0, y: -7.4, z: -38}
+  playerTowerPos: {x: 0, y: 5.08, z: -38}
   towersSelected:
   - {fileID: 0}
   - {fileID: 0}
@@ -1033,7 +1033,7 @@ MonoBehaviour:
   enemybase: {fileID: 11400000, guid: 02da2778ed4188c4a90222d86837d602, type: 2}
   enemy: {fileID: 11400000, guid: b526a8851452ac148b5a9349b56c37a2, type: 2}
   enemyPos: {x: 0, y: 1.8, z: 28}
-  enemyTowerPos: {x: 0, y: -7.4, z: 38}
+  enemyTowerPos: {x: 0, y: 5.8, z: 38}
   EnemySelectedTowers:
   - {fileID: 0}
   - {fileID: 0}
@@ -1117,6 +1117,11 @@ MonoBehaviour:
   - {fileID: 3284376059890886023, guid: b8e51b2e29019974484c9c1d3186e366, type: 3}
   - {fileID: 8777748584492466185, guid: abe3a233522cef344ad20f2ef94d326d, type: 3}
   - {fileID: 9186346066295716581, guid: 5dbc4f23db3ffef4387db0c5b1edb0f7, type: 3}
+  packs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1441807757
 MonoBehaviour:
   m_ObjectHideFlags: 0

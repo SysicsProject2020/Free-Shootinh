@@ -105,13 +105,13 @@ public class GameManagerPartie : MonoBehaviour
 
         player_ = Instantiate(player.prefab, playerPos, Quaternion.Euler(0, 0, 0));
         enemy_ = Instantiate(enemy.prefab, enemyPos, Quaternion.Euler(0, 180, 0));
-        player_.GetComponent<PlayerMovementWithSliderBar>().SetHealth(player.Get_health_player());
-        enemy_.GetComponent<PlayerMovementWithSliderBar>().SetHealth(enemy.Get_health_enemy(enemylvl));
+        player_.GetComponent<playerMovement>().SetHealth(player.Get_health_player());
+        enemy_.GetComponent<playerMovement>().SetHealth(enemy.Get_health_enemy(enemylvl));
         changeLayerMask(enemy_, "Enemy");
         changeLayerMask(player_, "Player");
 
-        playerGun_ = Instantiate(playerGun.prefab, playerPos, Quaternion.Euler(0, 0, 0),player_.transform.GetChild(0));
-        enemyGun_ = Instantiate(enemyGun.prefab, enemyPos, Quaternion.Euler(180, 0, 0),enemy_.transform.GetChild(0));
+        playerGun_ = Instantiate(playerGun.prefab,player_.transform.GetChild(1).transform);
+        enemyGun_ = Instantiate(enemyGun.prefab,enemy_.transform.GetChild(1).transform);
         playerGun_.GetComponent<playerShooting>().SetDamage(20);
         playerGun_.GetComponent<playerShooting>().SetFireRate(playerGun.Get_fireRate_Gun_player());
         enemyGun_.GetComponent<playerShooting>().SetDamage(playerGun.Get_damage_Gun_enemy(enemylvl));

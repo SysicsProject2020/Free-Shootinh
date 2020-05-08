@@ -11,7 +11,7 @@ public class playerMovement : MonoBehaviour
     float distance = 1F;
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = transform.GetChild(0).GetComponent<Animator>();
         anim.SetFloat("x", 0.5f);
        //GameManagerPartie.instance.player_.GetComponent<Animator>().
     }
@@ -19,7 +19,6 @@ public class playerMovement : MonoBehaviour
     {
         GetComponent<target>().Sethealth(h);
     }
-
     // Update is called once per frame
     private void Update()
     {
@@ -35,11 +34,11 @@ public class playerMovement : MonoBehaviour
                     if (hit.point.x < GameManagerPartie.instance.player_.transform.position.x)
                     {
 
-                        GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 0);
+                        anim.SetFloat("x", 0);
 
                     }
                     else
-                        GameManagerPartie.instance.player_.GetComponent<Animator>().SetFloat("x", 1);
+                        anim.SetFloat("x", 1);
 
                     destination = new Vector3(hit.point.x, transform.position.y, transform.position.z);
                     distance = Mathf.Abs(hit.point.x - transform.position.x);
@@ -50,7 +49,7 @@ public class playerMovement : MonoBehaviour
         }
         if (move)
         {
-            Debug.Log(distance);
+            //Debug.Log(distance);
             transform.position = Vector3.Lerp(transform.position, destination, distance * speed * Time.deltaTime);
             if (Mathf.Abs(destination.x - transform.position.x) < 0.2f)
             {               

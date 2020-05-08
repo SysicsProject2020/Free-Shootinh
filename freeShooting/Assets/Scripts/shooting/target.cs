@@ -14,6 +14,8 @@ public class target : MonoBehaviour
     private float healthOffsetZEnemy = 5f;
     private float healthOffsetZPlayerTower = -3.5f;
     private float healthOffsetZEnemyTower = 5f;
+    private float healthOffsetZPlayerTowerBase = -3.5f;
+    private float healthOffsetZEnemyTowerBase = 5f;
     public byte PlayerRespawnTime = 3;
 
     public void Sethealth(short health)
@@ -53,11 +55,12 @@ public class target : MonoBehaviour
     }
     void die()
     {
-        GameManagerPartie.instance.playerKills++;
+        //player kills
+        /*GameManagerPartie.instance.playerKills++;
         if (GameManagerPartie.instance.playerKills >= 5)
         {
             GameManagerPartie.instance.playerMagic2.GetComponent<Button>().interactable = true;
-        }
+        }*/
 
         if (gameObject.GetComponent<playerMovement>() != null)
         {
@@ -84,12 +87,27 @@ public class target : MonoBehaviour
         }
         else
         {
-            if (gameObject.GetComponent<freezingTower>() != null)
+            if (gameObject.GetComponent<towerBase>() != null)
             {
-                gameObject.GetComponent<freezingTower>().reverse();
+                if (transform.position.z < 0)
+                {
+                    //enemy win
+                }
+                else
+                {
+                   //player win
+                }
             }
-            positionManager.delete(transform.position);
-            Destroy(gameObject);           
+            else
+            {
+                if (gameObject.GetComponent<freezingTower>() != null)
+                {
+                    gameObject.GetComponent<freezingTower>().reverse();
+                }
+                positionManager.delete(transform.position);
+                Destroy(gameObject);
+            }
+            
         }       
     }
 
@@ -105,25 +123,42 @@ public class target : MonoBehaviour
         Vector3 pos;
         if (transform.position.z > 0)//enemy
         {
-            if (gameObject.GetComponent<playerShooting>() == null)
+            if (gameObject.GetComponent<playerShooting>() != null)
             {
-                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemyTower);
+                
+                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemy);
             }
             else
             {
-                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemy);
+                if (gameObject.GetComponent<towerBase>() != null)
+                {
+                    pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemyTowerBase);
+                }
+                else
+                {
+                    pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemyTower);
+                }
+                
             }
 
         }
         else
         {
-            if (gameObject.GetComponent<playerShooting>() == null)
-            {
-                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayerTower);
+            if (gameObject.GetComponent<playerShooting>() != null)
+            {               
+                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayer);
             }
             else
             {
-                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayer);
+                if (gameObject.GetComponent<towerBase>() != null)
+                {
+                    pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayerTowerBase);
+                }
+                else
+                {
+                    pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayerTower);
+                }
+                
             }
 
         }
