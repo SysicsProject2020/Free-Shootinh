@@ -19,5 +19,5 @@ MonoBehaviour:
   magic1: {fileID: 11400000, guid: fa6ecc5c899c0574b8897da05e8bce62, type: 2}
   magic2: {fileID: 11400000, guid: ca7b2a03bba170041bb6ec13adbc8279, type: 2}
   locked: 1
-  UpgradePrice: 32003c004600
-  UnlockPrice: 100
+  UpgradePrice: 32006400c800
+  UnlockPrice: 36

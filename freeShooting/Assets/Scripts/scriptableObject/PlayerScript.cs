@@ -7,7 +7,7 @@ public class PlayerScript : ScriptableObject
     private short[] damage = { 20, 22, 24, 27, 30 };
 
     public GameObject prefab;
-    [Range(1, 5)]
+    [Range(1, 3)]
     public byte level;
     public new string name;
     public Sprite image;
