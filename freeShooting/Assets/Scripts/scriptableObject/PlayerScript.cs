@@ -15,7 +15,8 @@ public class PlayerScript : ScriptableObject
     public MagicScript magic1;
     public MagicScript magic2;
     public bool locked = true;
-
+    public short[] UpgradePrice = new short[3];
+    public short UnlockPrice;
     public short Get_health_player()
     {
         return health[level - 1];

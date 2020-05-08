@@ -31,6 +31,28 @@ public class MenuManager : MonoBehaviour
     public GameObject playerPanel;
     public GameObject gunpanel;
 
+   
+   
+    [Header("PLAYERS Panel")]
+    public GameObject PlayerDetailsPanel;
+    public TextMeshProUGUI PlayerName;
+    public TextMeshProUGUI PlayerHealth;
+    public TextMeshProUGUI PlayerLevel;
+    byte playerClicked;
+    public GameObject ButtomBarButton1;
+    public GameObject ButtomBarButton2;
+    public GameObject ButtomBarButton3;
+    public GameObject ButtomBar;
+    public Image magic1Image;
+    public Image magic2Image;
+    public GameObject upgradePlayerButton;
+    public GameObject UsePlayerButton;
+    public GameObject UnlockPlayerButton;
+    public TextMeshProUGUI playerUpgradeValue;
+    public TextMeshProUGUI playerUnlockValue;
+
+
+
 
 
     [Header("GUNS Panel")]
@@ -161,6 +183,7 @@ public class MenuManager : MonoBehaviour
         shopPanel.SetActive(false);
         mainPanel.SetActive(false);
         inventoryPanel.SetActive(true);
+        tower();
     }
     public void fillTowersSprites()
     {
@@ -203,8 +226,87 @@ public class MenuManager : MonoBehaviour
     public void RegisterListener(GameObject obj, int i)
     {
         Button myButton = obj.GetComponent<Button>();
-       // myButton.onClick.AddListener(() => { OnPlayerClick(i); });
+        myButton.onClick.AddListener(() => { OnPlayerClick(i); });
 
+    }
+    public void OnPlayerClick(int i)
+    {
+        ButtomBarButton1.SetActive(false);
+        ButtomBarButton2.SetActive(false);
+        ButtomBarButton3.SetActive(false);
+        ButtomBar.SetActive(false);
+        playerClicked = (byte)i;
+
+        PlayerDetailsPanel.SetActive(true);
+       
+        PlayerHealth.text = GameManager.instance.players[playerClicked].Get_health_player().ToString();
+        PlayerName.text = GameManager.instance.players[playerClicked].name.ToString();
+        PlayerLevel.text = GameManager.instance.players[playerClicked].level.ToString();
+        magic1Image.sprite = GameManager.instance.players[playerClicked].magic1.image;
+        magic2Image.sprite = GameManager.instance.players[playerClicked].magic2.image;
+        playerUnlockValue.text = GameManager.instance.players[playerClicked].UnlockPrice.ToString();
+
+        if (GameManager.instance.players[playerClicked].locked)
+        {
+            UnlockPlayerButton.SetActive(true);
+            upgradePlayerButton.SetActive(false);
+            UsePlayerButton.SetActive(false);
+        }
+        else
+        {
+            UnlockPlayerButton.SetActive(false);
+            upgradePlayerButton.SetActive(true);
+            UsePlayerButton.SetActive(true);
+            if (GameManager.instance.players[playerClicked] == GameManager.instance.getPlayer())
+            {
+                UsePlayerButton.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                UsePlayerButton.GetComponent<Button>().interactable = true ;
+            }
+            if (GameManager.instance.players[playerClicked].level == 3)
+            {
+                upgradePlayerButton.GetComponent<Button>().interactable = false;
+                playerUpgradeValue.text = GameManager.instance.players[playerClicked].UpgradePrice[1].ToString();
+            }
+            else
+            {
+                upgradePlayerButton.GetComponent<Button>().interactable = true;
+                playerUpgradeValue.text = GameManager.instance.players[playerClicked].UpgradePrice[GameManager.instance.players[playerClicked].level - 1].ToString();
+            }
+
+        }
+
+
+
+       
+    }
+    public void exitPlayerDetails()
+    {
+        PlayerDetailsPanel.SetActive(false);
+        ButtomBarButton1.SetActive(true);
+        ButtomBarButton2.SetActive(true);
+        ButtomBarButton3.SetActive(true);
+        ButtomBar.SetActive(true);
+    }
+    public void nextPlayer()
+    {
+        if (playerClicked != GameManager.instance.players.Length - 1)
+        {
+            OnPlayerClick(playerClicked + 1);
+        }
+        else
+        {
+            OnPlayerClick(0);
+        }
+    }
+    public void PreviousPlayer()
+    {
+        if (playerClicked != 0)
+        {
+            OnPlayerClick(playerClicked -1 );
+        }
     }
     void ShopMenuInstantiate()
     {
@@ -216,7 +318,39 @@ public class MenuManager : MonoBehaviour
             RegisterListenerShop(go, i);
         }
     }
+    public void OnUsePlayer()
+    {
+        GameManager.instance.setPlayer(GameManager.instance.players[playerClicked]);
+        UsePlayerButton.GetComponent<Button>().interactable = false;
+    }
+    public void OnUnlockPlayer()
+    {
+        GameManager.instance.players[playerClicked].locked = false;
+        UnlockPlayerButton.SetActive(false);
+        upgradePlayerButton.SetActive(true);
+        UsePlayerButton.SetActive(true);
+        upgradePlayerButton
+.GetComponent<Button>().interactable = true;
+        UsePlayerButton.GetComponent<Button>().interactable = true;
+    }
+    public void OnUpgradePlayer()
+    {
+        GameManager.instance.players[playerClicked].level++;
+        PlayerHealth.text = GameManager.instance.players[playerClicked].Get_health_player().ToString();
+        PlayerLevel.text = GameManager.instance.players[playerClicked].level.ToString();
+       
+        switch (GameManager.instance.players[playerClicked].level)
+        {
+            case 2:
+                upgradePlayerButton.GetComponent<Button>().interactable = true;
+                playerUpgradeValue.text = GameManager.instance.players[playerClicked].UpgradePrice[GameManager.instance.players[playerClicked].level - 1].ToString();
+                break;
+            case 3:
+                upgradePlayerButton.GetComponent<Button>().interactable = false;
+                break;
+        }
 
+    }
     public void RegisterListenerShop(GameObject obj, int i)
     {
         Button myButton = obj.GetComponent<Button>();
@@ -233,7 +367,7 @@ public class MenuManager : MonoBehaviour
         GunHitSpeed.text = GameManager.instance.guns[i].Get_fireRate_Gun_player().ToString();
         GunDescription.text = GameManager.instance.guns[i].description;
         gunUnlockValue.text = GameManager.instance.guns[i].UnlockPrice.ToString();
-        gunUpgradeValue.text = GameManager.instance.guns[i].UpgradePrice[GameManager.instance.guns[i].level - 1].ToString();
+        
         GunImage.sprite = GameManager.instance.guns[i].image;
        
         if (GameManager.instance.guns[i].locked)
@@ -265,18 +399,21 @@ public class MenuManager : MonoBehaviour
                     GunStarlvl1.SetActive(true);
                     GunStarlvl2.SetActive(false);
                     GunStarlvl3.SetActive(false);
+                    gunUpgradeValue.text = GameManager.instance.guns[i].UpgradePrice[GameManager.instance.guns[i].level - 1].ToString();
                     break;
                 case 2:
                     upgradeGunButton.GetComponent<Button>().interactable = true;
                     GunStarlvl1.SetActive(false);
                     GunStarlvl2.SetActive(true);
                     GunStarlvl3.SetActive(false);
+                    gunUpgradeValue.text = GameManager.instance.guns[i].UpgradePrice[GameManager.instance.guns[i].level - 1].ToString();
                     break;
                 case 3:
                     upgradeGunButton.GetComponent<Button>().interactable = false;
                     GunStarlvl1.SetActive(false);
                     GunStarlvl2.SetActive(false);
                     GunStarlvl3.SetActive(true);
+                    gunUpgradeValue.text = GameManager.instance.guns[i].UpgradePrice[1].ToString();
                     break;
             }
         }
@@ -298,7 +435,7 @@ public class MenuManager : MonoBehaviour
         TowerTarget.text = GameManager.instance.GetNonSelectedTowers()[i].target;
         towerImage.sprite = GameManager.instance.GetNonSelectedTowers()[i].image;
         towerUnlockValue.text = GameManager.instance.GetNonSelectedTowers()[i].UnlockPrice.ToString();
-        towerUpgradeValue.text = GameManager.instance.GetNonSelectedTowers()[i].UpgradePrice[GameManager.instance.GetNonSelectedTowers()[i].level - 1].ToString();
+
         if (GameManager.instance.GetNonSelectedTowers()[i].locked)
         {
             UnlockTowerButton.SetActive(true);
@@ -321,18 +458,21 @@ public class MenuManager : MonoBehaviour
                     TowerStarlvl1.SetActive(true);
                     TowerStarlvl2.SetActive(false);
                     TowerStarlvl3.SetActive(false);
+                    towerUpgradeValue.text = GameManager.instance.GetNonSelectedTowers()[i].UpgradePrice[GameManager.instance.GetNonSelectedTowers()[i].level - 1].ToString();
                     break;
                 case 2:
                     upgradeTowerButton.GetComponent<Button>().interactable = true;
                     TowerStarlvl1.SetActive(false);
                     TowerStarlvl2.SetActive(true);
                     TowerStarlvl3.SetActive(false);
+                    towerUpgradeValue.text = GameManager.instance.GetNonSelectedTowers()[i].UpgradePrice[GameManager.instance.GetNonSelectedTowers()[i].level - 1].ToString();
                     break;
                 case 3:
                     upgradeTowerButton.GetComponent<Button>().interactable = false;
                     TowerStarlvl1.SetActive(false);
                     TowerStarlvl2.SetActive(false);
                     TowerStarlvl3.SetActive(true);
+                    towerUpgradeValue.text = GameManager.instance.GetNonSelectedTowers()[i].UpgradePrice[1].ToString();
                     break;
             }
          
@@ -363,7 +503,7 @@ public class MenuManager : MonoBehaviour
             TowerHitSpeed.text = GameManager.instance.GetSelectedTowers()[i].Get_fireRate_player().ToString();
             TowerTarget.text = GameManager.instance.GetSelectedTowers()[i].target;
             towerImage.sprite = GameManager.instance.GetSelectedTowers()[i].image;
-            towerUpgradeValue.text = GameManager.instance.GetSelectedTowers()[i].UpgradePrice[GameManager.instance.GetSelectedTowers()[i].level - 1].ToString();
+            
             UnlockTowerButton.SetActive(false);
             UseTowerButton.SetActive(true);
             upgradeTowerButton.SetActive(true);
@@ -375,25 +515,27 @@ public class MenuManager : MonoBehaviour
                     TowerStarlvl1.SetActive(true);
                     TowerStarlvl2.SetActive(false);
                     TowerStarlvl3.SetActive(false);
+                    towerUpgradeValue.text = GameManager.instance.GetSelectedTowers()[i].UpgradePrice[GameManager.instance.GetSelectedTowers()[i].level - 1].ToString();
                     break;
                 case 2:
                     upgradeTowerButton.GetComponent<Button>().interactable = true;
                     TowerStarlvl1.SetActive(false);
                     TowerStarlvl2.SetActive(true);
                     TowerStarlvl3.SetActive(false);
+                    towerUpgradeValue.text = GameManager.instance.GetSelectedTowers()[i].UpgradePrice[GameManager.instance.GetSelectedTowers()[i].level - 1].ToString();
                     break;
                 case 3:
                     upgradeTowerButton.GetComponent<Button>().interactable = false;
                     TowerStarlvl1.SetActive(false);
                     TowerStarlvl2.SetActive(false);
                     TowerStarlvl3.SetActive(true);
+                    towerUpgradeValue.text = GameManager.instance.GetSelectedTowers()[i].UpgradePrice[1].ToString();
                     break;
             }
         }
 
 
     }
-
     public void exitTowerDetailsPanel()
     {
         TowerdetailsPanel.SetActive(false);
@@ -414,7 +556,7 @@ public class MenuManager : MonoBehaviour
     public void OnUseGunClick()
     {
         GameManager.instance.setGun(GameManager.instance.guns[GunClicked]);
-        GunDetailsPanel.SetActive(false);
+        UseGunButton.GetComponent<Button>().interactable = false;
     }
     public void OnUpgradeTowerClick()
     {
@@ -422,11 +564,12 @@ public class MenuManager : MonoBehaviour
         TowerDamage.text = lastTowerClicked.Get_damage_player().ToString();
         TowerHealth.text = lastTowerClicked.Get_health_player().ToString();
         TowerHitSpeed.text = lastTowerClicked.Get_fireRate_player().ToString();
-        towerUpgradeValue.text = lastTowerClicked.UpgradePrice[lastTowerClicked.level - 1].ToString();
+       
         switch (lastTowerClicked.level)
         {
             case 2:
                 upgradeTowerButton.GetComponent<Button>().interactable = true;
+                towerUpgradeValue.text = lastTowerClicked.UpgradePrice[lastTowerClicked.level - 1].ToString();
                 TowerStarlvl1.SetActive(false);
                 TowerStarlvl2.SetActive(true);
                 TowerStarlvl3.SetActive(false);
@@ -444,11 +587,12 @@ public class MenuManager : MonoBehaviour
         GameManager.instance.guns[GunClicked].level++;
         GunDamage.text = GameManager.instance.guns[GunClicked].Get_damage_Gun_player().ToString();
         GunHitSpeed.text = GameManager.instance.guns[GunClicked].Get_fireRate_Gun_player().ToString();
-        gunUpgradeValue.text = GameManager.instance.guns[GunClicked].UpgradePrice[GameManager.instance.guns[GunClicked].level - 1].ToString();
+        
         switch (GameManager.instance.guns[GunClicked].level)
         {
             case 2:
                 upgradeGunButton.GetComponent<Button>().interactable = true;
+                gunUpgradeValue.text = GameManager.instance.guns[GunClicked].UpgradePrice[GameManager.instance.guns[GunClicked].level - 1].ToString();
                 GunStarlvl1.SetActive(false);
                 GunStarlvl2.SetActive(true);
                 GunStarlvl3.SetActive(false);
