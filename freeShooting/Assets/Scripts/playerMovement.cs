@@ -54,7 +54,7 @@ public class playerMovement : MonoBehaviour
             if (Mathf.Abs(destination.x - transform.position.x) < 0.2f)
             {               
                 move = false;
-                transform.GetComponent<Animator>().SetFloat("x", 0.5f);
+                anim.SetFloat("x", 0.5f);
             }
         }
     }
