@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class GameManagerPartie : MonoBehaviour
 {
     public static GameManagerPartie instance;
@@ -152,7 +152,7 @@ public class GameManagerPartie : MonoBehaviour
                 //change sprite to interactable
                 itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
             }
-            itemParent.transform.GetChild(i).GetComponentInChildren<Text>().text = towersSelected[i].cost.ToString();
+            itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = towersSelected[i].cost.ToString();
         }
     }
 
