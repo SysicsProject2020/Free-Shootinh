@@ -52,6 +52,11 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI playerUpgradeValue;
     public TextMeshProUGUI playerUnlockValue;
 
+    [Header("Unlock and upgrade Panel")]
+    public GameObject UnLockUpgradePanel;
+    public Image unlockedObjectSprite;
+    public TextMeshProUGUI unlockedObjectDescription;
+ 
 
 
 
@@ -411,12 +416,27 @@ public class MenuManager : MonoBehaviour
         // GameManager.instance.diamond -= GameManager.instance.players[playerClicked].UnlockPrice;
         // gemText.text = GameManager.instance.diamond.ToString();
         StartCoroutine(CoinAnimation(GameManager.instance.players[playerClicked].UnlockPrice));
+        UnlockObject(GameManager.instance.players[playerClicked].name, GameManager.instance.players[playerClicked].image);
 
+
+    }
+    private void UnlockObject(string name,Sprite image)
+    {
+        
+        UnLockUpgradePanel.SetActive(true);
+        unlockedObjectSprite.sprite = image;
+        unlockedObjectDescription.text = "You Unlocked the " + name + ".<br> You can select it or use it now.";
+
+    }
+    private void UpgradeObject(string name,Sprite image ,byte lvl)
+    {
+        UnLockUpgradePanel.SetActive(true);
+        unlockedObjectSprite.sprite = image;
+        unlockedObjectDescription.text = "You Upgraded the " + name + " to level "+lvl+".";
     }
     public void OnUpgradePlayer()
     {
-        // GameManager.instance.diamond -= GameManager.instance.players[playerClicked].UpgradePrice[GameManager.instance.players[playerClicked].level - 1];
-        //gemText.text = GameManager.instance.diamond.ToString();
+       // exitPlayerDetails();
         StartCoroutine(CoinAnimation(GameManager.instance.players[playerClicked].UpgradePrice[GameManager.instance.players[playerClicked].level - 1]));
         GameManager.instance.players[playerClicked].level++;
         PlayerHealth.text = GameManager.instance.players[playerClicked].Get_health_player().ToString();
@@ -436,8 +456,9 @@ public class MenuManager : MonoBehaviour
                 upgradePlayerButton.GetComponent<Button>().interactable = false;
                 break;
         }
+        UpgradeObject(GameManager.instance.players[playerClicked].name, GameManager.instance.players[playerClicked].image, GameManager.instance.players[playerClicked].level );
 
-       
+
 
     }
     public void OnMagic1Click()
@@ -459,10 +480,10 @@ public class MenuManager : MonoBehaviour
     {
         MagicDetailsPanel.SetActive(false);
     }
-
-
-
-
+    public void exitUpgradeUnlockPanel()
+    {
+        UnLockUpgradePanel.SetActive(false);
+    }
     public void RegisterListenerShop(GameObject obj, int i)
     {
         Button myButton = obj.GetComponent<Button>();
@@ -721,6 +742,7 @@ public class MenuManager : MonoBehaviour
     {
         //GameManager.instance.diamond -= lastTowerClicked.UpgradePrice[lastTowerClicked.level - 1];
         //  gemText.text = GameManager.instance.diamond.ToString();
+        exitTowerDetailsPanel();
         StartCoroutine(CoinAnimation(lastTowerClicked.UpgradePrice[lastTowerClicked.level - 1]));
         lastTowerClicked.level++;
         TowerDamage.text = lastTowerClicked.Get_damage_player().ToString();
@@ -747,12 +769,12 @@ public class MenuManager : MonoBehaviour
                 TowerStarlvl3.SetActive(true);
                 break;
         }
+        UpgradeObject(lastTowerClicked.name, lastTowerClicked.image,lastTowerClicked.level);
 
     }
     public void OnUpgradeGunClick()
     {
-        //GameManager.instance.diamond -= GameManager.instance.guns[GunClicked].UpgradePrice[GameManager.instance.guns[GunClicked].level - 1];
-        // gemText.text = GameManager.instance.diamond.ToString();
+        exitGunDetailsPanel();
         StartCoroutine(CoinAnimation(GameManager.instance.guns[GunClicked].UpgradePrice[GameManager.instance.guns[GunClicked].level - 1]));
         GameManager.instance.guns[GunClicked].level++;
         GunDamage.text = GameManager.instance.guns[GunClicked].Get_damage_Gun_player().ToString();
@@ -778,6 +800,7 @@ public class MenuManager : MonoBehaviour
                 GunStarlvl3.SetActive(true);
                 break;
         }
+        UpgradeObject(GameManager.instance.guns[GunClicked].name, GameManager.instance.guns[GunClicked].image, (byte)(GameManager.instance.guns[GunClicked].level));
     }
     public void OnUnlockTowerClick()
     {
@@ -794,6 +817,8 @@ public class MenuManager : MonoBehaviour
         TowerStarlvl2.SetActive(false);
         TowerStarlvl3.SetActive(false);
         towerUpgradeValue.text = lastTowerClicked.UpgradePrice[0].ToString();
+        UnlockObject(lastTowerClicked.name, lastTowerClicked.image);
+        exitTowerDetailsPanel();
 
 
     }
@@ -811,6 +836,8 @@ public class MenuManager : MonoBehaviour
         GunStarlvl2.SetActive(false);
         GunStarlvl3.SetActive(false);
         gunUpgradeValue.text = GameManager.instance.guns[GunClicked].UpgradePrice[0].ToString();
+        UnlockObject(GameManager.instance.guns[GunClicked].name, GameManager.instance.guns[GunClicked].image);
+        exitGunDetailsPanel();
     }
     IEnumerator CoinAnimation(short c)
     {
