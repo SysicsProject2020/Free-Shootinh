@@ -40,6 +40,10 @@ public class GameManagerPartie : MonoBehaviour
     [Range(1,5)]
     public byte enemylvl;
 
+    [Header("Win lose")]
+    public GameObject winPanel;
+    public GameObject losePanel;
+
     private void Awake()
     {
         instance = this;
@@ -47,7 +51,6 @@ public class GameManagerPartie : MonoBehaviour
     }
     void Start()
     {
-        
         player = GameManager.instance.getPlayer();
         //Debug.Log(player.name);
         setMagic();
@@ -184,5 +187,37 @@ public class GameManagerPartie : MonoBehaviour
                 gobj.gameObject.layer = LayerMask.NameToLayer(layer);
             }
         }
+    }
+
+
+    public void win()
+    {
+        player_.GetComponent<target>().enabled = false;
+        enemy_.GetComponent<target>().enabled = false;
+        winPanel.SetActive(true);
+
+        short winXP = (short)Random.Range(150, 300);
+        winPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
+        //add to XP 
+
+        if ((byte)Random.Range(1,3) == 2)
+        {
+            short winGem = (short)Random.Range(1, 50);
+            winPanel.transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
+            winPanel.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winGem.ToString();
+            //add to Gem
+        }
+        
+
+    }
+    public void lose()
+    {
+        player_.GetComponent<target>().enabled = false;
+        enemy_.GetComponent<target>().enabled = false;
+        losePanel.SetActive(true);
+
+        short winXP = (short)Random.Range(1, 150);
+        winPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
+        //add to XP 
     }
 }
