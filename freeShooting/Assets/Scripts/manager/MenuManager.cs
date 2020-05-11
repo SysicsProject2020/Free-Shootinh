@@ -935,14 +935,42 @@ public class MenuManager : MonoBehaviour
     }
     IEnumerator CoinAnimationAdd(short c)
     {
-        Debug.Log("gh");
-        for (int i = 0; i < c; i++)
+        if (c < 80)
         {
-            
-            yield return new WaitForSeconds(Time.deltaTime);
-            GameManager.instance.diamond += 1;
+            for (int i = 0; i < c; i++)
+            {
+
+                yield return new WaitForSeconds(Time.deltaTime);
+                GameManager.instance.diamond += 1;
+                gemText.text = GameManager.instance.diamond.ToString();
+            }
+        }
+        else if(c<=1200)
+        {
+            for (int i = 0; i <(int) c /10; i++)
+            {
+
+                yield return new WaitForSeconds(Time.deltaTime);
+                GameManager.instance.diamond += 10;
+                gemText.text = GameManager.instance.diamond.ToString();
+            }
+           
+            GameManager.instance.diamond += (short)(c % 10);
             gemText.text = GameManager.instance.diamond.ToString();
         }
+        else
+        {
+            for (int i = 0; i < (int)c / 100; i++)
+            {
+
+                yield return new WaitForSeconds(Time.deltaTime);
+                GameManager.instance.diamond += 100;
+                gemText.text = GameManager.instance.diamond.ToString();
+            }
+            GameManager.instance.diamond += (short)(c % 100);
+            gemText.text = GameManager.instance.diamond.ToString();
+        }
+      
     }
 }
 
