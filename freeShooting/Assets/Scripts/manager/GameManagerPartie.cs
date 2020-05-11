@@ -198,14 +198,14 @@ public class GameManagerPartie : MonoBehaviour
 
         short winXP = (short)Random.Range(150, 300);
         winPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
-        //add to XP 
+        //LevelSystem.instance.UpdateXp(winXP);
 
         if ((byte)Random.Range(1,3) == 2)
         {
             short winGem = (short)Random.Range(1, 50);
             winPanel.transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
             winPanel.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winGem.ToString();
-            //add to Gem
+            //GameManager.instance.diamond += winGem;
         }
         
 
@@ -218,6 +218,6 @@ public class GameManagerPartie : MonoBehaviour
 
         short winXP = (short)Random.Range(1, 150);
         winPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
-        //add to XP 
+        //LevelSystem.instance.UpdateXp(winXP);
     }
 }

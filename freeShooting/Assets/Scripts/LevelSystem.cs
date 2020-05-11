@@ -20,7 +20,7 @@ public class LevelSystem : MonoBehaviour
 
     void Update()
     {
-        UpdateXp(5);
+        //UpdateXp(5);
     }
     public void UpdateXp(int xp)
     {

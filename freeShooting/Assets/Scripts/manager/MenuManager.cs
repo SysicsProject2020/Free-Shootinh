@@ -104,6 +104,10 @@ public class MenuManager : MonoBehaviour
     [Header("Shop")]
     public GameObject pack;
     public GameObject packContent;
+    public GameObject confirmPanel;
+    public TextMeshProUGUI ConfirmTxt;
+    public byte packClicked;
+
 
     [Header("Setting")]
     public GameObject musicButton;
@@ -145,13 +149,24 @@ public class MenuManager : MonoBehaviour
         obj.transform.GetComponentInChildren<Button>().onClick.AddListener(() => { OnPackClick(i); });
     }
     public void OnPackClick(int i){
-        StartCoroutine(CoinAnimationAdd(GameManager.instance.packs[i].gemCount));
-        CongratulationPanel.SetActive(true);
-        unlockedObjectSprite.sprite = GameManager.instance.packs[i].image;
-        unlockedObjectDescription.text = "You bought " + GameManager.instance.packs[i].gemCount + " gem . <br> Now you can use it to upgrade or unlock";
+        packClicked = (byte)i;
+        confirmPanel.SetActive(true);
+        ConfirmTxt.text="Would you like to buy pack of "+ GameManager.instance.packs[i].gemCount + " Gem for "+ GameManager.instance.packs[i].price+ "$ ?";
+        
 
 
     }
+    public void OnConfirmBuying()
+    {
+        confirmPanel.SetActive(false);
+        StartCoroutine(CoinAnimationAdd(GameManager.instance.packs[packClicked].gemCount));
+        CongratulationPanel.SetActive(true);
+        unlockedObjectSprite.sprite = GameManager.instance.packs[packClicked].image;
+        unlockedObjectDescription.text = "You bought " + GameManager.instance.packs[packClicked].gemCount + " gem . <br> Now you can use it to upgrade or to unlock";
+    }
+    public void exitConfirmPanel()
+    {
+        confirmPanel.SetActive(false);    }
     public void tower()
     {
         unselectedTowerButton.SetActive(false);
@@ -924,14 +939,45 @@ public class MenuManager : MonoBehaviour
         UnlockObject(GameManager.instance.guns[GunClicked].name, GameManager.instance.guns[GunClicked].image);
         exitGunDetailsPanel();
     }
+
     IEnumerator CoinAnimation(short c)
     {
-        for(int i = 0; i < c; i++)
+        if (c < 80)
         {
-            yield return new WaitForSeconds(Time.deltaTime);
-            GameManager.instance.diamond -= 1;
+            for (int i = 0; i < c; i++)
+            {
+
+                yield return new WaitForSeconds(Time.deltaTime);
+                GameManager.instance.diamond -= 1;
+                gemText.text = GameManager.instance.diamond.ToString();
+            }
+        }
+        else if (c <= 1200)
+        {
+            for (int i = 0; i < (int)c / 10; i++)
+            {
+
+                yield return new WaitForSeconds(Time.deltaTime);
+                GameManager.instance.diamond -= 10;
+                gemText.text = GameManager.instance.diamond.ToString();
+            }
+
+            GameManager.instance.diamond -= (short)(c % 10);
             gemText.text = GameManager.instance.diamond.ToString();
         }
+        else
+        {
+            for (int i = 0; i < (int)c / 100; i++)
+            {
+
+                yield return new WaitForSeconds(Time.deltaTime);
+                GameManager.instance.diamond -= 100;
+                gemText.text = GameManager.instance.diamond.ToString();
+            }
+            GameManager.instance.diamond -= (short)(c % 100);
+            gemText.text = GameManager.instance.diamond.ToString();
+        }
+
     }
     IEnumerator CoinAnimationAdd(short c)
     {
