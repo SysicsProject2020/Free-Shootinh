@@ -91,11 +91,11 @@ public class target : MonoBehaviour
             {
                 if (transform.position.z < 0)
                 {
-                    //enemy win
+                    GameManagerPartie.instance.lose();
                 }
                 else
                 {
-                   //player win
+                    GameManagerPartie.instance.win();
                 }
             }
             else
@@ -162,7 +162,6 @@ public class target : MonoBehaviour
             }
 
         }
-
         GameObject obj = Instantiate(healthBarInstatiate, pos, Quaternion.Euler(0, 0, 0), transform);
         //rotate health bar
         Vector3 relativePos = Camera.main.transform.position - obj.transform.position;
