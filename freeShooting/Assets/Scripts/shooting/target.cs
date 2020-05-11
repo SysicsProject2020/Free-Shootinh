@@ -114,7 +114,7 @@ public class target : MonoBehaviour
     void respawn()
     {
         gameObject.SetActive(true);
-        transform.GetComponent<Animator>().SetFloat("x", 0.5f);
+        transform.GetChild(0).GetComponent<Animator>().SetFloat("x", 0.5f);
     }
 
         //nbadel na3mel lel player public methode w lel towers public methode an9es if(s)
