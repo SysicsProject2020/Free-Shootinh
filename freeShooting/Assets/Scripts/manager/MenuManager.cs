@@ -53,7 +53,7 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI playerUnlockValue;
 
     [Header("Unlock and upgrade Panel")]
-    public GameObject UnLockUpgradePanel;
+    public GameObject CongratulationPanel;
     public Image unlockedObjectSprite;
     public TextMeshProUGUI unlockedObjectDescription;
  
@@ -84,6 +84,9 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI TowerName;
     public TextMeshProUGUI TowerDescription;
     public TextMeshProUGUI TowerDamage;
+    public GameObject towerDamagePanel;
+    public GameObject towerFirePointPanel;
+    public GameObject towerTargetPanel;
     public TextMeshProUGUI TowerHealth;
     public TextMeshProUGUI TowerTarget;
     public TextMeshProUGUI TowerHitSpeed;
@@ -128,13 +131,27 @@ public class MenuManager : MonoBehaviour
 
     void shopPackInstantiate()
     {
+        byte i= 0;
         foreach (GemScript p in GameManager.instance.packs)
         {
             GameObject inst = Instantiate(pack, packContent.transform);
             inst.GetComponent<packInf>().packwrite(p.gemCount, p.image, p.price, p.onSalePercentage);
+            RegisterListenerShopPack(inst, i);
+            i++;
         }
     }
+    public void RegisterListenerShopPack(GameObject obj, int i)
+    {
+        obj.transform.GetComponentInChildren<Button>().onClick.AddListener(() => { OnPackClick(i); });
+    }
+    public void OnPackClick(int i){
+        StartCoroutine(CoinAnimationAdd(GameManager.instance.packs[i].gemCount));
+        CongratulationPanel.SetActive(true);
+        unlockedObjectSprite.sprite = GameManager.instance.packs[i].image;
+        unlockedObjectDescription.text = "You bought " + GameManager.instance.packs[i].gemCount + " gem . <br> Now you can use it to upgrade or unlock";
 
+
+    }
     public void tower()
     {
         unselectedTowerButton.SetActive(false);
@@ -277,6 +294,7 @@ public class MenuManager : MonoBehaviour
             RegisterListenerTowerSwitch(go, j);
         }
     }
+ 
     public void RegisterListenerTowerSwitch(GameObject obj, int i)
     {
         Button myButton = obj.GetComponent<Button>();
@@ -422,15 +440,15 @@ public class MenuManager : MonoBehaviour
     }
     private void UnlockObject(string name,Sprite image)
     {
-        
-        UnLockUpgradePanel.SetActive(true);
+
+        CongratulationPanel.SetActive(true);
         unlockedObjectSprite.sprite = image;
         unlockedObjectDescription.text = "You Unlocked the " + name + ".<br> You can select it or use it now.";
 
     }
     private void UpgradeObject(string name,Sprite image ,byte lvl)
     {
-        UnLockUpgradePanel.SetActive(true);
+        CongratulationPanel.SetActive(true);
         unlockedObjectSprite.sprite = image;
         unlockedObjectDescription.text = "You Upgraded the " + name + " to level "+lvl+".";
     }
@@ -480,9 +498,9 @@ public class MenuManager : MonoBehaviour
     {
         MagicDetailsPanel.SetActive(false);
     }
-    public void exitUpgradeUnlockPanel()
+    public void exitCongratulationPanel()
     {
-        UnLockUpgradePanel.SetActive(false);
+        CongratulationPanel.SetActive(false);
     }
     public void RegisterListenerShop(GameObject obj, int i)
     {
@@ -581,10 +599,34 @@ public class MenuManager : MonoBehaviour
         TowerdetailsPanel.SetActive(true);
         TowerDescription.text = GameManager.instance.GetNonSelectedTowers()[i].description;
         TowerName.text = GameManager.instance.GetNonSelectedTowers()[i].name;
-        TowerDamage.text = GameManager.instance.GetNonSelectedTowers()[i].Get_damage_player().ToString();
+        if (GameManager.instance.GetNonSelectedTowers()[i].Get_damage_player() != 0)
+        {
+            towerFirePointPanel.SetActive(true);
+            TowerDamage.text = GameManager.instance.GetNonSelectedTowers()[i].Get_damage_player().ToString();
+        }
+        else
+        {
+            towerDamagePanel.SetActive(false);
+        }
+        if (GameManager.instance.GetNonSelectedTowers()[i].Get_fireRate_player() != 0)
+        {
+            towerFirePointPanel.SetActive(true);
+            TowerHitSpeed.text = GameManager.instance.GetNonSelectedTowers()[i].Get_fireRate_player().ToString();
+        }
+        else
+        {
+            towerFirePointPanel.SetActive(false);
+        }
+        if (GameManager.instance.GetSelectedTowers()[i].target != "")
+        {
+            towerTargetPanel.SetActive(true);
+            TowerTarget.text = GameManager.instance.GetNonSelectedTowers()[i].target;
+        }
+        else
+        {
+            towerTargetPanel.SetActive(false);
+        }
         TowerHealth.text = GameManager.instance.GetNonSelectedTowers()[i].Get_health_player().ToString();
-        TowerHitSpeed.text = GameManager.instance.GetNonSelectedTowers()[i].Get_fireRate_player().ToString();
-        TowerTarget.text = GameManager.instance.GetNonSelectedTowers()[i].target;
         towerImage.sprite = GameManager.instance.GetNonSelectedTowers()[i].image;
         towerUnlockValue.text = GameManager.instance.GetNonSelectedTowers()[i].UnlockPrice.ToString();
 
@@ -669,12 +711,36 @@ public class MenuManager : MonoBehaviour
             TowerdetailsPanel.SetActive(true);
             TowerDescription.text = GameManager.instance.GetSelectedTowers()[i].description;
             TowerName.text = GameManager.instance.GetSelectedTowers()[i].name;
-            TowerDamage.text = GameManager.instance.GetSelectedTowers()[i].Get_damage_player().ToString();
             TowerHealth.text = GameManager.instance.GetSelectedTowers()[i].Get_health_player().ToString();
-            TowerHitSpeed.text = GameManager.instance.GetSelectedTowers()[i].Get_fireRate_player().ToString();
-            TowerTarget.text = GameManager.instance.GetSelectedTowers()[i].target;
             towerImage.sprite = GameManager.instance.GetSelectedTowers()[i].image;
-            
+
+            if (GameManager.instance.GetSelectedTowers()[i].Get_damage_player() != 0)
+            {
+                towerFirePointPanel.SetActive(true);
+                TowerDamage.text = GameManager.instance.GetSelectedTowers()[i].Get_damage_player().ToString();
+            }
+            else
+            {
+                towerDamagePanel.SetActive(false);
+            }
+            if (GameManager.instance.GetSelectedTowers()[i].Get_fireRate_player() != 0)
+            {
+                towerFirePointPanel.SetActive(true);
+                TowerHitSpeed.text = GameManager.instance.GetSelectedTowers()[i].Get_fireRate_player().ToString();
+            }
+            else
+            {
+                towerFirePointPanel.SetActive(false);
+            }
+            if (GameManager.instance.GetSelectedTowers()[i].target != "")
+            {
+                towerTargetPanel.SetActive(true);
+                TowerTarget.text = GameManager.instance.GetSelectedTowers()[i].target;
+            }
+            else
+            {
+                towerTargetPanel.SetActive(false);
+            }
             UnlockTowerButton.SetActive(false);
             UseTowerButton.SetActive(true);
             upgradeTowerButton.SetActive(true);
@@ -745,9 +811,28 @@ public class MenuManager : MonoBehaviour
         exitTowerDetailsPanel();
         StartCoroutine(CoinAnimation(lastTowerClicked.UpgradePrice[lastTowerClicked.level - 1]));
         lastTowerClicked.level++;
-        TowerDamage.text = lastTowerClicked.Get_damage_player().ToString();
+
+        if (lastTowerClicked.Get_damage_player() != 0)
+        {
+            towerFirePointPanel.SetActive(true);
+            TowerDamage.text = lastTowerClicked.Get_damage_player().ToString();
+        }
+        else
+        {
+            towerDamagePanel.SetActive(false);
+        }
+        if (lastTowerClicked.Get_fireRate_player() != 0)
+        {
+            towerFirePointPanel.SetActive(true);
+            TowerHitSpeed.text = lastTowerClicked.Get_fireRate_player().ToString();
+        }
+        else
+        {
+            towerFirePointPanel.SetActive(false);
+        }
+        
         TowerHealth.text = lastTowerClicked.Get_health_player().ToString();
-        TowerHitSpeed.text = lastTowerClicked.Get_fireRate_player().ToString();
+      
        
         switch (lastTowerClicked.level)
         {
@@ -845,6 +930,17 @@ public class MenuManager : MonoBehaviour
         {
             yield return new WaitForSeconds(Time.deltaTime);
             GameManager.instance.diamond -= 1;
+            gemText.text = GameManager.instance.diamond.ToString();
+        }
+    }
+    IEnumerator CoinAnimationAdd(short c)
+    {
+        Debug.Log("gh");
+        for (int i = 0; i < c; i++)
+        {
+            
+            yield return new WaitForSeconds(Time.deltaTime);
+            GameManager.instance.diamond += 1;
             gemText.text = GameManager.instance.diamond.ToString();
         }
     }

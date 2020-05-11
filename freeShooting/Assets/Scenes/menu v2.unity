@@ -1276,7 +1276,6 @@ RectTransform:
   - {fileID: 844190046}
   - {fileID: 29388589}
   - {fileID: 1453162518}
-  - {fileID: 261908370}
   m_Father: {fileID: 526421570}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4015,7 +4014,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 66738770}
+    m_TransformParent: {fileID: 526421570}
     m_Modifications:
     - target: {fileID: 6547492698729776517, guid: e1d67a106d4c83c49b5f0b6f5978fee8,
         type: 3}
@@ -4045,17 +4044,17 @@ PrefabInstance:
     - target: {fileID: 5680129369720043894, guid: e1d67a106d4c83c49b5f0b6f5978fee8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5680129369720043894, guid: e1d67a106d4c83c49b5f0b6f5978fee8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5680129369720043894, guid: e1d67a106d4c83c49b5f0b6f5978fee8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5680129369720043894, guid: e1d67a106d4c83c49b5f0b6f5978fee8,
         type: 3}
@@ -4065,7 +4064,7 @@ PrefabInstance:
     - target: {fileID: 5680129369720043894, guid: e1d67a106d4c83c49b5f0b6f5978fee8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5680129369720043894, guid: e1d67a106d4c83c49b5f0b6f5978fee8,
         type: 3}
@@ -4160,7 +4159,7 @@ PrefabInstance:
     - target: {fileID: 8733757031216617058, guid: e1d67a106d4c83c49b5f0b6f5978fee8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: exitUpgradeUnlockPanel
+      value: exitCongratulationPanel
       objectReference: {fileID: 0}
     - target: {fileID: 8733757031216617058, guid: e1d67a106d4c83c49b5f0b6f5978fee8,
         type: 3}
@@ -4197,6 +4196,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.lineCount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343881141292443239, guid: e1d67a106d4c83c49b5f0b6f5978fee8,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343881141292443239, guid: e1d67a106d4c83c49b5f0b6f5978fee8,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1d67a106d4c83c49b5f0b6f5978fee8, type: 3}
@@ -5900,7 +5909,7 @@ MonoBehaviour:
   UnlockPlayerButton: {fileID: 263799873}
   playerUpgradeValue: {fileID: 82112671}
   playerUnlockValue: {fileID: 1607836899}
-  UnLockUpgradePanel: {fileID: 284790639}
+  CongratulationPanel: {fileID: 284790639}
   unlockedObjectSprite: {fileID: 1981956476}
   unlockedObjectDescription: {fileID: 287024082}
   GunDetailsPanel: {fileID: 520519020}
@@ -5921,6 +5930,9 @@ MonoBehaviour:
   TowerName: {fileID: 455589612}
   TowerDescription: {fileID: 508114292}
   TowerDamage: {fileID: 2115934217}
+  towerDamagePanel: {fileID: 2076127135}
+  towerFirePointPanel: {fileID: 1215697770}
+  towerTargetPanel: {fileID: 1984004279}
   TowerHealth: {fileID: 1377029618}
   TowerTarget: {fileID: 559576747}
   TowerHitSpeed: {fileID: 1780765286}
@@ -8496,6 +8508,7 @@ RectTransform:
   - {fileID: 66738770}
   - {fileID: 1218297128}
   - {fileID: 650466615}
+  - {fileID: 261908370}
   - {fileID: 1793369213}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -29848,7 +29861,7 @@ PrefabInstance:
     - target: {fileID: 1668301592589298286, guid: 5e0abd7c1ffbdc446b90007089553638,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1668301592589298286, guid: 5e0abd7c1ffbdc446b90007089553638,
         type: 3}
