@@ -3,7 +3,42 @@ guid: 5f781caeaa348754e8698072a9946984
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01 - Default
+    second: {fileID: 2100000, guid: d149dc908bb68584288311f582747a39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black
+    second: {fileID: 2100000, guid: 2cab8d9c4cd732e46af79ef30a204160, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__black
+    second: {fileID: 2100000, guid: 2cab8d9c4cd732e46af79ef30a204160, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__white
+    second: {fileID: 2100000, guid: d149dc908bb68584288311f582747a39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pink
+    second: {fileID: 2100000, guid: 3a9a771a9eb99dd4bb68d074c00bc45d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red_toung
+    second: {fileID: 2100000, guid: 3471b5b821478734c93b9df572b66b71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: white
+    second: {fileID: 2100000, guid: d149dc908bb68584288311f582747a39, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
