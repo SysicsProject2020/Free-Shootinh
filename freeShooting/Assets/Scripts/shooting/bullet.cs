@@ -34,18 +34,22 @@ public class bullet : MonoBehaviour
                 {
                     sender.transform.root.GetComponent<target>().takeDamage(damage);
                 }
-                if (sender.transform.root.name == GameManagerPartie.instance.player_.name)
+                else
                 {
-                    GameManagerPartie.instance.playerDamage += damage;
-                    if (GameManagerPartie.instance.playerDamage >= 1000)
+                    //magic
+                    if (sender.transform.root.name == GameManagerPartie.instance.player_.name)
                     {
-                        GameManagerPartie.instance.playerMagic1.GetComponent<Button>().interactable = true;
-                        /*
-                         GameManagerPartie.instance.playerMagic1.GetComponent<Button>().interactable = false;
-                         GameManagerPartie.instance.playerDamage = 0;
-                        */
+                        GameManagerPartie.instance.playerDamage += damage;
+                        if (GameManagerPartie.instance.playerDamage >= 1000)
+                        {
+                            GameManagerPartie.instance.playerMagic1.GetComponent<Button>().interactable = true;
+                            /*
+                             GameManagerPartie.instance.playerMagic1.GetComponent<Button>().interactable = false;
+                             GameManagerPartie.instance.playerDamage = 0;
+                            */
+                        }
                     }
-                }
+                }         
             }
             collision.transform.GetComponent<target>().takeDamage(damage);
 

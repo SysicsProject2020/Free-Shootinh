@@ -92,10 +92,12 @@ public class target : MonoBehaviour
                 if (transform.position.z < 0)
                 {
                     GameManagerPartie.instance.lose();
+                    Destroy(gameObject);
                 }
                 else
                 {
                     GameManagerPartie.instance.win();
+                    Destroy(gameObject);
                 }
             }
             else

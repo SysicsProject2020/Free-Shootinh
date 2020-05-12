@@ -5,9 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class BuildManager : MonoBehaviour
-{
-    RaycastHit hit;
-    GameManagerPartie gm;
+{  
     public Text startCoinsTxt;
     private TowerScript[] towers= new TowerScript[6];
 
@@ -35,7 +33,7 @@ public class BuildManager : MonoBehaviour
         notAlreadyClicked = true;       
         this.nb = (short)nb;
         //change sprite to selected
-        GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetChild(2).gameObject.SetActive(true);
+        GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetChild(3).gameObject.SetActive(true);
         /*for (int i = 0; i < 6; i++)
         {
             if (i == nb)
@@ -52,12 +50,13 @@ public class BuildManager : MonoBehaviour
     {
         notAlreadyClicked = false;
        
-            GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetChild(2).gameObject.SetActive(false);
+            GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetChild(3).gameObject.SetActive(false);
         
     }
 
     public void testBuilding()
     {
+        RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit);
         if (hit.collider != null)
