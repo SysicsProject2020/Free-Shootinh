@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: mirror tower
   m_EditorClassIdentifier: 
   name: mirror tower
-  image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}
+  image: {fileID: 21300000, guid: d9408aab3d3c0e74fbd4ea07a96e0daf, type: 3}
+  Lockedimage: {fileID: 21300000, guid: 2a0ac027a66112a4d89dc9316dad025d, type: 3}
   health: 8a02ee025c03ca031004
   damage: 00000000000000000000
   fireRate: 0

@@ -296,8 +296,15 @@ public class MenuManager : MonoBehaviour
         }
         for (int j = 0; j < GameManager.instance.GetNonSelectedTowers().Length; j++)
         {
-
-            NotSelectedTowersPanel.transform.GetChild(j).GetComponentInChildren<Image>().sprite = GameManager.instance.GetNonSelectedTowers()[j].image;
+            if (GameManager.instance.GetNonSelectedTowers()[j].locked == false)
+            {
+                NotSelectedTowersPanel.transform.GetChild(j).GetComponentInChildren<Image>().sprite = GameManager.instance.GetNonSelectedTowers()[j].image;
+            }
+            else
+            {
+                NotSelectedTowersPanel.transform.GetChild(j).GetComponentInChildren<Image>().sprite = GameManager.instance.GetNonSelectedTowers()[j].Lockedimage;
+            }
+           
         }
     }
     public void towersMenuInstantiate()
@@ -320,12 +327,28 @@ public class MenuManager : MonoBehaviour
         for (int i = 0; i < GameManager.instance.players.Length; i++)
         {
             GameObject go = Instantiate(HerosButton, HerosPanel.transform) as GameObject;
-
-            HerosPanel.transform.GetChild(i).GetComponentInChildren<Image>().sprite = GameManager.instance.players[i].image;
+           
+            
             RegisterListener(go, i);
         }
+        fillPlayersprites();
 
 
+    }
+    private void fillPlayersprites()
+    {
+        for (int i = 0; i < GameManager.instance.players.Length; i++)
+        {
+            if (GameManager.instance.players[i].locked == false)
+            {
+                HerosPanel.transform.GetChild(i).GetComponentInChildren<Image>().sprite = GameManager.instance.players[i].image;
+            }
+            else
+            {
+                HerosPanel.transform.GetChild(i).GetComponentInChildren<Image>().sprite = GameManager.instance.players[i].Lockedimage;
+            }
+        }
+       
     }
     public void RegisterListener(GameObject obj, int i)
     {
@@ -427,9 +450,27 @@ public class MenuManager : MonoBehaviour
         for (int i = 0; i < GameManager.instance.guns.Length; i++)
         {
             GameObject go = Instantiate(GunButton, GunsPanel.transform) as GameObject;
-
-            GunsPanel.transform.GetChild(i).GetComponentInChildren<Image>().sprite = GameManager.instance.guns[i].image;
+           
+          
             RegisterListenerShop(go, i);
+        }
+        FillGunsSprite();
+    }
+    private void FillGunsSprite()
+    {
+        for (int i = 0; i < GameManager.instance.guns.Length; i++)
+        {
+           
+            if (GameManager.instance.guns[i].locked == false)
+            {
+                GunsPanel.transform.GetChild(i).GetComponentInChildren<Image>().sprite = GameManager.instance.guns[i].image;
+            }
+            else
+            {
+                GunsPanel.transform.GetChild(i).GetComponentInChildren<Image>().sprite = GameManager.instance.guns[i].Lockedimage;
+            }
+
+           
         }
     }
     public void OnUsePlayer()
@@ -450,6 +491,7 @@ public class MenuManager : MonoBehaviour
         // gemText.text = GameManager.instance.diamond.ToString();
         StartCoroutine(CoinAnimation(GameManager.instance.players[playerClicked].UnlockPrice));
         UnlockObject(GameManager.instance.players[playerClicked].name, GameManager.instance.players[playerClicked].image);
+        fillPlayersprites();
 
 
     }
@@ -919,6 +961,7 @@ public class MenuManager : MonoBehaviour
         towerUpgradeValue.text = lastTowerClicked.UpgradePrice[0].ToString();
         UnlockObject(lastTowerClicked.name, lastTowerClicked.image);
         exitTowerDetailsPanel();
+        fillTowersSprites();
 
 
     }
@@ -938,6 +981,7 @@ public class MenuManager : MonoBehaviour
         gunUpgradeValue.text = GameManager.instance.guns[GunClicked].UpgradePrice[0].ToString();
         UnlockObject(GameManager.instance.guns[GunClicked].name, GameManager.instance.guns[GunClicked].image);
         exitGunDetailsPanel();
+        FillGunsSprite();
     }
 
     IEnumerator CoinAnimation(short c)

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: healing tower
   m_EditorClassIdentifier: 
   name: healing tower
-  image: {fileID: 21300000, guid: 7b2cbc42b3adc484aaa25616c8f6ceb1, type: 3}
+  image: {fileID: 21300000, guid: ec2274ea7e22ae148897a1e0cd9c402f, type: 3}
+  Lockedimage: {fileID: 21300000, guid: 9235fce09dec9f34bbece67e81503d2d, type: 3}
   health: 260258028a02bc02ee02
   damage: 250028002c0031003700
   fireRate: 1

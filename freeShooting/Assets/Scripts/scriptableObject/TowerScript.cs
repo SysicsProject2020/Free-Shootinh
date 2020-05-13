@@ -5,6 +5,7 @@ public class TowerScript: ScriptableObject
 {
     public new string name;
     public Sprite image;
+    public Sprite Lockedimage;
     [SerializeField]
     private short[] health =new short[3] ;
     [SerializeField]

@@ -8,6 +8,7 @@ public class GunsScript : ScriptableObject
     public new string name;
     public string description;
     public Sprite image;
+    public Sprite Lockedimage;
     public GameObject prefab;
     public GameObject GunBullet;
     public short speed;

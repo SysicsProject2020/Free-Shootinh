@@ -11,6 +11,7 @@ public class PlayerScript : ScriptableObject
     public byte level;
     public new string name;
     public Sprite image;
+    public Sprite Lockedimage;
 
     public MagicScript magic1;
     public MagicScript magic2;

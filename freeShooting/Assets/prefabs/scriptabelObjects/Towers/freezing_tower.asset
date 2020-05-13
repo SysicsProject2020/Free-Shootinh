@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: freezing_tower
   m_EditorClassIdentifier: 
   name: freezing tower
-  image: {fileID: 21300000, guid: 9c62ccbb88a7dd340b042e168dc335a1, type: 3}
+  image: {fileID: 21300000, guid: c4788b10e0e101041a3af0f1f9a9c084, type: 3}
+  Lockedimage: {fileID: 21300000, guid: 58540a5c65c205240a6a3fe03b874973, type: 3}
   health: 8a02a302bc02d502ee02
   damage: 82008200820082008200
   fireRate: 0

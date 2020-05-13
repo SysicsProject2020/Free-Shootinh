@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: mortar
   m_EditorClassIdentifier: 
   name: mortar
-  image: {fileID: 21300000, guid: 62cd9273bc05e73439e0268bcbc5b322, type: 3}
+  image: {fileID: 21300000, guid: 29c13c136234ad445af703472977a583, type: 3}
+  Lockedimage: {fileID: 21300000, guid: c69cfb35ff639ff41a8cd2006083707d, type: 3}
   health: 26026c02bc02e4021603
   damage: 680072007e0082008700
   fireRate: 3.5

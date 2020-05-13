@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: LazerTower
   m_EditorClassIdentifier: 
   name: lazer tower
-  image: {fileID: 21300000, guid: 275da8af021e53d4eacd7f5423eb5c66, type: 3}
+  image: {fileID: 21300000, guid: 9952c6704c9a84a4eb4fffc21b34a799, type: 3}
+  Lockedimage: {fileID: 21300000, guid: 5df312e1132f57f4cb8cbcaa8b76fece, type: 3}
   health: f4018a02ee0239038403
   damage: 05000600080008000a00
   fireRate: 1.25

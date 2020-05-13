@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: AK
   description: 
-  image: {fileID: 21300000, guid: 62cd9273bc05e73439e0268bcbc5b322, type: 3}
+  image: {fileID: 21300000, guid: 894c0bae10b31254d9c199e39adffb57, type: 3}
+  Lockedimage: {fileID: 21300000, guid: 602346260ad49ce48a798be30d015ff0, type: 3}
   prefab: {fileID: 4484554553889008163, guid: c0faab785d6711248bcb4aa247d9a1c2, type: 3}
   GunBullet: {fileID: 8041889832026840242, guid: 4304a9b60e2e6d2489af02b4dc219b43,
     type: 3}

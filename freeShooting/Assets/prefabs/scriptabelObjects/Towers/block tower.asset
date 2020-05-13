@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: block tower
   m_EditorClassIdentifier: 
   name: block tower
-  image: {fileID: 21300000, guid: 9da63ff78f23fa24c8e392cfe0056fce, type: 3}
+  image: {fileID: 21300000, guid: 4d38ce37e686b544d8633771a51a246d, type: 3}
+  Lockedimage: {fileID: 21300000, guid: 75a9a295c096aad47a7b9faf951ab362, type: 3}
   health: dc05d6064407b207f807
   damage: 00000000000000000000
   fireRate: 0

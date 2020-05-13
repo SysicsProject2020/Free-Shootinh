@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: tesla
   m_EditorClassIdentifier: 
   name: tesla
-  image: {fileID: 21300000, guid: 7f938db12a689584cb808d305c69f684, type: 3}
+  image: {fileID: 21300000, guid: f5554fe474d51934797e8ae5d9514502, type: 3}
+  Lockedimage: {fileID: 21300000, guid: 1915e3eaa7d55ae43bfc68e09cc13adf, type: 3}
   health: f401260258028a02bc02
   damage: 5a0063006c0077008300
   fireRate: 1.35

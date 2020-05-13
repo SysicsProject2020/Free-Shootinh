@@ -15,7 +15,8 @@ MonoBehaviour:
   prefab: {fileID: 7516014306926793344, guid: c116f6df38138ff44ad8ccbc46350a54, type: 3}
   level: 1
   name: Panda
-  image: {fileID: 21300000, guid: 9da63ff78f23fa24c8e392cfe0056fce, type: 3}
+  image: {fileID: 21300000, guid: c9f689c9fc3647749a9cb00e129275f6, type: 3}
+  Lockedimage: {fileID: 21300000, guid: 0fb265f51b9370142b22135d458617c0, type: 3}
   magic1: {fileID: 11400000, guid: 337632173625f624fbfbcadcb8f2bfa4, type: 2}
   magic2: {fileID: 11400000, guid: 3f20f401496be21449b7135323d1adfa, type: 2}
   locked: 0
