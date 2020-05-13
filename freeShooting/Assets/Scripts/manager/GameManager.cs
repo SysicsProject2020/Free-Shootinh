@@ -20,12 +20,17 @@ public class GameManager : MonoBehaviour
     private TowerScript[] towersSelected = new TowerScript[6];
     private TowerScript[] towersNotSelected;
     public GameObject[] bases= new GameObject[3];
+    public int XP;
     // public PlayerData data;
     [Header("shop")]
     public GemScript[] packs = new GemScript[4];
 
-    
 
+    private void Update()
+    {
+
+        
+    }
     private void Awake()
     {
         instance = this;
@@ -41,7 +46,7 @@ public class GameManager : MonoBehaviour
             remplirSelectedTower();
             diamond = 900;
             TowersNumber = 9;
-            LevelSystem.instance.XP = 0;
+            XP = 0;
             SaveSystem.SavePlayer();
         }
         FillTowersNotSelected();
@@ -94,14 +99,7 @@ public class GameManager : MonoBehaviour
             TowersNumber = (byte)Towers.Length;
         }
         //Debug.Log(TowersNumber);
-        Scene scene = SceneManager.GetActiveScene();
-        if (scene.name == "menu")
-        {
-            
-            LevelSystem.instance.XP = data.XP;
-        }
-        
-
+            XP = data.XP;
     }
     public PlayerScript getPlayer()
     {
@@ -111,7 +109,11 @@ public class GameManager : MonoBehaviour
     {
         playerSelected = Player;
     }
+    public void UpdateXp(int xp)
+    {
+        XP += xp;
 
+    }
     private void FillTowersNotSelected()
     {
         int h = 0;

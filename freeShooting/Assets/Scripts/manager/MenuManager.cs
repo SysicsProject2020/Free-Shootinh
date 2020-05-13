@@ -492,6 +492,7 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(CoinAnimation(GameManager.instance.players[playerClicked].UnlockPrice));
         UnlockObject(GameManager.instance.players[playerClicked].name, GameManager.instance.players[playerClicked].image);
         fillPlayersprites();
+        exitPlayerDetails();
 
 
     }
@@ -511,7 +512,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OnUpgradePlayer()
     {
-       // exitPlayerDetails();
+       exitPlayerDetails();
         StartCoroutine(CoinAnimation(GameManager.instance.players[playerClicked].UpgradePrice[GameManager.instance.players[playerClicked].level - 1]));
         GameManager.instance.players[playerClicked].level++;
         PlayerHealth.text = GameManager.instance.players[playerClicked].Get_health_player().ToString();

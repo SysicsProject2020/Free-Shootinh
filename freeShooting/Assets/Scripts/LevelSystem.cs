@@ -7,7 +7,7 @@ using TMPro;
 public class LevelSystem : MonoBehaviour
 {
     public static LevelSystem instance;
-    public int XP;
+    
     public int currentLevel;
     public Slider fill;
     public TextMeshProUGUI currentLevelText;
@@ -17,16 +17,18 @@ public class LevelSystem : MonoBehaviour
         instance = this;
     }
 
-
+    private void Start()
+    {
+        ADDxp();
+    }
     void Update()
     {
         //UpdateXp(5);
     }
-    public void UpdateXp(int xp)
+
+    public void ADDxp()
     {
-        XP += xp;
-        
-        int curlvl = (int)(0.1f * Mathf.Sqrt(XP));
+        int curlvl = (int)(0.1f * Mathf.Sqrt(GameManager.instance.XP));
         if (curlvl != currentLevel)
         {
             currentLevel = curlvl;
@@ -34,9 +36,9 @@ public class LevelSystem : MonoBehaviour
         }
 
         int xpnextlevel = 100 * (currentLevel + 1) * (currentLevel + 1);
-        int differenceXp = xpnextlevel - XP;
+        int differenceXp = xpnextlevel - GameManager.instance.XP;
         int totaldifference = xpnextlevel - (100 * currentLevel * currentLevel);
-        fill.value = 1 -(float)differenceXp / (float)totaldifference;
+        fill.value = 1 - (float)differenceXp / (float)totaldifference;
         currentLevelText.text = currentLevel.ToString();
         nextLevelText.text = (currentLevel + 1).ToString();
     }

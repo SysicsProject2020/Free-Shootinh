@@ -198,7 +198,7 @@ public class GameManagerPartie : MonoBehaviour
 
             short winXP = (short)Random.Range(150, 300);
             winPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
-            //LevelSystem.instance.UpdateXp(winXP);
+            GameManager.instance.UpdateXp(winXP);
 
             if ((byte)Random.Range(1, 3) == 2)
             {
@@ -218,7 +218,7 @@ public class GameManagerPartie : MonoBehaviour
 
             short winXP = (short)Random.Range(1, 150);
             losePanel.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
-            //LevelSystem.instance.UpdateXp(winXP);
+            GameManager.instance.UpdateXp(winXP);
             gameOver = true;
         }
         

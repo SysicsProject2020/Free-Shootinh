@@ -24,7 +24,7 @@ public class PlayerData
     public PlayerData()
     {
         diamonds = GameManager.instance.diamond;
-        XP = LevelSystem.instance.XP;
+        XP = GameManager.instance.XP;
         selectedGun = GameManager.instance.getGun().name;
         SelectedPlayer = GameManager.instance.getPlayer().name;
         for (int i = 0; i < GameManager.instance.Towers.Length;i++)
