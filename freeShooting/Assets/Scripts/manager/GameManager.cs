@@ -25,12 +25,6 @@ public class GameManager : MonoBehaviour
     [Header("shop")]
     public GemScript[] packs = new GemScript[4];
 
-
-    private void Update()
-    {
-
-        
-    }
     private void Awake()
     {
         instance = this;
@@ -54,7 +48,7 @@ public class GameManager : MonoBehaviour
     }
     private void loadData()
     {
-         PlayerData data = SaveSystem.loadPlayerData();
+        PlayerData data = SaveSystem.loadPlayerData();
         diamond = data.diamonds;
         for (int i=0;i<players.Length;i++)
         {
