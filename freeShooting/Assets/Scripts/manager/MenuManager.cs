@@ -477,6 +477,7 @@ public class MenuManager : MonoBehaviour
     {
         GameManager.instance.setPlayer(GameManager.instance.players[playerClicked]);
         UsePlayerButton.GetComponent<Button>().interactable = false;
+        SaveSystem.SavePlayer();
     }
     public void OnUnlockPlayer()
     {
@@ -493,6 +494,7 @@ public class MenuManager : MonoBehaviour
         UnlockObject(GameManager.instance.players[playerClicked].name, GameManager.instance.players[playerClicked].image);
         fillPlayersprites();
         exitPlayerDetails();
+        SaveSystem.SavePlayer();
 
 
     }
@@ -512,6 +514,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OnUpgradePlayer()
     {
+        
        exitPlayerDetails();
         StartCoroutine(CoinAnimation(GameManager.instance.players[playerClicked].UpgradePrice[GameManager.instance.players[playerClicked].level - 1]));
         GameManager.instance.players[playerClicked].level++;
@@ -534,7 +537,7 @@ public class MenuManager : MonoBehaviour
         }
         UpgradeObject(GameManager.instance.players[playerClicked].name, GameManager.instance.players[playerClicked].image, GameManager.instance.players[playerClicked].level );
 
-
+        SaveSystem.SavePlayer();
 
     }
     public void OnMagic1Click()
@@ -850,6 +853,7 @@ public class MenuManager : MonoBehaviour
         GameManager.instance.GetSelectedTowers()[i] = GameManager.instance.GetNonSelectedTowers()[j];
         GameManager.instance.GetNonSelectedTowers()[j] = tower;
         GameManager.instance.setSelectedTower(GameManager.instance.GetSelectedTowers());
+        SaveSystem.SavePlayer();
     }
     public void OnUseTowerClick()
     {
@@ -861,6 +865,7 @@ public class MenuManager : MonoBehaviour
     {
         GameManager.instance.setGun(GameManager.instance.guns[GunClicked]);
         UseGunButton.GetComponent<Button>().interactable = false;
+        SaveSystem.SavePlayer();
     }
     public void OnUpgradeTowerClick()
     {
@@ -913,7 +918,7 @@ public class MenuManager : MonoBehaviour
                 break;
         }
         UpgradeObject(lastTowerClicked.name, lastTowerClicked.image,lastTowerClicked.level);
-
+        SaveSystem.SavePlayer();
     }
     public void OnUpgradeGunClick()
     {
@@ -944,6 +949,7 @@ public class MenuManager : MonoBehaviour
                 break;
         }
         UpgradeObject(GameManager.instance.guns[GunClicked].name, GameManager.instance.guns[GunClicked].image, (byte)(GameManager.instance.guns[GunClicked].level));
+        SaveSystem.SavePlayer();
     }
     public void OnUnlockTowerClick()
     {
@@ -963,6 +969,7 @@ public class MenuManager : MonoBehaviour
         UnlockObject(lastTowerClicked.name, lastTowerClicked.image);
         exitTowerDetailsPanel();
         fillTowersSprites();
+        SaveSystem.SavePlayer();
 
 
     }
@@ -983,6 +990,7 @@ public class MenuManager : MonoBehaviour
         UnlockObject(GameManager.instance.guns[GunClicked].name, GameManager.instance.guns[GunClicked].image);
         exitGunDetailsPanel();
         FillGunsSprite();
+        SaveSystem.SavePlayer();
     }
 
     IEnumerator CoinAnimation(short c)

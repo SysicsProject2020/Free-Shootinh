@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
     public void UpdateXp(int xp)
     {
         XP += xp;
+        SaveSystem.SavePlayer();
 
     }
     private void FillTowersNotSelected()
