@@ -2901,6 +2901,7 @@ MonoBehaviour:
   - {fileID: 3284376059890886023, guid: b8e51b2e29019974484c9c1d3186e366, type: 3}
   - {fileID: 8777748584492466185, guid: abe3a233522cef344ad20f2ef94d326d, type: 3}
   - {fileID: 9186346066295716581, guid: 5dbc4f23db3ffef4387db0c5b1edb0f7, type: 3}
+  XP: 0
   packs:
   - {fileID: 11400000, guid: 9237513b70074154eaafd856c046dd89, type: 2}
   - {fileID: 11400000, guid: dc15d48678b90eb4f9b60d84d1bb5cd5, type: 2}
