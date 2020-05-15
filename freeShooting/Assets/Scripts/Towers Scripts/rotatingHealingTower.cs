@@ -5,10 +5,10 @@ using UnityEngine;
 public class rotatingHealingTower : MonoBehaviour
 {
     [SerializeField]
-    byte degreesPerSecond = 55;  
+    byte degreesPerSecond = 10;  
 
 void Update()
     {
-        transform.Rotate(Vector3.up * degreesPerSecond * Time.deltaTime, Space.Self);
+        transform.Rotate(Vector3.forward * degreesPerSecond * Time.deltaTime*5, Space.Self);
     }
 }
