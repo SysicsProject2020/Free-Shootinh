@@ -77,7 +77,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
-  gunPoint: {fileID: 0}
 --- !u!1 &7761204783313940970
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +102,7 @@ Transform:
   m_GameObject: {fileID: 7761204783313940970}
   m_LocalRotation: {x: 0.00000020861623, y: 0.000000119209275, z: -0.000000119209275,
     w: 1}
-  m_LocalPosition: {x: 2.91, y: 1.5575681, z: -2.85}
+  m_LocalPosition: {x: 1.74, y: 1.5575681, z: 0.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3917446935786598599}

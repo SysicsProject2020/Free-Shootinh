@@ -17,9 +17,9 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 894c0bae10b31254d9c199e39adffb57, type: 3}
   Lockedimage: {fileID: 21300000, guid: 602346260ad49ce48a798be30d015ff0, type: 3}
   prefab: {fileID: 4684181022194321453, guid: 825018303ff6bf8479f4128038de3c49, type: 3}
-  GunBullet: {fileID: 4590307042059602466, guid: 35d6a718c224abd43bfc682d9f90779a,
-    type: 3}
+  GunBullet: {fileID: 1865968712415440, guid: e1d30abeb36499148bca7bfbd6a64d43, type: 3}
   speed: 0
+  EndEffect: {fileID: 0}
   locked: 0
   fireRate:
   - 4

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eef1f5b39febaee4584701ce6826fb7c, type: 3}
-  m_Name: clone
+  m_Name: Carrot Missiles
   m_EditorClassIdentifier: 
-  name: clone
-  description: clone a tower already exist
-  image: {fileID: 0}
+  name: sky missiles
+  description: 'carrots  missiles coming from the sky damaging the enemy and its towers1 '
+  image: {fileID: 21300000, guid: a7add6eed3c435946b60ca1f6e3c37f6, type: 3}

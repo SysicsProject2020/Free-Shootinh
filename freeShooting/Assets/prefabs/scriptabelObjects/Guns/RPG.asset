@@ -20,6 +20,7 @@ MonoBehaviour:
   GunBullet: {fileID: 855006447652060410, guid: 1924d6c5747d5314b99b563baffb16ac,
     type: 3}
   speed: 0
+  EndEffect: {fileID: 1756381424566852, guid: b4991085d0e2a544da74e882738784a5, type: 3}
   locked: 0
   fireRate:
   - 4

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class MagicFunctions : MonoBehaviour
@@ -65,7 +66,7 @@ public class MagicFunctions : MonoBehaviour
             Instantiate(shield, GameManagerPartie.instance.enemyTowerPos, Quaternion.Euler(0, 0, 0));
         }
     }
-    void removeShield(int player)
+    void removeShield()
     {
         Destroy(ShieldInstantiated);
     }
@@ -158,7 +159,7 @@ public class MagicFunctions : MonoBehaviour
             for (int i = 0; i < 6; i++)
             {
                 GameManagerPartie.instance.itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
-                GameManagerPartie.instance.itemParent.transform.GetChild(i).GetComponentInChildren<Text>().text = "0";
+                GameManagerPartie.instance.itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = "0";
             }
             testFree = true;
             currentCoins = GameManagerPartie.instance.playerCoins;

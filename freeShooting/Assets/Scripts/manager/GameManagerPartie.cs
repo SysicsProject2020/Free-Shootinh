@@ -69,29 +69,29 @@ public class GameManagerPartie : MonoBehaviour
         
         switch (player.name)
         {
-            case "robot":
+            case "Taurus":
                 /*playerMagic1.GetComponent<Image>().sprite = player.magic1.image;
                 playerMagic2.GetComponent<Image>().sprite = player.magic2.image;*/
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Accelerate(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Shield(0); });
                 break;
-            case "shadow":
+            case "Panda":
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.healTowers(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.allCardsFree(0); });
                 break;
-            case "snowman":
+            case "Rabbit":
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.MissilesMagic(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.FreezTower(0); });                
                 break;
-            case "witcher":
+            case "Pig":
                 
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.destroyEnemyTower(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.destroyAll(0); });
 
                 break;
         }
-        playerMagic1.GetComponent<Button>().interactable = false;
-        playerMagic2.GetComponent<Button>().interactable = false;
+      //  playerMagic1.GetComponent<Button>().interactable = false;
+       // playerMagic2.GetComponent<Button>().interactable = false;
     }
 
     private void instantiatePrefabs()

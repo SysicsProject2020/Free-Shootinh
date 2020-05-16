@@ -53,9 +53,24 @@ public class bullet : MonoBehaviour
             }
             collision.transform.GetComponent<target>().takeDamage(damage);
 
-            //hitSound[choose].Play();           
+            //hitSound[choose].Play();    
+            
+        }
+        if (GameManager.instance.getGun().EndEffect != null)
+        {
+           GameObject go = Instantiate(GameManager.instance.getGun().EndEffect, transform.position, transform.rotation);
+            StartCoroutine(DestroyEffect(go));
         }
         Destroy(gameObject);
+    }
+    IEnumerator DestroyEffect(GameObject go)
+    {
+
+
+        yield return new WaitForSeconds(Time.deltaTime) ;
+        Destroy(go);
+
+        
     }
 }
 

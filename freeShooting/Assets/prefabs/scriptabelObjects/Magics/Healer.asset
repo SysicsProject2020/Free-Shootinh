@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eef1f5b39febaee4584701ce6826fb7c, type: 3}
-  m_Name: freeze
+  m_Name: Healer
   m_EditorClassIdentifier: 
-  name: freeze
-  description: freeze the enemy player for 5 second
-  image: {fileID: 0}
+  name: Healer
+  description: healing the hero and towers
+  image: {fileID: 21300000, guid: 38e26c4f05e133246ad41063dd3f18d1, type: 3}

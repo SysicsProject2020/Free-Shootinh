@@ -65,8 +65,8 @@ public class ProjectileMoveScript : MonoBehaviour {
 			rb.position += (transform.forward + offset)  * (speed * Time.deltaTime);
 	}
 
-	void OnCollisionEnter (Collision co) {
-		if (co.gameObject.tag != "Bullet" && !collided) {
+	/*void OnCollisionEnter (Collision co) {
+		if (co.gameObject.tag != "" && !collided) {
 			collided = true;
 			
 			if (shotSFX != null && GetComponent<AudioSource>()) {
@@ -104,7 +104,7 @@ public class ProjectileMoveScript : MonoBehaviour {
 
 			StartCoroutine (DestroyParticle (0f));
 		}
-	}
+	}*/
 
 	public IEnumerator DestroyParticle (float waitTime) {
 

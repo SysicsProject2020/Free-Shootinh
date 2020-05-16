@@ -12,6 +12,7 @@ public class GunsScript : ScriptableObject
     public GameObject prefab;
     public GameObject GunBullet;
     public short speed;
+    public GameObject EndEffect;
     public bool locked = true;
     [SerializeField]
     private float[] fireRate=new float[5];

@@ -140,4 +140,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4157155308a016e4ea46941a1bf9b365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  degreesPerSecond: 10
+  degreesPerSecond: 255

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eef1f5b39febaee4584701ce6826fb7c, type: 3}
-  m_Name: spy
+  m_Name: Free Cards
   m_EditorClassIdentifier: 
-  name: Spy
-  description: see enemy cards
-  image: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  name: Free cards
+  description: 'All cards are free foir only one tour '
+  image: {fileID: 21300000, guid: 133de60959f1871489df0ad03c5c4c1e, type: 3}

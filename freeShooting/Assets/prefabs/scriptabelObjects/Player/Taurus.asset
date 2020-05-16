@@ -17,8 +17,8 @@ MonoBehaviour:
   name: Taurus
   image: {fileID: 21300000, guid: 1cff309aafa5e704e8b6bc71b3963df7, type: 3}
   Lockedimage: {fileID: 21300000, guid: 9d13f6b29a5018240bc43300139f5230, type: 3}
-  magic1: {fileID: 11400000, guid: 59d1c490366a25d4fae05c443422101c, type: 2}
-  magic2: {fileID: 11400000, guid: 7d60792bfecbc4a42af6e1289b483517, type: 2}
+  magic1: {fileID: 11400000, guid: fa6ecc5c899c0574b8897da05e8bce62, type: 2}
+  magic2: {fileID: 11400000, guid: 808581d24ffa7dc489e365e1a89f9551, type: 2}
   locked: 1
   UpgradePrice: 32006400c800
   UnlockPrice: 36
