@@ -72,7 +72,7 @@ public class GameManagerPartie : MonoBehaviour
             case "Taurus":
                 /*playerMagic1.GetComponent<Image>().sprite = player.magic1.image;
                 playerMagic2.GetComponent<Image>().sprite = player.magic2.image;*/
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Accelerate(0); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.shootMissileToEnemyBase(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Shield(0); });
                 break;
             case "Panda":
@@ -81,7 +81,7 @@ public class GameManagerPartie : MonoBehaviour
                 break;
             case "Rabbit":
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.MissilesMagic(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.FreezTower(0); });                
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.shootMissileToEnemyBase(0); });                
                 break;
             case "Pig":
                 

@@ -1381,6 +1381,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5404509811308089497, guid: c8e9f049e7053c0458e809d1a44ae856,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9046132163599380268, guid: c8e9f049e7053c0458e809d1a44ae856,
         type: 3}
       propertyPath: m_FillAmount
@@ -2964,6 +2969,12 @@ MonoBehaviour:
   shield: {fileID: 5808580019842481005, guid: d37b182c72bfa6d449c82e8012d3a2ef, type: 3}
   Missiles: {fileID: 5331246752534301136, guid: b501dac17866a694883bda59715f8204,
     type: 3}
+  destroyMissile: {fileID: 1746672929845058, guid: 6914c451adebee04785d9413a7e3f24b,
+    type: 3}
+  Explosion: {fileID: 1607489160101874, guid: 731f5ce10c6adab4ba085268d0cfb6e1, type: 3}
+  DamageMissiles: {fileID: 1262846755526404, guid: 246abbe77b657aa45808a0d3c34e62d8,
+    type: 3}
+  speed: 1.99
 --- !u!114 &1441807760
 MonoBehaviour:
   m_ObjectHideFlags: 0
