@@ -11,7 +11,8 @@ public class BuildManager : MonoBehaviour
 
     bool  notAlreadyClicked = false;
     private short nb;
-    
+    public static short waitBetweenBuild = 7;
+
     // Start is called before the first frame update
     void Start()
     {

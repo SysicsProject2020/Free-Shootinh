@@ -1381,6 +1381,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9046132163599380268, guid: c8e9f049e7053c0458e809d1a44ae856,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8e9f049e7053c0458e809d1a44ae856, type: 3}
 --- !u!1 &460405999
