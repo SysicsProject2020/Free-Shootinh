@@ -194,7 +194,6 @@ public class AIeasy : MonoBehaviour
         if (rand < GameManagerPartie.instance.enemy_.transform.position.x)
         {
                 GameManagerPartie.instance.enemy_.transform.GetChild(0).GetComponent<Animator>().SetFloat("x", 1);
-                
         }
         else
         {
