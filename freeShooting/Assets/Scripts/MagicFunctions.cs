@@ -22,6 +22,11 @@ public class MagicFunctions : MonoBehaviour
     public GameObject Missiles;
     private GameObject MissilesInstantiated;
     private bool MissilesLaunched=false;
+    [Header("Magic:Destroy Tower")]
+    public GameObject destroyMissile;
+    [Header("Magic:Destroy All Towers")]
+    public GameObject Explosion;
+    private GameObject ExplosionInstatiated;
 
 
     // Start is called before the first frame update
@@ -32,16 +37,27 @@ public class MagicFunctions : MonoBehaviour
     
     public void destroyAll(int player)
     {
-        short Pcoins=GameManagerPartie.instance.playerCoins;
-        short Ecoins = GameManagerPartie.instance.enemyCoins;
-        for(int i = 0; i < 2; i++)
+        ExplosionInstatiated= Instantiate(Explosion, new Vector3(0, 12, 0), Explosion.transform.rotation);
+        StartCoroutine(destoryAllTowers(ExplosionInstatiated));
+    }
+    IEnumerator destoryAllTowers(GameObject go)
+    {
+        for(int i = 0; i < 11; i++)
         {
-            for(int j = 0; j < 5; j++)
+            yield return new WaitForSeconds(Time.deltaTime*10);
+            go.transform.localScale += new Vector3(11, 10,20);
+            
+        }
+        short Pcoins = GameManagerPartie.instance.playerCoins;
+        short Ecoins = GameManagerPartie.instance.enemyCoins;
+        for (int k = 0; k < 2; k++)
+        {
+            for (int j = 0; j < 5; j++)
             {
-                if (positionManager.buildingGameObject[i,j] != null)
+                if (positionManager.buildingGameObject[k, j] != null)
                 {
-                    Destroy(positionManager.buildingGameObject[i, j]);
-                    positionManager.delete(positionManager.buildingGameObject[i, j].transform.position);
+                    Destroy(positionManager.buildingGameObject[k, j]);
+                    positionManager.delete(positionManager.buildingGameObject[k, j].transform.position);
 
                 }
             }
@@ -52,6 +68,8 @@ public class MagicFunctions : MonoBehaviour
         GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
         GameManagerPartie.instance.enemyCoinsTxt.text = GameManagerPartie.instance.enemyCoins.ToString();
         GameManagerPartie.instance.ChangeSprites();
+        Destroy(go);
+
 
     }
     public void Shield(int player)
@@ -94,7 +112,9 @@ public class MagicFunctions : MonoBehaviour
                     
                     if (k == rand)
                     {
-                        Destroy(positionManager.buildingGameObject[1, j]);
+                        Instantiate(destroyMissile, new Vector3(positionManager.buildingGameObject[1, j].transform.position.x, positionManager.buildingGameObject[1, j].transform.position.y + 50, positionManager.buildingGameObject[1, j].transform.position.z), destroyMissile.transform.rotation);
+                        StartCoroutine(DestroyTower(positionManager.buildingGameObject[1, j]));
+                        
                         positionManager.delete(positionManager.buildingGameObject[1, j].transform.position);
                     }
                     k++;
@@ -109,6 +129,12 @@ public class MagicFunctions : MonoBehaviour
         {
             
         }
+    }
+    IEnumerator DestroyTower(GameObject go)
+    {
+        yield return new WaitForSeconds(2.2f);
+        Destroy(go);
+
     }
     public void Accelerate(int player)
     {
@@ -220,6 +246,7 @@ public class MagicFunctions : MonoBehaviour
                         positionManager.buildingGameObject[1, j].GetComponent<target>().takeDamage(75);
                     }
                 }
+                
                 GameManagerPartie.instance.enemy_.GetComponent<target>().takeDamage(50);
                 GameManagerPartie.instance.enemyTowerBase_.GetComponent<target>().takeDamage(75);
                 Destroy(MissilesInstantiated);
