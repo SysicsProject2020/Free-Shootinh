@@ -81,7 +81,7 @@ public class target : MonoBehaviour
                 transform.position = GameManagerPartie.instance.enemyPos;
             }
 
-            GameManagerPartie.instance.ChangeSprites();
+            //GameManagerPartie.instance.ChangeSprites();
 
             Invoke("respawn", PlayerRespawnTime);
         }

@@ -58,7 +58,6 @@ public class GameManagerPartie : MonoBehaviour
 
         ChangeSprites();
         instantiatePrefabs();
-        chooseEnemyTowers();
 
         playerCoinsTxt.text = playerCoins.ToString();
         enemyCoinsTxt.text = enemyCoins.ToString();
@@ -120,7 +119,8 @@ public class GameManagerPartie : MonoBehaviour
         enemyGun_.GetComponent<playerShooting>().SetDamage(playerGun.Get_damage_Gun_enemy(enemylvl));
         enemyGun_.GetComponent<playerShooting>().SetFireRate(playerGun.Get_fireRate_Gun_enemy(enemylvl));
     }
-    public void ChangeInteractableSprites()
+
+    public void ChangeInteractableSpritesPrice()
     {
         for (int i = 0; i < 6; i++)
         {
@@ -128,14 +128,19 @@ public class GameManagerPartie : MonoBehaviour
             {
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = false;
                 //change sprite to non interactable
-                //itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
+                itemParent.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = towersSelected[i].Lockedimage;
             }
             else
             {
-                itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
-                //change sprite to interactable
-                itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
+                if (itemParent.transform.GetChild(i).GetChild(3).gameObject.activeInHierarchy == false)
+                {
+                    //Debug.Log("itemParent.transform.GetChild(" + i + ").GetChild(3).gameObject.activeSelf == false");
+                    itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
+                    //change sprite to interactable
+                    itemParent.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = towersSelected[i].image;
+                }             
             }
+            //itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = towersSelected[i].cost.ToString();
         }
     }
 
@@ -147,36 +152,20 @@ public class GameManagerPartie : MonoBehaviour
             {
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = false;
                 //change sprite to non interactable
-                //itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
+                itemParent.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = towersSelected[i].Lockedimage;
             }
             else
             {
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
                 //change sprite to interactable
-                itemParent.transform.GetChild(i).GetComponentInChildren<Image>().sprite = towersSelected[i].image;
+                itemParent.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = towersSelected[i].image;
             }
             itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = towersSelected[i].cost.ToString();
         }
     }
 
-    //public AIeasy AI;
-    void chooseEnemyTowers()
-    {
-        /*
-        EnemySelectedTowers = towersSelected;
-        AI.towers = EnemySelectedTowers;
-        
-       for (int i = 1; i < 6; i++)
-        {
-            if (EnemySelectedTowers[i].cost < AI.minCostTower)
-            {
-                AI.minCostTower = (byte)i;
-            }
-        }*/
-    }
 
-
-    private void changeLayerMask(GameObject go, string layer)
+private void changeLayerMask(GameObject go, string layer)
     {
         go.layer = LayerMask.NameToLayer(layer);
         foreach (Transform g in go.transform)
@@ -188,7 +177,6 @@ public class GameManagerPartie : MonoBehaviour
             }
         }
     }
-
 
     public void win()
     {

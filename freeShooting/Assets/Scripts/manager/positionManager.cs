@@ -294,7 +294,6 @@ public class positionManager : MonoBehaviour
                     }
                     break;
             }
-
             for (int i = 0; i < 5; i++)
             {
                 EnemyShoot(i);
@@ -986,7 +985,7 @@ public class positionManager : MonoBehaviour
     {
         GameManagerPartie.instance.playerCoins += a;
         GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
-        GameManagerPartie.instance.ChangeSprites();
+        GameManagerPartie.instance.ChangeInteractableSpritesPrice();
     }
     public static void aiCanBuild()
     {
