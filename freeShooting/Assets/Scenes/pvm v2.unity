@@ -2863,6 +2863,9 @@ MonoBehaviour:
   DamageMissiles: {fileID: 1262846755526404, guid: 246abbe77b657aa45808a0d3c34e62d8,
     type: 3}
   speed: 1.99
+  Carrot: {fileID: 637571576475917936, guid: 5b50cc5ed9f99fb408d7f3d5a0b256a0, type: 3}
+  CarrotWall: {fileID: 5742103038775258873, guid: 1835bfe07cda12f43a3972e48a3001ff,
+    type: 3}
 --- !u!114 &1441807760
 MonoBehaviour:
   m_ObjectHideFlags: 0

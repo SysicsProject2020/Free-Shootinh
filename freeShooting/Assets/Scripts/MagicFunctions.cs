@@ -28,8 +28,12 @@ public class MagicFunctions : MonoBehaviour
     public GameObject Explosion;
     private GameObject ExplosionInstatiated;
     [Header("Magic:DirectShot")]
+    
     public GameObject DamageMissiles;
     public float speed;
+    [Header("Magic:CarrotShield")]
+    public GameObject Carrot;
+    public GameObject CarrotWall;
 
 
 
@@ -222,10 +226,71 @@ public class MagicFunctions : MonoBehaviour
         }
         else
         {
+            for (int j = 0; j < 5; j++)
+            {
+                if (positionManager.buildingGameObject[1, j] != null)
+                {
+                    positionManager.buildingGameObject[1, j].gameObject.GetComponent<target>().gainhealth(150);
+                }
+
+            }
+            GameManagerPartie.instance.enemy_.GetComponent<target>().gainhealth(50);
+            GameManagerPartie.instance.enemyTowerBase_.GetComponent<target>().gainhealth(200);
+        }
+    }
+    public void carrotShield(int player)
+    {
+        if (player == 0)
+        {
+            GameObject CarrotWall_= Instantiate(CarrotWall);
+            Instantiate(Carrot, new Vector3(-7.4f, -9, -37.2f), Carrot.transform.rotation, CarrotWall_.transform);
+            Instantiate(Carrot, new Vector3(7.4f, -9, -37.2f), Carrot.transform.rotation, CarrotWall_.transform);
+            Instantiate(Carrot, new Vector3(-4f, -9, -33.7f), Carrot.transform.rotation, CarrotWall_.transform);
+            Instantiate(Carrot, new Vector3(0, -9, -33.7f), Carrot.transform.rotation, CarrotWall_.transform);
+            Instantiate(Carrot, new Vector3(4, -9, -33.7f), Carrot.transform.rotation, CarrotWall_.transform);
+            for(int i = 0; i < 5; i++)
+            { int time = Random.Range(2, 6);
+                LeanTween.moveY(CarrotWall_.transform.GetChild(i).gameObject, 7.3f, time).setEaseLinear();
+            }
+            StartCoroutine(HideCarrot(CarrotWall_));
+            StartCoroutine( DestroyCarrotWall(CarrotWall_));
+
+
+        }
+        else
+        {
+            GameObject CarrotWallEnemy_ = Instantiate(CarrotWall, CarrotWall.transform.position + new Vector3(0, 0, 60), Quaternion.Euler(0, 180, 0));
+            Instantiate(Carrot, new Vector3(-7.4f, -9, 39), Carrot.transform.rotation, CarrotWallEnemy_.transform);
+            Instantiate(Carrot, new Vector3(7.4f, -9, 39), Carrot.transform.rotation, CarrotWallEnemy_.transform);
+            Instantiate(Carrot, new Vector3(-4f, -9, 34), Carrot.transform.rotation, CarrotWallEnemy_.transform);
+            Instantiate(Carrot, new Vector3(0, -9, 34), Carrot.transform.rotation, CarrotWallEnemy_.transform);
+            Instantiate(Carrot, new Vector3(4, -9, 34), Carrot.transform.rotation, CarrotWallEnemy_.transform);
+            for (int i = 0; i < 5; i++)
+            {
+                int time = Random.Range(2, 6);
+                LeanTween.moveY(CarrotWallEnemy_.transform.GetChild(i).gameObject, 7.3f, time).setEaseLinear();
+            }
+            StartCoroutine(HideCarrot(CarrotWallEnemy_));
+            StartCoroutine( DestroyCarrotWall(CarrotWallEnemy_));
+
+
 
         }
     }
-
+    IEnumerator HideCarrot(GameObject go)
+    {
+        yield return new WaitForSeconds(8);
+        for(int i = 0; i < 5; i++)
+        {
+            LeanTween.moveY(go.transform.GetChild(i).gameObject, -9, 2).setEaseLinear();
+        }
+       
+    }
+    IEnumerator DestroyCarrotWall(GameObject go)
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(go);
+    }
     void Update()
     {
         if (testFree)

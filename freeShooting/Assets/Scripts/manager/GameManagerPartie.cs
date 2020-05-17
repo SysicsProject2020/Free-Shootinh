@@ -80,7 +80,7 @@ public class GameManagerPartie : MonoBehaviour
                 break;
             case "Rabbit":
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.MissilesMagic(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.shootMissileToEnemyBase(0); });                
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.carrotShield(0); });                
                 break;
             case "Pig":
                 
