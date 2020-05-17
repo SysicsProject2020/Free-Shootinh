@@ -23,11 +23,11 @@ MonoBehaviour:
   EndEffect: {fileID: 1756381424566852, guid: b4991085d0e2a544da74e882738784a5, type: 3}
   locked: 0
   fireRate:
-  - 4
-  - 4
-  - 4
-  - 4
-  - 4
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
   damage: 0a000f00140019005a00
   UpgradePrice: 05003f007b00
   level: 1

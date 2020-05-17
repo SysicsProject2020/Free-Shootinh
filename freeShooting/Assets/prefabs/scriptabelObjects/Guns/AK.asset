@@ -22,11 +22,11 @@ MonoBehaviour:
   EndEffect: {fileID: 0}
   locked: 0
   fireRate:
-  - 4
-  - 4
-  - 4
-  - 4
-  - 4
+  - 3.5
+  - 3.5
+  - 3.5
+  - 3.5
+  - 3.5
   damage: 0a000f00140019001e00
   UpgradePrice: 05003f007b00
   level: 1

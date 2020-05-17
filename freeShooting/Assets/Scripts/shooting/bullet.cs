@@ -58,19 +58,10 @@ public class bullet : MonoBehaviour
         }
         if (GameManager.instance.getGun().EndEffect != null)
         {
-           GameObject go = Instantiate(GameManager.instance.getGun().EndEffect, transform.position, transform.rotation);
-            StartCoroutine(DestroyEffect(go));
+           GameObject go = Instantiate(GameManager.instance.getGun().EndEffect, transform.position, transform.rotation);           
         }
         Destroy(gameObject);
     }
-    IEnumerator DestroyEffect(GameObject go)
-    {
-
-
-        yield return new WaitForSeconds(Time.deltaTime) ;
-        Destroy(go);
-
-        
-    }
+   
 }
 
