@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eef1f5b39febaee4584701ce6826fb7c, type: 3}
-  m_Name: freezetower
+  m_Name: Targeted Missiles
   m_EditorClassIdentifier: 
-  name: freezetower
-  description: freeze all the enemeny towers for 3 second
-  image: {fileID: 0}
+  name: Targeted Missiles
+  description: 'Launching missiles from the player base to the enemy base making a
+    lot of damage '
+  image: {fileID: 21300000, guid: 04cf1e86408e9b1499d7f8a438642cac, type: 3}

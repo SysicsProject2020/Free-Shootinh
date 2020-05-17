@@ -72,24 +72,24 @@ public class GameManagerPartie : MonoBehaviour
                 /*playerMagic1.GetComponent<Image>().sprite = player.magic1.image;
                 playerMagic2.GetComponent<Image>().sprite = player.magic2.image;*/
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.shootMissileToEnemyBase(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Shield(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Shield(1); });
                 break;
             case "Panda":
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.healTowers(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.allCardsFree(0); });
                 break;
             case "Rabbit":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.MissilesMagic(0); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.CarrotMissiles(1); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.carrotShield(0); });                
                 break;
             case "Pig":
                 
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.destroyEnemyTower(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.destroyAll(0); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.destroyEnemyTower(1); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.destroyAll(); });
 
                 break;
         }
-      //  playerMagic1.GetComponent<Button>().interactable = false;
+       //  playerMagic1.GetComponent<Button>().interactable = false;
        // playerMagic2.GetComponent<Button>().interactable = false;
     }
 

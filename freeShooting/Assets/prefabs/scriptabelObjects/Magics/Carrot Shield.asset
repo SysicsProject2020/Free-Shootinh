@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eef1f5b39febaee4584701ce6826fb7c, type: 3}
-  m_Name: rage
+  m_Name: Carrot Shield
   m_EditorClassIdentifier: 
-  name: rage
-  description: increases the attack speed by 35%
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  name: Carrot Shield
+  description: It's a shield formed by carrots cannot make anyone damage the base
+  image: {fileID: 21300000, guid: 42642beb59d7fb546970fe5c344cb8c1, type: 3}
