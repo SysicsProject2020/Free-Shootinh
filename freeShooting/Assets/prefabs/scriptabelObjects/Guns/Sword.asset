@@ -20,14 +20,15 @@ MonoBehaviour:
   GunBullet: {fileID: 4643928538713930885, guid: 5b35d69015d624e4cbfd9c53ad7ec64a,
     type: 3}
   speed: 0
-  locked: 1
+  EndEffect: {fileID: 0}
+  locked: 0
   fireRate:
-  - 4
-  - 4
-  - 4
-  - 4
-  - 4
-  damage: 00000000000000000000
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  damage: 0a000a000a000a000a00
   UpgradePrice: 05003f007b00
   level: 1
   UnlockPrice: 223
