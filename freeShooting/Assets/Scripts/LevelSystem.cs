@@ -12,6 +12,7 @@ public class LevelSystem : MonoBehaviour
     public Slider fill;
     public TextMeshProUGUI currentLevelText;
     public TextMeshProUGUI nextLevelText;
+    public TextMeshProUGUI currentText;
     private void Awake()
     {
         instance = this;
@@ -41,5 +42,8 @@ public class LevelSystem : MonoBehaviour
         fill.value = 1 - (float)differenceXp / (float)totaldifference;
         currentLevelText.text = currentLevel.ToString();
         nextLevelText.text = (currentLevel + 1).ToString();
+        currentText.text = GameManager.instance.XP.ToString() + "/" + xpnextlevel.ToString();
+
+
     }
 }
