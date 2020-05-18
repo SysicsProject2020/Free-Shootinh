@@ -51,6 +51,7 @@ public class MenuManager : MonoBehaviour
     public GameObject UnlockPlayerButton;
     public TextMeshProUGUI playerUpgradeValue;
     public TextMeshProUGUI playerUnlockValue;
+    public GameObject Hero3d;
 
     [Header("Unlock and upgrade Panel")]
     public GameObject CongratulationPanel;
@@ -114,12 +115,15 @@ public class MenuManager : MonoBehaviour
     public GameObject soundEffectButton;
     public GameObject notificationButton;
     public GameObject vibrateButton;
+
     [Header("Magics")]
     public GameObject MagicDetailsPanel;
     public TextMeshProUGUI MagicName;
     public TextMeshProUGUI MagicDescription;
     public Image MagicImage;
 
+    [Header("Hero")]
+    public GameObject HeroMain;
 
 
 
@@ -131,6 +135,30 @@ public class MenuManager : MonoBehaviour
         ShopMenuInstantiate();
         shopPackInstantiate();
         gemText.text = GameManager.instance.diamond.ToString();
+        changeHeroMain();
+    }
+
+    void changeHeroMain()
+    {
+        
+        for (short i = 0; i < 4; i++)
+        {
+            if (GameManager.instance.players[i] == GameManager.instance.getPlayer())
+            {
+                HeroMain.transform.GetChild(i).gameObject.SetActive(true);
+                HeroMain.transform.GetChild(i).GetComponent<Animator>().SetFloat("x", 0.5f);
+                /*for (int j = i++; j < 4; j++)
+                {
+                    HeroMain.transform.GetChild(j).gameObject.SetActive(false);
+                }
+                break;*/
+            }
+            else
+            {
+                HeroMain.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+        
     }
 
     void shopPackInstantiate()
@@ -280,6 +308,7 @@ public class MenuManager : MonoBehaviour
         shopPanel.SetActive(false);
         mainPanel.SetActive(true);
         inventoryPanel.SetActive(false);
+        changeHeroMain();
     }
     public void inventory()
     {
@@ -365,7 +394,14 @@ public class MenuManager : MonoBehaviour
         playerClicked = (byte)i;
 
         PlayerDetailsPanel.SetActive(true);
-       
+
+        for (int j = 0; j < 4; j++)
+        {
+            Hero3d.transform.GetChild(j).gameObject.SetActive(false);
+        }
+        Hero3d.transform.GetChild(i).gameObject.SetActive(true);
+        Hero3d.transform.GetChild(i).GetComponent<Animator>().SetFloat("x", 0.5f);
+
         PlayerHealth.text = GameManager.instance.players[playerClicked].Get_health_player().ToString();
         PlayerName.text = GameManager.instance.players[playerClicked].name.ToString();
         PlayerLevel.text = GameManager.instance.players[playerClicked].level.ToString();
