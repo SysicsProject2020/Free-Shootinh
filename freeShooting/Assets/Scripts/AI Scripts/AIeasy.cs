@@ -17,6 +17,7 @@ public class AIeasy : MonoBehaviour
     public float speed = 5f;
     private byte strategy;
     private bool AiCanBuildRandomly = true;
+    
     Animator anim;
     Vector3[] BuildPos = new[]{
         new Vector3(-16.52f,2,18.78f),
