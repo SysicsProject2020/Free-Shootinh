@@ -15,8 +15,8 @@ MonoBehaviour:
   prefab: {fileID: 8039674182491967544, guid: dec83a8f3efc71b438dd58ea3866d274, type: 3}
   level: 1
   name: Rabbit
-  image: {fileID: 21300000, guid: 649beb6880d90bd4b85eb4c5dd2f1541, type: 3}
-  Lockedimage: {fileID: 21300000, guid: b87cc7b497fa6eb4c9918a1caa9b914b, type: 3}
+  image: {fileID: 21300000, guid: 756004dd6c1167046b536ecb58e3e70a, type: 3}
+  Lockedimage: {fileID: 21300000, guid: 0fabdd017e10a114bbe178b5f09ece5d, type: 3}
   magic1: {fileID: 11400000, guid: 175bdb3b344ffeb4eaecdfdacb752bd5, type: 2}
   magic2: {fileID: 11400000, guid: 337632173625f624fbfbcadcb8f2bfa4, type: 2}
   locked: 0
