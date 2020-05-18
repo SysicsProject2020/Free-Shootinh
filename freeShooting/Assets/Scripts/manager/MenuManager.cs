@@ -578,6 +578,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OnMagic1Click()
     {
+        Hero3d.SetActive(false);
         MagicDetailsPanel.SetActive(true);
         MagicImage.sprite = GameManager.instance.players[playerClicked].magic1.image;
         MagicName.text = GameManager.instance.players[playerClicked].magic1.name;
@@ -586,6 +587,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OnMagic2Click()
     {
+        Hero3d.SetActive(false);
         MagicDetailsPanel.SetActive(true);
         MagicImage.sprite = GameManager.instance.players[playerClicked].magic2.image;
         MagicName.text = GameManager.instance.players[playerClicked].magic2.name;
@@ -593,6 +595,11 @@ public class MenuManager : MonoBehaviour
     }
     public void exitMagicDetailsPanel()
     {
+        Hero3d.SetActive(true);
+        for (int j = 0; j < 4; j++)
+        {
+            Hero3d.transform.GetChild(j).GetComponent<Animator>().SetFloat("x", 0.5f);
+        }
         MagicDetailsPanel.SetActive(false);
     }
     public void exitCongratulationPanel()
