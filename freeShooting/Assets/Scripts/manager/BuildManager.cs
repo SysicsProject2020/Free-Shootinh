@@ -119,6 +119,13 @@ public class BuildManager : MonoBehaviour
         Physics.Raycast(ray, out hit);
         if (hit.collider != null)
         {
+            if (lastRoutine != null)
+            {
+                GameManagerPartie.instance.itemParent.transform.GetChild(num).GetChild(0).gameObject.SetActive(false);
+                GameManagerPartie.instance.itemParent.transform.GetChild(num).GetChild(0).GetComponent<Image>().fillAmount = 0;
+                GameManagerPartie.instance.itemParent.transform.GetChild(num).GetChild(0).GetChild(0).GetComponent<Image>().fillAmount = 0;
+                StopCoroutine(lastRoutine);
+            }
             if (hit.collider.tag == "TowerDefendZone")
             {
                 Vector3 towerpos = new Vector3(hit.collider.transform.position.x, transform.position.y, hit.collider.transform.position.z);
