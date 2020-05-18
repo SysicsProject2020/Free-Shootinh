@@ -136,6 +136,7 @@ public class AIeasy : MonoBehaviour
                         }
                         int randomPos = Random.Range(0, k);
                         int randomTower = Random.Range(0, 6);
+                        GameManagerPartie.instance.enemyCoins += towers[randomTower].cost;
                         positionManager.add(towers[randomTower], BuildPos[buildPos[randomPos]], GameManagerPartie.instance.enemylvl);
                         break;
                     case "Pig":
