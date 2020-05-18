@@ -71,22 +71,20 @@ public class GameManagerPartie : MonoBehaviour
             case "Taurus":
                 /*playerMagic1.GetComponent<Image>().sprite = player.magic1.image;
                 playerMagic2.GetComponent<Image>().sprite = player.magic2.image;*/
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.shootMissileToEnemyBase(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.Shield(1); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<TaurusMagics>().Magic1(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<TaurusMagics>().Magic2(1); });
                 break;
             case "Panda":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.healTowers(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.allCardsFree(0); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<PandaMagics>().Magic2(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<PandaMagics>().Magic1(0); });
                 break;
             case "Rabbit":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.CarrotMissiles(1); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.carrotShield(0); });                
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<RabbitMagics>().Magic1(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<RabbitMagics>().Magic2(0); });                
                 break;
             case "Pig":
-                
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.destroyEnemyTower(1); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.destroyAll(); });
-
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<PigMagics>().Magic1(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<PigMagics>().Magic2(); });
                 break;
         }
        //  playerMagic1.GetComponent<Button>().interactable = false;
