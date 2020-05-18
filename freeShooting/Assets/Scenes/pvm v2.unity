@@ -1478,6 +1478,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506122757}
   m_CullTransparentMesh: 0
+--- !u!1 &545054756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7956397600690076408, guid: e97403f55c62d5d4790f74f0ef4828b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1510614150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &545054758
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545054756}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.999999, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,6 +3136,16 @@ PrefabInstance:
     - target: {fileID: 8480594232780487425, guid: e97403f55c62d5d4790f74f0ef4828b4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055795144864432206, guid: e97403f55c62d5d4790f74f0ef4828b4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.9004574
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530241815151745000, guid: e97403f55c62d5d4790f74f0ef4828b4,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

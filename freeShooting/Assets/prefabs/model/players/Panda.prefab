@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 2114994364485276605}
   - component: {fileID: 8867585860286321541}
   - component: {fileID: -6744367222255881486}
-  - component: {fileID: 4340972471567816677}
   m_Layer: 0
   m_Name: Panda
   m_TagString: Untagged
@@ -109,18 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
---- !u!114 &4340972471567816677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7516014306926793344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 435f451faead64d48a2e6da1260014ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7480458495561756180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,6 +119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FINAL3
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5f781caeaa348754e8698072a9946984,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 5f781caeaa348754e8698072a9946984,
         type: 3}

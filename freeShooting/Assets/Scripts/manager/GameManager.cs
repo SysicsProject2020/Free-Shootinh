@@ -38,7 +38,34 @@ public class GameManager : MonoBehaviour
             GunSelected = guns[0];
             setPlayer(players[0]);
             remplirSelectedTower();
-            diamond = 900;
+            players[0].level = 1;
+            players[0].locked = false;
+            for(int i = 1; i < players.Length; i++){
+                players[i].level = 1;
+                players[i].locked = true;
+
+            }
+            guns[0].level = 1;
+            guns[0].locked = false;
+            for (int i = 1; i < guns.Length; i++)
+            {
+                guns[i].locked = true;
+                guns[i].level = 1;
+            }
+            
+            for(int i = 0; i<Towers.Length; i++)
+            {
+                Towers[i].level = 1;
+                if (i > 5)
+                {
+                    Towers[i].locked = true;
+                }
+                else
+                {
+                    Towers[i].locked = false;
+                }
+            }
+            diamond = 0;
             TowersNumber = 9;
             XP = 0;
             SaveSystem.SavePlayer();

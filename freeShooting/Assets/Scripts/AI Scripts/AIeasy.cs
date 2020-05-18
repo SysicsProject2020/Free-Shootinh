@@ -36,7 +36,7 @@ public class AIeasy : MonoBehaviour
     private byte k = 0;
     public enum AIState
     {
-        idle, die, shoot, build, hide,start,BuildRandom
+        idle, die, shoot, build, hide,start,BuildRandom,Magic1,Magic2
     }
     public static void changeState(AIState state)
     {
@@ -100,6 +100,54 @@ public class AIeasy : MonoBehaviour
                     nextTimeToBuildRandom = Time.time + buildTimeRandom;
                     lastUnbuildedtower = positionManager.numBuildedTowers;
                     AiCanBuildRandomly = true;
+                }
+                break;
+            case AIState.Magic1:
+                switch (GameManager.instance.getPlayer().name)
+                {
+                    case "Panda":
+                        MagicFunctions.instance.PandaMagic1(1);
+                            break;
+                    case "Pig":
+                        MagicFunctions.instance.PigMagic1(1);
+                        break;
+                    case "Rabbit":
+                        MagicFunctions.instance.RabbitMagic1(1);
+                        break;
+                    case "Taurus":
+                        MagicFunctions.instance.TaurusMagic1(1);
+                        break;
+
+                }
+                break;
+            case AIState.Magic2:
+                switch (GameManager.instance.getPlayer().name)
+                {
+                    case "Panda":
+                        buildPos = new byte[5];
+                        k = 0;
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (positionManager.buildingGameObject[1, i] == null)
+                            {
+                                buildPos[k] = (byte)i;
+                                k++;
+                            }
+                        }
+                        int randomPos = Random.Range(0, k);
+                        int randomTower = Random.Range(0, 6);
+                        positionManager.add(towers[randomTower], BuildPos[buildPos[randomPos]], GameManagerPartie.instance.enemylvl);
+                        break;
+                    case "Pig":
+                        MagicFunctions.instance.PigMagic2();
+                        break;
+                    case "Rabbit":
+                        MagicFunctions.instance.RabbitMagic2(1);
+                        break;
+                    case "Taurus":
+                        MagicFunctions.instance.TaurusMagic2(1);
+                        break;
+
                 }
                 break;
             case AIState.BuildRandom:

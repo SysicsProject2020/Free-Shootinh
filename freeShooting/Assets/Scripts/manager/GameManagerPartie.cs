@@ -71,20 +71,20 @@ public class GameManagerPartie : MonoBehaviour
             case "Taurus":
                 /*playerMagic1.GetComponent<Image>().sprite = player.magic1.image;
                 playerMagic2.GetComponent<Image>().sprite = player.magic2.image;*/
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<TaurusMagics>().Magic1(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<TaurusMagics>().Magic2(1); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.TaurusMagic1(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.TaurusMagic2(0); });
                 break;
             case "Panda":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<PandaMagics>().Magic2(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<PandaMagics>().Magic1(0); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.PandaMagic1(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.PandaMagic2(0); });
                 break;
             case "Rabbit":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<RabbitMagics>().Magic1(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<RabbitMagics>().Magic2(0); });                
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.RabbitMagic1(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.RabbitMagic2(0); });                
                 break;
             case "Pig":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<PigMagics>().Magic1(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { player_.GetComponent<PigMagics>().Magic2(); });
+                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.PigMagic1(0); });
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.PigMagic2(); });
                 break;
         }
        //  playerMagic1.GetComponent<Button>().interactable = false;

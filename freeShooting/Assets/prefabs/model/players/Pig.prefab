@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: -7755023958034813626}
   - component: {fileID: -1186564998018039098}
   - component: {fileID: -569666260803930784}
-  - component: {fileID: 1723535385298930842}
   m_Layer: 0
   m_Name: Pig
   m_TagString: Untagged
@@ -109,21 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
---- !u!114 &1723535385298930842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7364589987089995598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a348c8a0cf5bdca40b1782359d33a630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyMissile: {fileID: 1746672929845058, guid: 6914c451adebee04785d9413a7e3f24b,
-    type: 3}
-  Explosion: {fileID: 1607489160101874, guid: 731f5ce10c6adab4ba085268d0cfb6e1, type: 3}
 --- !u!1001 &2527497268178682448
 PrefabInstance:
   m_ObjectHideFlags: 0

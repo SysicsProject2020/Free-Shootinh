@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7459038428135674933}
   - component: {fileID: 9147797793462935581}
   - component: {fileID: -1998585524569561454}
-  - component: {fileID: 4641318859548376127}
   m_Layer: 0
   m_Name: Taurus
   m_TagString: Untagged
@@ -78,22 +77,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
---- !u!114 &4641318859548376127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909728847741652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 326799d069141d449a5baefb4044f196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shield: {fileID: 5808580019842481005, guid: d37b182c72bfa6d449c82e8012d3a2ef, type: 3}
-  DamageMissiles: {fileID: 1262846755526404, guid: 246abbe77b657aa45808a0d3c34e62d8,
-    type: 3}
-  speed: 1.75
 --- !u!1 &7761204783313940970
 GameObject:
   m_ObjectHideFlags: 0

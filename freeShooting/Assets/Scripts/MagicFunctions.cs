@@ -18,7 +18,7 @@ public class MagicFunctions : MonoBehaviour
     [Header("Magic:AllCardsFree")]
     private bool testFree=false;
     private short currentCoins;
-    [Header("Magic:MissilesMagic")]
+    [Header("Magic:RabitMagic2")]
     public GameObject Missiles;
     private GameObject MissilesInstantiated;
     
@@ -32,7 +32,7 @@ public class MagicFunctions : MonoBehaviour
     
     public GameObject DamageMissiles;
     public float speed;
-    [Header("Magic:CarrotShield")]
+    [Header("Magic:RabbitMagic1")]
     public GameObject Carrot;
     public GameObject CarrotWall;
 
@@ -44,7 +44,7 @@ public class MagicFunctions : MonoBehaviour
         instance = this;
     }
     
-    public void destroyAll()
+    public void PigMagic2()
     {
         ExplosionInstatiated= Instantiate(Explosion, new Vector3(0, 12, 0), Explosion.transform.rotation);
         StartCoroutine(destoryAllTowers(ExplosionInstatiated));
@@ -81,7 +81,7 @@ public class MagicFunctions : MonoBehaviour
 
 
     }
-    public void Shield(int player)
+    public void TaurusMagic1(int player)
     {
         if (player == 0)
         {
@@ -100,7 +100,7 @@ public class MagicFunctions : MonoBehaviour
         Destroy(go);
     }
    
-    public void destroyEnemyTower(int player)
+    public void PigMagic1(int player)
     {
         if (player == 0)
         {
@@ -178,7 +178,7 @@ public class MagicFunctions : MonoBehaviour
         Destroy(go);
 
     }
-    public void CarrotMissiles(int player)
+    public void RabbitMagic2(int player)
     {
         if (player == 0)
         {
@@ -227,7 +227,7 @@ public class MagicFunctions : MonoBehaviour
         
     }
    
-    public void allCardsFree(int player)
+    public void PandaMagic2(int player)
     {
         if (player == 0)
         {
@@ -239,10 +239,7 @@ public class MagicFunctions : MonoBehaviour
             testFree = true;
             currentCoins = GameManagerPartie.instance.playerCoins;
         }
-        else
-        {
 
-        }
     }
     void returnCardsValues(int player)
     {
@@ -250,7 +247,7 @@ public class MagicFunctions : MonoBehaviour
         testFree = false;
     }
     // Update is called once per frame
-    public void healTowers(int player)
+    public void PandaMagic1(int player)
     {
         if (player == 0)
         {
@@ -279,7 +276,7 @@ public class MagicFunctions : MonoBehaviour
             GameManagerPartie.instance.enemyTowerBase_.GetComponent<target>().gainhealth(200);
         }
     }
-    public void carrotShield(int player)
+    public void RabbitMagic1(int player)
     {
         if (player == 0)
         {
@@ -348,7 +345,7 @@ public class MagicFunctions : MonoBehaviour
         
        
     }
-    public void shootMissileToEnemyBase(int i)
+    public void TaurusMagic2(int i)
     {
         if (i == 0)
         {
