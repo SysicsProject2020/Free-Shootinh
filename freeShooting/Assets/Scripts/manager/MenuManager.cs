@@ -126,7 +126,6 @@ public class MenuManager : MonoBehaviour
     public GameObject HeroMain;
 
 
-
     private void Start()
     {
         towersMenuInstantiate();
@@ -300,7 +299,8 @@ public class MenuManager : MonoBehaviour
         settingPanel.SetActive(false);
     }
     public void shop()
-    {        
+    {
+        HeroMain.SetActive(false);
         shopPanel.SetActive(true);
         mainPanel.SetActive(false);
         inventoryPanel.SetActive(false);
@@ -314,6 +314,7 @@ public class MenuManager : MonoBehaviour
     }
     public void inventory()
     {
+        HeroMain.SetActive(false);
         shopPanel.SetActive(false);
         mainPanel.SetActive(false);
         inventoryPanel.SetActive(true);
@@ -396,7 +397,7 @@ public class MenuManager : MonoBehaviour
         playerClicked = (byte)i;
 
         PlayerDetailsPanel.SetActive(true);
-
+        Hero3d.SetActive(true);
         for (int j = 0; j < 4; j++)
         {
             Hero3d.transform.GetChild(j).gameObject.SetActive(false);
@@ -459,6 +460,7 @@ public class MenuManager : MonoBehaviour
     }
     public void exitPlayerDetails()
     {
+        Hero3d.SetActive(false);
         PlayerDetailsPanel.SetActive(false);
         ButtomBarButton1.SetActive(true);
         ButtomBarButton2.SetActive(true);
