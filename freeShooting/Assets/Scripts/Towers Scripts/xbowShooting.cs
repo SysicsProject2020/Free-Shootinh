@@ -76,7 +76,7 @@ public class xbowShooting : MonoBehaviour
     {
         GameObject clone = Instantiate(bow, firePoint.position, Quaternion.Euler(0,0,0));
         //clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(target_.transform.position.x, target_.transform.position.y, target_.transform.position.z);
-        clone.transform.rotation = Quaternion.Euler(transform.rotation.x, rotObject.eulerAngles.y, transform.rotation.z);
+        clone.transform.rotation = Quaternion.Euler(180, rotObject.eulerAngles.y, 180);
         clone.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * speed;
         clone.GetComponent<bullet>().changedam(gameObject.GetComponent<towerInf>().damage);
         clone.GetComponent<bullet>().sender = gameObject;

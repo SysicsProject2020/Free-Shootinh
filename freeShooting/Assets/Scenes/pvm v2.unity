@@ -131,8 +131,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2368430}
   - component: {fileID: 2368433}
-  - component: {fileID: 2368432}
   - component: {fileID: 2368431}
+  - component: {fileID: 2368432}
   m_Layer: 5
   m_Name: Magic1
   m_TagString: Untagged
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2368429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -231,13 +231,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &2368433
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1363,8 +1366,8 @@ GameObject:
   m_Component:
   - component: {fileID: 506122758}
   - component: {fileID: 506122761}
-  - component: {fileID: 506122760}
   - component: {fileID: 506122759}
+  - component: {fileID: 506122760}
   m_Layer: 5
   m_Name: Magic2
   m_TagString: Untagged
@@ -1454,7 +1457,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 506122757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -1463,13 +1466,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 34f556d724b1bbf4097ca6220db2c581, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &506122761
 CanvasRenderer:
   m_ObjectHideFlags: 0

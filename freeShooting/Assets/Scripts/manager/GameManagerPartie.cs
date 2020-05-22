@@ -65,7 +65,8 @@ public class GameManagerPartie : MonoBehaviour
     }
     private void setMagic()
     {
-        
+        playerMagic1.GetComponent<Image>().sprite = GameManager.instance.getPlayer().magic1.image;
+        playerMagic2.GetComponent<Image>().sprite = GameManager.instance.getPlayer().magic2.image;
         switch (player.name)
         {
             case "Taurus":
@@ -73,6 +74,7 @@ public class GameManagerPartie : MonoBehaviour
                 playerMagic2.GetComponent<Image>().sprite = player.magic2.image;*/
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.TaurusMagic1(0); });
                 playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.TaurusMagic2(0); });
+          
                 break;
             case "Panda":
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.PandaMagic1(0); });
