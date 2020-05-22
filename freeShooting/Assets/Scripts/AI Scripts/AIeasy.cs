@@ -153,7 +153,7 @@ public class AIeasy : MonoBehaviour
                 }
                 break;
             case AIState.BuildRandom:
-                StartCoroutine(randombuild());
+                randombuild();
                 changeState(AIState.idle);
                 break;
             case AIState.hide:
@@ -227,7 +227,7 @@ public class AIeasy : MonoBehaviour
         yield return new WaitForSeconds (time);
         isMoving = false;
     }
-    IEnumerator randombuild()
+    void randombuild()
     {
         GameManagerPartie.instance.enemy_.transform.GetChild(0).GetComponent<Animator>().SetFloat("x", 0.5f);
         Debug.Log("buildrandom");
@@ -254,7 +254,7 @@ public class AIeasy : MonoBehaviour
         }
         if (k > 0)
         {
-            yield return new WaitForSeconds(time);
+            //yield return new WaitForSeconds(time);
             int randomTower = Random.Range(0, k);
             positionManager.add(towers[randomTower], BuildPos[buildPos[randomBuildPos]], GameManagerPartie.instance.enemylvl);
 
