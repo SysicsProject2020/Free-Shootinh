@@ -67,14 +67,16 @@ public class xbowShooting : MonoBehaviour
     void rotation()
     {
         Vector3 relativePos = target_.transform.position - rotationPart.position;
-        Quaternion rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
+        rotObject = Quaternion.LookRotation(relativePos, Vector3.up);
         rotObject = Quaternion.Euler(transform.rotation.x, rotObject.eulerAngles.y, transform.rotation.z);
         rotationPart.rotation = rotObject;
     }
+    Quaternion rotObject;
     private void shoot()
     {
         GameObject clone = Instantiate(bow, firePoint.position, Quaternion.Euler(0,0,0));
         //clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(target_.transform.position.x, target_.transform.position.y, target_.transform.position.z);
+        clone.transform.rotation = Quaternion.Euler(transform.rotation.x, rotObject.eulerAngles.y, transform.rotation.z);
         clone.GetComponent<Rigidbody>().velocity = firePoint.transform.forward * speed;
         clone.GetComponent<bullet>().changedam(gameObject.GetComponent<towerInf>().damage);
         clone.GetComponent<bullet>().sender = gameObject;

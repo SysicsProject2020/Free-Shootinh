@@ -140,7 +140,7 @@ public class MenuManager : MonoBehaviour
 
     void changeHeroMain()
     {
-        
+        HeroMain.SetActive(true);
         for (short i = 0; i < 4; i++)
         {
             if (GameManager.instance.players[i] == GameManager.instance.getPlayer())
@@ -238,7 +238,8 @@ public class MenuManager : MonoBehaviour
     }
     public void setting()
     {      
-        settingPanel.SetActive(true);       
+        settingPanel.SetActive(true);
+        HeroMain.SetActive(false);
     }
     public void settingMusic(bool active)
     {
@@ -295,6 +296,7 @@ public class MenuManager : MonoBehaviour
     }
     public void exitSetting()
     {
+        changeHeroMain();
         settingPanel.SetActive(false);
     }
     public void shop()
