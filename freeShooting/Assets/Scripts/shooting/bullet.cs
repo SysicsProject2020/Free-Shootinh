@@ -56,9 +56,12 @@ public class bullet : MonoBehaviour
             //hitSound[choose].Play();    
             
         }
-        if (GameManager.instance.getGun().EndEffect != null)
+        if (GetComponent<playerShooting>()!=null)
         {
-           GameObject go = Instantiate(GameManager.instance.getGun().EndEffect, transform.position, transform.rotation);           
+            if (GameManager.instance.getGun().EndEffect != null)
+            {
+                GameObject go = Instantiate(GameManager.instance.getGun().EndEffect, transform.position, transform.rotation);
+            }
         }
         Destroy(gameObject);
     }
