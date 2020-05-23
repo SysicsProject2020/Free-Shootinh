@@ -21,7 +21,7 @@ public class MenuManager : MonoBehaviour
     public GameObject GunsPanel;
     public GameObject GunButton;
 
-    public GameObject unselectedTowerButton; 
+    public GameObject unselectedTowerButton;
     public GameObject unselectedPlayerButton;
     public GameObject unselectedGunButton;
     public GameObject selectedTowerButton;
@@ -32,8 +32,9 @@ public class MenuManager : MonoBehaviour
     public GameObject gunpanel;
     public TextMeshProUGUI gemText;
 
-   
-   
+    short lastCardSelected;
+    bool stopUseAnimation = false;
+
     [Header("PLAYERS Panel")]
     public GameObject PlayerDetailsPanel;
     public TextMeshProUGUI PlayerName;
@@ -324,24 +325,23 @@ public class MenuManager : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            SelectedTowersPanel.transform.GetChild(i).GetComponentInChildren<Image>().sprite = GameManager.instance.GetSelectedTowers()[i].image;
+            SelectedTowersPanel.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.GetSelectedTowers()[i].image;
         }
         for (int j = 0; j < GameManager.instance.GetNonSelectedTowers().Length; j++)
         {
             if (GameManager.instance.GetNonSelectedTowers()[j].locked == false)
             {
-                NotSelectedTowersPanel.transform.GetChild(j).GetComponentInChildren<Image>().sprite = GameManager.instance.GetNonSelectedTowers()[j].image;
+                NotSelectedTowersPanel.transform.GetChild(j).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.GetNonSelectedTowers()[j].image;
             }
             else
             {
-                NotSelectedTowersPanel.transform.GetChild(j).GetComponentInChildren<Image>().sprite = GameManager.instance.GetNonSelectedTowers()[j].Lockedimage;
+                NotSelectedTowersPanel.transform.GetChild(j).GetChild(1).GetComponent<Image>().sprite = GameManager.instance.GetNonSelectedTowers()[j].Lockedimage;
             }
            
         }
     }
     public void towersMenuInstantiate()
     {
-
         for (int j = 0; j < GameManager.instance.GetNonSelectedTowers().Length; j++)
         {
             GameObject go = Instantiate(towerButton, NotSelectedTowersPanel.transform);
@@ -519,9 +519,12 @@ public class MenuManager : MonoBehaviour
         UsePlayerButton.GetComponent<Button>().interactable = false;
         SaveSystem.SavePlayer();
     }
+
+    bool hero = false;
     public void OnUnlockPlayer()
     {
-        
+        Hero3d.SetActive(false);
+        hero = true;
         GameManager.instance.players[playerClicked].locked = false;
         UnlockPlayerButton.SetActive(false);
         upgradePlayerButton.SetActive(true);
@@ -533,7 +536,7 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(CoinAnimation(GameManager.instance.players[playerClicked].UnlockPrice));
         UnlockObject(GameManager.instance.players[playerClicked].name, GameManager.instance.players[playerClicked].image);
         fillPlayersprites();
-        exitPlayerDetails();
+        //exitPlayerDetails();
         SaveSystem.SavePlayer();
 
 
@@ -554,8 +557,9 @@ public class MenuManager : MonoBehaviour
     }
     public void OnUpgradePlayer()
     {
-        
-       exitPlayerDetails();
+        Hero3d.SetActive(false);
+        hero = true;
+        //exitPlayerDetails();
         StartCoroutine(CoinAnimation(GameManager.instance.players[playerClicked].UpgradePrice[GameManager.instance.players[playerClicked].level - 1]));
         GameManager.instance.players[playerClicked].level++;
         PlayerHealth.text = GameManager.instance.players[playerClicked].Get_health_player().ToString();
@@ -608,6 +612,15 @@ public class MenuManager : MonoBehaviour
     }
     public void exitCongratulationPanel()
     {
+        if (hero)
+        {
+            Hero3d.SetActive(true);
+            hero = false;
+            for (int j = 0; j < 4; j++)
+            {
+                Hero3d.transform.GetChild(j).GetComponent<Animator>().SetFloat("x", 0.5f);
+            }
+        }
         CongratulationPanel.SetActive(false);
     }
     public void RegisterListenerShop(GameObject obj, int i)
@@ -794,15 +807,7 @@ public class MenuManager : MonoBehaviour
                     towerUpgradeValue.text = GameManager.instance.GetNonSelectedTowers()[i].UpgradePrice[1].ToString();
                     break;
             }
-
-           
-
-
-
         }
-
-
-
     }
     public void OnSelectedTowerClick(int i)
     {
@@ -815,6 +820,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
+            lastCardSelected = (short)i;
             lastTowerClicked = GameManager.instance.GetSelectedTowers()[i];
             TowerdetailsPanel.SetActive(true);
             TowerDescription.text = GameManager.instance.GetSelectedTowers()[i].description;
@@ -901,13 +907,82 @@ public class MenuManager : MonoBehaviour
         GameManager.instance.GetNonSelectedTowers()[j] = tower;
         GameManager.instance.setSelectedTower(GameManager.instance.GetSelectedTowers());
         SaveSystem.SavePlayer();
+        stopUseAnimation = true;
     }
     public void OnUseTowerClick()
     {
         TowerdetailsPanel.SetActive(false);
         testTowerClick = true;
-        
+        stopUseAnimation = false;
+        for (short i = 0; i < 6; i++)
+        {
+            StartCoroutine(useAnimationSelected(i));
+        }
+        StartCoroutine(useAnimationNotSelected());
     }
+
+    IEnumerator useAnimationSelected(short nb)
+    {
+        SelectedTowersPanel.transform.GetChild(nb).GetChild(0).gameObject.SetActive(true);
+        while(!stopUseAnimation)
+        {
+            for (int i = 0; i < 25; i++)
+            {
+                if (stopUseAnimation)
+                {
+                    break;
+                }
+                yield return new WaitForSeconds(1f / 25f);
+                float fill = (float)i / 25 ;
+                SelectedTowersPanel.transform.GetChild(nb).GetChild(0).GetComponent<Image>().fillAmount = fill;
+            }
+            for (int i = 0; i < 25; i++)
+            {
+                if (stopUseAnimation)
+                {
+                    break;
+                }
+                yield return new WaitForSeconds(1f / 25f);
+                float fill = 1 - ((float)i / 25 );
+                SelectedTowersPanel.transform.GetChild(nb).GetChild(0).GetComponent<Image>().fillAmount = fill;
+            }
+        }
+        testTowerClick = false;
+        SelectedTowersPanel.transform.GetChild(nb).GetChild(0).gameObject.SetActive(false);
+    }
+    IEnumerator useAnimationNotSelected()
+    {
+        short nb = lastCardSelected;
+        NotSelectedTowersPanel.transform.GetChild(nb).GetChild(0).gameObject.SetActive(true);
+        while(!stopUseAnimation)
+        {
+            for (int i = 0; i < 25; i++)
+            {
+                if (stopUseAnimation)
+                {
+                    break;
+                }
+                yield return new WaitForSeconds(1f / 25f);
+                float fill = (float)i / 25;
+                NotSelectedTowersPanel.transform.GetChild(nb).GetChild(0).GetComponent<Image>().fillAmount = fill;
+            }
+            for (int i = 0; i < 25; i++)
+            {
+                if (stopUseAnimation)
+                {
+                    break;
+                }
+                yield return new WaitForSeconds(1f / 25f);
+                float fill = 1 - ((float)i / 25);
+                NotSelectedTowersPanel.transform.GetChild(nb).GetChild(0).GetComponent<Image>().fillAmount = fill;
+            }
+            
+        }
+        testTowerClick = false;
+        NotSelectedTowersPanel.transform.GetChild(nb).GetChild(0).gameObject.SetActive(false);
+
+    }
+
     public void OnUseGunClick()
     {
         GameManager.instance.setGun(GameManager.instance.guns[GunClicked]);
@@ -918,7 +993,7 @@ public class MenuManager : MonoBehaviour
     {
         //GameManager.instance.diamond -= lastTowerClicked.UpgradePrice[lastTowerClicked.level - 1];
         //  gemText.text = GameManager.instance.diamond.ToString();
-        exitTowerDetailsPanel();
+        //exitTowerDetailsPanel();
         StartCoroutine(CoinAnimation(lastTowerClicked.UpgradePrice[lastTowerClicked.level - 1]));
         lastTowerClicked.level++;
 
@@ -969,7 +1044,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OnUpgradeGunClick()
     {
-        exitGunDetailsPanel();
+        //exitGunDetailsPanel();
         StartCoroutine(CoinAnimation(GameManager.instance.guns[GunClicked].UpgradePrice[GameManager.instance.guns[GunClicked].level - 1]));
         GameManager.instance.guns[GunClicked].level++;
         GunDamage.text = GameManager.instance.guns[GunClicked].Get_damage_Gun_player().ToString();
@@ -1014,7 +1089,7 @@ public class MenuManager : MonoBehaviour
         TowerStarlvl3.SetActive(false);
         towerUpgradeValue.text = lastTowerClicked.UpgradePrice[0].ToString();
         UnlockObject(lastTowerClicked.name, lastTowerClicked.image);
-        exitTowerDetailsPanel();
+        //exitTowerDetailsPanel();
         fillTowersSprites();
         SaveSystem.SavePlayer();
 
@@ -1035,7 +1110,7 @@ public class MenuManager : MonoBehaviour
         GunStarlvl3.SetActive(false);
         gunUpgradeValue.text = GameManager.instance.guns[GunClicked].UpgradePrice[0].ToString();
         UnlockObject(GameManager.instance.guns[GunClicked].name, GameManager.instance.guns[GunClicked].image);
-        exitGunDetailsPanel();
+        //exitGunDetailsPanel();
         FillGunsSprite();
         SaveSystem.SavePlayer();
     }

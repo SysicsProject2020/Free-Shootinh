@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class bullet : MonoBehaviour
 {
     public short damage;
-    public GameObject sender; 
+    public GameObject sender;
+    bool gunHit = false;
 
     public void changedam(short dam)
     {
@@ -21,7 +22,11 @@ public class bullet : MonoBehaviour
         else
         {
             gameObject.layer = LayerMask.NameToLayer("Enemy Bullet");
-        }          
+        }
+        if (sender.GetComponent<playerShooting>() != null)
+        {
+            gunHit = true;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -56,7 +61,7 @@ public class bullet : MonoBehaviour
             //hitSound[choose].Play();    
             
         }
-        if (GetComponent<playerShooting>()!=null)
+        if (gunHit)
         {
             if (GameManager.instance.getGun().EndEffect != null)
             {
