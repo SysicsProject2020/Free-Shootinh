@@ -8,6 +8,9 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
+    public float amount;
+    public float speed;
+    
     private bool testTowerClick = false;
     public GameObject mainPanel;
     public GameObject settingPanel;
@@ -209,6 +212,7 @@ public class MenuManager : MonoBehaviour
     }
     public void player()
     {
+        stopUseAnimation = true;
         unselectedTowerButton.SetActive(true);
         unselectedPlayerButton.SetActive(false);
         unselectedGunButton.SetActive(true);
@@ -221,6 +225,7 @@ public class MenuManager : MonoBehaviour
     }
     public void gun()
     {
+        stopUseAnimation = true;
         unselectedTowerButton.SetActive(true);
         unselectedPlayerButton.SetActive(true);
         unselectedGunButton.SetActive(false);
@@ -301,6 +306,7 @@ public class MenuManager : MonoBehaviour
     }
     public void shop()
     {
+        stopUseAnimation = true;
         HeroMain.SetActive(false);
         shopPanel.SetActive(true);
         mainPanel.SetActive(false);
@@ -308,6 +314,7 @@ public class MenuManager : MonoBehaviour
     }
     public void main()
     {
+        stopUseAnimation = true;
         shopPanel.SetActive(false);
         mainPanel.SetActive(true);
         inventoryPanel.SetActive(false);
@@ -715,6 +722,8 @@ public class MenuManager : MonoBehaviour
     }
     public void OnNotSelectedTowerClick(int i)
     {
+        stopUseAnimation = true;
+        lastCardSelected = (short)i;
         lastTowerClicked = GameManager.instance.GetNonSelectedTowers()[i];
         TowerNotSelectedClicked = (byte)i;
         TowerdetailsPanel.SetActive(true);
@@ -820,7 +829,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            lastCardSelected = (short)i;
+           
             lastTowerClicked = GameManager.instance.GetSelectedTowers()[i];
             TowerdetailsPanel.SetActive(true);
             TowerDescription.text = GameManager.instance.GetSelectedTowers()[i].description;
@@ -909,8 +918,14 @@ public class MenuManager : MonoBehaviour
         SaveSystem.SavePlayer();
         stopUseAnimation = true;
     }
+    public void onClickDehors()
+    {
+        stopUseAnimation = true;
+
+    }
     public void OnUseTowerClick()
     {
+        
         TowerdetailsPanel.SetActive(false);
         testTowerClick = true;
         stopUseAnimation = false;
@@ -953,6 +968,11 @@ public class MenuManager : MonoBehaviour
     IEnumerator useAnimationNotSelected()
     {
         short nb = lastCardSelected;
+        
+        Vector2 startingPos;
+        startingPos.x = NotSelectedTowersPanel.transform.GetChild(nb).position.x;
+        startingPos.y = NotSelectedTowersPanel.transform.GetChild(nb).position.y;
+        
         NotSelectedTowersPanel.transform.GetChild(nb).GetChild(0).gameObject.SetActive(true);
         while(!stopUseAnimation)
         {
@@ -962,6 +982,10 @@ public class MenuManager : MonoBehaviour
                 {
                     break;
                 }
+               
+                NotSelectedTowersPanel.transform.GetChild(lastCardSelected).position = new Vector3(startingPos.x + Mathf.Cos(Time.time * speed) * amount, startingPos.y + Mathf.Sin(Time.time * speed) * amount, NotSelectedTowersPanel.transform.GetChild(lastCardSelected).position.z);
+
+
                 yield return new WaitForSeconds(1f / 25f);
                 float fill = (float)i / 25;
                 NotSelectedTowersPanel.transform.GetChild(nb).GetChild(0).GetComponent<Image>().fillAmount = fill;
@@ -972,6 +996,7 @@ public class MenuManager : MonoBehaviour
                 {
                     break;
                 }
+                NotSelectedTowersPanel.transform.GetChild(lastCardSelected).position = new Vector3(startingPos.x + Mathf.Cos(Time.time * speed) * amount, startingPos.y + Mathf.Sin(Time.time * speed) * amount, NotSelectedTowersPanel.transform.GetChild(lastCardSelected).position.z);
                 yield return new WaitForSeconds(1f / 25f);
                 float fill = 1 - ((float)i / 25);
                 NotSelectedTowersPanel.transform.GetChild(nb).GetChild(0).GetComponent<Image>().fillAmount = fill;
@@ -979,6 +1004,7 @@ public class MenuManager : MonoBehaviour
             
         }
         testTowerClick = false;
+        NotSelectedTowersPanel.transform.GetChild(nb).position = new Vector3(startingPos.x , startingPos.y , NotSelectedTowersPanel.transform.GetChild(nb).position.z);
         NotSelectedTowersPanel.transform.GetChild(nb).GetChild(0).gameObject.SetActive(false);
 
     }
