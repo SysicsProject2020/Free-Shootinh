@@ -53,7 +53,7 @@ public class MagicFunctions : MonoBehaviour
     {
         for(int i = 0; i < 11; i++)
         {
-            yield return new WaitForSeconds(Time.deltaTime*10);
+            yield return new WaitForSeconds(0.3f);
             go.transform.localScale += new Vector3(11, 10,20);
             
         }
