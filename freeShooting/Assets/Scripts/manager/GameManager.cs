@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public short diamond;
-
+    public string playerName="Mr Nooba";
     public GunsScript[] guns = new GunsScript[10];   
     public static GameManager instance;
     public byte TowersNumber;
@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+
+            playerName = "player(" + UnityEngine.Random.Range(1, 255) + ")";
             GunSelected = guns[0];
             setPlayer(players[0]);
             remplirSelectedTower();
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour
     private void loadData()
     {
         PlayerData data = SaveSystem.loadPlayerData();
+        playerName = data.PlayerName;
         diamond = data.diamonds;
         for (int i=0;i<players.Length;i++)
         {

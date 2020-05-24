@@ -128,6 +128,12 @@ public class MenuManager : MonoBehaviour
 
     [Header("Hero")]
     public GameObject HeroMain;
+    [Header("Profile")]
+    public GameObject profilePanel;
+    public GameObject changeNamePanel;
+    public GameObject ChangeNameField;
+    public TextMeshProUGUI WelcomTxt;
+
 
 
     private void Start()
@@ -140,7 +146,37 @@ public class MenuManager : MonoBehaviour
         gemText.text = GameManager.instance.diamond.ToString();
         changeHeroMain();
     }
+    public void OnclickEditName()
+    {
+        changeNamePanel.SetActive(true);
+      //  ChangeNameField.GetComponent<TextMeshProUGUI>().text = "";
 
+    }
+    public void exitChangeName()
+    {
+        changeNamePanel.SetActive(false);
+    }
+    public void ValidName()
+    {
+        GameManager.instance.playerName = ChangeNameField.GetComponent<TextMeshProUGUI>().text;
+        SaveSystem.SavePlayer();
+        WelcomTxt.text = "Welcom " + GameManager.instance.playerName;
+        changeNamePanel.SetActive(false);
+        
+
+
+    }
+    public void onProfileClick()
+    {
+        WelcomTxt.text = "Welcom " + GameManager.instance.playerName;
+        HeroMain.SetActive(false);
+        profilePanel.SetActive(true);
+    }
+    public void exitProfilePanel()
+    {
+        profilePanel.SetActive(false);
+        changeHeroMain();
+    }
     void changeHeroMain()
     {
         HeroMain.SetActive(true);

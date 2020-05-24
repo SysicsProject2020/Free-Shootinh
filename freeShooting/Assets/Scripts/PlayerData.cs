@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData  
 {
+    public string PlayerName;
     public string SelectedPlayer;
     public string[] SelectedTowers=new string[6];
     public short diamonds;
@@ -23,6 +24,7 @@ public class PlayerData
 
     public PlayerData()
     {
+        PlayerName = GameManager.instance.playerName;
         diamonds = GameManager.instance.diamond;
         XP = GameManager.instance.XP;
         selectedGun = GameManager.instance.getGun().name;
