@@ -47,9 +47,9 @@ public class positionManager : MonoBehaviour
         if (place.z < 0)
         {
             //player
-            switch (place.x)
+            switch ((short)place.x)
             {
-                case -16.52f:
+                case -16:
                     if (buildingGameObject[0, 0] == null)
                     {
 
@@ -69,7 +69,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case -8.27f:
+                case -8:
                     if (buildingGameObject[0, 1] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0));
@@ -108,7 +108,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 8.27f:
+                case 8:
                     if (buildingGameObject[0, 3] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0));
@@ -128,7 +128,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 16.52f:
+                case 16:
                     if (buildingGameObject[0, 4] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0));
@@ -157,9 +157,9 @@ public class positionManager : MonoBehaviour
         else
         {
             //enemy
-            switch (place.x)
+            switch ((short)place.x)
             {
-                case -16.52f:
+                case -16:
                     if (buildingGameObject[1, 0] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -177,7 +177,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case -8.27f:
+                case -8:
                     if (buildingGameObject[1, 1] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -213,7 +213,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 8.27f:
+                case 8:
                     if (buildingGameObject[1, 3] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -231,7 +231,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 16.52f:
+                case 16:
                     if (buildingGameObject[1, 4] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -260,9 +260,9 @@ public class positionManager : MonoBehaviour
     {
         if (place.z < 0)
         {
-            switch (place.x)
+            switch ((short)place.x)
             {
-                case -16.52f:
+                case -16:
                     if (buildingGameObject[0, 0] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 0].cost - 50));
@@ -274,7 +274,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case -8.27f:
+                case -8:
                     if (buildingGameObject[0, 1] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 1].cost - 50));
@@ -298,7 +298,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 8.17f:
+                case 8:
                     if (buildingGameObject[0, 3] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 3].cost - 50));
@@ -310,7 +310,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 16.52f:
+                case 16:
                     if (buildingGameObject[0, 4] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 4].cost - 50));
@@ -330,9 +330,9 @@ public class positionManager : MonoBehaviour
         }
         else
         {   
-            switch (place.x)
+            switch ((short)place.x)
             {
-                case -16.52f:
+                case -16:
                     if (buildingGameObject[1, 0] != null)
                     {
                         addCoinPlayer((short)(buildingTowerScript[1, 0].cost - 50));
@@ -344,7 +344,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case -8.27f:
+                case -8:
                     if (buildingGameObject[1, 1] != null)
                     {
                         addCoinPlayer((short)(buildingTowerScript[1, 1].cost - 50));
@@ -368,7 +368,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 8.27f:
+                case 8:
                     if (buildingGameObject[1, 3] != null)
                     {
                         addCoinPlayer((short)(buildingTowerScript[1, 3].cost - 50));
@@ -380,7 +380,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 16.52f:
+                case 16:
                     if (buildingGameObject[1, 4] != null)
                     {
                         addCoinPlayer((short)(buildingTowerScript[1, 4].cost - 50));
