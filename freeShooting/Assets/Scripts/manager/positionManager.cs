@@ -14,14 +14,42 @@ public class positionManager : MonoBehaviour
     {
         towerZone = towerZone_;
     }
+    /// <summary>
+    /// to delete
+    /// </summary>
+    public GameObject[] bgm0 = new GameObject[5];
+    public GameObject[] bgm1 = new GameObject[5];
+    public TowerScript[] bts0 = new TowerScript[5];
+    public TowerScript[] bts1 = new TowerScript[5];
+
+    private void Update()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            bgm0[i] = buildingGameObject[0, i];
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            bgm1[i] = buildingGameObject[1, i];
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            bts0[i] = buildingTowerScript[0, i];
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            bts1[i] = buildingTowerScript[1, i];
+        }
+    }
+    //////
     public static void add(TowerScript tower, Vector3 place, byte lvl = 0)
     {
         if (place.z < 0)
         {
             //player
-            switch (place.x)
+            switch ((short)place.x)
             {
-                case -16.52f:
+                case -16:
                     if (buildingGameObject[0, 0] == null)
                     {
 
@@ -41,7 +69,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case -8.27f:
+                case -8:
                     if (buildingGameObject[0, 1] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0));
@@ -80,7 +108,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 8.27f:
+                case 8:
                     if (buildingGameObject[0, 3] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0));
@@ -100,7 +128,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 16.52f:
+                case 16:
                     if (buildingGameObject[0, 4] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 0, 0));
@@ -129,9 +157,9 @@ public class positionManager : MonoBehaviour
         else
         {
             //enemy
-            switch (place.x)
+            switch ((short)place.x)
             {
-                case -16.52f:
+                case -16:
                     if (buildingGameObject[1, 0] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -149,7 +177,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case -8.27f:
+                case -8:
                     if (buildingGameObject[1, 1] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -185,7 +213,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 8.27f:
+                case 8:
                     if (buildingGameObject[1, 3] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -203,7 +231,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 16.52f:
+                case 16:
                     if (buildingGameObject[1, 4] == null)
                     {
                         GameObject go = Instantiate(tower.prefab, new Vector3(place.x, tower.prefab.transform.position.y, place.z), Quaternion.Euler(0, 180, 0));
@@ -232,9 +260,9 @@ public class positionManager : MonoBehaviour
     {
         if (place.z < 0)
         {
-            switch (place.x)
+            switch ((short)place.x)
             {
-                case -16.52f:
+                case -16:
                     if (buildingGameObject[0, 0] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 0].cost - 50));
@@ -246,7 +274,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case -8.27f:
+                case -8:
                     if (buildingGameObject[0, 1] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 1].cost - 50));
@@ -270,7 +298,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 8.17f:
+                case 8:
                     if (buildingGameObject[0, 3] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 3].cost - 50));
@@ -282,7 +310,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 16.52f:
+                case 16:
                     if (buildingGameObject[0, 4] != null)
                     {
                         addCoinEnemy((short)(buildingTowerScript[0, 4].cost - 50));
@@ -302,9 +330,9 @@ public class positionManager : MonoBehaviour
         }
         else
         {   
-            switch (place.x)
+            switch ((short)place.x)
             {
-                case -16.52f:
+                case -16:
                     if (buildingGameObject[1, 0] != null)
                     {
                         addCoinPlayer((short)(buildingTowerScript[1, 0].cost - 50));
@@ -316,7 +344,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case -8.27f:
+                case -8:
                     if (buildingGameObject[1, 1] != null)
                     {
                         addCoinPlayer((short)(buildingTowerScript[1, 1].cost - 50));
@@ -340,7 +368,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 8.27f:
+                case 8:
                     if (buildingGameObject[1, 3] != null)
                     {
                         addCoinPlayer((short)(buildingTowerScript[1, 3].cost - 50));
@@ -352,7 +380,7 @@ public class positionManager : MonoBehaviour
                     }
                     break;
 
-                case 16.52f:
+                case 16:
                     if (buildingGameObject[1, 4] != null)
                     {
                         addCoinPlayer((short)(buildingTowerScript[1, 4].cost - 50));
@@ -388,7 +416,7 @@ public class positionManager : MonoBehaviour
 
     public static void PlayerShoot(int j)
     {
-        if (buildingTowerScript[0, j] != null)
+        if (buildingGameObject[0, j] != null)
         {
             switch (buildingTowerScript[0, j].name)
             {
@@ -683,7 +711,7 @@ public class positionManager : MonoBehaviour
 
     public static void EnemyShoot(int j)
     {
-        if (buildingTowerScript[1, j] != null)
+        if (buildingGameObject[1, j] != null)
         {
             switch (buildingTowerScript[1, j].name)
             {
@@ -979,7 +1007,7 @@ public class positionManager : MonoBehaviour
     {
         GameManagerPartie.instance.enemyCoins += a;
         GameManagerPartie.instance.enemyCoinsTxt.text = GameManagerPartie.instance.enemyCoins.ToString();
-        GameManagerPartie.instance.ChangeSprites();
+        GameManagerPartie.instance.ChangeInteractableSpritesPrice();
     }
     private static void addCoinPlayer(short a)
     {
@@ -1004,7 +1032,7 @@ public class positionManager : MonoBehaviour
 
     public static void HealingTowerAdd0(byte i)
     {
-        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        if (buildingGameObject[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
         {
             if (buildingGameObject[i, 2] != null)
             {
@@ -1018,7 +1046,7 @@ public class positionManager : MonoBehaviour
     }
     public static void HealingTowerAdd1(byte i)
     {
-        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        if (buildingGameObject[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
         {
             if (buildingGameObject[i, 3] != null)
             {
@@ -1029,14 +1057,14 @@ public class positionManager : MonoBehaviour
                 buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 1] });
             }
         }
-        if (buildingTowerScript[i, 0] != null && buildingTowerScript[i, 0].name == "healing tower")
+        if (buildingGameObject[i, 0] != null && buildingTowerScript[i, 0].name == "healing tower")
         {
             buildingGameObject[i, 0].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 1] });
         }
     }
     public static void HealingTowerAdd2(byte i)
     {
-        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        if (buildingGameObject[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
         {
             if (buildingGameObject[i, 0] != null)
             {
@@ -1047,7 +1075,7 @@ public class positionManager : MonoBehaviour
                 buildingGameObject[i, 1].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 2] });
             }
         }
-        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        if (buildingGameObject[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
         {
             if (buildingGameObject[i, 4] != null)
             {
@@ -1061,7 +1089,7 @@ public class positionManager : MonoBehaviour
     }
     public static void HealingTowerAdd3(byte i)
     {
-        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        if (buildingGameObject[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
         {
             if (buildingGameObject[i, 1] != null)
             {
@@ -1072,14 +1100,14 @@ public class positionManager : MonoBehaviour
                 buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 3] });
             }
         }
-        if (buildingTowerScript[i, 4] != null && buildingTowerScript[i, 4].name == "healing tower")
+        if (buildingGameObject[i, 4] != null && buildingTowerScript[i, 4].name == "healing tower")
         {
             buildingGameObject[i, 4].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 3] });
         }
     }
     public static void HealingTowerAdd4(byte i)
     {
-        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        if (buildingGameObject[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
         {
             if (buildingGameObject[i, 2] != null)
             {
@@ -1094,7 +1122,7 @@ public class positionManager : MonoBehaviour
 
     public static void HealingTowerDelete0(byte i)
     {
-        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        if (buildingGameObject[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
         {
             if (buildingGameObject[i, 2] != null)
             {
@@ -1104,28 +1132,28 @@ public class positionManager : MonoBehaviour
     }
     public static void HealingTowerDelete1(byte i)
     {
-        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        if (buildingGameObject[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
         {
             if (buildingGameObject[i, 3] != null)
             {
                 buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 3] });
             }
         }
-        if (buildingTowerScript[i, 0] != null && buildingTowerScript[i, 0].name == "healing tower")
+        if (buildingGameObject[i, 0] != null && buildingTowerScript[i, 0].name == "healing tower")
         {
             buildingGameObject[i, 0].GetComponent<healingTower>().heal(new GameObject[] { });
         }
     }
     public static void HealingTowerDelete2(byte i)
     {
-        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        if (buildingGameObject[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
         {
             if (buildingGameObject[i, 0] != null)
             {
                 buildingGameObject[i, 1].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 0] });
             }
         }
-        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        if (buildingGameObject[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
         {
             if (buildingGameObject[i, 4] != null)
             {
@@ -1135,21 +1163,21 @@ public class positionManager : MonoBehaviour
     }
     public static void HealingTowerDelete3(byte i)
     {
-        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        if (buildingGameObject[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
         {
             if (buildingGameObject[i, 1] != null)
             {
                 buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 1] });
             }
         }
-        if (buildingTowerScript[i, 4] != null && buildingTowerScript[i, 4].name == "healing tower")
+        if (buildingGameObject[i, 4] != null && buildingTowerScript[i, 4].name == "healing tower")
         {
             buildingGameObject[i, 4].GetComponent<healingTower>().heal(new GameObject[] { });
         }
     }
     public static void HealingTowerDelete4(byte i)
     {
-        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        if (buildingGameObject[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
         {
             if (buildingGameObject[i, 2] != null)
             {
