@@ -123,6 +123,7 @@ public class AIeasy : MonoBehaviour
                         break;
 
                 }
+                changeState(AIState.idle);
                 break;
             case AIState.Magic2:
                 switch (GameManager.instance.getPlayer().name)
@@ -154,6 +155,7 @@ public class AIeasy : MonoBehaviour
                         break;
 
                 }
+                changeState(AIState.idle);
                 break;
             case AIState.BuildRandom:
                 randombuild();
