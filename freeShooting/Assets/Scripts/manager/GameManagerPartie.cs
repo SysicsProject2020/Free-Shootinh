@@ -6,7 +6,8 @@ using TMPro;
 public class GameManagerPartie : MonoBehaviour
 {
     public static GameManagerPartie instance;
-
+    
+    public short GameDamage;
     [Header("Player 1: player")]
     public TowerScript towerBase;
     private PlayerScript player;
@@ -182,6 +183,12 @@ private void changeLayerMask(GameObject go, string layer)
     {
         if (!gameOver)
         {
+            GameManager.instance.winCount++;
+            GameManager.instance.gamePlayed++;
+            GameManager.instance.damageDone += GameDamage;
+            
+
+
             winPanel.SetActive(true);
 
             short winXP = (short)Random.Range(150, 300);
@@ -196,17 +203,23 @@ private void changeLayerMask(GameObject go, string layer)
                 GameManager.instance.diamond += winGem;
             }
             gameOver = true;
+            SaveSystem.SavePlayer();
         }
     }
     public void lose()
     {
         if (!gameOver)
         {
+            GameManager.instance.loseCount++;
+            GameManager.instance.damageDone += GameDamage;
+            GameManager.instance.gamePlayed++;
+            
             losePanel.SetActive(true);
 
             short winXP = (short)Random.Range(1, 150);
             losePanel.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
             GameManager.instance.UpdateXp(winXP);
+            SaveSystem.SavePlayer();
             gameOver = true;
         }
         
