@@ -7,13 +7,13 @@ public class bullet : MonoBehaviour
 {
     public short damage;
     public GameObject sender;
-    public bool gunHit = false;
+    bool gunHit = false;
 
     public void changedam(short dam)
     {
         damage = dam;
     }
-    void Start()
+    private void Awake()
     {
         if (transform.position.z < 0)
         {
@@ -61,9 +61,12 @@ public class bullet : MonoBehaviour
             //hitSound[choose].Play();    
             
         }
-        if (gunHit && GameManager.instance.getGun().EndEffect != null)
+        if (gunHit)
         {
-            GameObject go = Instantiate(GameManager.instance.getGun().EndEffect, transform.position, transform.rotation);
+            if (GameManager.instance.getGun().EndEffect != null)
+            {
+                GameObject go = Instantiate(GameManager.instance.getGun().EndEffect, transform.position, transform.rotation);
+            }
         }
         Destroy(gameObject);
     }
