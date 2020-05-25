@@ -979,7 +979,7 @@ public class positionManager : MonoBehaviour
     {
         GameManagerPartie.instance.enemyCoins += a;
         GameManagerPartie.instance.enemyCoinsTxt.text = GameManagerPartie.instance.enemyCoins.ToString();
-        GameManagerPartie.instance.ChangeSprites();
+        GameManagerPartie.instance.ChangeInteractableSpritesPrice();
     }
     private static void addCoinPlayer(short a)
     {
