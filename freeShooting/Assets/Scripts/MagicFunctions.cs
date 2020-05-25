@@ -76,7 +76,7 @@ public class MagicFunctions : MonoBehaviour
         GameManagerPartie.instance.enemyCoins = Ecoins;
         GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
         GameManagerPartie.instance.enemyCoinsTxt.text = GameManagerPartie.instance.enemyCoins.ToString();
-        GameManagerPartie.instance.ChangeInteractableSpritesPrice();
+        GameManagerPartie.instance.ChangeSprites();
         Destroy(go);
 
 
@@ -134,7 +134,7 @@ public class MagicFunctions : MonoBehaviour
             }
             GameManagerPartie.instance.playerCoins = Pcoins;
             GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
-            GameManagerPartie.instance.ChangeInteractableSpritesPrice();
+            GameManagerPartie.instance.ChangeSprites();
 
         }
         else
@@ -243,7 +243,7 @@ public class MagicFunctions : MonoBehaviour
     }
     void returnCardsValues(int player)
     {
-        GameManagerPartie.instance.ChangeInteractableSpritesPrice();
+        GameManagerPartie.instance.ChangeSprites();
         testFree = false;
     }
     // Update is called once per frame

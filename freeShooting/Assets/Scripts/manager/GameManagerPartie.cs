@@ -149,21 +149,19 @@ public class GameManagerPartie : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            /*if (towersSelected[i].cost > playerCoins)
+            if (towersSelected[i].cost > playerCoins)
             {
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = false;
                 //change sprite to non interactable
                 itemParent.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = towersSelected[i].Lockedimage;
             }
             else
-            {*/
+            {
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
                 //change sprite to interactable
                 itemParent.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = towersSelected[i].image;
-                itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = towersSelected[i].cost.ToString();
-            /*}
+            }
             itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = towersSelected[i].cost.ToString();
-            */
         }
     }
 
@@ -193,14 +191,13 @@ private void changeLayerMask(GameObject go, string layer)
 
             winPanel.SetActive(true);
 
-            int curlvl = (int)(0.1f * Mathf.Sqrt(GameManager.instance.XP));
-            short winXP = (short)(curlvl * Random.Range(50, 150));
+            short winXP = (short)Random.Range(150, 300);
             winPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
             GameManager.instance.UpdateXp(winXP);
 
-            if ((byte)Random.Range(0, 3) != 2)// 2/3 chance
+            if ((byte)Random.Range(1, 3) == 2)
             {
-                short winGem = (short)Random.Range(1, 5);
+                short winGem = (short)Random.Range(1, 50);
                 winPanel.transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
                 winPanel.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winGem.ToString();
                 GameManager.instance.diamond += winGem;
@@ -218,8 +215,8 @@ private void changeLayerMask(GameObject go, string layer)
             GameManager.instance.gamePlayed++;
             
             losePanel.SetActive(true);
-            int curlvl = (int)(0.1f * Mathf.Sqrt(GameManager.instance.XP));
-            short winXP = (short)(curlvl * Random.Range(50, 150) / 4);
+
+            short winXP = (short)Random.Range(1, 150);
             losePanel.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
             GameManager.instance.UpdateXp(winXP);
             SaveSystem.SavePlayer();
