@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Carrot Shield
   description: It's a shield formed by carrots cannot make anyone damage the base
-  image: {fileID: 21300000, guid: 42642beb59d7fb546970fe5c344cb8c1, type: 3}
+  image: {fileID: 21300000, guid: a9255bb664847ef44a24d94267eae644, type: 3}

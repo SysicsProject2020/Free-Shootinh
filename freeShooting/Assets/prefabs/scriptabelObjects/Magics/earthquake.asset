@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: earthquake
   description: 'destroy all  towers except bases '
-  image: {fileID: 21300000, guid: fb32827ecb73fea4fabcc14751ecd5d7, type: 3}
+  image: {fileID: 21300000, guid: 2e5455a7d3b254a47abb68cd6186f7ee, type: 3}

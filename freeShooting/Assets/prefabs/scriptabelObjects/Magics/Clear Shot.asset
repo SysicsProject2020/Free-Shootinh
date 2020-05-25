@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: clearShot
   description: Destroy enemy tower
-  image: {fileID: 21300000, guid: bee2dc692f645eb4d848e17c6e65bdb0, type: 3}
+  image: {fileID: 21300000, guid: 921d4d1c1a03c7e45b0f7bcb69350cf5, type: 3}

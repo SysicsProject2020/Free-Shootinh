@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Free cards
   description: 'All cards are free foir only one tour '
-  image: {fileID: 21300000, guid: 133de60959f1871489df0ad03c5c4c1e, type: 3}
+  image: {fileID: 21300000, guid: cf23b7a8b3b37ed4f98a469f014dacae, type: 3}
