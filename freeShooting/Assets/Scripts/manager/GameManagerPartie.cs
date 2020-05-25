@@ -7,6 +7,7 @@ public class GameManagerPartie : MonoBehaviour
 {
     public static GameManagerPartie instance;
 
+    public short GameDamage;
     [Header("Player 1: player")]
     public TowerScript towerBase;
     private PlayerScript player;
@@ -184,6 +185,12 @@ private void changeLayerMask(GameObject go, string layer)
     {
         if (!gameOver)
         {
+            GameManager.instance.winCount++;
+            GameManager.instance.gamePlayed++;
+            GameManager.instance.damageDone += GameDamage;
+
+
+
             winPanel.SetActive(true);
 
             int curlvl = (int)(0.1f * Mathf.Sqrt(GameManager.instance.XP));
@@ -191,27 +198,34 @@ private void changeLayerMask(GameObject go, string layer)
             winPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
             GameManager.instance.UpdateXp(winXP);
 
-            if ((byte)Random.Range(0, 3) != 2)// 2/3 chance
+            if ((byte)Random.Range(1, 3) == 2)
             {
-                short winGem = (short)Random.Range(1, 5);
+                short winGem = (short)Random.Range(1, 50);
                 winPanel.transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
                 winPanel.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winGem.ToString();
                 GameManager.instance.diamond += winGem;
             }
             gameOver = true;
+            SaveSystem.SavePlayer();
         }
     }
     public void lose()
     {
         if (!gameOver)
         {
+            GameManager.instance.loseCount++;
+            GameManager.instance.damageDone += GameDamage;
+            GameManager.instance.gamePlayed++;
+
             losePanel.SetActive(true);
+
             int curlvl = (int)(0.1f * Mathf.Sqrt(GameManager.instance.XP));
             short winXP = (short)(curlvl * Random.Range(50, 150) / 4);
             losePanel.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
             GameManager.instance.UpdateXp(winXP);
+            SaveSystem.SavePlayer();
             gameOver = true;
         }
-        
+
     }
 }

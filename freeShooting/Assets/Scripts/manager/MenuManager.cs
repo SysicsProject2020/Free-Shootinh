@@ -132,7 +132,16 @@ public class MenuManager : MonoBehaviour
     public GameObject profilePanel;
     public GameObject changeNamePanel;
     public GameObject ChangeNameField;
+    public GameObject Erreur;
     public TextMeshProUGUI WelcomTxt;
+    public RawImage playerPicture;
+    public GameObject pictureButton;
+    public GameObject ChangePicturePanel;
+    public GameObject ContentPanel;
+    public TextMeshProUGUI damage;
+    public TextMeshProUGUI gamePlayed;
+    public TextMeshProUGUI win;
+    public TextMeshProUGUI lose;
 
 
 
@@ -146,6 +155,35 @@ public class MenuManager : MonoBehaviour
         gemText.text = GameManager.instance.diamond.ToString();
         changeHeroMain();
     }
+    public void picturesInstantiate()
+    {
+        for (int i = 0; i < GameManager.instance.Pictures.Length; i++)
+        {
+            ChangePicturePanel.SetActive(true);
+            GameObject go = Instantiate(pictureButton, ContentPanel.transform);
+            go.transform.GetChild(0).GetComponent<Image>().sprite = GameManager.instance.Pictures[i];
+            RegisterListenerPicture(go, i);
+        }
+    }
+
+    public void RegisterListenerPicture(GameObject obj, int i)
+    {
+        Button myButton = obj.GetComponent<Button>();
+        myButton.onClick.AddListener(() => { OnPictureChoose(i); });
+    }
+    public void OnPictureChoose(int i)
+    {
+        GameManager.instance.playerPicture = (byte)i;
+        SaveSystem.SavePlayer();
+        playerPicture.texture = GameManager.instance.Pictures[GameManager.instance.playerPicture].texture;
+        exitChangePicture();
+
+    }
+    public void exitChangePicture()
+    {
+        ChangePicturePanel.SetActive(false);
+    }
+
     public void OnclickEditName()
     {
         changeNamePanel.SetActive(true);
@@ -156,18 +194,34 @@ public class MenuManager : MonoBehaviour
     {
         changeNamePanel.SetActive(false);
     }
+    IEnumerator HideErreur()
+    {
+        Erreur.SetActive(true);
+        yield return new WaitForSeconds(3);
+        Erreur.SetActive(false);
+    }
     public void ValidName()
     {
-        GameManager.instance.playerName = ChangeNameField.GetComponent<TextMeshProUGUI>().text;
-        SaveSystem.SavePlayer();
-        WelcomTxt.text = "Welcom " + GameManager.instance.playerName;
-        changeNamePanel.SetActive(false);
-        
-
-
+        if (ChangeNameField.GetComponent<TextMeshProUGUI>().text.Length <= 4)
+        {
+            StartCoroutine(HideErreur());
+        }
+        else
+        {
+            Erreur.SetActive(false);
+            GameManager.instance.playerName = ChangeNameField.GetComponent<TextMeshProUGUI>().text;
+            SaveSystem.SavePlayer();
+            WelcomTxt.text = "Welcom " + GameManager.instance.playerName;
+            changeNamePanel.SetActive(false);
+        }
     }
     public void onProfileClick()
     {
+        damage.text = GameManager.instance.damageDone.ToString();
+        win.text = GameManager.instance.winCount.ToString();
+        lose.text = GameManager.instance.loseCount.ToString();
+        gamePlayed.text = GameManager.instance.gamePlayed.ToString();
+        playerPicture.texture = GameManager.instance.Pictures[GameManager.instance.playerPicture].texture;
         WelcomTxt.text = "Welcom " + GameManager.instance.playerName;
         HeroMain.SetActive(false);
         profilePanel.SetActive(true);

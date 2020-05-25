@@ -7,8 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public Sprite[] Pictures;
+    public short winCount;
+    public short loseCount;
+    public short damageDone;
+    public short gamePlayed;
+    public byte playerPicture;
     public short diamond;
-    public string playerName="Mr Nooba";
+    public string playerName;
     public GunsScript[] guns = new GunsScript[10];   
     public static GameManager instance;
     public byte TowersNumber;
@@ -35,7 +41,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-
+            winCount = 0;
+            loseCount = 0;
+            damageDone = 0;
+            gamePlayed = 0;
+            playerPicture = 0;
             playerName = "player(" + UnityEngine.Random.Range(1, 255) + ")";
             GunSelected = guns[0];
             setPlayer(players[0]);
@@ -78,6 +88,11 @@ public class GameManager : MonoBehaviour
     private void loadData()
     {
         PlayerData data = SaveSystem.loadPlayerData();
+        winCount = data.winCount;
+        loseCount = data.loseCount;
+        damageDone = data.damageDone;
+        gamePlayed = data.gamePlayed;
+        playerPicture = data.playerPicture;
         playerName = data.PlayerName;
         diamond = data.diamonds;
         for (int i=0;i<players.Length;i++)

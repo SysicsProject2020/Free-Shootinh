@@ -4,6 +4,11 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData  
 {
+    public short winCount;
+    public short loseCount;
+    public short damageDone;
+    public short gamePlayed;
+    public byte playerPicture;
     public string PlayerName;
     public string SelectedPlayer;
     public string[] SelectedTowers=new string[6];
@@ -24,6 +29,11 @@ public class PlayerData
 
     public PlayerData()
     {
+        winCount = GameManager.instance.winCount;
+        loseCount = GameManager.instance.loseCount;
+        damageDone = GameManager.instance.damageDone;
+        gamePlayed = GameManager.instance.gamePlayed;
+        playerPicture = GameManager.instance.playerPicture;
         PlayerName = GameManager.instance.playerName;
         diamonds = GameManager.instance.diamond;
         XP = GameManager.instance.XP;
