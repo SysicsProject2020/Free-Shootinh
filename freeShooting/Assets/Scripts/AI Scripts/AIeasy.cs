@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class AIeasy : MonoBehaviour
 {
-    public static AIState CurrentState = AIState.start;
+    public static AIState CurrentState;
     public static TowerScript[] towers= new TowerScript[6];
     public byte[] buildPos = new byte[5];
     private TowerScript[] TowersWeCanBuild=new TowerScript[6];
 
     public TowerScript[] test = new TowerScript[6];
     public TowerScript[] test2 = new TowerScript[6];
-    private float nextTimeToBuildRandom = 0;
+    private float nextTimeToBuildRandom;
     public float buildTimeRandom;
-    private byte lastUnbuildedtower;
+    //private byte lastUnbuildedtower;
     public float speed = 5f;
     private byte strategy;
     private bool AiCanBuildRandomly = true;
@@ -49,6 +49,8 @@ public class AIeasy : MonoBehaviour
     {
         strategy = 0;
         anim = GetComponent<Animator>();
+        nextTimeToBuildRandom = 0;
+        CurrentState = AIState.start;
     }
 
     // Update is called once per frame
@@ -92,15 +94,16 @@ public class AIeasy : MonoBehaviour
                 }
                 if (Time.time > nextTimeToBuildRandom)
                 {
-                    if ((positionManager.numBuildedTowers != lastUnbuildedtower)&& (towers[minCostTower].cost <= GameManagerPartie.instance.enemyCoins)&&AiCanBuildRandomly)
+                    if ((positionManager.numBuildedTowers < 5) && (towers[minCostTower].cost <= GameManagerPartie.instance.enemyCoins) && AiCanBuildRandomly)
                     {
+                        AiCanBuildRandomly = true;
                         Debug.Log("ai can build = " + AiCanBuildRandomly);
-                        lastUnbuildedtower = positionManager.numBuildedTowers;
+                        //lastUnbuildedtower = positionManager.numBuildedTowers;
                         changeState(AIState.BuildRandom);
                     }
                     nextTimeToBuildRandom = Time.time + buildTimeRandom;
-                    lastUnbuildedtower = positionManager.numBuildedTowers;
-                    AiCanBuildRandomly = true;
+                    //lastUnbuildedtower = positionManager.numBuildedTowers;
+                    //AiCanBuildRandomly = true;
                 }
                 break;
             case AIState.Magic1:
@@ -231,17 +234,7 @@ public class AIeasy : MonoBehaviour
     {
         GameManagerPartie.instance.enemy_.transform.GetChild(0).GetComponent<Animator>().SetFloat("x", 0.5f);
         Debug.Log("buildrandom");
-        buildPos = new byte[5];
-        k = 0;
-        for (int i = 0; i < 5; i++)
-        {
-            if (positionManager.buildingGameObject[1, i] == null)
-            {
-                buildPos[k] = (byte)i;
-                k++;
-            }
-        }
-        int randomBuildPos = Random.Range(0, k);
+
         k = 0;
         TowersWeCanBuild = new TowerScript[6];
         for (int i = 0; i < 6; i++)
@@ -254,11 +247,29 @@ public class AIeasy : MonoBehaviour
         }
         if (k > 0)
         {
-            //yield return new WaitForSeconds(time);
             int randomTower = Random.Range(0, k);
-            positionManager.add(towers[randomTower], BuildPos[buildPos[randomBuildPos]], GameManagerPartie.instance.enemylvl);
 
+            buildPos = new byte[5];
+            k = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                if (positionManager.buildingGameObject[1, i] == null)
+                {
+                    buildPos[k] = (byte)i;
+                    k++;
+                }
+            }
+            int randomBuildPos = Random.Range(0, k);
+
+            if (k > 0)
+            {
+                //yield return new WaitForSeconds(time);
+
+                positionManager.add(towers[randomTower], BuildPos[buildPos[randomBuildPos]], GameManagerPartie.instance.enemylvl);
+
+            }
         }
+        
         
     }
     IEnumerator building (int i)

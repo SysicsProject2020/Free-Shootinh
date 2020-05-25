@@ -14,6 +14,34 @@ public class positionManager : MonoBehaviour
     {
         towerZone = towerZone_;
     }
+    /// <summary>
+    /// to delete
+    /// </summary>
+    public GameObject[] bgm0 = new GameObject[5];
+    public GameObject[] bgm1 = new GameObject[5];
+    public TowerScript[] bts0 = new TowerScript[5];
+    public TowerScript[] bts1 = new TowerScript[5];
+
+    private void Update()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            bgm0[i] = buildingGameObject[0, i];
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            bgm1[i] = buildingGameObject[1, i];
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            bts0[i] = buildingTowerScript[0, i];
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            bts1[i] = buildingTowerScript[1, i];
+        }
+    }
+    //////
     public static void add(TowerScript tower, Vector3 place, byte lvl = 0)
     {
         if (place.z < 0)
@@ -388,7 +416,7 @@ public class positionManager : MonoBehaviour
 
     public static void PlayerShoot(int j)
     {
-        if (buildingTowerScript[0, j] != null)
+        if (buildingGameObject[0, j] != null)
         {
             switch (buildingTowerScript[0, j].name)
             {
@@ -683,7 +711,7 @@ public class positionManager : MonoBehaviour
 
     public static void EnemyShoot(int j)
     {
-        if (buildingTowerScript[1, j] != null)
+        if (buildingGameObject[1, j] != null)
         {
             switch (buildingTowerScript[1, j].name)
             {
@@ -1004,7 +1032,7 @@ public class positionManager : MonoBehaviour
 
     public static void HealingTowerAdd0(byte i)
     {
-        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        if (buildingGameObject[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
         {
             if (buildingGameObject[i, 2] != null)
             {
@@ -1018,7 +1046,7 @@ public class positionManager : MonoBehaviour
     }
     public static void HealingTowerAdd1(byte i)
     {
-        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        if (buildingGameObject[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
         {
             if (buildingGameObject[i, 3] != null)
             {
@@ -1029,14 +1057,14 @@ public class positionManager : MonoBehaviour
                 buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 1] });
             }
         }
-        if (buildingTowerScript[i, 0] != null && buildingTowerScript[i, 0].name == "healing tower")
+        if (buildingGameObject[i, 0] != null && buildingTowerScript[i, 0].name == "healing tower")
         {
             buildingGameObject[i, 0].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 1] });
         }
     }
     public static void HealingTowerAdd2(byte i)
     {
-        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        if (buildingGameObject[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
         {
             if (buildingGameObject[i, 0] != null)
             {
@@ -1047,7 +1075,7 @@ public class positionManager : MonoBehaviour
                 buildingGameObject[i, 1].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 2] });
             }
         }
-        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        if (buildingGameObject[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
         {
             if (buildingGameObject[i, 4] != null)
             {
@@ -1061,7 +1089,7 @@ public class positionManager : MonoBehaviour
     }
     public static void HealingTowerAdd3(byte i)
     {
-        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        if (buildingGameObject[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
         {
             if (buildingGameObject[i, 1] != null)
             {
@@ -1072,14 +1100,14 @@ public class positionManager : MonoBehaviour
                 buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 3] });
             }
         }
-        if (buildingTowerScript[i, 4] != null && buildingTowerScript[i, 4].name == "healing tower")
+        if (buildingGameObject[i, 4] != null && buildingTowerScript[i, 4].name == "healing tower")
         {
             buildingGameObject[i, 4].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 3] });
         }
     }
     public static void HealingTowerAdd4(byte i)
     {
-        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        if (buildingGameObject[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
         {
             if (buildingGameObject[i, 2] != null)
             {
@@ -1094,7 +1122,7 @@ public class positionManager : MonoBehaviour
 
     public static void HealingTowerDelete0(byte i)
     {
-        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        if (buildingGameObject[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
         {
             if (buildingGameObject[i, 2] != null)
             {
@@ -1104,28 +1132,28 @@ public class positionManager : MonoBehaviour
     }
     public static void HealingTowerDelete1(byte i)
     {
-        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        if (buildingGameObject[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
         {
             if (buildingGameObject[i, 3] != null)
             {
                 buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 3] });
             }
         }
-        if (buildingTowerScript[i, 0] != null && buildingTowerScript[i, 0].name == "healing tower")
+        if (buildingGameObject[i, 0] != null && buildingTowerScript[i, 0].name == "healing tower")
         {
             buildingGameObject[i, 0].GetComponent<healingTower>().heal(new GameObject[] { });
         }
     }
     public static void HealingTowerDelete2(byte i)
     {
-        if (buildingTowerScript[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
+        if (buildingGameObject[i, 1] != null && buildingTowerScript[i, 1].name == "healing tower")
         {
             if (buildingGameObject[i, 0] != null)
             {
                 buildingGameObject[i, 1].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 0] });
             }
         }
-        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        if (buildingGameObject[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
         {
             if (buildingGameObject[i, 4] != null)
             {
@@ -1135,21 +1163,21 @@ public class positionManager : MonoBehaviour
     }
     public static void HealingTowerDelete3(byte i)
     {
-        if (buildingTowerScript[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
+        if (buildingGameObject[i, 2] != null && buildingTowerScript[i, 2].name == "healing tower")
         {
             if (buildingGameObject[i, 1] != null)
             {
                 buildingGameObject[i, 2].GetComponent<healingTower>().heal(new GameObject[] { buildingGameObject[i, 1] });
             }
         }
-        if (buildingTowerScript[i, 4] != null && buildingTowerScript[i, 4].name == "healing tower")
+        if (buildingGameObject[i, 4] != null && buildingTowerScript[i, 4].name == "healing tower")
         {
             buildingGameObject[i, 4].GetComponent<healingTower>().heal(new GameObject[] { });
         }
     }
     public static void HealingTowerDelete4(byte i)
     {
-        if (buildingTowerScript[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
+        if (buildingGameObject[i, 3] != null && buildingTowerScript[i, 3].name == "healing tower")
         {
             if (buildingGameObject[i, 2] != null)
             {
