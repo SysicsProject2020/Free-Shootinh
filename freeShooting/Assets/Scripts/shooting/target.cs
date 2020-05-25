@@ -61,7 +61,6 @@ public class target : MonoBehaviour
         {
             GameManagerPartie.instance.playerMagic2.GetComponent<Button>().interactable = true;
         }*/
-
         if (gameObject.GetComponent<playerMovement>() != null)
         {
             gameObject.SetActive(false);
@@ -80,9 +79,7 @@ public class target : MonoBehaviour
                 GameManagerPartie.instance.playerCoinsTxt.text = GameManagerPartie.instance.playerCoins.ToString();
                 transform.position = GameManagerPartie.instance.enemyPos;
             }
-
             //GameManagerPartie.instance.ChangeSprites();
-
             Invoke("respawn", PlayerRespawnTime);
         }
         else
@@ -92,13 +89,12 @@ public class target : MonoBehaviour
                 if (transform.position.z < 0)
                 {
                     GameManagerPartie.instance.lose();
-                    Destroy(gameObject);
                 }
                 else
                 {
                     GameManagerPartie.instance.win();
-                    Destroy(gameObject);
                 }
+                Destroy(gameObject);
             }
             else
             {
@@ -106,10 +102,11 @@ public class target : MonoBehaviour
                 {
                     gameObject.GetComponent<freezingTower>().reverse();
                 }
-                positionManager.delete(transform.position);
+                Debug.Log(transform.position + "   " + gameObject.name);
                 Destroy(gameObject);
+                positionManager.delete(transform.position);
+
             }
-            
         }       
     }
 
