@@ -27,5 +27,6 @@ public class loadingLevel : MonoBehaviour
             ProgressTxt.text = progress * 100f + "%";
             yield return null;
         }
+
     }
 }

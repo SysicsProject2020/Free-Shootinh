@@ -2479,6 +2479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed43f5c8740235949b51e3b90fa9e399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameDamage: 0
   towerBase: {fileID: 11400000, guid: fce7b7f5628c3804bab2c8383a85a5d4, type: 2}
   itemParent: {fileID: 941143167}
   playerPos: {x: 0, y: 1.8, z: -28}
@@ -2566,6 +2567,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903b1019e5c8ac744a356e0bbc8af58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pictures: []
+  winCount: 0
+  loseCount: 0
+  damageDone: 0
+  gamePlayed: 0
+  playerPicture: 0
   diamond: 0
   playerName: Mr Nooba
   guns:
@@ -2619,6 +2626,31 @@ MonoBehaviour:
   - {fileID: 116604627}
   - {fileID: 1551708354}
   - {fileID: 81747295}
+  numBuildedTower: 0
+  bgm0:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bgm1:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bts0:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bts1:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1441807758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2674,22 +2706,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c263792d11c26e439a7ee6b30d8294c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildPos: 
-  test:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  test2:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  buildTimeRandom: 5
   speed: 5
   Inventory1:
   - {fileID: 11400000, guid: f9241cd7a95bb1d40b6580f88f321bc8, type: 2}
