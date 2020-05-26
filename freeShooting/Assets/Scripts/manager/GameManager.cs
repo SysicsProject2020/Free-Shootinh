@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     private TowerScript[] towersNotSelected;
     public GameObject[] bases= new GameObject[3];
     public int XP;
+    public int CurrentLevel;
     // public PlayerData data;
     [Header("shop")]
     public GemScript[] packs = new GemScript[4];
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
         FillTowersNotSelected();
         //Debug.Log(getGun().name);
     }
+
     private void loadData()
     {
         PlayerData data = SaveSystem.loadPlayerData();
@@ -139,6 +141,7 @@ public class GameManager : MonoBehaviour
         }
         //Debug.Log(TowersNumber);
             XP = data.XP;
+        CurrentLevel = (int)(0.1f * Mathf.Sqrt(XP));
     }
     public PlayerScript getPlayer()
     {

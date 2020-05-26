@@ -155,6 +155,7 @@ public class MenuManager : MonoBehaviour
         gemText.text = GameManager.instance.diamond.ToString();
         changeHeroMain();
     }
+   
     public void picturesInstantiate()
     {
         for (int i = 0; i < GameManager.instance.Pictures.Length; i++)
@@ -231,7 +232,7 @@ public class MenuManager : MonoBehaviour
         profilePanel.SetActive(false);
         changeHeroMain();
     }
-    void changeHeroMain()
+    public void changeHeroMain()
     {
         HeroMain.SetActive(true);
         for (short i = 0; i < 4; i++)

@@ -71,11 +71,8 @@ public class GameManagerPartie : MonoBehaviour
         switch (player.name)
         {
             case "Taurus":
-                /*playerMagic1.GetComponent<Image>().sprite = player.magic1.image;
-                playerMagic2.GetComponent<Image>().sprite = player.magic2.image;*/
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.TaurusMagic1(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.TaurusMagic2(0); });
-          
+                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.TaurusMagic2(0); });          
                 break;
             case "Panda":
                 playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.PandaMagic1(0); });
