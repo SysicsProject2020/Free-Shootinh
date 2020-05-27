@@ -9582,7 +9582,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4362355530620112}
-  - component: {fileID: 114012790586252362}
   - component: {fileID: 199383916105221082}
   - component: {fileID: 198528507335766104}
   - component: {fileID: 54813845547034192}
@@ -9611,29 +9610,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &114012790586252362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746672929845058}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12ba759cd568c0e47a7018ab70867a0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 18
-  accuracy: 95
-  fireRate: 1
-  muzzlePrefab: {fileID: 1056950820860086, guid: 47b16b8608ea06748abde8bc09991712,
-    type: 3}
-  hitPrefab: {fileID: 1723818010802918, guid: e15736201e1cc83448e0cdbe4b705dd1, type: 3}
-  shotSFX: {fileID: 0}
-  hitSFX: {fileID: 0}
-  trails:
-  - {fileID: 1195859114076728}
-  - {fileID: 0}
 --- !u!199 &199383916105221082
 ParticleSystemRenderer:
   serializedVersion: 6
