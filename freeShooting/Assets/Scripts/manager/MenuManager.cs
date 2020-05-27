@@ -153,7 +153,16 @@ public class MenuManager : MonoBehaviour
         ShopMenuInstantiate();
         shopPackInstantiate();
         gemText.text = GameManager.instance.diamond.ToString();
-        changeHeroMain();
+        
+        if (!GameManager.instance.FirstTime)
+        {
+            changeHeroMain();
+
+        }
+        else
+        {
+            changeNamePanel.SetActive(true);
+        }
     }
    
     public void picturesInstantiate()
@@ -178,11 +187,22 @@ public class MenuManager : MonoBehaviour
         SaveSystem.SavePlayer();
         playerPicture.texture = GameManager.instance.Pictures[GameManager.instance.playerPicture].texture;
         exitChangePicture();
+        if (GameManager.instance.FirstTime)
+        {
+            changeHeroMain();
+            GameManager.instance.FirstTime = false;
+        }
 
     }
     public void exitChangePicture()
     {
         ChangePicturePanel.SetActive(false);
+        if (GameManager.instance.FirstTime)
+        {
+            changeHeroMain();
+            GameManager.instance.FirstTime = false;
+        }
+
     }
 
     public void OnclickEditName()
@@ -194,6 +214,10 @@ public class MenuManager : MonoBehaviour
     public void exitChangeName()
     {
         changeNamePanel.SetActive(false);
+        if (GameManager.instance.FirstTime)
+        {
+            picturesInstantiate();
+        }
     }
     IEnumerator HideErreur()
     {
@@ -214,6 +238,10 @@ public class MenuManager : MonoBehaviour
             SaveSystem.SavePlayer();
             WelcomTxt.text = "Welcom " + GameManager.instance.playerName;
             changeNamePanel.SetActive(false);
+            if (GameManager.instance.FirstTime)
+            {
+                picturesInstantiate();
+            }
         }
     }
     public void onProfileClick()

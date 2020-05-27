@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public bool FirstTime = false;
     public Sprite[] Pictures;
     public short winCount;
     public short loseCount;
@@ -42,11 +43,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            FirstTime = true;
             winCount = 0;
             loseCount = 0;
             damageDone = 0;
             gamePlayed = 0;
-            playerPicture = 0;
+            playerPicture =(byte) UnityEngine.Random.Range(1, Pictures.Length);
             playerName = "player(" + UnityEngine.Random.Range(1, 255) + ")";
             GunSelected = guns[0];
             setPlayer(players[0]);
