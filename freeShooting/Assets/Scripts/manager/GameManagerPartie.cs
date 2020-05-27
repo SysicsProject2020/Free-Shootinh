@@ -238,7 +238,7 @@ public class GameManagerPartie : MonoBehaviour
             Debug.Log("winnnnnnn");
             GameManager.instance.winCount++;
             GameManager.instance.gamePlayed++;
-            GameManager.instance.damageDone += GameDamage;
+            GameManager.instance.damageDone += playerTotalDamage;
             AIeasy.CurrentState = AIeasy.AIState.wait;
             winPanel.SetActive(true);
             uint winXP;
@@ -273,7 +273,7 @@ public class GameManagerPartie : MonoBehaviour
         {
             AIeasy.CurrentState = AIeasy.AIState.wait;
             GameManager.instance.loseCount++;
-            GameManager.instance.damageDone += GameDamage;
+            GameManager.instance.damageDone += playerTotalDamage;
             GameManager.instance.gamePlayed++;
 
             losePanel.SetActive(true);
