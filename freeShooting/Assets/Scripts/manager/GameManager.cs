@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public Sprite[] Pictures;
     public short winCount;
     public short loseCount;
-    public short damageDone;
+    public uint damageDone;
     public short gamePlayed;
     public byte playerPicture;
     public short diamond;
@@ -157,6 +157,7 @@ public class GameManager : MonoBehaviour
     {
         XP += xp;
         SaveSystem.SavePlayer();
+        LevelSystem.instance.ADDxp();
 
     }
     private void FillTowersNotSelected()

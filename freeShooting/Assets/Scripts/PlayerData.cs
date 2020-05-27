@@ -6,7 +6,7 @@ public class PlayerData
 {
     public short winCount;
     public short loseCount;
-    public short damageDone;
+    public uint damageDone;
     public short gamePlayed;
     public byte playerPicture;
     public string PlayerName;

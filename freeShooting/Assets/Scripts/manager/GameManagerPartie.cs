@@ -235,7 +235,7 @@ public class GameManagerPartie : MonoBehaviour
         {
             GameManager.instance.winCount++;
             GameManager.instance.gamePlayed++;
-            GameManager.instance.damageDone += GameDamage;
+            GameManager.instance.damageDone += playerTotalDamage;
 
             winPanel.SetActive(true);
 
@@ -263,7 +263,7 @@ public class GameManagerPartie : MonoBehaviour
         if (!gameOver)
         {
             GameManager.instance.loseCount++;
-            GameManager.instance.damageDone += GameDamage;
+            GameManager.instance.damageDone += playerTotalDamage;
             GameManager.instance.gamePlayed++;
 
             losePanel.SetActive(true);
