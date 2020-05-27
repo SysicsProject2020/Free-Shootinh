@@ -160,6 +160,8 @@ public class GameManagerPartie : MonoBehaviour
         playerGun_.GetComponent<playerShooting>().SetFireRate(playerGun.Get_fireRate_Gun_player());
         enemyGun_.GetComponent<playerShooting>().SetDamage(playerGun.Get_damage_Gun_enemy(enemylvl));
         enemyGun_.GetComponent<playerShooting>().SetFireRate(playerGun.Get_fireRate_Gun_enemy(enemylvl));
+        playerGun_.GetComponent<playerShooting>().bullet_ = playerGun.GunBullet;
+        enemyGun_.GetComponent<playerShooting>().bullet_ = enemyGun.GunBullet;
     }
 
     public void ChangeInteractableSpritesPrice()
