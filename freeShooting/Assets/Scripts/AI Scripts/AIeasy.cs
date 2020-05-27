@@ -34,6 +34,7 @@ public class AIeasy : MonoBehaviour
     //can replace with buildpos.x
     private float[] hiding = { -15, -5, 5, 15, 25 };
     private byte k = 0;
+    bool isMoving = false;
     public enum AIState
     {
         idle, die, shoot, build, hide,start,BuildRandom,Magic1,Magic2,wait
@@ -102,6 +103,7 @@ public class AIeasy : MonoBehaviour
                 }
                 break;
             case AIState.Magic1:
+                Debug.Log("Magic1");
                 switch (GameManager.instance.getPlayer().name)
                 {
                     case "Panda":
@@ -116,11 +118,12 @@ public class AIeasy : MonoBehaviour
                     case "Taurus":
                         MagicFunctions.instance.TaurusMagic1(1);
                         break;
-
                 }
+                GameManagerPartie.instance.enemyDamage = 0;
                 changeState(AIState.idle);
                 break;
             case AIState.Magic2:
+                Debug.Log("Magic2");
                 switch (GameManager.instance.getPlayer().name)
                 {
                     case "Panda":
@@ -148,8 +151,8 @@ public class AIeasy : MonoBehaviour
                     case "Taurus":
                         MagicFunctions.instance.TaurusMagic2(1);
                         break;
-
                 }
+                GameManagerPartie.instance.enemyKills = 0;
                 changeState(AIState.idle);
                 break;
 
@@ -198,7 +201,7 @@ public class AIeasy : MonoBehaviour
                 break;
         }
     }
-    bool isMoving = false;
+
     IEnumerator move(float time)
     {
         isMoving = true;

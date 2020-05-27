@@ -33,33 +33,14 @@ public class bullet : MonoBehaviour
     {
         if (collision.transform.GetComponent<target>() != null)
         {       
-            if (sender != null)
-            {
-                if (collision.transform.GetComponent<mirrorTower>() != null)
-                {
-                    sender.transform.root.GetComponent<target>().takeDamage(damage);
-                }
-                else
-                {
-                    //magic
-                    if (sender.transform.root.name == GameManagerPartie.instance.player_.name)
-                    {
-                        GameManagerPartie.instance.playerDamage += damage;
-                        if (GameManagerPartie.instance.playerDamage >= 1000)
-                        {
-                            GameManagerPartie.instance.playerMagic1.GetComponent<Button>().interactable = true;
-                            /*
-                             GameManagerPartie.instance.playerMagic1.GetComponent<Button>().interactable = false;
-                             GameManagerPartie.instance.playerDamage = 0;
-                            */
-                        }
-                    }
-                }         
-            }
-            collision.transform.GetComponent<target>().takeDamage(damage);
 
-            //hitSound[choose].Play();    
-            
+            if (sender != null &&collision.transform.GetComponent<mirrorTower>() != null)
+            {
+                sender.transform.root.GetComponent<target>().takeDamage(damage);
+            }        
+
+            collision.transform.GetComponent<target>().takeDamage(damage);
+            //hitSound[choose].Play();                
         }
         if (gunHit && GameManager.instance.getGun().EndEffect != null)
         {

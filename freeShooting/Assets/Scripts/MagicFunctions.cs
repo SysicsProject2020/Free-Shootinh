@@ -16,7 +16,7 @@ public class MagicFunctions : MonoBehaviour
     public GameObject shield;
     
     [Header("Magic:AllCardsFree")]
-    private bool testFree=false;
+    private Coroutine testFree;
     private short currentCoins;
     [Header("Magic:RabitMagic2")]
     public GameObject Missiles;
@@ -233,18 +233,20 @@ public class MagicFunctions : MonoBehaviour
         {
             for (int i = 0; i < 6; i++)
             {
-                GameManagerPartie.instance.itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
+                //GameManagerPartie.instance.itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
                 GameManagerPartie.instance.itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = "0";
             }
-            testFree = true;
+
+            testFree = StartCoroutine(testfreeCoroutine());
             currentCoins = GameManagerPartie.instance.playerCoins;
         }
 
     }
     void returnCardsValues(int player)
     {
-        GameManagerPartie.instance.ChangeInteractableSpritesPrice();
-        testFree = false;
+        //GameManagerPartie.instance.ChangeInteractableSpritesPrice();
+        GameManagerPartie.instance.ChangeCosts();
+        StopCoroutine(testFree);
     }
     // Update is called once per frame
     public void PandaMagic1(int player)
@@ -329,9 +331,9 @@ public class MagicFunctions : MonoBehaviour
         yield return new WaitForSeconds(10);
         Destroy(go);
     }
-    void Update()
+    IEnumerator testfreeCoroutine()
     {
-        if (testFree)
+        while (true)
         {
             if (currentCoins > GameManagerPartie.instance.playerCoins)
             {
@@ -341,9 +343,8 @@ public class MagicFunctions : MonoBehaviour
             }
             else
                 currentCoins = GameManagerPartie.instance.playerCoins;
-        }
-        
-       
+            yield return null;
+        }    
     }
     public void TaurusMagic2(int i)
     {

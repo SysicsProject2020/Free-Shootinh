@@ -32,7 +32,23 @@ public class target : MonoBehaviour
     {
 
         health -= damage;
-
+        if (transform.position.z < 0)
+        {
+            GameManagerPartie.instance.enemyDamage += damage;
+            if (GameManagerPartie.instance.enemyDamage >= 1500)
+            {
+                AIeasy.changeState(AIeasy.AIState.Magic1);
+            }
+        }
+        else
+        {
+            GameManagerPartie.instance.playerTotalDamage += (ushort)damage;
+            GameManagerPartie.instance.playerDamage += damage;
+            if (GameManagerPartie.instance.playerDamage >= 1500)
+            {
+                GameManagerPartie.instance.SetMagic1Enable();
+            }
+        }
         if (health <= 0)
         {
             die();
@@ -55,6 +71,7 @@ public class target : MonoBehaviour
     }
     void die()
     {
+
         //player kills
         /*GameManagerPartie.instance.playerKills++;
         if (GameManagerPartie.instance.playerKills >= 5)
@@ -98,6 +115,22 @@ public class target : MonoBehaviour
             }
             else
             {
+                if (transform.position.z < 0)
+                {
+                    GameManagerPartie.instance.enemyKills++;
+                    if (GameManagerPartie.instance.enemyKills >= 5)
+                    {
+                        AIeasy.changeState(AIeasy.AIState.Magic2);
+                    }
+                }
+                else
+                {
+                    GameManagerPartie.instance.playerKills++;
+                    if (GameManagerPartie.instance.playerKills >= 5)
+                    {
+                        GameManagerPartie.instance.SetMagic2Enable();
+                    }
+                }
                 if (gameObject.GetComponent<freezingTower>() != null)
                 {
                     gameObject.GetComponent<freezingTower>().reverse();
@@ -117,7 +150,7 @@ public class target : MonoBehaviour
     }
 
         //nbadel na3mel lel player public methode w lel towers public methode an9es if(s)
-        void healthBarInst()
+    void healthBarInst()
     {
         Vector3 pos;
         if (transform.position.z > 0)//enemy

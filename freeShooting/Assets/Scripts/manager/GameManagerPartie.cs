@@ -17,29 +17,34 @@ public class GameManagerPartie : MonoBehaviour
     public TowerScript[] towersSelected = new TowerScript[6];
     public GameObject player_;
     public GameObject playerGun_;
-    public GunsScript playerGun;
+    GunsScript playerGun;
     public GameObject playerTowerBase_;
     public short playerCoins = 1000;
     public Text playerCoinsTxt;
     public GameObject playerMagic1;
     public GameObject playerMagic2;
-    public short playerDamage=0;
+    public short playerDamage = 0;
+    public ushort playerTotalDamage = 0;
     public byte playerKills = 0;
 
     [Header("Player 2: enemy")]
     public TowerScript enemybase;
-    public PlayerScript enemy;
+    private PlayerScript enemy;
     public Vector3 enemyPos = new Vector3(0, 1.8f, 28);
     public Vector3 enemyTowerPos = new Vector3(0, -7.4f, 38);
     public TowerScript[] EnemySelectedTowers = new TowerScript[6];
     public GameObject enemy_;
     public GameObject enemyGun_;
-    public GunsScript enemyGun;
+    GunsScript enemyGun;
     public GameObject enemyTowerBase_;
-    public short enemyCoins = 10000;
+    public short enemyCoins = 1000;
     public Text enemyCoinsTxt;
-    [Range(1,5)]
+    [Range(1,3)]
     public byte enemylvl;
+    public short enemyDamage = 0;
+    public byte enemyKills = 0;
+    public GameObject enemyMagic1;
+    public GameObject enemyMagic2;
 
     [Header("Win lose")]
     public GameObject winPanel;
@@ -53,6 +58,10 @@ public class GameManagerPartie : MonoBehaviour
     void Start()
     {
         player = GameManager.instance.getPlayer();
+        enemy = GameManager.instance.players[Random.Range(0,4)];
+        playerGun = GameManager.instance.getGun();
+        enemyGun = GameManager.instance.guns[Random.Range(0, 5)];
+
         //Debug.Log(player.name);
         setMagic();
         towersSelected = GameManager.instance.GetSelectedTowers();
@@ -64,41 +73,75 @@ public class GameManagerPartie : MonoBehaviour
         enemyCoinsTxt.text = enemyCoins.ToString();
         
     }
+
+    public void enableMagic1()
+    {
+        switch (player.name)
+        {
+            case "Taurus":
+                MagicFunctions.instance.TaurusMagic1(0);
+                break;
+            case "Panda":
+                MagicFunctions.instance.PandaMagic1(0);
+                break;
+            case "Rabbit":
+                MagicFunctions.instance.RabbitMagic1(0);
+                break;
+            case "Pig":
+                MagicFunctions.instance.PigMagic1(0);
+                break;
+        }
+        playerMagic1.GetComponent<Button>().interactable = false;
+        playerMagic1.GetComponent<Image>().color = new Color(120, 120, 120);
+        playerDamage = 0;
+    }
+    public void enableMagic2()
+    {
+        switch (player.name)
+        {
+            case "Taurus":             
+                MagicFunctions.instance.TaurusMagic2(0);
+                break;
+            case "Panda":               
+                MagicFunctions.instance.PandaMagic2(0);
+                break;
+            case "Rabbit": 
+                MagicFunctions.instance.RabbitMagic2(0);
+                break;
+            case "Pig":  
+                MagicFunctions.instance.PigMagic2();
+                break;
+        }
+        playerMagic2.GetComponent<Button>().interactable = false;
+        playerMagic2.GetComponent<Image>().color = new Color(120, 120, 120);
+        playerKills = 0;
+    }
     private void setMagic()
     {
         playerMagic1.GetComponent<Image>().sprite = GameManager.instance.getPlayer().magic1.image;
         playerMagic2.GetComponent<Image>().sprite = GameManager.instance.getPlayer().magic2.image;
-        switch (player.name)
-        {
-            case "Taurus":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.TaurusMagic1(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.TaurusMagic2(0); });          
-                break;
-            case "Panda":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.PandaMagic1(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.PandaMagic2(0); });
-                break;
-            case "Rabbit":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.RabbitMagic1(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.RabbitMagic2(0); });                
-                break;
-            case "Pig":
-                playerMagic1.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.PigMagic1(0); });
-                playerMagic2.GetComponent<Button>().onClick.AddListener(() => { MagicFunctions.instance.PigMagic2(); });
-                break;
-        }
-       //  playerMagic1.GetComponent<Button>().interactable = false;
-       // playerMagic2.GetComponent<Button>().interactable = false;
-    }
 
+        playerMagic1.GetComponent<Image>().color = new Color(120, 120, 120);
+        playerMagic2.GetComponent<Image>().color = new Color(120, 120, 120);
+        playerMagic1.GetComponent<Button>().interactable = false;
+        playerMagic2.GetComponent<Button>().interactable = false;
+    }
+    public void SetMagic1Enable()
+    {      
+        playerMagic1.GetComponent<Button>().interactable = true;
+        playerMagic1.GetComponent<Image>().color = Color.white;
+    }
+    public void SetMagic2Enable()
+    {
+        playerMagic2.GetComponent<Button>().interactable = true;
+        playerMagic2.GetComponent<Image>().color = Color.white;
+    }
     private void instantiatePrefabs()
     {
-        playerGun = GameManager.instance.getGun();
-        enemyGun = GameManager.instance.getGun();
-
         playerTowerBase_= Instantiate(towerBase.prefab, playerTowerPos, Quaternion.Euler(0, 0, 0));
         changeLayerMask(playerTowerBase_, "Player");
         playerTowerBase_.GetComponent<towerInf>().SetHealth(towerBase.Get_health_player());
+
         enemyTowerBase_ =Instantiate(enemybase.prefab, enemyTowerPos, Quaternion.Euler(0, 0, 0));
         changeLayerMask(enemyTowerBase_, "Enemy");
         enemyTowerBase_.GetComponent<towerInf>().SetHealth(towerBase.Get_health_enemy(enemylvl));
@@ -107,6 +150,7 @@ public class GameManagerPartie : MonoBehaviour
         enemy_ = Instantiate(enemy.prefab, enemyPos, Quaternion.Euler(0, 180, 0));
         player_.GetComponent<playerMovement>().SetHealth(player.Get_health_player());
         enemy_.GetComponent<playerMovement>().SetHealth(enemy.Get_health_enemy(enemylvl));
+        enemy_.GetComponent<playerMovement>().enabled = false;
         changeLayerMask(enemy_, "Enemy");
         changeLayerMask(player_, "Player");
 
@@ -164,8 +208,15 @@ public class GameManagerPartie : MonoBehaviour
         }
     }
 
+    public void ChangeCosts()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = towersSelected[i].cost.ToString();
+        }
+    }
 
-private void changeLayerMask(GameObject go, string layer)
+    private void changeLayerMask(GameObject go, string layer)
     {
         go.layer = LayerMask.NameToLayer(layer);
         foreach (Transform g in go.transform)
@@ -186,12 +237,13 @@ private void changeLayerMask(GameObject go, string layer)
             GameManager.instance.gamePlayed++;
             GameManager.instance.damageDone += GameDamage;
 
-
-
             winPanel.SetActive(true);
 
+            //GameManager.instance.CurrentLevel
+            //playerTotalDamage
             int curlvl = (int)(0.1f * Mathf.Sqrt(GameManager.instance.XP));
             short winXP = (short)(curlvl * Random.Range(50, 150));
+
             winPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
             GameManager.instance.UpdateXp(winXP);
 
@@ -202,8 +254,8 @@ private void changeLayerMask(GameObject go, string layer)
                 winPanel.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winGem.ToString();
                 GameManager.instance.diamond += winGem;
             }
-            gameOver = true;
             SaveSystem.SavePlayer();
+            gameOver = true;
         }
     }
     public void lose()
@@ -216,10 +268,14 @@ private void changeLayerMask(GameObject go, string layer)
 
             losePanel.SetActive(true);
 
+            //GameManager.instance.CurrentLevel
+            //playerTotalDamage
             int curlvl = (int)(0.1f * Mathf.Sqrt(GameManager.instance.XP));
             short winXP = (short)(curlvl * Random.Range(50, 150) / 4);
+
             losePanel.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
             GameManager.instance.UpdateXp(winXP);
+
             SaveSystem.SavePlayer();
             gameOver = true;
         }

@@ -45,8 +45,7 @@ public class playerShooting : MonoBehaviour
     }
 
     private void shoot()
-    {
-       
+    {       
         GameObject clone = Instantiate(bullet_, firePoint.position, firePoint.rotation);
         //clone.GetComponent<Rigidbody>().velocity = transform.localRotation.eulerAngles;
         //clone.transform.Rotation = transform.localRotation.eulerAngles;
@@ -54,35 +53,4 @@ public class playerShooting : MonoBehaviour
         clone.GetComponent<bullet>().changedam(damage);
         clone.GetComponent<bullet>().sender = gameObject;
     }
-   
-
-        /*void shootRayCast()
-        {
-            RaycastHit hit;
-            Debug.DrawRay(transform.position, transform.forward * range, Color.red, 0f);
-            if (Physics.Raycast(transform.position, transform.forward, out hit, range))
-            {
-                if (hit.transform.position.z > 0 == enemyRightSide)
-                {
-                    //Debug.Log(hit.transform.name);
-                    //test tower , base and player collider
-                    if (true)
-                    {
-                        //muzzleFlash.Play();
-
-                        hit.transform.GetComponent<target>().takeDamage(damage);
-
-                        //GameObject impactBlood = Instantiate(blood, hit.point, Quaternion.LookRotation(hit.normal));
-                        //Destroy(impactBlood, 0.5f);
-
-                        //int choose = Random.Range(0, 3);
-
-                        //hitSound[choose].Play();
-                    }
-
-
-                }
-
-            }
-        }*/
-    }
+}
