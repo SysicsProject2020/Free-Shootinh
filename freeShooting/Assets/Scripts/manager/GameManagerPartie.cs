@@ -246,19 +246,31 @@ public class GameManagerPartie : MonoBehaviour
             //playerTotalDamage
             if (GameManager.instance.CurrentLevel !=0)
             {
-                winXP = (uint)(playerTotalDamage * Mathf.Pow(GameManager.instance.CurrentLevel + 1, 2) / Mathf.Pow(GameManager.instance.CurrentLevel, 2) * 100);
+                winXP = (uint)(playerTotalDamage * Mathf.Pow(GameManager.instance.CurrentLevel + 1, 2) / Mathf.Pow(GameManager.instance.CurrentLevel, 2) * 1000);
+
+            
             }
+
             else
             {
                 winXP = (uint)(playerTotalDamage) / 100;
-            } 
-
+            }
+            Destroy(enemyGun_);
+            Destroy(enemy_);
+            Destroy(enemyTowerBase_);
+            for (int i = 0; i < 5; i++)
+            {
+                if (positionManager.buildingGameObject[1, i] != null)
+                {
+                    Destroy(positionManager.buildingGameObject[1, i]);
+                }
+            }
             winPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
             GameManager.instance.UpdateXp((int)winXP);
 
             if ((byte)Random.Range(1, 3) == 2)
             {
-                short winGem = (short)Random.Range(1, 50);
+                ushort winGem = (ushort)Random.Range(1, 50);
                 winPanel.transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
                 winPanel.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winGem.ToString();
                 GameManager.instance.diamond += winGem;
@@ -288,6 +300,16 @@ public class GameManagerPartie : MonoBehaviour
 
             SaveSystem.SavePlayer();
             gameOver = true;
+            Destroy(playerGun_);
+            Destroy(player_);
+            Destroy(playerTowerBase_);
+            for (int i = 0; i < 5; i++)
+            {
+                if (positionManager.buildingGameObject[0, i] != null)
+                {
+                    Destroy(positionManager.buildingGameObject[0, i]);
+                }
+            }
         }
 
     }

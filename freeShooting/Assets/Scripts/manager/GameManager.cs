@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public uint damageDone;
     public short gamePlayed;
     public byte playerPicture;
-    public short diamond;
+    public ushort diamond;
     public string playerName;
     public GunsScript[] guns = new GunsScript[10];   
     public static GameManager instance;
@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
     {
         XP += xp;
         SaveSystem.SavePlayer();
-        LevelSystem.instance.ADDxp();
+
 
     }
     private void FillTowersNotSelected()

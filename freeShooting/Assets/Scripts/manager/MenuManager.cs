@@ -152,6 +152,7 @@ public class MenuManager : MonoBehaviour
         playerMenuInstantiate();
         ShopMenuInstantiate();
         shopPackInstantiate();
+        LevelSystem.instance.ADDxp();
         gemText.text = GameManager.instance.diamond.ToString();
         
         if (!GameManager.instance.FirstTime)
@@ -309,7 +310,7 @@ public class MenuManager : MonoBehaviour
     public void OnConfirmBuying()
     {
         confirmPanel.SetActive(false);
-        StartCoroutine(CoinAnimationAdd(GameManager.instance.packs[packClicked].gemCount));
+        StartCoroutine(CoinAnimationAdd((ushort)GameManager.instance.packs[packClicked].gemCount));
         CongratulationPanel.SetActive(true);
         unlockedObjectSprite.sprite = GameManager.instance.packs[packClicked].image;
         unlockedObjectDescription.text = "You bought " + GameManager.instance.packs[packClicked].gemCount + " gem . <br> Now you can use it to upgrade or to unlock";
@@ -1282,7 +1283,7 @@ public class MenuManager : MonoBehaviour
                 gemText.text = GameManager.instance.diamond.ToString();
             }
 
-            GameManager.instance.diamond -= (short)(c % 10);
+            GameManager.instance.diamond -= (ushort)(c % 10);
             gemText.text = GameManager.instance.diamond.ToString();
         }
         else
@@ -1294,12 +1295,12 @@ public class MenuManager : MonoBehaviour
                 GameManager.instance.diamond -= 100;
                 gemText.text = GameManager.instance.diamond.ToString();
             }
-            GameManager.instance.diamond -= (short)(c % 100);
+            GameManager.instance.diamond -= (ushort)(c % 100);
             gemText.text = GameManager.instance.diamond.ToString();
         }
 
     }
-    IEnumerator CoinAnimationAdd(short c)
+    IEnumerator CoinAnimationAdd(ushort c)
     {
         if (c < 80)
         {
@@ -1321,7 +1322,7 @@ public class MenuManager : MonoBehaviour
                 gemText.text = GameManager.instance.diamond.ToString();
             }
            
-            GameManager.instance.diamond += (short)(c % 10);
+            GameManager.instance.diamond += (ushort)(c % 10);
             gemText.text = GameManager.instance.diamond.ToString();
         }
         else
@@ -1333,7 +1334,7 @@ public class MenuManager : MonoBehaviour
                 GameManager.instance.diamond += 100;
                 gemText.text = GameManager.instance.diamond.ToString();
             }
-            GameManager.instance.diamond += (short)(c % 100);
+            GameManager.instance.diamond += (ushort)(c % 100);
             gemText.text = GameManager.instance.diamond.ToString();
         }
       

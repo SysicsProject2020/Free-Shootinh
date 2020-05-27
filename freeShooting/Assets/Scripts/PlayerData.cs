@@ -12,7 +12,7 @@ public class PlayerData
     public string PlayerName;
     public string SelectedPlayer;
     public string[] SelectedTowers=new string[6];
-    public short diamonds;
+    public ushort diamonds;
     public int XP;
     public byte playersNumber;
     public byte towersNumber;

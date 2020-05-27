@@ -58,7 +58,7 @@ public class AIeasy : MonoBehaviour
         switch(CurrentState)
         {
             case AIState.wait:
-                GameManagerPartie.instance.enemy_.transform.GetChild(0).GetComponent<Animator>().SetFloat("x", 0.5f);
+              
                 break;
 
             case AIState.start:
