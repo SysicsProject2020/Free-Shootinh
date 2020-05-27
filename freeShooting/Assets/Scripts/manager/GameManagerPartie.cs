@@ -29,7 +29,7 @@ public class GameManagerPartie : MonoBehaviour
 
     [Header("Player 2: enemy")]
     public TowerScript enemybase;
-    private PlayerScript enemy;
+    public PlayerScript enemy;
     public Vector3 enemyPos = new Vector3(0, 1.8f, 28);
     public Vector3 enemyTowerPos = new Vector3(0, -7.4f, 38);
     public TowerScript[] EnemySelectedTowers = new TowerScript[6];
