@@ -108,7 +108,7 @@ public class AIeasy : MonoBehaviour
                 break;
             case AIState.Magic1:
                 Debug.Log("Magic1");
-                switch (GameManager.instance.getPlayer().name)
+                switch (GameManagerPartie.instance.enemy.name)
                 {
                     case "Panda":
                         MagicFunctions.instance.PandaMagic1(1);
