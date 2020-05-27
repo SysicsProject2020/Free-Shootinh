@@ -42,7 +42,7 @@ public class target : MonoBehaviour
         }
         else
         {
-            GameManagerPartie.instance.playerTotalDamage += (ushort)damage;
+            GameManagerPartie.instance.playerTotalDamage += (uint)damage;
             GameManagerPartie.instance.playerDamage += damage;
             if (GameManagerPartie.instance.playerDamage >= 1500)
             {

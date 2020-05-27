@@ -275,7 +275,11 @@ public class MagicFunctions : MonoBehaviour
 
             }
             GameManagerPartie.instance.enemy_.GetComponent<target>().gainhealth(50);
-            GameManagerPartie.instance.enemyTowerBase_.GetComponent<target>().gainhealth(200);
+            if (GameManagerPartie.instance.enemyTowerBase_ != null)
+            {
+                GameManagerPartie.instance.enemyTowerBase_.GetComponent<target>().gainhealth(200);
+            }
+            
         }
     }
     public void RabbitMagic1(int player)

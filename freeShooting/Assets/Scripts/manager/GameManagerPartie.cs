@@ -24,7 +24,7 @@ public class GameManagerPartie : MonoBehaviour
     public GameObject playerMagic1;
     public GameObject playerMagic2;
     public short playerDamage = 0;
-    public ushort playerTotalDamage = 0;
+    public uint playerTotalDamage = 0;
     public byte playerKills = 0;
 
     [Header("Player 2: enemy")]
@@ -92,7 +92,7 @@ public class GameManagerPartie : MonoBehaviour
                 break;
         }
         playerMagic1.GetComponent<Button>().interactable = false;
-        playerMagic1.GetComponent<Image>().color = new Color(120, 120, 120);
+        //playerMagic1.GetComponent<Image>().color = new Color(120, 120, 120);
         playerDamage = 0;
     }
     public void enableMagic2()
@@ -113,7 +113,7 @@ public class GameManagerPartie : MonoBehaviour
                 break;
         }
         playerMagic2.GetComponent<Button>().interactable = false;
-        playerMagic2.GetComponent<Image>().color = new Color(120, 120, 120);
+        //playerMagic2.GetComponent<Image>().color = new Color(120, 120, 120);
         playerKills = 0;
     }
     private void setMagic()
@@ -121,20 +121,20 @@ public class GameManagerPartie : MonoBehaviour
         playerMagic1.GetComponent<Image>().sprite = GameManager.instance.getPlayer().magic1.image;
         playerMagic2.GetComponent<Image>().sprite = GameManager.instance.getPlayer().magic2.image;
 
-        playerMagic1.GetComponent<Image>().color = new Color(120, 120, 120);
-        playerMagic2.GetComponent<Image>().color = new Color(120, 120, 120);
+        //playerMagic1.GetComponent<Image>().color = new Color(120, 120, 120);
+        //playerMagic2.GetComponent<Image>().color = new Color(120, 120, 120);
         playerMagic1.GetComponent<Button>().interactable = false;
         playerMagic2.GetComponent<Button>().interactable = false;
     }
     public void SetMagic1Enable()
     {      
         playerMagic1.GetComponent<Button>().interactable = true;
-        playerMagic1.GetComponent<Image>().color = Color.white;
+        //playerMagic1.GetComponent<Image>().color = Color.white;
     }
     public void SetMagic2Enable()
     {
         playerMagic2.GetComponent<Button>().interactable = true;
-        playerMagic2.GetComponent<Image>().color = Color.white;
+        //playerMagic2.GetComponent<Image>().color = Color.white;
     }
     private void instantiatePrefabs()
     {
@@ -235,19 +235,26 @@ public class GameManagerPartie : MonoBehaviour
     {
         if (!gameOver)
         {
+            Debug.Log("winnnnnnn");
             GameManager.instance.winCount++;
             GameManager.instance.gamePlayed++;
             GameManager.instance.damageDone += GameDamage;
-
+            AIeasy.CurrentState = AIeasy.AIState.wait;
             winPanel.SetActive(true);
-
+            uint winXP;
             //GameManager.instance.CurrentLevel
             //playerTotalDamage
-            int curlvl = (int)(0.1f * Mathf.Sqrt(GameManager.instance.XP));
-            short winXP = (short)(curlvl * Random.Range(50, 150));
+            if (GameManager.instance.CurrentLevel !=0)
+            {
+                winXP = (uint)(playerTotalDamage * Mathf.Pow(GameManager.instance.CurrentLevel + 1, 2) / Mathf.Pow(GameManager.instance.CurrentLevel, 2) * 100);
+            }
+            else
+            {
+                winXP = (uint)(playerTotalDamage) / 100;
+            } 
 
             winPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
-            GameManager.instance.UpdateXp(winXP);
+            GameManager.instance.UpdateXp((int)winXP);
 
             if ((byte)Random.Range(1, 3) == 2)
             {
@@ -264,6 +271,7 @@ public class GameManagerPartie : MonoBehaviour
     {
         if (!gameOver)
         {
+            AIeasy.CurrentState = AIeasy.AIState.wait;
             GameManager.instance.loseCount++;
             GameManager.instance.damageDone += GameDamage;
             GameManager.instance.gamePlayed++;
