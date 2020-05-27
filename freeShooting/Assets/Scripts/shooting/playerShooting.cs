@@ -12,7 +12,7 @@ public class playerShooting : MonoBehaviour
     public float fireRate = 4;
     private float nextTimeFire = 0f;
     public short speed = 25;
-    private GameObject bullet_;
+    public GameObject bullet_;
     private Transform firePoint;
 
     public void SetDamage(short d)
@@ -27,7 +27,6 @@ public class playerShooting : MonoBehaviour
     private void Start()
     {
         firePoint = transform.GetChild(0);
-        bullet_ = GameManager.instance.getGun().GunBullet;
     }
     //public ParticleSystem muzzleFlash;
     //public AudioSource[] hitSound = new AudioSource[4];
