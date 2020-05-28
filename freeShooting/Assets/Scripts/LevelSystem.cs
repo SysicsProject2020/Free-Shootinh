@@ -34,6 +34,7 @@ public class LevelSystem : MonoBehaviour
     {
         levelUpPanel.SetActive(false);
         GetComponent<MenuManager>().changeHeroMain();
+        GameManager.instance.testLevelUp = false;
     }
     public void ADDxp()
     {
@@ -44,13 +45,13 @@ public class LevelSystem : MonoBehaviour
         
             if (GameManager.instance.testLevelUp)
             {
-                GetComponent<MenuManager>().HeroMain.SetActive(false);
+                
                 levelUpPanel.SetActive(true);
                 congratsTxt.text = "Congratulation!! <br> You passed to level " + GameManager.instance.CurrentLevel + " !!";
                 GameManager.instance.diamond += 5;
                 GetComponent<MenuManager>().gemText.text = GameManager.instance.diamond.ToString();
                 SaveSystem.SavePlayer();
-                GameManager.instance.testLevelUp = false;
+               
                 Debug.Log("level UP");
             }
            
