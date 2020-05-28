@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 public class GameManagerPartie : MonoBehaviour
 {
     public static GameManagerPartie instance;
@@ -20,7 +19,7 @@ public class GameManagerPartie : MonoBehaviour
     GunsScript playerGun;
     public GameObject playerTowerBase_;
     public short playerCoins = 1000;
-    public Text playerCoinsTxt;
+    public TMPro.TextMeshProUGUI playerCoinsTxt;
     public GameObject playerMagic1;
     public GameObject playerMagic2;
     public short playerDamage = 0;
@@ -38,7 +37,7 @@ public class GameManagerPartie : MonoBehaviour
     GunsScript enemyGun;
     public GameObject enemyTowerBase_;
     public short enemyCoins = 1000;
-    public Text enemyCoinsTxt;
+    public TMPro.TextMeshProUGUI enemyCoinsTxt;
     [Range(1,3)]
     public byte enemylvl;
     public short enemyDamage = 0;
@@ -203,7 +202,7 @@ public class GameManagerPartie : MonoBehaviour
                 itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
                 //change sprite to interactable
                 itemParent.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = towersSelected[i].image;
-                itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = towersSelected[i].cost.ToString();
+                itemParent.transform.GetChild(i).GetComponentInChildren<TMPro.TextMeshProUGUI>().text = towersSelected[i].cost.ToString();
             /*}
             itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = towersSelected[i].cost.ToString();
             */
@@ -214,7 +213,7 @@ public class GameManagerPartie : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = towersSelected[i].cost.ToString();
+            itemParent.transform.GetChild(i).GetComponentInChildren<TMPro.TextMeshProUGUI>().text = towersSelected[i].cost.ToString();
         }
     }
 
@@ -247,10 +246,7 @@ public class GameManagerPartie : MonoBehaviour
             if (GameManager.instance.CurrentLevel !=0)
             {
                 winXP = (uint)(playerTotalDamage * Mathf.Pow(GameManager.instance.CurrentLevel + 1, 2) / Mathf.Pow(GameManager.instance.CurrentLevel, 2) * 1000);
-
-            
             }
-
             else
             {
                 winXP = (uint)(playerTotalDamage) / 100;

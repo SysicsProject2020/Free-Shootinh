@@ -32,7 +32,16 @@ public class GameManager : MonoBehaviour
     // public PlayerData data;
     [Header("shop")]
     public GemScript[] packs = new GemScript[4];
-
+    [Header("Health offset")]
+    public float healthOffsetY = 3;
+    public float healthOffsetYEnemyBase = 3;
+    public float healthOffsetYplayers = 5;
+    public float healthOffsetZPlayer = -3.5f;
+    public float healthOffsetZEnemy = 5f;
+    public float healthOffsetZPlayerTower = -3.5f;
+    public float healthOffsetZEnemyTower = 5f;
+    public float healthOffsetZPlayerTowerBase = -3.5f;
+    public float healthOffsetZEnemyTowerBase = 5f;
     private void Awake()
     {
         instance = this;

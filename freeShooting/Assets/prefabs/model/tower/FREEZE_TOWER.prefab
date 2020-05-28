@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5275432755542976897}
   - component: {fileID: 6724596844142188928}
   - component: {fileID: 8201078594173710173}
+  - component: {fileID: 7047267717139348766}
   m_Layer: 0
   m_Name: FREEZE_TOWER
   m_TagString: Untagged
@@ -92,8 +93,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.7437582, y: 5.97262, z: 3.6381721}
-  m_Center: {x: 0.035111904, y: 3.0332737, z: -0.0078041553}
+  m_Size: {x: 3.7437582, y: 3.1528168, z: 3.6381721}
+  m_Center: {x: 0.035111904, y: 1.6233721, z: -0.0078041553}
+--- !u!65 &7047267717139348766
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816674117277820873}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7353537, y: 3.032793, z: 2.6436682}
+  m_Center: {x: -0.032692075, y: 4.676525, z: 0.06009054}
 --- !u!1 &3408363008664466346
 GameObject:
   m_ObjectHideFlags: 0

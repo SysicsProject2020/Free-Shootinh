@@ -5331,6 +5331,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297576095}
   m_CullTransparentMesh: 0
+--- !u!114 &305038270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1467278170035359148, guid: 5e0abd7c1ffbdc446b90007089553638,
+    type: 3}
+  m_PrefabInstance: {fileID: 1668301594097372691}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &318680042
 GameObject:
   m_ObjectHideFlags: 0
@@ -16523,8 +16535,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 1793369212}
-  slider: {fileID: 902864073}
+  slider: {fileID: 305038270}
   ProgressTxt: {fileID: 71866925}
+  hero: {fileID: 991502615}
 --- !u!4 &887404445
 Transform:
   m_ObjectHideFlags: 0
@@ -16694,18 +16707,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899693777}
   m_CullTransparentMesh: 0
---- !u!114 &902864073 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1668301593247011546, guid: 5e0abd7c1ffbdc446b90007089553638,
-    type: 3}
-  m_PrefabInstance: {fileID: 1668301594097372691}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &911878363
 GameObject:
   m_ObjectHideFlags: 0
@@ -35829,10 +35830,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1668301592431208626, guid: 5e0abd7c1ffbdc446b90007089553638,
+    - target: {fileID: 8425834107467744544, guid: 5e0abd7c1ffbdc446b90007089553638,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.614
+      objectReference: {fileID: 0}
+    - target: {fileID: 8425834107467744544, guid: 5e0abd7c1ffbdc446b90007089553638,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e0abd7c1ffbdc446b90007089553638, type: 3}

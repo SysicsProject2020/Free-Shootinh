@@ -9,13 +9,6 @@ public class target : MonoBehaviour
     private short maxHealth;
     private Image healthBar;
     public GameObject healthBarInstatiate;
-    private float healthOffsetY = 3;
-    private float healthOffsetZPlayer = -3.5f;
-    private float healthOffsetZEnemy = 5f;
-    private float healthOffsetZPlayerTower = -3.5f;
-    private float healthOffsetZEnemyTower = 5f;
-    private float healthOffsetZPlayerTowerBase = -3.5f;
-    private float healthOffsetZEnemyTowerBase = 5f;
     public byte PlayerRespawnTime = 3;
 
     public void Sethealth(short health)
@@ -155,20 +148,20 @@ public class target : MonoBehaviour
         Vector3 pos;
         if (transform.position.z > 0)//enemy
         {
-            if (gameObject.GetComponent<playerShooting>() != null)
+            if (gameObject.GetComponent<playerMovement>() != null)
             {
                 
-                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemy);
+                pos = new Vector3(transform.position.x, GameManager.instance.healthOffsetYplayers, transform.position.z + GameManager.instance.healthOffsetZEnemy);
             }
             else
             {
                 if (gameObject.GetComponent<towerBase>() != null)
                 {
-                    pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemyTowerBase);
+                    pos = new Vector3(transform.position.x, transform.GetChild(0).position.y + GameManager.instance.healthOffsetYEnemyBase, transform.position.z + GameManager.instance.healthOffsetZEnemyTowerBase);
                 }
                 else
                 {
-                    pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZEnemyTower);
+                    pos = new Vector3(transform.position.x, transform.GetChild(0).position.y + GameManager.instance.healthOffsetY, transform.position.z + GameManager.instance.healthOffsetZEnemyTower);
                 }
                 
             }
@@ -176,19 +169,19 @@ public class target : MonoBehaviour
         }
         else
         {
-            if (gameObject.GetComponent<playerShooting>() != null)
+            if (gameObject.GetComponent<playerMovement>() != null)
             {               
-                pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayer);
+                pos = new Vector3(transform.position.x, GameManager.instance.healthOffsetYplayers, transform.position.z + GameManager.instance.healthOffsetZPlayer);
             }
             else
             {
                 if (gameObject.GetComponent<towerBase>() != null)
                 {
-                    pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayerTowerBase);
+                    pos = new Vector3(transform.position.x, transform.GetChild(0).position.y + GameManager.instance.healthOffsetY, transform.position.z + GameManager.instance.healthOffsetZPlayerTowerBase);
                 }
                 else
                 {
-                    pos = new Vector3(transform.position.x, transform.position.y + healthOffsetY, transform.position.z + healthOffsetZPlayerTower);
+                    pos = new Vector3(transform.position.x, transform.GetChild(0).position.y + GameManager.instance.healthOffsetY, transform.position.z + GameManager.instance.healthOffsetZPlayerTower);
                 }
                 
             }
