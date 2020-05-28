@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            CurrentLevel = 0;
             FirstTime = true;
             winCount = 0;
             loseCount = 0;
@@ -92,6 +93,7 @@ public class GameManager : MonoBehaviour
     private void loadData()
     {
         PlayerData data = SaveSystem.loadPlayerData();
+        CurrentLevel = data.currentLevel;
         winCount = data.winCount;
         loseCount = data.loseCount;
         damageDone = data.damageDone;
@@ -143,7 +145,13 @@ public class GameManager : MonoBehaviour
         }
         //Debug.Log(TowersNumber);
             XP = data.XP;
+        if (CurrentLevel != (int)(0.1f * Mathf.Sqrt(XP)))
+        {
+            LevelSystem.instance.ADDxp();
+           // if( SceneManager.GetActiveScene().name=="")
+        }
         CurrentLevel = (int)(0.1f * Mathf.Sqrt(XP));
+       
     }
     public PlayerScript getPlayer()
     {

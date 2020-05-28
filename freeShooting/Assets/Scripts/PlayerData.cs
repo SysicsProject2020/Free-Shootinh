@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData  
 {
+    public int currentLevel;
     public short winCount;
     public short loseCount;
     public uint damageDone;
@@ -29,6 +30,7 @@ public class PlayerData
 
     public PlayerData()
     {
+        currentLevel = GameManager.instance.CurrentLevel;
         winCount = GameManager.instance.winCount;
         loseCount = GameManager.instance.loseCount;
         damageDone = GameManager.instance.damageDone;
