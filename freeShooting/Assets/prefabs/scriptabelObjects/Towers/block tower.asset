@@ -18,11 +18,11 @@ MonoBehaviour:
   health: dc05d6064407b207f807
   damage: 00000000000000000000
   fireRate: 0
-  prefab: {fileID: 511289717947287136, guid: 220d9515d572cde428c2a17744edaa04, type: 3}
+  prefab: {fileID: 8118888005753543668, guid: 220d9515d572cde428c2a17744edaa04, type: 3}
   description: 
   locked: 0
   target: 
-  level: 1
+  level: 3
   UpgradePrice: 05000a001400
   cost: 150
   UnlockPrice: 50

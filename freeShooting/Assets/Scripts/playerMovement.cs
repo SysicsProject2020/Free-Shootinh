@@ -50,8 +50,8 @@ public class playerMovement : MonoBehaviour
         if (move)
         {
             //Debug.Log(distance);
-            transform.position = Vector3.Lerp(transform.position, destination, distance * speed * Time.deltaTime);
-            if (Mathf.Abs(destination.x - transform.position.x) < 0.2f)
+            transform.position = Vector3.Lerp(transform.position, destination, 36/distance * speed * Time.deltaTime);
+            if (Mathf.Abs(destination.x - transform.position.x) < 1f)
             {               
                 move = false;
                 anim.SetFloat("x", 0.5f);

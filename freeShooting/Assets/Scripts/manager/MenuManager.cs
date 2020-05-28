@@ -61,10 +61,6 @@ public class MenuManager : MonoBehaviour
     public GameObject CongratulationPanel;
     public Image unlockedObjectSprite;
     public TextMeshProUGUI unlockedObjectDescription;
- 
-
-
-
 
     [Header("GUNS Panel")]
     public GameObject GunDetailsPanel;
@@ -142,9 +138,14 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI gamePlayed;
     public TextMeshProUGUI win;
     public TextMeshProUGUI lose;
-
-
-
+    [Header("Health offset")]
+    public float healthOffsetY = 3;
+    public float healthOffsetZPlayer = -3.5f;
+    public float healthOffsetZEnemy = 5f;
+    public float healthOffsetZPlayerTower = -3.5f;
+    public float healthOffsetZEnemyTower = 5f;
+    public float healthOffsetZPlayerTowerBase = -3.5f;
+    public float healthOffsetZEnemyTowerBase = 5f;
     private void Start()
     {
         towersMenuInstantiate();
@@ -165,7 +166,6 @@ public class MenuManager : MonoBehaviour
             changeNamePanel.SetActive(true);
         }
     }
-   
     public void picturesInstantiate()
     {
         for (int i = 0; i < GameManager.instance.Pictures.Length; i++)
@@ -357,10 +357,6 @@ public class MenuManager : MonoBehaviour
         gunpanel.SetActive(true);
     }
     
-    public void playPvm()
-    {
-        SceneManager.LoadScene("pvm");
-    }
     public void setting()
     {      
         settingPanel.SetActive(true);
@@ -428,6 +424,7 @@ public class MenuManager : MonoBehaviour
     {
         stopUseAnimation = true;
         HeroMain.SetActive(false);
+        Hero3d.SetActive(false);
         shopPanel.SetActive(true);
         mainPanel.SetActive(false);
         inventoryPanel.SetActive(false);
