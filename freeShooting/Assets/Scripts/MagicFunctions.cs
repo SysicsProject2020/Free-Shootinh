@@ -81,16 +81,16 @@ public class MagicFunctions : MonoBehaviour
 
 
     }
-    public void TaurusMagic1(int player)
+    public void TaurusMagic2(int player)
     {
         if (player == 0)
         {
-            GameObject ShieldInstantiated=Instantiate(shield, GameManagerPartie.instance.playerTowerPos, Quaternion.Euler(0, 0, 0));
+            GameObject ShieldInstantiated=Instantiate(shield, new Vector3(GameManagerPartie.instance.playerTowerPos.x, GameManagerPartie.instance.playerTowerPos.y+12, GameManagerPartie.instance.playerTowerPos.z) , Quaternion.Euler(0, 0, 0));
             StartCoroutine(removeShield(ShieldInstantiated));
         }
         else
         {
-            GameObject ShieldInstantiated = Instantiate(shield, GameManagerPartie.instance.enemyTowerPos, Quaternion.Euler(0, 0, 0));
+            GameObject ShieldInstantiated = Instantiate(shield, new Vector3(GameManagerPartie.instance.enemyTowerPos.x,GameManagerPartie.instance.enemyTowerPos.y+12, GameManagerPartie.instance.enemyTowerPos.z), Quaternion.Euler(0, 0, 0));
             StartCoroutine(removeShield(ShieldInstantiated));
         }
     }
@@ -178,7 +178,7 @@ public class MagicFunctions : MonoBehaviour
         Destroy(go);
 
     }
-    public void RabbitMagic2(int player)
+    public void RabbitMagic1(int player)
     {
         if (player == 0)
         {
@@ -197,7 +197,7 @@ public class MagicFunctions : MonoBehaviour
     }
     IEnumerator damagingAfterCarrotMissiles(GameObject go,int i)
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3.2f);
         if (i == 0)
         {
             for (int j = 0; j < 5; j++)
@@ -282,7 +282,7 @@ public class MagicFunctions : MonoBehaviour
             
         }
     }
-    public void RabbitMagic1(int player)
+    public void RabbitMagic2(int player)
     {
         if (player == 0)
         {
@@ -350,26 +350,43 @@ public class MagicFunctions : MonoBehaviour
             yield return null;
         }    
     }
-    public void TaurusMagic2(int i)
+    public void TaurusMagic1(int i)
     {
-        if (i == 0)
-        {
 
-            StartCoroutine(launchingDamageMissile());
-        }
+
+
+            StartCoroutine(launchingDamageMissile(i));
+        
         
     }
-    IEnumerator launchingDamageMissile()
+    IEnumerator launchingDamageMissile(int player)
     {
-        for (int k = 0; k < 5; k++)
+
+        if (player == 0)
         {
-            yield return new WaitForSeconds(0.5f);
-            Vector3 vo = Calculatevelocity(GameManagerPartie.instance.enemyTowerPos, GameManagerPartie.instance.playerTowerPos + new Vector3(5, 5, 5), speed);
-            GameObject go = Instantiate(DamageMissiles, GameManagerPartie.instance.playerTowerPos + new Vector3(k * 2, 5, 5), DamageMissiles.transform.rotation);
-            go.GetComponent<Rigidbody>().velocity = vo;
-            go.GetComponent<bullet>().changedam(150);
-            go.GetComponent<bullet>().sender = gameObject;
+            for (int k = 0; k < 5; k++)
+            {
+                yield return new WaitForSeconds(0.5f);
+                Vector3 vo = Calculatevelocity(GameManagerPartie.instance.enemyTowerPos, GameManagerPartie.instance.playerTowerPos + new Vector3(k, 20, 5), speed);
+                GameObject go = Instantiate(DamageMissiles, GameManagerPartie.instance.playerTowerPos + new Vector3(k, 30, 5), DamageMissiles.transform.rotation);
+                go.GetComponent<Rigidbody>().velocity = vo;
+                go.GetComponent<bullet>().changedam(150);
+                go.GetComponent<bullet>().sender = gameObject;
+            }
         }
+        else
+        {
+            for (int k = 0; k < 5; k++)
+            {
+                yield return new WaitForSeconds(0.5f);
+                Vector3 vo = Calculatevelocity(GameManagerPartie.instance.playerTowerPos,GameManagerPartie.instance.enemyTowerPos + new Vector3(k, 20, 25), speed);
+                GameObject go = Instantiate(DamageMissiles, GameManagerPartie.instance.enemyTowerPos + new Vector3(k, 30, 5), DamageMissiles.transform.rotation);
+                go.GetComponent<Rigidbody>().velocity = vo;
+                go.GetComponent<bullet>().changedam(150);
+                go.GetComponent<bullet>().sender = gameObject;
+            }
+        }
+       
         
     }
     Vector3 Calculatevelocity(Vector3 target, Vector3 origin, float time)

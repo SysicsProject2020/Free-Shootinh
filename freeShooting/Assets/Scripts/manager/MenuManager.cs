@@ -148,14 +148,6 @@ public class MenuManager : MonoBehaviour
     public float healthOffsetZEnemyTowerBase = 5f;
     private void Start()
     {
-        towersMenuInstantiate();
-        fillTowersSprites();
-        playerMenuInstantiate();
-        ShopMenuInstantiate();
-        shopPackInstantiate();
-        LevelSystem.instance.ADDxp();
-        gemText.text = GameManager.instance.diamond.ToString();
-        
         if (!GameManager.instance.FirstTime)
         {
             changeHeroMain();
@@ -165,6 +157,15 @@ public class MenuManager : MonoBehaviour
         {
             changeNamePanel.SetActive(true);
         }
+        towersMenuInstantiate();
+        fillTowersSprites();
+        playerMenuInstantiate();
+        ShopMenuInstantiate();
+        shopPackInstantiate();
+        LevelSystem.instance.ADDxp();
+        gemText.text = GameManager.instance.diamond.ToString();
+        
+        
     }
     public void picturesInstantiate()
     {

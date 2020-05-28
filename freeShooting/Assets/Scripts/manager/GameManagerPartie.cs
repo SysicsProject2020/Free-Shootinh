@@ -84,7 +84,7 @@ public class GameManagerPartie : MonoBehaviour
                 MagicFunctions.instance.PandaMagic1(0);
                 break;
             case "Rabbit":
-                MagicFunctions.instance.RabbitMagic1(0);
+                MagicFunctions.instance.RabbitMagic1(1);
                 break;
             case "Pig":
                 MagicFunctions.instance.PigMagic1(0);
@@ -105,7 +105,7 @@ public class GameManagerPartie : MonoBehaviour
                 MagicFunctions.instance.PandaMagic2(0);
                 break;
             case "Rabbit": 
-                MagicFunctions.instance.RabbitMagic2(0);
+                MagicFunctions.instance.RabbitMagic2(1);
                 break;
             case "Pig":  
                 MagicFunctions.instance.PigMagic2();

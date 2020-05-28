@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public bool testLevelUp=false;
     public bool FirstTime = false;
     public Sprite[] Pictures;
     public short winCount;
@@ -156,7 +157,7 @@ public class GameManager : MonoBehaviour
             XP = data.XP;
         if (CurrentLevel != (int)(0.1f * Mathf.Sqrt(XP)))
         {
-            LevelSystem.instance.ADDxp();
+            testLevelUp = true;
            // if( SceneManager.GetActiveScene().name=="")
         }
         CurrentLevel = (int)(0.1f * Mathf.Sqrt(XP));

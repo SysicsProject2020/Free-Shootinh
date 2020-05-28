@@ -41,19 +41,21 @@ public class LevelSystem : MonoBehaviour
         int curlvl = (int)(0.1f * Mathf.Sqrt(GameManager.instance.XP));
        
 
-        if (curlvl != GameManager.instance.CurrentLevel)
-        {
+        
+            if (GameManager.instance.testLevelUp)
+            {
+                GetComponent<MenuManager>().HeroMain.SetActive(false);
+                levelUpPanel.SetActive(true);
+                congratsTxt.text = "Congratulation!! <br> You passed to level " + GameManager.instance.CurrentLevel + " !!";
+                GameManager.instance.diamond += 5;
+                GetComponent<MenuManager>().gemText.text = GameManager.instance.diamond.ToString();
+                SaveSystem.SavePlayer();
+                GameManager.instance.testLevelUp = false;
+                Debug.Log("level UP");
+            }
+           
 
-            GameManager.instance.CurrentLevel = curlvl;
-            GetComponent<MenuManager>().HeroMain.SetActive(false);
-            levelUpPanel.SetActive(true);
-            congratsTxt.text = "Congratulation!! <br> You passed to level " + GameManager.instance.CurrentLevel + " !!";
-            GameManager.instance.diamond += 5;
-            GetComponent<MenuManager>().gemText.text = GameManager.instance.diamond.ToString();
-            SaveSystem.SavePlayer();
-            Debug.Log("level UP");
-
-        }
+        
 
         xpnextlevel = 100 * (GameManager.instance.CurrentLevel + 1) * (GameManager.instance.CurrentLevel + 1);
         differenceXp = xpnextlevel - GameManager.instance.XP;
