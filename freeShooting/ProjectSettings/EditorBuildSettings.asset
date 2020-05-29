@@ -8,12 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/menu v2.unity
     guid: 1713c27113fb49b44b8eab41a6c513ed
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/pvm v2.unity
     guid: 9cddc6cbd470fda48a0b7b4cfb67a427
