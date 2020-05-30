@@ -204,9 +204,11 @@ public class MagicFunctions : MonoBehaviour
             {
                 if (positionManager.buildingGameObject[1, j] != null)
                 {
+                    GameManagerPartie.instance.playerDamage -= 75;
                     positionManager.buildingGameObject[1, j].GetComponent<target>().takeDamage(75);
                 }
             }
+            GameManagerPartie.instance.playerDamage -= 125;
             GameManagerPartie.instance.enemy_.GetComponent<target>().takeDamage(50);
             GameManagerPartie.instance.enemyTowerBase_.GetComponent<target>().takeDamage(75);
             Destroy(MissilesInstantiated);
@@ -217,9 +219,11 @@ public class MagicFunctions : MonoBehaviour
             {
                 if (positionManager.buildingGameObject[0, j] != null)
                 {
+                    GameManagerPartie.instance.enemyDamage -= 75;
                     positionManager.buildingGameObject[0, j].GetComponent<target>().takeDamage(75);
                 }
             }
+            GameManagerPartie.instance.enemyDamage -= 125;
             GameManagerPartie.instance.player_.GetComponent<target>().takeDamage(50);
             GameManagerPartie.instance.playerTowerBase_.GetComponent<target>().takeDamage(75);
             Destroy(MissilesInstantiated);
@@ -370,8 +374,9 @@ public class MagicFunctions : MonoBehaviour
                 Vector3 vo = Calculatevelocity(GameManagerPartie.instance.enemyTowerPos, GameManagerPartie.instance.playerTowerPos + new Vector3(k, 20, 5), speed);
                 GameObject go = Instantiate(DamageMissiles, GameManagerPartie.instance.playerTowerPos + new Vector3(k, 30, 5), DamageMissiles.transform.rotation);
                 go.GetComponent<Rigidbody>().velocity = vo;
-                go.GetComponent<bullet>().changedam(150);
+                go.GetComponent<bullet>().changedam(100);
                 go.GetComponent<bullet>().sender = gameObject;
+                GameManagerPartie.instance.playerDamage -= 100;
             }
         }
         else
@@ -382,8 +387,9 @@ public class MagicFunctions : MonoBehaviour
                 Vector3 vo = Calculatevelocity(GameManagerPartie.instance.playerTowerPos,GameManagerPartie.instance.enemyTowerPos + new Vector3(k, 20, 25), speed);
                 GameObject go = Instantiate(DamageMissiles, GameManagerPartie.instance.enemyTowerPos + new Vector3(k, 30, 5), DamageMissiles.transform.rotation);
                 go.GetComponent<Rigidbody>().velocity = vo;
-                go.GetComponent<bullet>().changedam(150);
+                go.GetComponent<bullet>().changedam(100);
                 go.GetComponent<bullet>().sender = gameObject;
+                GameManagerPartie.instance.enemyDamage -= 100;
             }
         }
        
