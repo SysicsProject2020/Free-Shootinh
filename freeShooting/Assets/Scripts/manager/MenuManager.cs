@@ -152,7 +152,7 @@ public class MenuManager : MonoBehaviour
         {
             if (!GameManager.instance.testLevelUp)
             {
-                Debug.Log(GameManager.instance.testLevelUp);
+                //Debug.Log(GameManager.instance.testLevelUp);
                 changeHeroMain();
             }
         }
