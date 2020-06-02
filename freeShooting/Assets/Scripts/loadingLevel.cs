@@ -14,6 +14,7 @@ public class loadingLevel : MonoBehaviour
 
     public void LoadLevel(int sceneIndex)
     {
+        Time.timeScale = 1;
         if (sceneIndex == 1)
         {
             hero.SetActive(false);

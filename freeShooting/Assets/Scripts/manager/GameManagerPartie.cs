@@ -49,6 +49,13 @@ public class GameManagerPartie : MonoBehaviour
     public GameObject winPanel;
     public GameObject losePanel;
     private bool gameOver = false;
+    [Header("setting")]
+    public GameObject settingPanel;
+    public GameObject musicButton;
+    public GameObject soundEffectButton;
+    public GameObject notificationButton;
+    public GameObject vibrateButton;
+
     private void Awake()
     {
         instance = this;
@@ -308,5 +315,68 @@ public class GameManagerPartie : MonoBehaviour
             }
         }
 
+    }
+    public void setting()
+    {
+        settingPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+    public void exitSettingPanel()
+    {
+        settingPanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+    public void settingMusic(bool active)
+    {
+        if (active)
+        {
+            musicButton.transform.GetChild(0).gameObject.SetActive(true);
+            musicButton.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else
+        {
+
+            musicButton.transform.GetChild(0).gameObject.SetActive(false);
+            musicButton.transform.GetChild(1).gameObject.SetActive(true);
+        }
+    }
+    public void settingSoundEffect(bool active)
+    {
+        if (active)
+        {
+            soundEffectButton.transform.GetChild(0).gameObject.SetActive(true);
+            soundEffectButton.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else
+        {
+            soundEffectButton.transform.GetChild(0).gameObject.SetActive(false);
+            soundEffectButton.transform.GetChild(1).gameObject.SetActive(true);
+        }
+    }
+    public void settingNotification(bool active)
+    {
+        if (active)
+        {
+            notificationButton.transform.GetChild(0).gameObject.SetActive(true);
+            notificationButton.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else
+        {
+            notificationButton.transform.GetChild(0).gameObject.SetActive(false);
+            notificationButton.transform.GetChild(1).gameObject.SetActive(true);
+        }
+    }
+    public void settingVibrate(bool active)
+    {
+        if (active)
+        {
+            vibrateButton.transform.GetChild(0).gameObject.SetActive(true);
+            vibrateButton.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else
+        {
+            vibrateButton.transform.GetChild(0).gameObject.SetActive(false);
+            vibrateButton.transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
 }
