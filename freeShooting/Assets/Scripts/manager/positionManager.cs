@@ -1023,7 +1023,7 @@ public class positionManager : MonoBehaviour
     public static void aiCanBuild(byte i)
     {
         Debug.Log("position manager aiCanBuild()" + AIeasy.CurrentState + numBuildedTowers);
-        if (AIeasy.CurrentState != AIeasy.AIState.start)
+        if (AIeasy.CurrentState != AIeasy.AIState.wait)
         {
             if (buildingGameObject[1, i] == null)
             {

@@ -37,7 +37,7 @@ public class AIeasy : MonoBehaviour
     bool isMoving = false;
     public enum AIState
     {
-        idle, die, shoot, build, hide,start,BuildRandom,Magic1,Magic2,wait
+        idle, shoot, build, hide,BuildRandom,Magic1,Magic2,wait
     }
     public static void changeState(AIState state)
     {
@@ -47,9 +47,24 @@ public class AIeasy : MonoBehaviour
 
     private void Start()
     {
-        strategy = 0;
+        strategy = 1;
         nextTimeToBuildRandom = 0;
-        CurrentState = AIState.start;
+        switch (strategy)
+        {
+            case 0:
+                StartCoroutine(startStrategy1());
+                break;
+            case 1:
+                StartCoroutine(startStrategy1());
+                break;
+            case 2:
+                StartCoroutine(startStrategy1());
+                break;
+            case 3:
+                StartCoroutine(startStrategy1());
+                break;
+        }
+        changeState(AIState.wait);
     }
 
     // Update is called once per frame
@@ -64,26 +79,6 @@ public class AIeasy : MonoBehaviour
                 }
 
                 break;
-
-            case AIState.start:
-                switch (strategy)
-                {
-                    case 0:
-                        StartCoroutine(startStrategy1());
-                        break;
-                    case 1:
-                        startStrategy2();
-                        break;
-                    case 2:
-                        startStrategy3();
-                        break;
-                    case 3:
-                        startStrategy4();
-                        break;
-                }
-                changeState(AIState.wait);
-                break;
-
             case AIState.idle:
 
                  // Debug.Log("hani fi idle state");
@@ -203,9 +198,6 @@ public class AIeasy : MonoBehaviour
                     changeState(AIState.idle);
                 }
 
-                break;
-            case AIState.die:
-                //player win
                 break;
         }
     }
