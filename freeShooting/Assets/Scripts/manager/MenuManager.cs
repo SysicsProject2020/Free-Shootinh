@@ -318,6 +318,7 @@ public class MenuManager : MonoBehaviour
         CongratulationPanel.SetActive(true);
         unlockedObjectSprite.sprite = GameManager.instance.packs[packClicked].image;
         unlockedObjectDescription.text = "You bought " + GameManager.instance.packs[packClicked].gemCount + " gem . <br> Now you can use it to upgrade or to unlock";
+
     }
     public void exitConfirmPanel()
     {
@@ -1299,6 +1300,7 @@ public class MenuManager : MonoBehaviour
             GameManager.instance.diamond -= (ushort)(c % 100);
             gemText.text = GameManager.instance.diamond.ToString();
         }
+        SaveSystem.SavePlayer();
 
     }
     IEnumerator CoinAnimationAdd(ushort c)
@@ -1338,7 +1340,8 @@ public class MenuManager : MonoBehaviour
             GameManager.instance.diamond += (ushort)(c % 100);
             gemText.text = GameManager.instance.diamond.ToString();
         }
-      
+        SaveSystem.SavePlayer();
+
     }
 }
 
