@@ -9,6 +9,7 @@ public class playerMovement : MonoBehaviour
     Vector3 destination;
     Animator anim;
     float distance = 1F;
+    float offset = -3.5f;
     private void Start()
     {
         anim = transform.GetChild(0).GetComponent<Animator>();
@@ -40,7 +41,7 @@ public class playerMovement : MonoBehaviour
                     else
                         anim.SetFloat("x", 1);
 
-                    destination = new Vector3(hit.point.x, transform.position.y, transform.position.z);
+                    destination = new Vector3(hit.point.x + offset, transform.position.y, transform.position.z);
                     distance = Mathf.Abs(hit.point.x - transform.position.x);
                     move = true;
                 }
