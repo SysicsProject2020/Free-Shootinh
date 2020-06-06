@@ -62,7 +62,7 @@ public class BuildManager : MonoBehaviour
     {
         GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetChild(1).GetComponent<Image>().sprite = GameManagerPartie.instance.towersSelected[nb].Lockedimage;
         GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetChild(0).gameObject.SetActive(false);
-        GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetChild(0).gameObject.SetActive(false);
+        
 
         GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetComponent<Button>().interactable = false;
         GameManagerPartie.instance.itemParent.transform.GetChild(nb).GetChild(3).gameObject.SetActive(true);

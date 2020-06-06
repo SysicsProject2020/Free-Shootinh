@@ -127,7 +127,7 @@ public class AIeasy : MonoBehaviour
                 break;
             case AIState.Magic2:
                 Debug.Log("Magic2");
-                switch (GameManager.instance.getPlayer().name)
+                switch (GameManagerPartie.instance.enemy.name)
                 {
                     case "Panda":
                         buildPos = new byte[5];
@@ -154,7 +154,9 @@ public class AIeasy : MonoBehaviour
                     case "Taurus":
                         MagicFunctions.instance.TaurusMagic2(1);
                         break;
+                        
                 }
+                Debug.Log(GameManager.instance.getPlayer().magic2.name);
                 GameManagerPartie.instance.enemyKills = 0;
                 changeState(AIState.idle);
                 break;

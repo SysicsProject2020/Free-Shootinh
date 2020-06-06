@@ -55,7 +55,9 @@ public class GameManagerPartie : MonoBehaviour
     public GameObject soundEffectButton;
     public GameObject notificationButton;
     public GameObject vibrateButton;
+    public TMPro.TextMeshProUGUI timerTxt;
 
+    public byte timer;
     private void Awake()
     {
         instance = this;
@@ -63,6 +65,7 @@ public class GameManagerPartie : MonoBehaviour
     }
     void Start()
     {
+        timer = 10;
         player = GameManager.instance.getPlayer();
         enemy = GameManager.instance.players[Random.Range(0,4)];
         playerGun = GameManager.instance.getGun();
@@ -77,9 +80,19 @@ public class GameManagerPartie : MonoBehaviour
 
         playerCoinsTxt.text = playerCoins.ToString();
         enemyCoinsTxt.text = enemyCoins.ToString();
+        timerTxt.text = timer.ToString();
+        StartCoroutine(timing());
         
     }
-
+    IEnumerator timing()
+    {
+        while (timer != 0)
+        {
+            yield return new WaitForSeconds(1);
+            timer--;
+            timerTxt.text = timer.ToString();
+        }
+    }
     public void enableMagic1()
     {
         switch (player.name)
@@ -91,7 +104,7 @@ public class GameManagerPartie : MonoBehaviour
                 MagicFunctions.instance.PandaMagic1(0);
                 break;
             case "Rabbit":
-                MagicFunctions.instance.RabbitMagic1(1);
+                MagicFunctions.instance.RabbitMagic1(0);
                 break;
             case "Pig":
                 MagicFunctions.instance.PigMagic1(0);
@@ -112,7 +125,7 @@ public class GameManagerPartie : MonoBehaviour
                 MagicFunctions.instance.PandaMagic2(0);
                 break;
             case "Rabbit": 
-                MagicFunctions.instance.RabbitMagic2(1);
+                MagicFunctions.instance.RabbitMagic2(0);
                 break;
             case "Pig":  
                 MagicFunctions.instance.PigMagic2();
@@ -250,14 +263,26 @@ public class GameManagerPartie : MonoBehaviour
             uint winXP;
             //GameManager.instance.CurrentLevel
             //playerTotalDamage
-            if (GameManager.instance.CurrentLevel !=0)
+            //winXP = (uint)(playerTotalDamage / 40);
+            if (GameManager.instance.CurrentLevel != 0)
             {
-                winXP = (uint)(playerTotalDamage * Mathf.Pow(GameManager.instance.CurrentLevel + 1, 2) / Mathf.Pow(GameManager.instance.CurrentLevel, 2) * 1000);
+
+
+                winXP = (uint)(100 * (GameManager.instance.CurrentLevel + 1) * (GameManager.instance.CurrentLevel + 1) / GameManager.instance.CurrentLevel+1)*2 + playerTotalDamage / 120;
+            }
+            else
+            {
+                winXP =(uint) Random.Range(80,140);
+            }
+          /*  if (GameManager.instance.CurrentLevel !=0)
+            {
+               // winXP = (uint)((playerTotalDamage/1000) * Mathf.Pow(GameManager.instance.CurrentLevel , 2) / Mathf.Pow(GameManager.instance.CurrentLevel+1, 2));
+                
             }
             else
             {
                 winXP = (uint)(playerTotalDamage) / 100;
-            }
+            }*/
             Destroy(enemyGun_);
             Destroy(enemy_);
             Destroy(enemyTowerBase_);

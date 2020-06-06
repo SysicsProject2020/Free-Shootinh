@@ -20,7 +20,7 @@ public class MagicFunctions : MonoBehaviour
     private short currentCoins;
     [Header("Magic:RabitMagic2")]
     public GameObject Missiles;
-    private GameObject MissilesInstantiated;
+    
     
     
     [Header("Magic:Destroy Tower")]
@@ -81,7 +81,7 @@ public class MagicFunctions : MonoBehaviour
 
 
     }
-    public void TaurusMagic2(int player)
+    public void TaurusMagic1(int player)
     {
         if (player == 0)
         {
@@ -184,12 +184,12 @@ public class MagicFunctions : MonoBehaviour
         {
 
 
-            GameObject go= MissilesInstantiated = Instantiate(Missiles);
+            GameObject  MissilesInstantiated = Instantiate(Missiles);
             StartCoroutine(damagingAfterCarrotMissiles(MissilesInstantiated, player));
         }
         else
         {
-            MissilesInstantiated = Instantiate(Missiles, Missiles.transform.position+new Vector3(0,0,-45), Missiles.transform.rotation);
+            GameObject MissilesInstantiated = Instantiate(Missiles, Missiles.transform.position+new Vector3(0,0,-45), Missiles.transform.rotation);
             StartCoroutine(damagingAfterCarrotMissiles(MissilesInstantiated, player));
 
         }
@@ -211,7 +211,7 @@ public class MagicFunctions : MonoBehaviour
             GameManagerPartie.instance.playerDamage -= 125;
             GameManagerPartie.instance.enemy_.GetComponent<target>().takeDamage(50);
             GameManagerPartie.instance.enemyTowerBase_.GetComponent<target>().takeDamage(75);
-            Destroy(MissilesInstantiated);
+            Destroy(go);
         }
         else
         {
@@ -226,7 +226,7 @@ public class MagicFunctions : MonoBehaviour
             GameManagerPartie.instance.enemyDamage -= 125;
             GameManagerPartie.instance.player_.GetComponent<target>().takeDamage(50);
             GameManagerPartie.instance.playerTowerBase_.GetComponent<target>().takeDamage(75);
-            Destroy(MissilesInstantiated);
+            Destroy(go);
         }
         
     }
@@ -237,7 +237,10 @@ public class MagicFunctions : MonoBehaviour
         {
             for (int i = 0; i < 6; i++)
             {
-                //GameManagerPartie.instance.itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
+                GameManagerPartie.instance.itemParent.transform.GetChild(i).GetComponent<Button>().interactable = true;
+                // GameManagerPartie.instance.itemParent.transform.GetChild(i).get
+                GameManagerPartie.instance.itemParent.transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite = GameManagerPartie.instance.towersSelected[i].image;
+                GameManagerPartie.instance.itemParent.transform.GetChild(i).GetChild(3).gameObject.SetActive(false);
                 GameManagerPartie.instance.itemParent.transform.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text = "0";
             }
 
@@ -354,7 +357,7 @@ public class MagicFunctions : MonoBehaviour
             yield return null;
         }    
     }
-    public void TaurusMagic1(int i)
+    public void TaurusMagic2(int i)
     {
 
 
