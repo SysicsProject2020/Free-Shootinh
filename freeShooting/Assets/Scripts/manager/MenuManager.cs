@@ -1303,6 +1303,7 @@ public class MenuManager : MonoBehaviour
         SaveSystem.SavePlayer();
 
     }
+
     IEnumerator CoinAnimationAdd(ushort c)
     {
         if (c < 80)

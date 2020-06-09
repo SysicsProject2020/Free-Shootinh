@@ -66,10 +66,16 @@ public class GameManagerPartie : MonoBehaviour
     void Start()
     {
         timer = 10;
-        player = GameManager.instance.getPlayer();
-        enemy = GameManager.instance.players[Random.Range(0,4)];
-        playerGun = GameManager.instance.getGun();
+        enemy = GameManager.instance.players[Random.Range(0, 4)];
         enemyGun = GameManager.instance.guns[Random.Range(0, 5)];
+        timerTxt.text = timer.ToString();
+        StartCoroutine(timing());
+
+
+        player = GameManager.instance.getPlayer();
+       
+        playerGun = GameManager.instance.getGun();
+        
 
         //Debug.Log(player.name);
         setMagic();
@@ -79,9 +85,8 @@ public class GameManagerPartie : MonoBehaviour
         instantiatePrefabs();
 
         playerCoinsTxt.text = playerCoins.ToString();
-        enemyCoinsTxt.text = enemyCoins.ToString();
-        timerTxt.text = timer.ToString();
-        StartCoroutine(timing());
+        //enemyCoinsTxt.text = enemyCoins.ToString();
+        
         
     }
     IEnumerator timing()
@@ -92,6 +97,7 @@ public class GameManagerPartie : MonoBehaviour
             timer--;
             timerTxt.text = timer.ToString();
         }
+        lose();
     }
     public void enableMagic1()
     {
@@ -402,6 +408,114 @@ public class GameManagerPartie : MonoBehaviour
         {
             vibrateButton.transform.GetChild(0).gameObject.SetActive(false);
             vibrateButton.transform.GetChild(1).gameObject.SetActive(true);
+        }
+    }
+    void managingAi()
+    {
+        switch (GameManager.instance.winCount)
+        {
+            case 0:
+
+                break;
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                
+                break;
+            case 5:
+
+                break;
+            case 6:
+
+                break;
+            case 7:
+
+                break;
+            case 8:
+
+                break;
+            case 9:
+
+                break;
+            case 10:
+
+                break;
+            case 11:
+
+                break;
+            case 12:
+
+                break;
+            case 13:
+
+                break;
+            case 14:
+
+                break;
+            case 15:
+
+                break;
+            case 16:
+
+                break;
+            case 17:
+
+                break;
+            case 18:
+
+                break;
+            case 19:
+
+                break;
+            case 20:
+
+                break;
+            case 21:
+
+                break;
+            case 22:
+
+                break;
+            case 23:
+
+                break;
+            case 24:
+
+                break;
+            case 25:
+
+                break;
+            case 26:
+
+                break;
+            case 27:
+
+                break;
+            case 28:
+
+                break;
+            case 29:
+
+                break;
+            case 30:
+
+                break;
+            case 31:
+
+                break;
+            case 32:
+
+                break;
+            default:
+
+                break;
         }
     }
 }
