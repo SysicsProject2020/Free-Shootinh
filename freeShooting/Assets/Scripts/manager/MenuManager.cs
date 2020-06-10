@@ -115,6 +115,8 @@ public class MenuManager : MonoBehaviour
     public GameObject soundEffectButton;
     public GameObject notificationButton;
     public GameObject vibrateButton;
+   
+    public GameObject RulesPanel;
 
     [Header("Magics")]
     public GameObject MagicDetailsPanel;
@@ -180,7 +182,14 @@ public class MenuManager : MonoBehaviour
             RegisterListenerPicture(go, i);
         }
     }
-
+    public void onClickRules()
+    {
+        RulesPanel.SetActive(true);
+    }
+    public void exitRules()
+    {
+        RulesPanel.SetActive(false);
+    }
     public void RegisterListenerPicture(GameObject obj, int i)
     {
         Button myButton = obj.GetComponent<Button>();
