@@ -117,6 +117,10 @@ public class MenuManager : MonoBehaviour
     public GameObject vibrateButton;
    
     public GameObject RulesPanel;
+    public TextMeshProUGUI rulesTxt;
+    public byte currentRule=0;
+    public GameObject nextRuleButton;
+    public GameObject previousRuleButton;
 
     [Header("Magics")]
     public GameObject MagicDetailsPanel;
@@ -172,6 +176,43 @@ public class MenuManager : MonoBehaviour
         
         
     }
+    public void nextRule()
+    {
+        switch (currentRule)
+        {
+            case 0:
+                currentRule++;
+                rulesTxt.text = GameManager.instance.rules[currentRule];
+                previousRuleButton.SetActive(true);
+                nextRuleButton.SetActive(true);
+                break;
+            case 1:
+                currentRule++;
+                rulesTxt.text = GameManager.instance.rules[currentRule];
+                nextRuleButton.SetActive(false);
+                previousRuleButton.SetActive(true);
+
+                break;
+        }
+    }
+    public void previousRule()
+    {
+        switch (currentRule)
+        {
+            case 1:
+                currentRule--;
+                rulesTxt.text = GameManager.instance.rules[currentRule];
+                previousRuleButton.SetActive(false);
+                nextRuleButton.SetActive(true);
+                break;
+            case 2:
+                currentRule--;
+                rulesTxt.text = GameManager.instance.rules[currentRule];
+                previousRuleButton.SetActive(true);
+                nextRuleButton.SetActive(true);
+                break;
+        }
+    }
     public void picturesInstantiate()
     {
         for (int i = 0; i < GameManager.instance.Pictures.Length; i++)
@@ -184,10 +225,15 @@ public class MenuManager : MonoBehaviour
     }
     public void onClickRules()
     {
+        rulesTxt.text = GameManager.instance.rules[0];
+        previousRuleButton.SetActive(false);
         RulesPanel.SetActive(true);
+        previousRuleButton.SetActive(false);
+        nextRuleButton.SetActive(true);
     }
     public void exitRules()
     {
+        currentRule = 0;
         RulesPanel.SetActive(false);
     }
     public void RegisterListenerPicture(GameObject obj, int i)
