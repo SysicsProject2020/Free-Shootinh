@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Free Cards
   m_EditorClassIdentifier: 
   name: Free cards
-  description: 'All cards are free foir only one tour '
+  description: 'You can choose one of your towers to build it for free.  '
   image: {fileID: 21300000, guid: cf23b7a8b3b37ed4f98a469f014dacae, type: 3}

@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem 
 {
-    private static string path = Application.persistentDataPath + "/save.nooba";
+    private static string path = Application.persistentDataPath + "/free.shooting";
     
     public static bool testExist() {
         if (File.Exists(path))
@@ -16,25 +16,16 @@ public static class SaveSystem
         else
             return false;
     }
-     
     public static void SavePlayer()
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        
-        
-
         FileStream stream = new FileStream(path, FileMode.Create);
         PlayerData data = new PlayerData();
         formatter.Serialize(stream, data);
         stream.Close();
-        
-        
-
     }
     public static PlayerData loadPlayerData()
     {
-        
-        //string path = Application.persistentDataPath + "/save.nooba";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -42,7 +33,6 @@ public static class SaveSystem
             PlayerData data = formatter.Deserialize(stream) as PlayerData;
             stream.Close();
             return data;
-            
         }
         else
         {

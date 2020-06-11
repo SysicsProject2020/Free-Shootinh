@@ -3,7 +3,7 @@
 [CreateAssetMenu(fileName = "New Player", menuName = "Player")]
 public class PlayerScript : ScriptableObject
 {
-    private short[] health = { 200, 220, 240, 270, 300 };
+    private short[] health = { 200, 250, 290, 270, 300 };
     private short[] damage = { 20, 22, 24, 27, 30 };
 
     public GameObject prefab;

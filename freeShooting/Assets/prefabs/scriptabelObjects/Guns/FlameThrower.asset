@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: FlameThrower
   m_EditorClassIdentifier: 
   name: FlameThrower
-  description: 
+  description: The flamethrower is a potent weapon with great psychological impact,
+    inflicting a particularly horrific death.
   image: {fileID: 21300000, guid: e4562b16dfa96bc4fb2c71f0f6a2a1a3, type: 3}
   Lockedimage: {fileID: 21300000, guid: 32cf06dda1530844f824d7607b6ecb01, type: 3}
   prefab: {fileID: 2132370576548996699, guid: 148f9ac1e9828c8418de61edc053214e, type: 3}
@@ -23,11 +24,11 @@ MonoBehaviour:
   locked: 0
   fireRate:
   - 4
-  - 4
-  - 4
+  - 3.7
+  - 3.5
   - 4
   - 4
   damage: 0a000f00140019001e00
-  UpgradePrice: 05003f007b00
-  level: 1
-  UnlockPrice: 223
+  UpgradePrice: 1e0034004000
+  level: 3
+  UnlockPrice: 50

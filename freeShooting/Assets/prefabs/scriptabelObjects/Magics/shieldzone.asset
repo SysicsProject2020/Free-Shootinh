@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef1f5b39febaee4584701ce6826fb7c, type: 3}
   m_Name: shieldzone
   m_EditorClassIdentifier: 
-  name: shieldzone
-  description: 'placing a shield bubble in front of your towers '
+  name: Shieldzone
+  description: Placing a bubble shield for 10 seconds to cover your tower base from
+    enemy attacks
   image: {fileID: 21300000, guid: 97217508c19e7b840a05abdb7b07644a, type: 3}
