@@ -7,7 +7,7 @@ using TMPro;
 
 public class BuildManager : MonoBehaviour
 {  
-    //public Text startCoinsTxt;
+    public Text startCoinsTxt;
     private TowerScript[] towers= new TowerScript[6];
 
     bool notAlreadyClicked = false;
