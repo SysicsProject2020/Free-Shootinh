@@ -56,6 +56,7 @@ public class GameManagerPartie : MonoBehaviour
     public GameObject notificationButton;
     public GameObject vibrateButton;
     public TMPro.TextMeshProUGUI timerTxt;
+    int m, s;
 
     public byte timer;
     private void Awake()
@@ -68,7 +69,7 @@ public class GameManagerPartie : MonoBehaviour
         timer = 10;
         enemy = GameManager.instance.players[Random.Range(0, 4)];
         enemyGun = GameManager.instance.guns[Random.Range(0, 5)];
-        timerTxt.text = timer.ToString();
+
         StartCoroutine(timing());
 
 
@@ -93,9 +94,19 @@ public class GameManagerPartie : MonoBehaviour
     {
         while (timer != 0)
         {
-            yield return new WaitForSeconds(1);
+            
             timer--;
-            timerTxt.text = timer.ToString();
+            m = timer / 60;
+            s = timer % 60;
+            if (s < 10)
+            {
+                timerTxt.text = "0" + m.ToString() + ":" + "0" + s.ToString();
+            }
+            else
+            {
+                timerTxt.text = "0" + m.ToString() + ":" + s.ToString();
+            }
+            yield return new WaitForSeconds(1);
         }
         lose();
     }
@@ -260,6 +271,7 @@ public class GameManagerPartie : MonoBehaviour
     {
         if (!gameOver)
         {
+            soundManager.insatnce.win();
             Debug.Log("winnnnnnn");
             GameManager.instance.winCount++;
             GameManager.instance.gamePlayed++;
@@ -317,6 +329,7 @@ public class GameManagerPartie : MonoBehaviour
     {
         if (!gameOver)
         {
+            soundManager.insatnce.lose();
             AIeasy.CurrentState = AIeasy.AIState.wait;
             GameManager.instance.loseCount++;
             GameManager.instance.damageDone += playerTotalDamage;
@@ -361,12 +374,13 @@ public class GameManagerPartie : MonoBehaviour
     {
         if (active)
         {
+            soundManager.insatnce.enableMusic();
             musicButton.transform.GetChild(0).gameObject.SetActive(true);
             musicButton.transform.GetChild(1).gameObject.SetActive(false);
         }
         else
         {
-
+            soundManager.insatnce.disableMusic();
             musicButton.transform.GetChild(0).gameObject.SetActive(false);
             musicButton.transform.GetChild(1).gameObject.SetActive(true);
         }
