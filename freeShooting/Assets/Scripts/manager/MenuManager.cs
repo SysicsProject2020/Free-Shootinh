@@ -10,7 +10,13 @@ public class MenuManager : MonoBehaviour
 {
     public float amount;
     public float speed;
-    
+
+    public GameObject storyBoardPanel;
+    public TextMeshProUGUI storyTxt;
+    public GameObject nextStoryButton;
+    public GameObject previousStoryButton;
+    public GameObject exitStory;
+    private byte currentStory=0;
     private bool testTowerClick = false;
     public GameObject mainPanel;
     public GameObject settingPanel;
@@ -164,7 +170,8 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            changeNamePanel.SetActive(true);
+            StartStory();
+            
         }
         towersMenuInstantiate();
         fillTowersSprites();
@@ -175,6 +182,61 @@ public class MenuManager : MonoBehaviour
         gemText.text = GameManager.instance.diamond.ToString();
         
         
+    }
+    public void StartStory()
+    {
+        storyTxt.text = GameManager.instance.TheStory[0];
+        storyBoardPanel.SetActive(true);
+        previousStoryButton.SetActive(false);
+        nextStoryButton.SetActive(true);
+        exitStory.SetActive(false);
+    }
+    public void ExitStory()
+    {
+        storyBoardPanel.SetActive(false);
+        changeNamePanel.SetActive(true);
+    }
+
+    public void nextStory()
+    {
+        switch (currentStory)
+        {
+            case 0:
+                currentStory++;
+                storyTxt.text = GameManager.instance.TheStory[currentStory];
+                previousStoryButton.SetActive(true);
+                nextStoryButton.SetActive(true);
+                exitStory.SetActive(false);
+                break;
+            case 1:
+                currentStory++;
+                storyTxt.text = GameManager.instance.TheStory[currentStory];
+                nextStoryButton.SetActive(false);
+                previousStoryButton.SetActive(true);
+                exitStory.SetActive(true);
+
+                break;
+        }
+    }
+    public void previousStory()
+    {
+        switch (currentStory)
+        {
+            case 1:
+                currentStory--;
+                storyTxt.text = GameManager.instance.TheStory[currentStory];
+                previousStoryButton.SetActive(false);
+                nextStoryButton.SetActive(true);
+                exitStory.SetActive(false);
+                break;
+            case 2:
+                currentStory--;
+                rulesTxt.text = GameManager.instance.TheStory[currentStory];
+                previousStoryButton.SetActive(true);
+                nextStoryButton.SetActive(true);
+                exitStory.SetActive(false);
+                break;
+        }
     }
     public void nextRule()
     {

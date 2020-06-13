@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public string[] TheStory;
     public string[] rules;
     public bool testLevelUp=false;
     public bool FirstTime = false;
