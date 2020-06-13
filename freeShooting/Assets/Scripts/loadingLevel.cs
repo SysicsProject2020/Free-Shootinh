@@ -12,6 +12,7 @@ public class loadingLevel : MonoBehaviour
     string[] loading = { "LOADING", "LOADING.", "LOADING..", "LOADING..." };
     public GameObject hero;
 
+
     public void LoadLevel(int sceneIndex)
     {
         Time.timeScale = 1;
@@ -41,6 +42,21 @@ public class loadingLevel : MonoBehaviour
             if (timer > minLoadTime)
             {
                 operation.allowSceneActivation = true;
+                if (soundManager.insatnce.scene == true)
+                {
+                    soundManager.insatnce.disableMusic();
+                    soundManager.insatnce.music.clip = soundManager.insatnce.music2;
+                    soundManager.insatnce.scene = false;
+                    soundManager.insatnce.enableMusic();
+                }
+                else
+                {
+                    soundManager.insatnce.disableMusic();
+                    soundManager.insatnce.music.clip = soundManager.insatnce.music1;
+                    soundManager.insatnce.scene = true;
+                    soundManager.insatnce.enableMusic();
+                }
+                
             }
 
             yield return null;

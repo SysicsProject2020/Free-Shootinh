@@ -136,6 +136,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("Hero")]
     public GameObject HeroMain;
+
     [Header("Profile")]
     public GameObject profilePanel;
     public GameObject changeNamePanel;
@@ -150,6 +151,7 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI gamePlayed;
     public TextMeshProUGUI win;
     public TextMeshProUGUI lose;
+
     [Header("Health offset")]
     public float healthOffsetY = 3;
     public float healthOffsetZPlayer = -3.5f;
@@ -158,6 +160,7 @@ public class MenuManager : MonoBehaviour
     public float healthOffsetZEnemyTower = 5f;
     public float healthOffsetZPlayerTowerBase = -3.5f;
     public float healthOffsetZEnemyTowerBase = 5f;
+
     private void Start()
     {
         if (!GameManager.instance.FirstTime)
@@ -170,8 +173,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            StartStory();
-            
+            StartStory();      
         }
         towersMenuInstantiate();
         fillTowersSprites();
@@ -214,7 +216,6 @@ public class MenuManager : MonoBehaviour
                 nextStoryButton.SetActive(false);
                 previousStoryButton.SetActive(true);
                 exitStory.SetActive(true);
-
                 break;
         }
     }
@@ -488,12 +489,13 @@ public class MenuManager : MonoBehaviour
     {
         if (active)
         {
+            soundManager.insatnce.enableMusic();
             musicButton.transform.GetChild(0).gameObject.SetActive(true);
             musicButton.transform.GetChild(1).gameObject.SetActive(false);
         }
         else
         {
-
+            soundManager.insatnce.disableMusic();
             musicButton.transform.GetChild(0).gameObject.SetActive(false);
             musicButton.transform.GetChild(1).gameObject.SetActive(true);
         }
