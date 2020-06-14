@@ -26,10 +26,18 @@ public class PlayerData
     public byte[] playersLevel=new byte[GameManager.instance.players.Length];
     public bool[] lockPlayersData=new bool[GameManager.instance.players.Length];
     public bool[] lockTowersData=new bool[GameManager.instance.Towers.Length];
+    public bool music;
+    public bool vibrate;
+    public bool notification;
+    public bool soundEffect;
 
 
     public PlayerData()
     {
+        music= GameManager.instance.music;
+        vibrate=GameManager.instance.vibrate;
+        notification=GameManager.instance.notification;
+        soundEffect= GameManager.instance.soundEffect;
         currentLevel = GameManager.instance.CurrentLevel;
         winCount = GameManager.instance.winCount;
         loseCount = GameManager.instance.loseCount;

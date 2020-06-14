@@ -79,6 +79,7 @@ public class target : MonoBehaviour
 
             if (transform.position.z < 0)
             {
+                Vibrator.Vibrate();
                 GameManagerPartie.instance.enemyCoins += 50;
                 GameManagerPartie.instance.enemyCoinsTxt.text = GameManagerPartie.instance.enemyCoins.ToString();
                 transform.position = GameManagerPartie.instance.playerPos;

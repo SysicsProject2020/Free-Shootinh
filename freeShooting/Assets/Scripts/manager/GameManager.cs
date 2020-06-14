@@ -45,6 +45,11 @@ public class GameManager : MonoBehaviour
     public float healthOffsetZEnemyTower = 5f;
     public float healthOffsetZPlayerTowerBase = -3.5f;
     public float healthOffsetZEnemyTowerBase = 5f;
+    [Header("Setting")]
+    public bool music;
+    public bool vibrate;
+    public bool notification;
+    public bool soundEffect;
     private void Awake()
     {
         instance = this;
@@ -55,6 +60,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            music=true;
+            vibrate=true;
+            notification=true;
+            soundEffect=true;
             CurrentLevel = 0;
             FirstTime = true;
             winCount = 0;
@@ -105,6 +114,10 @@ public class GameManager : MonoBehaviour
     private void loadData()
     {
         PlayerData data = SaveSystem.loadPlayerData();
+        music = data.music;
+        vibrate = data.vibrate;
+        notification = data.notification;
+        soundEffect = data.soundEffect;
         CurrentLevel = data.currentLevel;
         winCount = data.winCount;
         loseCount = data.loseCount;

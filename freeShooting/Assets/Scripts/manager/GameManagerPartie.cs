@@ -66,7 +66,7 @@ public class GameManagerPartie : MonoBehaviour
     }
     void Start()
     {
-        timer = 10;
+        timer = 120;
         enemy = GameManager.instance.players[Random.Range(0, 4)];
         enemyGun = GameManager.instance.guns[Random.Range(0, 5)];
 
@@ -384,6 +384,7 @@ public class GameManagerPartie : MonoBehaviour
             musicButton.transform.GetChild(0).gameObject.SetActive(false);
             musicButton.transform.GetChild(1).gameObject.SetActive(true);
         }
+        SaveSystem.SavePlayer();
     }
     public void settingSoundEffect(bool active)
     {
@@ -397,6 +398,7 @@ public class GameManagerPartie : MonoBehaviour
             soundEffectButton.transform.GetChild(0).gameObject.SetActive(false);
             soundEffectButton.transform.GetChild(1).gameObject.SetActive(true);
         }
+        SaveSystem.SavePlayer();
     }
     public void settingNotification(bool active)
     {
@@ -410,6 +412,7 @@ public class GameManagerPartie : MonoBehaviour
             notificationButton.transform.GetChild(0).gameObject.SetActive(false);
             notificationButton.transform.GetChild(1).gameObject.SetActive(true);
         }
+        SaveSystem.SavePlayer();
     }
     public void settingVibrate(bool active)
     {
@@ -423,6 +426,7 @@ public class GameManagerPartie : MonoBehaviour
             vibrateButton.transform.GetChild(0).gameObject.SetActive(false);
             vibrateButton.transform.GetChild(1).gameObject.SetActive(true);
         }
+        SaveSystem.SavePlayer();
     }
     void managingAi()
     {

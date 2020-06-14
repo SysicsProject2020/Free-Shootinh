@@ -265,8 +265,10 @@ public class positionManager : MonoBehaviour
     {
         if (place.z < 0)
         {
+            Vibrator.Vibrate();
             switch ((short)place.x)
             {
+                
                 case -16:
                     if (buildingGameObject[0, 0] != null)
                     {
