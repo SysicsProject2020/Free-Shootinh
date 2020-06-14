@@ -24,7 +24,7 @@ public class Notify : MonoBehaviour
             TimeSpan time = timeToNotify - DateTime.Now;
             TimeSpan time2 = timeToNotify2 - DateTime.Now;
             NotificationManager.SendWithAppIcon(time, title, content, Color.blue, NotificationIcon.Bell);
-            NotificationManager.SendWithAppIcon(time2, title, content, Color.blue, NotificationIcon.Message);
+            NotificationManager.SendWithAppIcon(time2, title, content, Color.blue, NotificationIcon.Bell);
         }
 #endif
     }
