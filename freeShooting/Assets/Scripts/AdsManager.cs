@@ -29,6 +29,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             GameManager.instance.diamond += 1000;
             SaveSystem.SavePlayer();
             Advertisement.RemoveListener(this);
+            GetComponent<loadingLevel>().LoadLevel(0);
         }
         else if (showResult == ShowResult.Skipped)
         {
