@@ -281,7 +281,8 @@ public class MagicFunctions : MonoBehaviour
                 }
 
             }
-            GameManagerPartie.instance.enemy_.GetComponent<target>().gainhealth(50);
+            if (GameManagerPartie.instance.enemy_ != null)
+                GameManagerPartie.instance.enemy_.GetComponent<target>().gainhealth(50);
             if (GameManagerPartie.instance.enemyTowerBase_ != null)
             {
                 GameManagerPartie.instance.enemyTowerBase_.GetComponent<target>().gainhealth(200);

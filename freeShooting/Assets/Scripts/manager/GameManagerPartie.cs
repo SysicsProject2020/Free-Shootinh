@@ -317,6 +317,7 @@ public class GameManagerPartie : MonoBehaviour
             if ((byte)Random.Range(1, 3) == 2)
             {
                 ushort winGem = (ushort)Random.Range(1, 50);
+                GetComponent<AdsManager>().setGem(winGem);
                 winPanel.transform.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(true);
                 winPanel.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winGem.ToString();
                 GameManager.instance.diamond += winGem;

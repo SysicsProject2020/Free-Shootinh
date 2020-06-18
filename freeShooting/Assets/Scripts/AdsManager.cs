@@ -8,11 +8,16 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     string gameId = "1234567";
     string myPlacementId = "rewardedVideo";
     bool testMode = true;
+    public ushort Gems =0;
 
     // Initialize the Ads listener and service:
     void Start()
     {
       
+    }
+    public void setGem(ushort gem)
+    {
+        Gems = gem;
     }
     public void showAd()
     {
@@ -26,7 +31,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         // Define conditional logic for each ad completion status:
         if (showResult == ShowResult.Finished)
         {
-            GameManager.instance.diamond += 1000;
+            GameManager.instance.diamond += Gems;
             SaveSystem.SavePlayer();
             Advertisement.RemoveListener(this);
             GetComponent<loadingLevel>().LoadLevel(0);
