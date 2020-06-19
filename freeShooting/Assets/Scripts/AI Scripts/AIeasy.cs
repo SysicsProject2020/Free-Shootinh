@@ -47,7 +47,7 @@ public class AIeasy : MonoBehaviour
 
     private void Start()
     {
-        strategy = 1;
+        strategy = 3;
         nextTimeToBuildRandom = 0;
         switch (strategy)
         {
@@ -73,21 +73,23 @@ public class AIeasy : MonoBehaviour
         switch(CurrentState)
         {
             case AIState.wait:
-                if (GameManagerPartie.instance.enemy_ != null)
-                {
-                    GameManagerPartie.instance.enemy_.transform.GetChild(0).GetComponent<Animator>().SetFloat("x", 0.5f);
-                }
 
-                break;
-            case AIState.idle:
-
-                 // Debug.Log("hani fi idle state");
                 if (!isMoving)
                 {
                     float rand = Random.Range(1, 3);
                     StartCoroutine(move(rand));
                 }
-               
+
+                break;
+            case AIState.idle:
+
+                // Debug.Log("hani fi idle state");
+                if (!isMoving)
+                {
+                    float rand = Random.Range(1, 3);
+                    StartCoroutine(move(rand));
+                }
+
                 if (!GameManagerPartie.instance.player_.activeSelf)
                 {
                     changeState(AIState.shoot);

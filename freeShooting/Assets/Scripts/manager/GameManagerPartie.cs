@@ -57,7 +57,7 @@ public class GameManagerPartie : MonoBehaviour
     public GameObject vibrateButton;
     public TMPro.TextMeshProUGUI timerTxt;
     int m, s;
-
+    Coroutine tm;
     public byte timer;
     private void Awake()
     {
@@ -66,11 +66,22 @@ public class GameManagerPartie : MonoBehaviour
     }
     void Start()
     {
-        timer = 120;
-        enemy = GameManager.instance.players[Random.Range(0, 4)];
-        enemyGun = GameManager.instance.guns[Random.Range(0, 5)];
+        timer = 80;
+        switch (GameManager.instance.winCount)
+        {
+            case 0:
+                enemy = GameManager.instance.players[0];
+                enemyGun = GameManager.instance.guns[0];
+                break;
+            default:
+                enemy = GameManager.instance.players[Random.Range(0, 4)];
+                enemyGun = GameManager.instance.guns[Random.Range(0, 5)];
+                break;
+        }
+        //enemy = GameManager.instance.players[Random.Range(0, 4)];
+        //enemyGun = GameManager.instance.guns[Random.Range(0, 5)];
 
-        StartCoroutine(timing());
+        tm = StartCoroutine(timing());
 
 
         player = GameManager.instance.getPlayer();
@@ -271,6 +282,8 @@ public class GameManagerPartie : MonoBehaviour
     {
         if (!gameOver)
         {
+            gameObject.GetComponent<AIeasy>().enabled = false;
+            StopCoroutine(tm);
             soundManager.insatnce.win();
             Debug.Log("winnnnnnn");
             GameManager.instance.winCount++;
@@ -284,9 +297,10 @@ public class GameManagerPartie : MonoBehaviour
             //winXP = (uint)(playerTotalDamage / 40);
             if (GameManager.instance.CurrentLevel != 0)
             {
-
-
-                winXP = (uint)(100 * (GameManager.instance.CurrentLevel + 1) * (GameManager.instance.CurrentLevel + 1) / GameManager.instance.CurrentLevel+1)*2 + playerTotalDamage / 120;
+                //winXP = (uint)(100 * (GameManager.instance.CurrentLevel + 1) * (GameManager.instance.CurrentLevel + 1) / GameManager.instance.CurrentLevel + 1) + playerTotalDamage / 150;
+                int player_nextLevel_xp = 100 * (GameManager.instance.CurrentLevel + 1) * (GameManager.instance.CurrentLevel + 1);
+                int player_currentLevel_xp = 100 * (GameManager.instance.CurrentLevel) * (GameManager.instance.CurrentLevel);
+                winXP = (uint)(((player_nextLevel_xp - player_currentLevel_xp)) / (GameManager.instance.CurrentLevel + 1) + (timer + playerDamage / 1000));
             }
             else
             {
@@ -330,6 +344,8 @@ public class GameManagerPartie : MonoBehaviour
     {
         if (!gameOver)
         {
+            gameObject.GetComponent<AIeasy>().enabled = false;
+            StopCoroutine(tm);
             soundManager.insatnce.lose();
             AIeasy.CurrentState = AIeasy.AIState.wait;
             GameManager.instance.loseCount++;
@@ -337,27 +353,35 @@ public class GameManagerPartie : MonoBehaviour
             GameManager.instance.gamePlayed++;
 
             losePanel.SetActive(true);
+            uint winXP;
 
+            if (GameManager.instance.CurrentLevel != 0)
+            {
+                int player_nextLevel_xp = 100 * (GameManager.instance.CurrentLevel + 1) * (GameManager.instance.CurrentLevel + 1);
+                int player_currentLevel_xp = 100 * (GameManager.instance.CurrentLevel) * (GameManager.instance.CurrentLevel);
+                winXP = (uint)((((player_nextLevel_xp - player_currentLevel_xp)) / (GameManager.instance.CurrentLevel + 1) + (timer + playerDamage / 1000))/4);
+            }
+            else
+            {
+                winXP = (uint)Random.Range(15, 70);
+            }
+            Destroy(enemyGun_);
+            Destroy(enemy_);
+            Destroy(enemyTowerBase_);
+            for (int i = 0; i < 5; i++)
+            {
+                if (positionManager.buildingGameObject[1, i] != null)
+                {
+                    Destroy(positionManager.buildingGameObject[1, i]);
+                }
+            }
+            losePanel.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
+            GameManager.instance.UpdateXp((int)winXP);
             //GameManager.instance.CurrentLevel
             //playerTotalDamage
-            int curlvl = (int)(0.1f * Mathf.Sqrt(GameManager.instance.XP));
-            short winXP = (short)(curlvl * Random.Range(50, 150) / 4);
-
-            losePanel.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "x" + winXP.ToString();
-            GameManager.instance.UpdateXp(winXP);
 
             SaveSystem.SavePlayer();
             gameOver = true;
-            Destroy(playerGun_);
-            Destroy(player_);
-            Destroy(playerTowerBase_);
-            for (int i = 0; i < 5; i++)
-            {
-                if (positionManager.buildingGameObject[0, i] != null)
-                {
-                    Destroy(positionManager.buildingGameObject[0, i]);
-                }
-            }
         }
 
     }

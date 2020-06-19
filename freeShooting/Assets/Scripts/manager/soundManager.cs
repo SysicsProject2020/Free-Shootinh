@@ -17,7 +17,14 @@ public class soundManager : MonoBehaviour
 
     private void Awake()
     {
-        insatnce = this;
+        if (insatnce == null)
+        {
+            insatnce = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         DontDestroyOnLoad(gameObject);
         enableMusic();
     }
