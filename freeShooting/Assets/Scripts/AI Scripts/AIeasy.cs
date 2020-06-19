@@ -55,13 +55,13 @@ public class AIeasy : MonoBehaviour
                 StartCoroutine(startStrategy1());
                 break;
             case 1:
-                StartCoroutine(startStrategy1());
+                StartCoroutine(startStrategy2());
                 break;
             case 2:
-                StartCoroutine(startStrategy1());
+                StartCoroutine(startStrategy3());
                 break;
             case 3:
-                StartCoroutine(startStrategy1());
+                StartCoroutine(startStrategy4());
                 break;
         }
         changeState(AIState.wait);
